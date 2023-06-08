@@ -1,0 +1,203 @@
+baseURL: https://opentelemetry.io
+title: &title OpenTelemetry
+description: &desc The OpenTelemetry Project Site
+disableKinds: [taxonomy, taxonomyTerm]
+theme: [docsy]
+disableAliases: true # We do redirects via Netlify's _redirects file
+enableGitInfo: true
+
+# Language settings
+enableMissingTranslationPlaceholders: true
+languages:
+  en:
+    languageName: English
+    params:
+      title: *title
+      description: *desc
+imaging:
+  resampleFilter: CatmullRom
+  quality: 75
+  anchor: smart
+
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+      wrapStandAloneImageWithinParagraph: false
+    renderer:
+      unsafe: true
+  highlight:
+    # noClasses: false
+    style: tango
+
+# Netlify _redirects file
+mediaTypes:
+  text/netlify: {}
+
+outputFormats:
+  REDIRECTS:
+    mediaType: text/netlify
+    baseName: _redirects
+    notAlternative: true
+
+outputs:
+  home: [HTML, REDIRECTS, RSS]
+
+params:
+  copyright: >-
+    The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0 |
+  tagline: Effective observability requires high-quality telemetry
+  sub_tagline: >-
+    **OpenTelemetry** makes robust, portable telemetry a built-in feature of
+    cloud-native software.
+  sub_description: >-
+    **OpenTelemetry** provides a single set of APIs, libraries, agents, and
+    collector services to capture distributed traces and metrics from your
+    application. You can analyze them using Prometheus, Jaeger, and other
+    observability tools.
+  font_awesome_version: 5.8.1
+  github_repo: https://github.com/open-telemetry/opentelemetry.io
+  github_branch: main
+  gcs_engine_id: bde3d634eca9cd335
+
+  ## Social media image path, such as Open Graph's og:image
+  #
+  # IMPORTANT: if you change the image but not the path, also increment the
+  # version ID in the filename below. Otherwise, for new paths, start at version
+  # `001`. Note that social-media images must be preserved (or redirected)
+  # forever.
+  images:
+    - img/social/logo-wordmark-001.png
+
+  ui:
+    footer_about_disable: true
+    navbar_logo: true
+    navbar_translucent_over_cover_disable: true
+    sidebar_menu_compact: true
+    sidebar_menu_foldable: true
+    sidebar_search_disable: true
+
+  links:
+    user:
+      - name: Mailing Lists
+        url: https://github.com/open-telemetry/community#mailing-lists
+        icon: fa fa-envelope
+        desc: List of mailing lists that the project uses.
+      - name: Mastodon
+        url: https://fosstodon.org/@opentelemetry
+        icon: fab fa-mastodon
+        desc: Follow us on Mastodon to get the latest news!
+      - name: Twitter
+        url: https://twitter.com/opentelemetry
+        icon: fab fa-twitter
+        desc: Follow us on Twitter to get the latest news!
+      - name: Stack Overflow
+        url: https://stackoverflow.com/questions/tagged/open-telemetry
+        icon: fab fa-stack-overflow
+        desc: Practical questions and curated answers
+      - name: CNCF branding
+        url: https://cncf-branding.netlify.app/projects/opentelemetry/
+        icon: fas fa-image
+        desc: Check out the CNCF logo page for OpenTelemetry
+      - name: Meeting Recordings
+        url: https://www.youtube.com/channel/UCHZDBZTIfdy94xMjMKz-_MA
+        icon: fab fa-youtube
+        desc: Watch our meeting recordings on YouTube
+    developer:
+      - name: GitHub
+        url: https://github.com/open-telemetry
+        icon: fab fa-github
+        desc: Find us on GitHub.
+      - name: 'Slack #opentelemetry'
+        url: https://cloud-native.slack.com/archives/CJFCJHG4Q
+        icon: fab fa-slack
+        desc: >-
+          Chat with other project developers. Sign up via https://slack.cncf.io.
+          Other channels start with with #otel- prefix
+      - name: CNCF DevStats
+        url: https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m
+        icon: fas fa-chart-area
+        desc: See our activity on CNCF DevStats
+      - name: Privacy Policy
+        url: https://www.linuxfoundation.org/legal/privacy-policy
+        icon: fa fa-book
+        desc: >-
+          CNCF works in close association with Linux Foundation. Read the
+          privacy policy here
+      - name: Marketing Guidelines
+        url: https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md
+        icon: fas fa-bullhorn
+        desc: >-
+          Important information on how to represent your personal or corporate
+          contributions or participation in the OpenTelemetry project.
+
+  logos:
+    hero: opentelemetry-horizontal-color.png
+    cncf: cncf.png
+
+  social:
+    - name: GitHub
+      url: https://github.com/open-telemetry/
+      color: black
+      icon: fab fa-github
+    - name: Twitter
+      url: https://twitter.com/opentelemetry
+      color: twitter
+      icon: fab fa-twitter
+    - name: Slack
+      url: https://cloud-native.slack.com/archives/CJFCJHG4Q
+      color: slack
+      icon: fab fa-slack
+    - name: Medium
+      url: https://medium.com/opentelemetry
+      color: light
+      icon: fab fa-medium
+    - name: Mailing list
+      url: https://lists.cncf.io/g/cncf-opentelemetry-community
+      color: info
+      icon: far fa-envelope
+
+  fonts:
+    - name: Noto Sans
+      sizes: [300, 400, 600, 700]
+      type: sans_serif
+
+  notes: # as markdown
+    docker-compose-v2: |
+      `docker-compose` is deprecated. For details, see
+      [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
+
+services:
+  googleAnalytics:
+    # The following is a placeholder (fake) ID useful for local test builds. The
+    # real ID is set in the Netlify config. For details, see
+    # https://github.com/open-telemetry/opentelemetry.io/issues/1626.
+    id: UA-00000000-0 # TODO: switch to G-0000000000 once we get confirmation that it's ok to do so
+
+module:
+  mounts:
+    - source: content/en
+      target: content
+    - source: content-modules/opentelemetry-go/website_docs
+      target: content/docs/instrumentation/go
+    - source: tmp/otel/specification
+      target: content/docs/specs/otel
+    - source: tmp/otlp/docs/specification.md
+      target: content/docs/specs/otlp/_index.md
+    - source: tmp/otlp/docs/img
+      target: content/docs/specs/otlp/img
+    - source: tmp/community/mission-vision-values.md
+      target: content/community/mission.md
+    - source: tmp/community/roadmap.md
+      target: content/community/roadmap.md
+    - source: static
+      target: static
+    - source: content-modules/opentelemetry-specification/schemas
+      target: static/schemas
+    - source: static/img
+      target: static/img
+    - source: content-modules/opentelemetry-specification/internal/img
+      target: static/img
+    - source: iconography/32x32
+      target: static/img/logos/32x32

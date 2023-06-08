@@ -1,0 +1,36 @@
+# Netlify redirects. See https://www.netlify.com/docs/redirects/
+{{/* cSpell:ignore wordmark */ -}}
+
+{{ range $p := .Site.Pages -}}
+
+{{ range $p.Aliases -}}
+  {{ . | printf "%-35s" }} {{ $p.RelPermalink }}
+{{ end -}}
+
+{{ with $p.Params.redirect -}}
+  {{ $p.RelPermalink | printf "%-35s" }} {{ . }}
+{{ end -}}
+
+{{ end }}{{/* range $p */ -}}
+
+{{ $languages := (.Site.GetPage "/docs/instrumentation").Pages -}}
+{{ range $languages -}}
+{{ $lang := .File.ContentBaseName -}}
+{{ if ne $lang "other" -}}
+/docs/{{ $lang }}   /docs/instrumentation/{{ $lang }}
+/docs/{{ $lang }}/*  /docs/instrumentation/{{ $lang }}/:splat
+{{ end -}}
+{{ end -}}
+
+/docs/reference/specification    /docs/specs/otel
+/docs/reference/specification/*  /docs/specs/otel/:splat
+
+{{/*
+  Social-media image redirects. As mentioned in
+  https://developers.facebook.com/docs/sharing/webmasters/images, we need to
+  preserve og:image (and other social media image) URLs forever.
+*/ -}}
+
+{{ $og_image_current := `/img/social/logo-wordmark-001.png` -}}
+
+/featured-background.jpg  {{ $og_image_current }} {{/* homepage og:image used prior to 2022/08 */}}

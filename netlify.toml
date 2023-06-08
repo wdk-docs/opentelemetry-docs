@@ -1,0 +1,16 @@
+[build]
+publish = "public"
+command = "npm run s build:preview diff:check"
+
+[context.production]
+command = "npm run s build:production diff:check"
+
+[[redirects]]
+from = "https://docs.opentelemetry.io/*"
+to = "https://opentelemetry.io/docs/:splat"
+force = true
+
+[[redirects]]
+from = "https://blog.opentelemetry.io/*"
+to = "https://opentelemetry.io/blog/:splat"
+force = true

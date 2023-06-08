@@ -1,0 +1,38 @@
+/* Docsy-delta full file override: we're not tracking changes to the Docsy file of the same name. */
+
+$otel-colors: (
+  'orange': #f5a800,
+  'orange-light': #fff0ce,
+  'blue': #4f62ad,
+  'blue-light': #cee1ff,
+  'purple': #425cc7,
+  'light-green': #c0f587,
+);
+
+$otel-component-colors: (
+  'collector': #070002,
+  'core': #2c3ed3,
+  'cpp': #f34b7d,
+  'dotnet': #178600,
+  'erlang': #b83998,
+  'exporter': #3ed32c,
+  'extension': #d3532c,
+  'go': #00add8,
+  'instrumentation': #d32c3e,
+  'java': #b07219,
+  'js': #f1e05a,
+  'lua': #03037b,
+  'php': #4f5d95,
+  'processor': #d32c42,
+  'python': #3572a5,
+  'receiver': #742cd3,
+  'resource-detector': green,
+  'ruby': #701516,
+  'rust': #dea584,
+  'swift': #de5d43,
+  'utilities': #2cd3b4,
+);
+
+$primary: map-get($otel-colors, 'blue');
+$secondary: map-get($otel-colors, 'orange');
+$td-enable-google-fonts: false;

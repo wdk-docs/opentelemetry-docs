@@ -1,0 +1,22 @@
+{{ $isExternal := hasPrefix .Destination "http" -}}
+{{ if $isExternal -}}
+  {{ if findRE "^https://opentelemetry.io/\\w" .Destination -}}
+    {{ warnf "%s: use a local path, not an external URL, for the following reference to a site local page: %s"
+        .Page.File.Path .Destination -}}
+  {{ else if findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" .Destination -}}
+    {{ warnf "%s: use a local path, not an external URL, for the following reference to a local specification page: %s"
+    .Page.File.Path .Destination -}}
+  {{ end -}}
+{{ end -}}
+
+{{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670), we'll inspect .Text. */ -}}
+{{ $noExternalIcon := in .Text "hk-no-external-icon" -}}
+<a href="{{ .Destination | safeURL }}"
+  {{- with .Title}} title="{{ . }}"{{ end -}}
+  {{- if $isExternal }} target="_blank" rel="noopener"
+    {{- if not $noExternalIcon }} class="external-link"{{ end -}}
+  {{ end -}}
+>
+  {{- .Text | safeHTML -}}
+</a>
+{{- /* This comment ensures that all trailing whitespace is trimmed. */ -}}
