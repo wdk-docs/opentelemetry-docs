@@ -1,0 +1,4160 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OPENTELEMETRY 文档">
+      
+      
+        <meta name="author" content="[Adriana Villela](https://github.com/avillela) (Lightstep)">
+      
+      
+        <link rel="canonical" href="https://wdk-docs.github.io/opentelemetry-docs/blog/2023/end-user-q-and-a-03/">
+      
+      
+      
+      <link rel="icon" href="../../../assets/favicons/favicon.ico">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>End-User Q&A Series: Using OTel at Farfetch - OPENTELEMETRY 文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="OPENTELEMETRY 文档" class="md-header__button md-logo" aria-label="OPENTELEMETRY 文档" data-md-component="logo">
+      
+  <img src="../../../assets/logo/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OPENTELEMETRY 文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              End-User Q&A Series: Using OTel at Farfetch
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/wdk-docs/opentelemetry-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    wdk-docs/opentelemetry-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      首页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../docs/_index/" class="md-tabs__link">
+        文档
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ecosystem/_index/" class="md-tabs__link">
+        生态系统
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../status/" class="md-tabs__link">
+      状态
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../community/_index/" class="md-tabs__link">
+        社区
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        博客
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="OPENTELEMETRY 文档" class="md-nav__button md-logo" aria-label="OPENTELEMETRY 文档" data-md-component="logo">
+      
+  <img src="../../../assets/logo/logo.svg" alt="logo">
+
+    </a>
+    OPENTELEMETRY 文档
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/wdk-docs/opentelemetry-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    wdk-docs/opentelemetry-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/_index/" class="md-nav__link">
+        文档
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/what-is-opentelemetry/" class="md-nav__link">
+        什么是OpenTelemetry?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          入门
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          入门
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/getting-started/_index/" class="md-nav__link">
+        入门
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/getting-started/dev/" class="md-nav__link">
+        开发者入门指南
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/getting-started/ops/" class="md-nav__link">
+        Ops入门
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          概念
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          概念
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/_index/" class="md-nav__link">
+        开放遥测概念
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/observability-primer/" class="md-nav__link">
+        可观测 Primer
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
+          信号
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          信号
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/signals/_index/" class="md-nav__link">
+        信号
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/signals/traces/" class="md-nav__link">
+        Traces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/signals/metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/signals/logs/" class="md-nav__link">
+        Logs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/signals/baggage/" class="md-nav__link">
+        Baggage
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_4" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_4" id="__nav_2_4_4_label" tabindex="0">
+          仪表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          仪表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/instrumentation/_index/" class="md-nav__link">
+        仪表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/instrumentation/automatic/" class="md-nav__link">
+        自动
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/instrumentation/manual/" class="md-nav__link">
+        手动
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/instrumentation/libraries/" class="md-nav__link">
+        库
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/components/" class="md-nav__link">
+        组件
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/semantic-conventions/" class="md-nav__link">
+        语义约定
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_7" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../docs/concepts/sampling/">采样</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          采样
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_8" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_8" id="__nav_2_4_8_label" tabindex="0">
+          SDK配置
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          SDK配置
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/sdk-configuration/_index/" class="md-nav__link">
+        SDK 配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/sdk-configuration/general-sdk-configuration/" class="md-nav__link">
+        通用SDK配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/sdk-configuration/otlp-exporter-configuration/" class="md-nav__link">
+        OTLP导出配置
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/distributions/" class="md-nav__link">
+        分布
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/concepts/glossary/" class="md-nav__link">
+        术语表
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          演示
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          演示
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/_index/" class="md-nav__link">
+        OpenTelemetry 演示文档
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/architecture/" class="md-nav__link">
+        演示架构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_3" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../docs/demo/collector-data-flow-dashboard/">采集器数据流仪表板</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          采集器数据流仪表板
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/development/" class="md-nav__link">
+        开发
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/docker-deployment/" class="md-nav__link">
+        Docker 部署
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/feature-flags/" class="md-nav__link">
+        功能标志
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/features/" class="md-nav__link">
+        演示功能
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/forking/" class="md-nav__link">
+        分叉演示存储库
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/kubernetes-deployment/" class="md-nav__link">
+        Kubernetes 开发
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/manual-span-attributes/" class="md-nav__link">
+        手动跨度属性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/metric-features/" class="md-nav__link">
+        按服务度量特征覆盖率
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_12" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_12" id="__nav_2_5_12_label" tabindex="0">
+          需求
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_12">
+          <span class="md-nav__icon md-icon"></span>
+          需求
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/requirements/_index/" class="md-nav__link">
+        演示需求
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/requirements/application/" class="md-nav__link">
+        应用需求
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/requirements/architecture/" class="md-nav__link">
+        架构需求
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/requirements/opentelemetry/" class="md-nav__link">
+        OpenTelemetry 需求
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/requirements/system/" class="md-nav__link">
+        系统需求
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_13" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_13" id="__nav_2_5_13_label" tabindex="0">
+          场景
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_13_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_13">
+          <span class="md-nav__icon md-icon"></span>
+          场景
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/scenarios/_index/" class="md-nav__link">
+        场景
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_13_2" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../docs/demo/scenarios/recommendation-cache/">建议缓存</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_5_13_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_13_2">
+          <span class="md-nav__icon md-icon"></span>
+          建议缓存
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_14" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../docs/demo/screenshots/">演示截图</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_14_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_14">
+          <span class="md-nav__icon md-icon"></span>
+          演示截图
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/service-table/" class="md-nav__link">
+        服务的角色
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5_16" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5_16" id="__nav_2_5_16_label" tabindex="0">
+          服务
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_5_16_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5_16">
+          <span class="md-nav__icon md-icon"></span>
+          服务
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/services/_index/" class="md-nav__link">
+        服务
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/services/accounting/" class="md-nav__link">
+        Accounting Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/services/ad/" class="md-nav__link">
+        Ad Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/tests/" class="md-nav__link">
+        测试
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/demo/trace-features/" class="md-nav__link">
+        按服务跟踪功能覆盖
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          仪表
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          仪表
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/_index/" class="md-nav__link">
+        仪表
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_2" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_2" id="__nav_2_6_2_label" tabindex="0">
+          C++
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          C++
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/cpp/_index/" class="md-nav__link">
+        C++
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_3" id="__nav_2_6_3_label" tabindex="0">
+          .NET
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          .NET
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/net/_index/" class="md-nav__link">
+        .NET
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_4" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_4" id="__nav_2_6_4_label" tabindex="0">
+          Erlang/Elixir
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_4">
+          <span class="md-nav__icon md-icon"></span>
+          Erlang/Elixir
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/erlang/_index/" class="md-nav__link">
+        Erlang/Elixir
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_5" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_5" id="__nav_2_6_5_label" tabindex="0">
+          Go
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_5">
+          <span class="md-nav__icon md-icon"></span>
+          Go
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/go/_index.md" class="md-nav__link">
+        None
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_6" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_6" id="__nav_2_6_6_label" tabindex="0">
+          Java
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_6">
+          <span class="md-nav__icon md-icon"></span>
+          Java
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/java/_index/" class="md-nav__link">
+        Java
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_7" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_7" id="__nav_2_6_7_label" tabindex="0">
+          JavaScript
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_7">
+          <span class="md-nav__icon md-icon"></span>
+          JavaScript
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/js/_index/" class="md-nav__link">
+        JavaScript
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_8" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_8" id="__nav_2_6_8_label" tabindex="0">
+          PHP
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_8">
+          <span class="md-nav__icon md-icon"></span>
+          PHP
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/php/_index/" class="md-nav__link">
+        PHP
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_9" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_9" id="__nav_2_6_9_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_9">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/python/_index/" class="md-nav__link">
+        Python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_10" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_10" id="__nav_2_6_10_label" tabindex="0">
+          Ruby
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_10">
+          <span class="md-nav__icon md-icon"></span>
+          Ruby
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/ruby/_index/" class="md-nav__link">
+        Ruby
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_11" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_11" id="__nav_2_6_11_label" tabindex="0">
+          Rust
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_11">
+          <span class="md-nav__icon md-icon"></span>
+          Rust
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/rust/_index/" class="md-nav__link">
+        Rust
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_12" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_12" id="__nav_2_6_12_label" tabindex="0">
+          Swift
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_12">
+          <span class="md-nav__icon md-icon"></span>
+          Swift
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/swift/_index/" class="md-nav__link">
+        Swift
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_13" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6_13" id="__nav_2_6_13_label" tabindex="0">
+          Other
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_13_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_13">
+          <span class="md-nav__icon md-icon"></span>
+          Other
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/instrumentation/other/_index/" class="md-nav__link">
+        Other languages
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          收集器
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          收集器
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/_index/" class="md-nav__link">
+        收集器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/getting-started/" class="md-nav__link">
+        入门
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_3" id="__nav_2_7_3_label" tabindex="0">
+          部署
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_7_3">
+          <span class="md-nav__icon md-icon"></span>
+          部署
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/deployment/_index/" class="md-nav__link">
+        部署
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/deployment/agent/" class="md-nav__link">
+        代理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/deployment/gateway/" class="md-nav__link">
+        网关
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/deployment/no-collector/" class="md-nav__link">
+        没有收集器
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/configuration/" class="md-nav__link">
+        配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/management/" class="md-nav__link">
+        管理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/distributions/" class="md-nav__link">
+        分布
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/troubleshooting/" class="md-nav__link">
+        故障排除
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/scaling/" class="md-nav__link">
+        扩容采集器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/transforming-telemetry/" class="md-nav__link">
+        改变遥测
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/custom-collector/" class="md-nav__link">
+        构建自定义收集器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/custom-auth/" class="md-nav__link">
+        构建自定义身份验证器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/collector/trace-receiver/" class="md-nav__link">
+        建立跟踪接收器
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+          K8s 操作符
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          K8s 操作符
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/k8s-operator/_index/" class="md-nav__link">
+        Kubernetes开放遥测操作器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/k8s-operator/automatic/" class="md-nav__link">
+        注入自动仪表
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+          FaaS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          FaaS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/faas/_index/" class="md-nav__link">
+        Functions as a Service
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/faas/lambda-auto-instrument/" class="md-nav__link">
+        Lambda Auto-Instrumentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/faas/lambda-collector/" class="md-nav__link">
+        Lambda Collector Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/faas/lambda-manual-instrument/" class="md-nav__link">
+        Lambda Manual Instrumentation
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+          迁移
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          迁移
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/migration/_index/" class="md-nav__link">
+        Migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/migration/opencensus/" class="md-nav__link">
+        Migrating from OpenCensus
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/migration/opentracing/" class="md-nav__link">
+        Migrating from OpenTracing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+          规格
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_11">
+          <span class="md-nav__icon md-icon"></span>
+          规格
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/specs/_index/" class="md-nav__link">
+        Specifications
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/specs/status/" class="md-nav__link">
+        Specification Status Summary
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+          致谢
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_12">
+          <span class="md-nav__icon md-icon"></span>
+          致谢
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../docs/acknowledgements/_index/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          生态系统
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          生态系统
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ecosystem/_index/" class="md-nav__link">
+        OpenTelemetry Ecosystem
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ecosystem/demo/" class="md-nav__link">
+        OpenTelemetry Demo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ecosystem/integrations/" class="md-nav__link">
+        Integrations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ecosystem/vendors/" class="md-nav__link">
+        Vendors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          registry
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          registry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ecosystem/registry/_index/" class="md-nav__link">
+        Registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ecosystem/registry/adding/" class="md-nav__link">
+        Adding to the registry
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../status/" class="md-nav__link">
+        状态
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          社区
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          社区
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/_index/" class="md-nav__link">
+        Community
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/marketing-guidelines/" class="md-nav__link">
+        OpenTelemetry Marketing Guidelines for Contributing Organizations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+          enduser
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          enduser
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/end-user/_index/" class="md-nav__link">
+        End-user Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/end-user/discussion-group/" class="md-nav__link">
+        Monthly Discussion Group
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/end-user/feedback-survey/" class="md-nav__link">
+        Feedback Survey
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/end-user/interviews-feedback/" class="md-nav__link">
+        Interviews or Feedback Sessions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/end-user/otel-in-practice/" class="md-nav__link">
+        OpenTelemetry In Practice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../community/end-user/slack-channel/" class="md-nav__link">
+        Slack Channel
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">博客</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          博客
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qa" class="md-nav__link">
+    Q&amp;A
+  </a>
+  
+    <nav class="md-nav" aria-label="Q&A">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tell-us-about-your-role" class="md-nav__link">
+    Tell us about your role?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-did-you-hear-about-opentelemetry" class="md-nav__link">
+    How did you hear about OpenTelemetry?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-architecture-at-farfetch-like-how-has-opentelemetry-helped" class="md-nav__link">
+    What is the architecture at Farfetch like? How has OpenTelemetry helped?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-you-describe-the-build-and-deployment-process-at-farfetch" class="md-nav__link">
+    Can you describe the build and deployment process at Farfetch?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-observability-tooling-do-you-use" class="md-nav__link">
+    What Observability tooling do you use?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tell-us-about-farfetchs-opentelemetry-journey" class="md-nav__link">
+    Tell us about Farfetch’s OpenTelemetry journey
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-did-you-and-your-team-enable-observability-through-opentelemetry" class="md-nav__link">
+    How did you and your team enable Observability through OpenTelemetry?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-long-did-it-take-your-team-to-get-opentelemetry-in-production" class="md-nav__link">
+    How long did it take your team to get OpenTelemetry in production?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-are-you-collecting-your-traces-right-now" class="md-nav__link">
+    How are you collecting your traces right now?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-kind-of-support-does-your-team-provide-for-manual-instrumentation" class="md-nav__link">
+    What kind of support does your team provide for manual instrumentation?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can-you-share-your-experience-around-using-the-otel-operator" class="md-nav__link">
+    Can you share your experience around using the OTel Operator?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#have-you-or-anyone-on-your-team-or-at-farfetch-started-playing-with-otel-logging" class="md-nav__link">
+    Have you or anyone on your team or at Farfetch started playing with OTel Logging?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-are-you-collecting-the-metrics-signal" class="md-nav__link">
+    How are you collecting the metrics signal?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-many-kubenetes-clusters-are-you-observing" class="md-nav__link">
+    How many Kubenetes clusters are you observing?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#have-you-dabbled-in-any-of-the-otel-experimental-features-in-kubernetes" class="md-nav__link">
+    Have you dabbled in any of the OTel experimental features in Kubernetes?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-you-deploy-your-otel-collectors" class="md-nav__link">
+    How do you deploy your OTel Collectors?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-happens-if-the-central-collector-fails" class="md-nav__link">
+    What happens if the central Collector fails?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-were-some-of-the-challenges-you-experienced-in-deploying-the-otel-collector" class="md-nav__link">
+    What were some of the challenges you experienced in deploying the OTel Collector?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-you-aware-of-any-teams-using-span-events" class="md-nav__link">
+    Are you aware of any teams using span events?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#have-you-encountered-anyone-who-was-resistant-to-opentelemetry" class="md-nav__link">
+    Have you encountered anyone who was resistant to OpenTelemetry?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#have-you-or-your-team-made-any-contributions-to-opentelemetry" class="md-nav__link">
+    Have you or your team made any contributions to OpenTelemetry?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audience-questions" class="md-nav__link">
+    Audience Questions
+  </a>
+  
+    <nav class="md-nav" aria-label="Audience Questions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-much-memory-and-cpu" class="md-nav__link">
+    How much memory and CPU?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-you-doing-any-correlation-between-metrics-data-trace-data-and-log-data" class="md-nav__link">
+    Are you doing any correlation between metrics data, trace data, and log data?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#are-you-concerned-about-the-amount-of-data-that-you-end-up-producing-transporting-and-collecting-how-do-you-ensure-data-quality" class="md-nav__link">
+    Are you concerned about the amount of data that you end up producing, transporting, and collecting? How do you ensure data quality?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feedback" class="md-nav__link">
+    Feedback
+  </a>
+  
+    <nav class="md-nav" aria-label="Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turnaround-time-on-prs" class="md-nav__link">
+    Turnaround time on PRs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    Additional Resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-thoughts" class="md-nav__link">
+    Final Thoughts
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>End-User Q&A Series: Using OTel at Farfetch</h1>
+
+<p>With contributions from <a href="https://github.com/musingvirtual">Rynn Mancuso</a>
+(Honeycomb) and <a href="https://github.com/reese-lee">Reese Lee</a> (New Relic).</p>
+<p>On Thursday, May 25<sup>th</sup>, 2023, the OpenTelemetry (OTel) End User Working Group
+hosted its third
+<a href="/community/end-user/interviews-feedback/">End User Q&amp;A session</a> of 2023. We had
+a bit of a gap due to KubeCon Europe, but now we’re back! This series is a
+monthly casual discussion with a team using OpenTelemetry in production. The
+goal is to learn more about their environment, their successes, and the
+challenges that they face, and to share it with the community, so that together,
+we can help make OpenTelemetry awesome!</p>
+<p>This month, I spoke with
+<a href="https://www.linkedin.com/in/iris-dyrmishi-b15a9a164/">Iris Dyrmishi</a>, Platform
+Engineer at <a href="https://www.farfetch.com">Farfetch</a>.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Iris is a huge fan of <a href="/docs/concepts/observability-primer/">observability</a> and
+OpenTelemetry, and her love of these two topics is incredibly infectious.</p>
+<p>In this session, Iris shared:</p>
+<ul>
+<li>Farfetch’s journey to OpenTelemetry</li>
+<li>How metrics and traces are instrumented</li>
+<li>OpenTelemetry Collector deployment and configuration</li>
+</ul>
+<h2 id="qa">Q&amp;A<a class="headerlink" href="#qa" title="Permanent link">&para;</a></h2>
+<h3 id="tell-us-about-your-role">Tell us about your role?<a class="headerlink" href="#tell-us-about-your-role" title="Permanent link">&para;</a></h3>
+<p>Iris is part of a central team that provides tools for all the engineering teams
+across Farfetch to monitor their services, including traces, metrics, logs, and
+alerting. The team is responsible for maintaining Observability tooling,
+managing deployments related to Observability tooling, and educating teams on
+instrumenting code using OpenTelemetry.</p>
+<p>Iris first started her career as a software engineer, focusing on back-end
+development. She eventually moved to a DevOps Engineering role, and it was in
+this role that she was introduced to cloud monitoring through products such as
+<a href="https://aws.amazon.com/cloudwatch/">Amazon CloudWatch</a> and
+<a href="https://azure.microsoft.com/en-ca/products/monitor">Azure App Insights</a>. The
+more she learned about monitoring, the more it became a passion for her.</p>
+<p>She then moved into another role where she was introduced to OpenTelemetry,
+Prometheus, and Grafana, and got to dabble a little more in the world of
+Observability. This role became an excellent stepping stone for her current role
+at Farfetch, which she has been doing for a little over a year now.</p>
+<h3 id="how-did-you-hear-about-opentelemetry">How did you hear about OpenTelemetry?<a class="headerlink" href="#how-did-you-hear-about-opentelemetry" title="Permanent link">&para;</a></h3>
+<p>Iris first heard about OpenTelemetry on LinkedIn. The company she was working at
+at the time, which was not using <a href="/docs/concepts/signals/traces/">traces</a>, had
+started exploring the possibility of using them and was looking into tracing
+solutions. After reading about OpenTelemetry, Iris created a small
+Proof-of-Concept (POC) for her manager. While nothing had moved past the POC at
+that role, when Iris joined Farfetch and OpenTelemetry came up again, she jumped
+at the chance to work with it.</p>
+<h3 id="what-is-the-architecture-at-farfetch-like-how-has-opentelemetry-helped">What is the architecture at Farfetch like? How has OpenTelemetry helped?<a class="headerlink" href="#what-is-the-architecture-at-farfetch-like-how-has-opentelemetry-helped" title="Permanent link">&para;</a></h3>
+<p>Farfetch currently has 2000 engineers, with a complex and varied architecture
+which includes cloud-native, Kubernetes, and virtual machines running on three
+different cloud providers. There is a lot of information coming from everywhere,
+with a lack of standardization on how to collect this information. For example,
+Prometheus is used mostly as a standard for collecting metrics; however, in some
+cases, engineers found that Prometheus did not suit their needs. With the
+introduction of OpenTelemetry, Farfetch was able to standardize the collection
+of both <a href="/docs/concepts/signals/metrics/">metrics</a> and
+<a href="/docs/concepts/signals/traces/">traces</a>, and enabled them to collect
+<a href="/docs/concepts/signals/">telemetry signals</a> from services where signal
+collection had not previously been possible.</p>
+<h3 id="can-you-describe-the-build-and-deployment-process-at-farfetch">Can you describe the build and deployment process at Farfetch?<a class="headerlink" href="#can-you-describe-the-build-and-deployment-process-at-farfetch" title="Permanent link">&para;</a></h3>
+<p>Farfetch uses Jenkins for CI/CD, and there is a separate team that manages this.</p>
+<h3 id="what-observability-tooling-do-you-use">What Observability tooling do you use?<a class="headerlink" href="#what-observability-tooling-do-you-use" title="Permanent link">&para;</a></h3>
+<p>Iris’ team uses mostly open source tooling, alongside some in-house tooling
+created by her team. On the open source tooling front:</p>
+<ul>
+<li><a href="https://grafana.com">Grafana</a> is used for dashboards</li>
+<li>OpenTelemetry is used for emitting traces, and
+  <a href="https://grafana.com/oss/tempo/">Grafana Tempo</a> is used as a tracing back-end</li>
+<li><a href="https://jaegertracing.io">Jaeger</a> is still used in some cases for emitting
+  traces and as a tracing back-end, because some teams have not yet completely
+  moved to OpenTelemetry for instrumenting traces
+  (<a href="https://medium.com/velotio-perspectives/a-comprehensive-tutorial-to-implementing-opentracing-with-jaeger-a01752e1a8ce">via Jaeger’s implementation of the OpenTracing API</a>).</li>
+<li><a href="https://github.com/thanos-io/thanos">Prometheus Thanos</a> (highly-available
+  Prometheus) is used for metrics collection and storage</li>
+<li>OpenTelemetry is also being used to collect metrics</li>
+</ul>
+<h3 id="tell-us-about-farfetchs-opentelemetry-journey">Tell us about Farfetch’s OpenTelemetry journey<a class="headerlink" href="#tell-us-about-farfetchs-opentelemetry-journey" title="Permanent link">&para;</a></h3>
+<p>Farfetch is a very Observability-driven organization, so when senior leadership
+floated the idea of bringing OpenTelemetry into the organization, it got
+overwhelming support across the organization. The biggest challenge faced around
+OpenTelemetry was around timing for its implementation; however, once work on
+OpenTelemetry started, everyone embraced it.</p>
+<h3 id="how-did-you-and-your-team-enable-observability-through-opentelemetry">How did you and your team enable Observability through OpenTelemetry?<a class="headerlink" href="#how-did-you-and-your-team-enable-observability-through-opentelemetry" title="Permanent link">&para;</a></h3>
+<p>By the time Iris joined Farfetch, most of the big struggles and challenges
+around Observability had passed. When Observability was first introduced within
+the organization, it was very new and unknown to many engineers there, and as
+with all new things, there is a learning curve.</p>
+<p>When Iris and her team took on the task of enabling OpenTelemetry across the
+organization, Observability as a concept had already been embraced. Their
+biggest challenge in bringing OpenTelemetry to Farfetch was making sure that
+engineers did not experience major disruptions to their work, while still
+benefiting from having OpenTelemetry in place. It helped that OpenTelemetry is
+compatible with many of the tools in their existing Observability stack,
+including Jaeger and Prometheus.</p>
+<p>Due to the enthusiasm, drive, and push that Iris and one of her co-workers, an
+architect at Farfetch, made for OpenTelemetry, Iris was proud to share that they
+are now using OpenTelemetry in production.</p>
+<h3 id="how-long-did-it-take-your-team-to-get-opentelemetry-in-production">How long did it take your team to get OpenTelemetry in production?<a class="headerlink" href="#how-long-did-it-take-your-team-to-get-opentelemetry-in-production" title="Permanent link">&para;</a></h3>
+<p>Iris and her team planned to start using OpenTelemetry in January 2023. This
+included initial investigation and information-gathering. By mid-March, they had
+their first pieces in production.</p>
+<p>They are not fully there yet:</p>
+<ul>
+<li>There is still a lot of reliance on Prometheus and Jaeger for generating
+  metrics and traces, respectively</li>
+<li>Not all applications have been instrumented with OpenTelemetry</li>
+</ul>
+<p>In spite of that, Iris and her team are leveraging the power of the
+<a href="/docs/collector/">OpenTelemetry Collector</a> to gather and send metrics and
+traces to various Observability back-ends. Since she and her team started using
+OpenTelemetery, they started instrumenting more traces. In fact, with their
+current setup, Iris has happily reported that they went from processing 1,000
+spans per second, to processing 40,000 spans per second!</p>
+<h3 id="how-are-you-collecting-your-traces-right-now">How are you collecting your traces right now?<a class="headerlink" href="#how-are-you-collecting-your-traces-right-now" title="Permanent link">&para;</a></h3>
+<p>Traces are being collected through a combination of
+<a href="/docs/concepts/instrumentation/">manual and auto instrumentation</a>.</p>
+<p>Some applications are being manually instrumented through OpenTelemetry, and
+others are still instrumented using the [legacy OpenTracing
+<a href="/docs/migration/opentracing/">using shims</a>.</p>
+<p>The OpenTelemetry Operator is being implemented to auto-instrument Java and .NET
+code. Among other things, the <a href="/docs/k8s-operator/">OTel Operator</a> supports
+injecting and
+<a href="/docs/k8s-operator/automatic/#configure-autoinstrumentation">configuring auto-instrumentation</a>
+in .NET, Java, Python, and Node.js. Iris hopes that Go auto-instrumentation will
+be available in the near-future. To track progress of auto-instrumentation in
+Go, see
+<a href="https://github.com/open-telemetry/opentelemetry-go-instrumentation">OpenTelemetry Go Automatic Instrumentation</a>.</p>
+<p>Although this will be a lengthy and time-consuming process, the team’s goal is
+to have all applications instrumented using OpenTelemetry.</p>
+<h3 id="what-kind-of-support-does-your-team-provide-for-manual-instrumentation">What kind of support does your team provide for manual instrumentation?<a class="headerlink" href="#what-kind-of-support-does-your-team-provide-for-manual-instrumentation" title="Permanent link">&para;</a></h3>
+<p>By design, Iris and her team don’t instrument other teams’ code. Instead, they
+provide documentation and guidelines on manual instrumentation, and refer teams
+to the OpenTelemetry docs where applicable. They also have sessions with
+engineers to show them best practices around instrumenting their own code. It’s
+a team sport!</p>
+<h3 id="can-you-share-your-experience-around-using-the-otel-operator">Can you share your experience around using the OTel Operator?<a class="headerlink" href="#can-you-share-your-experience-around-using-the-otel-operator" title="Permanent link">&para;</a></h3>
+<p>The OTel Operator is only partially used in production, and is currently not
+available for everyone. Iris and her team really love the OTel Operator;
+however, it did take a bit of getting used to. Iris and her team found that
+there is a tight coupling between <a href="https://cert-manager.io/">cert-manager</a> and
+the OTel Operator. They were not able to use our own custom certificates, and
+they did not support <a href="https://cert-manager.io/">cert-manager</a> in their clusters,
+so they found it hard to use the Operator in our clusters. They solved this by
+submitting a PR --
+<a href="https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760">opentelemetry-helm-charts PR #760</a>!</p>
+<p>One of the things she loves about OpenTelemetry was that, when she was trying to
+troubleshoot an issue whereby Prometheus was not sending metrics to the
+Collector, and was therefore not able to create alerts from it. Then a colleague
+suggested using OpenTelemetry to troubleshoot OpenTelemetry.</p>
+<h3 id="have-you-or-anyone-on-your-team-or-at-farfetch-started-playing-with-otel-logging">Have you or anyone on your team or at Farfetch started playing with OTel Logging?<a class="headerlink" href="#have-you-or-anyone-on-your-team-or-at-farfetch-started-playing-with-otel-logging" title="Permanent link">&para;</a></h3>
+<p>Iris has played around a bit with OTel <a href="/docs/concepts/signals/logs/">logging</a>,
+mostly consuming logs from a
+<a href="https://developer.confluent.io/learn-kafka/apache-kafka/topics/">Kafka topic</a>.
+This experiment has not included
+<a href="/docs/specs/otel/logs/#log-correlation">log correlation</a>, but it is something
+that Iris would like to explore further.</p>
+<p>Since logs are not yet stable, Iris doesn’t expect logging to go into production
+at Farfetch just yet. Farfetch has a huge volume of logs (more than traces), so
+they don’t want to start converting to OTel logging until things are more
+stable.</p>
+<blockquote>
+<p><strong>Note</strong>: some parts of OTel logs are stable. For details, see
+<a href="/docs/specs/status/#logging">Specification Status Summary</a>.</p>
+</blockquote>
+<h3 id="how-are-you-collecting-the-metrics-signal">How are you collecting the metrics signal?<a class="headerlink" href="#how-are-you-collecting-the-metrics-signal" title="Permanent link">&para;</a></h3>
+<p>Auto-instrumentation emits some
+<a href="https://github.com/open-telemetry/opentelemetry-proto/blob/main/docs/specification.md">OTLP</a>
+metrics; however, the majority of metrics still come from Prometheus.</p>
+<p>The team currently uses the
+<a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md">Prometheus Receiver</a>
+to scrape metrics from <a href="https://consul.io">Consul</a>. Specifically, they use
+Consul to get the targets and the ports where to scrape them. The
+<a href="https://github.com/prometheus/prometheus/blob/v2.28.1/docs/configuration/configuration.md#scrape_config">Receiver’s scrape configs</a>
+are the same as in Prometheus, so it was relatively easy to move from Prometheus
+to the Prometheus Receiver (lift and shift).</p>
+<p>They also plan to collect OTLP metrics from Kubernetes. This is facilitated by
+the Prometheus Receiver’s support for the
+<a href="https://github.com/open-telemetry/opentelemetry-operator#target-allocator">OTel Operator’s Target Allocator</a>.</p>
+<p>Prometheus is also still currently used for metrics collection in other areas,
+and will probably remain this way, especially when collecting metrics from
+virtual machines.</p>
+<h3 id="how-many-kubenetes-clusters-are-you-observing">How many Kubenetes clusters are you observing?<a class="headerlink" href="#how-many-kubenetes-clusters-are-you-observing" title="Permanent link">&para;</a></h3>
+<p>There are 100 Kubernetes clusters being observed, and thousands of virtual
+machines. Iris and her team are responsible for managing the OTel Operator
+across all of these clusters, and are therefore also trained in Kubernetes, so
+that they can maintain their stack on the clusters.</p>
+<h3 id="have-you-dabbled-in-any-of-the-otel-experimental-features-in-kubernetes">Have you dabbled in any of the OTel experimental features in Kubernetes?<a class="headerlink" href="#have-you-dabbled-in-any-of-the-otel-experimental-features-in-kubernetes" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>This question is referring to the ability for Kubernetes components to emit
+OTLP traces which can then be consumed by the OTel Collector. For more info,
+see
+<a href="https://kubernetes.io/docs/concepts/cluster-administration/system-traces/">Traces For Kubernetes System Components</a>.
+This feature is currently in beta, and was first introduced in
+<a href="https://sysdig.com/blog/kubernetes-1-25-whats-new/">Kubernetes 1.25</a>.</p>
+</blockquote>
+<p>Iris and team have not played around with this beta feature.</p>
+<h3 id="how-do-you-deploy-your-otel-collectors">How do you deploy your OTel Collectors?<a class="headerlink" href="#how-do-you-deploy-your-otel-collectors" title="Permanent link">&para;</a></h3>
+<p>Because there are so many Kubernetes clusters, having a single OTel Collector
+would be a bottleneck in terms of load and single point of failure. The team
+currently has one
+<a href="/docs/collector/deployment/agent/">OpenTelemetry Collector agent</a> per
+Kubernetes cluster. The end goal is to replace those agents with the
+<a href="/docs/k8s-operator/">OTel Operator</a> instead, which allows you to deploy and
+configure the OTel Collector and inject and configure auto-instrumentation.</p>
+<p>Everything is then sent to a central OTel Collector (i.e. an
+<a href="/docs/collector/deployment/gateway/">OTel Collector gateway</a>) per data center,
+where data masking (using the
+<a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor">transform processor</a>,
+or
+<a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor">redaction processor</a>),
+data sampling (e.g.
+<a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor">tail sampling processor</a>
+or
+<a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor">probabilistic sample processor</a>),
+and other things happen. It then sends traces to Grafana Tempo.</p>
+<p>The central OTel Collector resides on another Kubernetes cluster that belongs
+solely to the Farfetch Observability team, which runs the Collector and other
+applications that belong to the team.</p>
+<h3 id="what-happens-if-the-central-collector-fails">What happens if the central Collector fails?<a class="headerlink" href="#what-happens-if-the-central-collector-fails" title="Permanent link">&para;</a></h3>
+<p>The team has fallback clusters, so that if a central Collector fails, the
+fallback cluster will be used in its place. The satellite clusters are
+configured to send data to the central Collector on the fallback cluster, so if
+the central cluster fails, the fallback cluster can be brought up without
+disruption to OTel data flow.</p>
+<p>Having autoscaling policies in place to ensure that the Collectors have enough
+memory and CPU to handle data loads also helps to keep the system highly
+available.</p>
+<h3 id="what-were-some-of-the-challenges-you-experienced-in-deploying-the-otel-collector">What were some of the challenges you experienced in deploying the OTel Collector?<a class="headerlink" href="#what-were-some-of-the-challenges-you-experienced-in-deploying-the-otel-collector" title="Permanent link">&para;</a></h3>
+<p>The biggest challenge was getting to know the Collector and how to use it
+effectively. Farfetch relies heavily on auto-scaling, so one of the first things
+that the team did was to enable auto-scaling for the Collectors, and tweak
+settings to make sure that it could handle large amounts of data.</p>
+<p>The team also leaned heavily on
+<a href="https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts">OTel Helm charts</a>,
+and on the OTel Community for additional support.</p>
+<p>Are you currently using any processors on the OTel Collector? \
+The team is currently experimenting with processors, namely for data masking (<a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor">transform processor</a>,
+or <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor">redaction processor</a>),
+especially as they move to using OTel Logs, which will contain sensitive data that
+they won’t want to transmit to their Observability back-end. They currently, however,
+are only using the <a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md">batch processor</a>.</p>
+<h3 id="are-you-aware-of-any-teams-using-span-events">Are you aware of any teams using span events?<a class="headerlink" href="#are-you-aware-of-any-teams-using-span-events" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>A <a href="/docs/concepts/signals/traces/#span-events">span event</a> provides additional
+point-in-time information in a trace. It’s basically a structured log within a
+span.</p>
+</blockquote>
+<p>Not at the moment, but it is something that they would like to explore. When the
+Observability team first started, there was little interest in tracing. As they
+started implementing OpenTelemetry and tracing, they have moved to make traces
+first-class citizens, and now it is piquing the interest of engineers, as they
+begin to see the relevance of traces.</p>
+<h3 id="have-you-encountered-anyone-who-was-resistant-to-opentelemetry">Have you encountered anyone who was resistant to OpenTelemetry?<a class="headerlink" href="#have-you-encountered-anyone-who-was-resistant-to-opentelemetry" title="Permanent link">&para;</a></h3>
+<p>Farfetch is a very Observability-driven culture, and the Observability team
+hasn’t really encountered anyone who is against Observability or OpenTelemetry.
+Some engineers might not care either way, but they are not opposed to it,
+either.</p>
+<h3 id="have-you-or-your-team-made-any-contributions-to-opentelemetry">Have you or your team made any contributions to OpenTelemetry?<a class="headerlink" href="#have-you-or-your-team-made-any-contributions-to-opentelemetry" title="Permanent link">&para;</a></h3>
+<p>The team, led by the architect, has made a contribution recently to the OTel
+Operator around certificates. The OTel Operator relied on
+<a href="https://cert-manager.io/">cert-manager</a> for certificates, rather than custom
+certificates. They initially put in a feature request, but then decided to
+develop the feature themselves, and
+<a href="https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760">filed a pull request</a>.</p>
+<h2 id="audience-questions">Audience Questions<a class="headerlink" href="#audience-questions" title="Permanent link">&para;</a></h2>
+<h3 id="how-much-memory-and-cpu">How much memory and CPU?<a class="headerlink" href="#how-much-memory-and-cpu" title="Permanent link">&para;</a></h3>
+<p>When their Collector was processing around 30,000 spans per second, there were 4
+instances of the Collector, using around 8GB memory.</p>
+<h3 id="are-you-doing-any-correlation-between-metrics-data-trace-data-and-log-data">Are you doing any correlation between metrics data, trace data, and log data?<a class="headerlink" href="#are-you-doing-any-correlation-between-metrics-data-trace-data-and-log-data" title="Permanent link">&para;</a></h3>
+<p>This is something that is currently being explored. The team is exploring
+<a href="/docs/specs/otel/metrics/data-model/#exemplars">traces/metrics correlation (exemplars)</a>
+through OpenTelemetry; however, they found that this correlation is accomplished
+more easily through their tracing back-end, Tempo.</p>
+<h3 id="are-you-concerned-about-the-amount-of-data-that-you-end-up-producing-transporting-and-collecting-how-do-you-ensure-data-quality">Are you concerned about the amount of data that you end up producing, transporting, and collecting? How do you ensure data quality?<a class="headerlink" href="#are-you-concerned-about-the-amount-of-data-that-you-end-up-producing-transporting-and-collecting-how-do-you-ensure-data-quality" title="Permanent link">&para;</a></h3>
+<p>This is not a concern, since the volume of data never changed, and the team
+knows that they can handle these large volumes. The team is simply changing how
+the data is being produced, transported, and collected. Iris also recognizes
+that the amount of trace data is gradually increasing; however, the data
+increase is gradual, so that the team can prepare itself to handle larger data
+volumes.</p>
+<p>The team is working very hard to ensure that they are getting quality data. This
+is especially true for metrics, where they are cleaning up metrics data to make
+sure that they are processing meaningful data. If a team decided to drastically
+increase the volume of metrics it emits, the Observability team is consulted
+beforehand, to ensure that the increase makes sense.</p>
+<p>Since trace volumes were initially a low lower, they did not need to concern
+themselves with trace sampling. Now that trace volume is increasing, they are
+keeping a close eye on things.</p>
+<p>The team is also focusing its attention on data quality and volume of logs,
+which means researching log processors to see which ones suit their needs.
+Ultimately, they will publish a set of guidelines for development teams to
+follow, and evangelize practices within the company.</p>
+<h2 id="feedback">Feedback<a class="headerlink" href="#feedback" title="Permanent link">&para;</a></h2>
+<p>Iris and her team have had a very positive experience with OpenTelemetry and the
+OpenTelemetry community.</p>
+<h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
+<p>Iris shared that the docs at times are not as clear as they could be, requiring
+some extra digging on the part of the engineer, to understand how a certain
+component works or is supposed to be configured. For example, she had a hard
+time finding documentation on
+<a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/">Consul SD configuration</a>
+for OpenTelemetry. That being said, Iris is hoping to contribute back to docs to
+help improve them.</p>
+<h3 id="turnaround-time-on-prs">Turnaround time on PRs<a class="headerlink" href="#turnaround-time-on-prs" title="Permanent link">&para;</a></h3>
+<p>Iris and her team were pleasantly surprised by the quick turnaround time on
+getting their
+<a href="https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760">OTel Operator PR</a>
+approved and merged.</p>
+<h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
+<p>My conversation with Iris, in full, is
+<a href="https://youtu.be/9iaGG-YZw5I">available on YouTube</a>.</p>
+<p>If anyone would like to continue the conversation with Iris, reach out to her in
+the <a href="https://cloud-native.slack.com/archives/C01RT3MSWGZ">#otel-user-research</a>
+Slack channel!</p>
+<p>She will also be presenting at
+<a href="https://shorturl.at/bqtxO">OTel in Practice on June 8<sup>th</sup></a>.</p>
+<h2 id="final-thoughts">Final Thoughts<a class="headerlink" href="#final-thoughts" title="Permanent link">&para;</a></h2>
+<p>OpenTelemetry is all about community, and we wouldn’t be where we are without
+our contributors, maintainers, and users. Hearing stories of how OpenTelemetry
+is being implemented in real life is only part of the picture. We value user
+feedback, and encourage all of our users to share your experiences with us, so
+that we can continue to improve OpenTelemetry. ❣️</p>
+<p>If you have a story to share about how you use OpenTelemetry at your
+organization, we’d love to hear from you! Ways to share:</p>
+<ul>
+<li>Join the <a href="/community/end-user/slack-channel/">#otel-endusers channel</a> on the
+  <a href="https://communityinviter.com/apps/cloud-native/cncf">CNCF Community Slack</a></li>
+<li>Join our monthly
+  <a href="/community/end-user/discussion-group/">End Users Discussion Group calls</a></li>
+<li>Join our <a href="/community/end-user/otel-in-practice/">OTel in Practice sessions</a></li>
+<li>Sign up for one of our
+  <a href="/community/end-user/interviews-feedback/">monthly interview/feedback sessions</a></li>
+<li>Join the
+  <a href="https://www.linkedin.com/groups/14081251">OpenTelemetry group on LinkedIn</a></li>
+<li>Share your stories on the
+  <a href="https://github.com/open-telemetry/opentelemetry.io/blob/main/README.md#submitting-a-blog-post">OpenTelemetry blog</a></li>
+</ul>
+<p>Be sure to follow OpenTelemetry on
+<a href="https://fosstodon.org/@opentelemetry">Mastodon</a> and
+<a href="https://twitter.com/opentelemetry">Twitter</a>, and share your stories using the
+<strong>#OpenTelemetry</strong> hashtag!</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      版权所有 © 2017-2023 MIT by Sindre Sorhus
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/sindresorhus" target="_blank" rel="noopener" title="Sindre Sorhus Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/sindresorhus" target="_blank" rel="noopener" title="Sindre Sorhus Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://instagram.com/sindresorhus" target="_blank" rel="noopener" title="Sindre Sorhus Instagram" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://sindresorhus.com/apps" target="_blank" rel="noopener" title="Sindre Sorhus Blog" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M162.4 196c4.8-4.9 6.2-5.1 36.4-5.1 27.2 0 28.1.1 32.1 2.1 5.8 2.9 8.3 7 8.3 13.6 0 5.9-2.4 10-7.6 13.4-2.8 1.8-4.5 1.9-31.1 2.1-16.4.1-29.5-.2-31.5-.8-10.3-2.9-14.1-17.7-6.6-25.3zm61.4 94.5c-53.9 0-55.8.2-60.2 4.1-3.5 3.1-5.7 9.4-5.1 13.9.7 4.7 4.8 10.1 9.2 12 2.2 1 14.1 1.7 56.3 1.2l47.9-.6 9.2-1.5c9-5.1 10.5-17.4 3.1-24.4-5.3-4.7-5-4.7-60.4-4.7zm223.4 130.1c-3.5 28.4-23 50.4-51.1 57.5-7.2 1.8-9.7 1.9-172.9 1.8-157.8 0-165.9-.1-172-1.8-8.4-2.2-15.6-5.5-22.3-10-5.6-3.8-13.9-11.8-17-16.4-3.8-5.6-8.2-15.3-10-22C.1 423 0 420.3 0 256.3 0 93.2 0 89.7 1.8 82.6 8.1 57.9 27.7 39 53 33.4c7.3-1.6 332.1-1.9 340-.3 21.2 4.3 37.9 17.1 47.6 36.4 7.7 15.3 7-1.5 7.3 180.6.2 115.8 0 164.5-.7 170.5zm-85.4-185.2c-1.1-5-4.2-9.6-7.7-11.5-1.1-.6-8-1.3-15.5-1.7-12.4-.6-13.8-.8-17.8-3.1-6.2-3.6-7.9-7.6-8-18.3 0-20.4-8.5-39.4-25.3-56.5-12-12.2-25.3-20.5-40.6-25.1-3.6-1.1-11.8-1.5-39.2-1.8-42.9-.5-52.5.4-67.1 6.2-27 10.7-46.3 33.4-53.4 62.4-1.3 5.4-1.6 14.2-1.9 64.3-.4 62.8 0 72.1 4 84.5 9.7 30.7 37.1 53.4 64.6 58.4 9.2 1.7 122.2 2.1 133.7.5 20.1-2.7 35.9-10.8 50.7-25.9 10.7-10.9 17.4-22.8 21.8-38.5 3.2-10.9 2.9-88.4 1.7-93.9z"/></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+    <a href="https://mastodon.social/@sindresorhus" target="_blank" rel="noopener me" title="Sindre Sorhus Mastodon" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "navigation.indexes", "content.code.annotate", "navigation.top"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
