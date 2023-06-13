@@ -1,5 +1,5 @@
 ---
-title: Development
+title: 开发
 ---
 
 Development for this demo requires tooling in several programming languages.

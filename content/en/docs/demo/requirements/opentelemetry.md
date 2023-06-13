@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry Requirements
+title: OpenTelemetry 需求
 linkTitle: OTel Requirements
 aliases: [/docs/demo/requirements/opentelemetry_requirements]
 ---

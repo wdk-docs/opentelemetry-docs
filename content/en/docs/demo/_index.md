@@ -1,26 +1,23 @@
 ---
-title: OpenTelemetry Demo Documentation
+title: OpenTelemetry 演示文档
 linkTitle: Demo
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 2
 ---
 
-Welcome to the [OpenTelemetry Demo](/ecosystem/demo/) documentation, which
-covers how to install and run the demo, and some scenarios you can use to view
-OpenTelemetry in action.
+欢迎来到[OpenTelemetry Demo](/ecosystem/demo/)文档，它涵盖了如何安装和运行演示，以及一些可以用来查看OpenTelemetry的场景。
 
-## Running the Demo
+## 运行Demo
 
-Want to deploy the demo and see it in action? Start here.
+想要部署演示并查看实际情况吗?从这里开始。
 
 - [Docker](docker-deployment/)
 - [Kubernetes](kubernetes-deployment/)
 
-## Language Feature Reference
+## 语言特性参考
 
-Want to understand how a particular language's instrumentation works? Start
-here.
+想要了解特定语言的检测是如何工作的?从这里开始。
 
 | Language      | Automatic Instrumentation                          | Instrumentation Libraries                                                                                                                | Manual Instrumentation                                                                       |
 | ------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
@@ -36,7 +33,7 @@ here.
 | Ruby          |                                                    | [Email Service](services/email/)                                                                                                         | [Email Service](services/email/)                                                             |
 | Rust          |                                                    | [Shipping Service](services/shipping/)                                                                                                   | [Shipping Service](services/shipping/)                                                       |
 
-## Service Documentation
+## 服务文档
 
 Specific information about how OpenTelemetry is deployed in each service can be
 found here:
@@ -54,7 +51,7 @@ found here:
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
 
-## Scenarios
+## 场景
 
 How can you solve problems with OpenTelemetry? These scenarios walk you through
 some pre-configured problems and show you how to interpret OpenTelemetry data to
@@ -67,7 +64,7 @@ We'll be adding more scenarios over time.
 - Discover a memory leak and diagnose it using metrics and traces.
   [Read more](scenarios/recommendation-cache/)
 
-## Reference
+## 参考
 
 Project reference documentation, like requirements and feature matrices.
 

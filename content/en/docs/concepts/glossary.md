@@ -1,16 +1,15 @@
 ---
-title: Glossary
+title: 术语表
 description: >-
-  Terminology you may or may not be familiar with used by the OpenTelemetry
-  project.
+  您可能熟悉，也可能不熟悉OpenTelemetry项目使用的术语。
 weight: 100
 ---
 
-The OpenTelemetry project uses terminology you may or may not be familiar with.
-In addition, the project may define the terminology in a different way than
-others. This page captures terminology used in the project and what it means.
+OpenTelemetry项目使用的术语您可能不熟悉，也可能不熟悉。
+此外，该项目可能以不同于其他项目的方式定义术语。
+本页包含项目中使用的术语及其含义。
 
-## Generic Terminology
+## 通用术语
 
 ### **Aggregation**
 
@@ -332,7 +331,7 @@ An in-process alternative to external exporters. When included, they collect and
 aggregate tracing and metrics information in the background; this data is served
 on web pages when requested. See [more][zpages].
 
-## Additional Terminology
+## 额外术语
 
 ### Traces
 

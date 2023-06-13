@@ -1,5 +1,5 @@
 ---
-title: Scaling the Collector
+title: 扩容采集器
 weight: 26
 ---
 

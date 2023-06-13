@@ -1,5 +1,5 @@
 ---
-title: Building a Trace Receiver
+title: 建立跟踪接收器
 spelling: cSpell:ignore struct tailtracer
 ---
 

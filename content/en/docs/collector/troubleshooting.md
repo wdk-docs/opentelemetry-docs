@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting
-description: Recommendations for troubleshooting the collector
+title: 故障排除
+description: 对采集器故障处理的建议
 weight: 25
 ---
 

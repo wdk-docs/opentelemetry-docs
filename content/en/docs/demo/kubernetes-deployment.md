@@ -1,5 +1,5 @@
 ---
-title: Kubernetes deployment
+title: Kubernetes 开发
 linkTitle: Kubernetes
 aliases: [/docs/demo/kubernetes_deployment]
 ---

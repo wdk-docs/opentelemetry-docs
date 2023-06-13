@@ -1,90 +1,67 @@
 ---
-title: Observability Primer
+title: 可观测 Primer
 description: Core observability concepts.
 weight: 9
 spelling: cSpell:ignore KHTML
 ---
 
-## What is Observability?
+## 什么是可观察性?
 
-Observability lets us understand a system from the outside, by letting us ask
-questions about that system without knowing its inner workings. Furthermore, it
-allows us to easily troubleshoot and handle novel problems (i.e. "unknown
-unknowns”), and helps us answer the question, "Why is this happening?"
+可观察性让我们在不知道系统内部运作的情况下对系统提出问题，从而从外部理解系统。
+此外，它允许我们轻松地排除故障并处理新问题(即“未知的未知”)，并帮助我们回答“为什么会发生这种情况?”
 
-In order to be able to ask those questions of a system, the application must be
-properly instrumented. That is, the application code must emit
-[signals](/docs/concepts/signals/) such as
-[traces](/docs/concepts/observability-primer/#distributed-traces),
-[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
-[logs](/docs/concepts/observability-primer/#logs). An application is properly
-instrumented when developers don't need to add more instrumentation to
-troubleshoot an issue, because they have all of the information they need.
+为了能够对系统提出这些问题，必须对应用程序进行适当的检测。
+也就是说，应用程序代码必须发出[信号](/docs/concepts/signals/)，例如[trace](/docs/concepts/observability-primer/#distributed-traces)， [metrics](/docs/concepts/observability-primer/#reliability- metrics)和[logs](/docs/concepts/observability-primer/#logs)。
+当开发人员不需要添加更多的检测来解决问题时，应用程序就被适当地检测了，因为他们已经拥有了所需的所有信息。
 
-[OpenTelemetry](/docs/what-is-opentelemetry/) is the mechanism by which
-application code is instrumented, to help make a system observable.
+[OpenTelemetry](/docs/what-is-opentelemetry/)是应用程序代码被检测的机制，以帮助使系统可观察。
 
-## Reliability & Metrics
+## 可靠性和度量
 
-**Telemetry** refers to data emitted from a system, about its behavior. The data
-can come in the form of [traces](#distributed-traces),
-[metrics](#reliability--metrics), and [logs](#logs).
+遥测是指从系统发出的有关其行为的数据。
+数据可以以[痕迹](#distributed-traces)、[指标](#reliability- metrics)和[日志](#logs)的形式出现。
 
-**Reliability** answers the question: "Is the service doing what users expect it
-to be doing?” A system could be up 100% of the time, but if, when a user clicks
-"Add to Cart” to add a black pair of pants to their shopping cart, and instead,
-the system keeps adding a red pair of pants, then the system would be said to be
-**un**reliable.
+**可靠性** 回答的问题是:“服务是否在做用户期望它做的事情?”系统可以100%正常运行，但如果当用户点击“添加到购物车”将一条黑色裤子添加到购物车时，系统却一直在添加一条红色裤子，那么系统就会被认为是**不**可靠的。
 
-**Metrics** are aggregations over a period of time of numeric data about your
-infrastructure or application. Examples include: system error rate, CPU
-utilization, request rate for a given service.
+**指标** 是一段时间内关于基础设施或应用程序的数字数据的聚合。
+示例包括:系统错误率、CPU利用率、给定服务的请求率。
 
-**SLI**, or Service Level Indicator, represents a measurement of a service's
-behavior. A good SLI measures your service from the perspective of your users.
-An example SLI can be the speed at which a web page loads.
+**SLI** ，即服务水平指标，表示对服务行为的度量。
+好的SLI从用户的角度来衡量您的服务。
+例如，SLI可以是网页加载的速度。
 
-**SLO**, or Service Level Objective, is the means by which reliability is
-communicated to an organization/other teams. This is accomplished by attaching
-one or more SLIs to business value.
+**SLO** ，即服务水平目标，是向组织/其他团队传达可靠性的手段。
+这可以通过将一个或多个sli附加到业务值来实现。
 
-## Understanding Distributed Tracing
+## 理解分布式跟踪
 
-To understand Distributed Tracing, let's start with some basics.
+为了理解分布式跟踪，让我们从一些基础知识开始。
 
-### Logs
+### 日志
 
-A **log** is a timestamped message emitted by services or other components.
-Unlike [traces](#distributed-traces), however, they are not necessarily
-associated with any particular user request or transaction. They are found
-almost everywhere in software, and have been heavily relied on in the past by
-both developers and operators alike to help them understand system behavior.
+日志是由服务或其他组件发出的带有时间戳的消息。
+然而，与[traces](#distributed-traces)不同，它们不一定与任何特定的用户请求或事务相关联。
+它们在软件中几乎无处不在，并且在过去被开发人员和操作人员严重依赖，以帮助他们理解系统行为。
 
-Sample log:
+示例日志:
 
 ```text
 I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902868f730] Started GET "/" for ::1 at 2021-02-23 13:26:23 -0800
 ```
 
-Unfortunately, logs aren't extremely useful for tracking code execution, as they
-typically lack contextual information, such as where they were called from.
+不幸的是，日志对于跟踪代码执行并不是非常有用，因为它们通常缺乏上下文信息，例如从哪里调用它们。
 
-They become far more useful when they are included as part of a [span](#spans).
+当它们作为[span](#span)的一部分包含时，它们将变得更加有用。
 
 ### Spans
 
-A **span** represents a unit of work or operation. It tracks specific operations
-that a request makes, painting a picture of what happened during the time in
-which that operation was executed.
+**span** 表示一个工作或操作单元。 它跟踪请求所做的特定操作，描绘出在执行该操作期间发生的情况。
 
-A span contains name, time-related data,
-[structured log messages](/docs/concepts/signals/traces/#span-events), and
-[other metadata (that is, Attributes)](/docs/concepts/signals/traces/#attributes)
-to provide information about the operation it tracks.
+span包含名称、与时间相关的数据、[结构化日志消息](/docs/concepts/signals/traces/#span-events)和[其他元数据(即属性)](/docs/concepts/signals/traces/# Attributes)，以提供关于它所跟踪的操作的信息。
 
-#### Span attributes
+#### Span 属性
 
-The following table contains examples of span attributes:
+下表包含了span属性的示例:
 
 | Key              | Value                                                                                                                   |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -105,37 +82,25 @@ The following table contains examples of span attributes:
 For more on spans and how they pertain to OTel, see
 [Spans](/docs/concepts/signals/traces/#spans).
 
-### Distributed Traces
+### 分布式跟踪
 
-A **distributed trace**, more commonly known as a **trace**, records the paths
-taken by requests (made by an application or end-user) as they propagate through
-multi-service architectures, like microservice and serverless applications.
+分布式跟踪，通常称为跟踪，记录请求(由应用程序或最终用户发出)通过多服务架构(如微服务和无服务器应用程序)传播时所采取的路径。
 
-Without tracing, it is challenging to pinpoint the cause of performance problems
-in a distributed system.
+如果不进行跟踪，就很难确定分布式系统中性能问题的原因。
 
-It improves the visibility of our application or system's health and lets us
-debug behavior that is difficult to reproduce locally. Tracing is essential for
-distributed systems, which commonly have nondeterministic problems or are too
-complicated to reproduce locally.
+它提高了应用程序或系统运行状况的可见性，并允许我们调试难以在本地重现的行为。
+跟踪对于分布式系统至关重要，因为分布式系统通常存在不确定性问题，或者过于复杂而无法在本地重现。
 
-Tracing makes debugging and understanding distributed systems less daunting by
-breaking down what happens within a request as it flows through a distributed
-system.
+跟踪通过分解请求流经分布式系统时所发生的事情，使调试和理解分布式系统变得不那么令人生畏。
 
-A trace is made of one or more spans. The first span represents the root span.
-Each root span represents a request from start to finish. The spans underneath
-the parent provide a more in-depth context of what occurs during a request (or
-what steps make up a request).
+迹线由一个或多个跨度组成。第一个跨度表示根跨度。
+每个根跨度代表一个从头到尾的请求。父类下面的跨提供了一个更深入的上下文，说明在请求期间发生了什么(或组成请求的步骤)。
 
-Many Observability back-ends visualize traces as waterfall diagrams that may
-look something like this:
+许多可观察性后端将轨迹可视化为瀑布图，如下图所示:
 
-![Sample Trace](/img/waterfall_trace.png 'Trace waterfall diagram')
+![Sample Trace](../../assets/img/waterfall_trace.png 'Trace waterfall diagram')
 
-Waterfall diagrams show the parent-child relationship between a root span and
-its child spans. When a span encapsulates another span, this also represents a
-nested relationship.
+瀑布图显示了根跨度与其子跨度之间的父子关系。
+当一个span封装另一个span时，这也表示嵌套关系。
 
-For more on traces and how they pertain to OTel, see
-[Traces](/docs/concepts/signals/traces/).
+有关trace及其与OTel的关系的更多信息，请参见[trace](/docs/concepts/signals/traces/).

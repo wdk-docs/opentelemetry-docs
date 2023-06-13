@@ -1,8 +1,7 @@
 ---
-title: Distributions
+title: 分布
 description: >-
-  A distribution, not to be confused with a fork, is customized version of an
-  OpenTelemetry component.
+  分发版(不要与fork混淆)是OpenTelemetry组件的定制版本。
 weight: 90
 ---
 

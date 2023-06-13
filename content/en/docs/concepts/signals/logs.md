@@ -3,14 +3,12 @@ title: Logs
 weight: 3
 ---
 
-A **log** is a timestamped text record, either structured (recommended) or
-unstructured, with metadata. While logs are an independent data source, they may
-also be attached to spans. In OpenTelemetry, any data that is not part of a
-distributed trace or a metric is a log. For example, _events_ are a specific
-type of log. Logs are often used to determine the root cause of an issue and
-typically contain information about who changed what as well as the result of
-the change.
+**log**是带有时间戳的文本记录，可以是结构化的(推荐)，也可以是非结构化的，带有元数据。
+虽然日志是独立的数据源，但它们也可以附加到跨度上。
+在OpenTelemetry中，任何不属于分布式跟踪或度量的数据都是日志。
+例如，_events_ 是一种特定类型的日志。
+日志通常用于确定问题的根本原因，并且通常包含关于谁更改了什么以及更改的结果的信息。
 
-> For more information, see the [logs specification][].
+> 有关更多信息，请参阅[日志规范][].
 
-[logs specification]: /docs/specs/otel/overview/#log-signal
+[日志规范]: /docs/specs/otel/overview/#log-signal

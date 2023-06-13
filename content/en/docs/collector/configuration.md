@@ -1,5 +1,5 @@
 ---
-title: Configuration
+title: 配置
 weight: 20
 spelling: cSpell:ignore pprof zpages zipkin fluentforward hostmetrics opencensus
 spelling: cSpell:ignore prometheus loglevel otlphttp upsert spanevents OIDC

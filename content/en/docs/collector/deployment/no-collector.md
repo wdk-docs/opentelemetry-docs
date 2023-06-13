@@ -1,5 +1,5 @@
 ---
-title: No Collector
+title: 没有收集器
 description: Why and how to send signals directly from app to backends
 weight: 1
 ---

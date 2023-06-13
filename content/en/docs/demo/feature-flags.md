@@ -1,5 +1,5 @@
 ---
-title: Feature Flags
+title: 功能标志
 aliases: [/docs/demo/feature_flags]
 ---
 

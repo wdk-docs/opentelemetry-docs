@@ -1,10 +1,9 @@
 ---
-title: OpenTelemetry Concepts
+title: 开放遥测概念
 linkTitle: Concepts
 description: Key concepts in OpenTelemetry
 aliases: [/docs/concepts/overview]
 weight: 2
 ---
 
-In this section you'll learn about the data sources and key components of the
-OpenTelemetry project. This will help you understanding how OpenTelemetry works.
+在本节中，您将了解OpenTelemetry项目的数据源和关键组件。这将帮助您理解OpenTelemetry是如何工作的。

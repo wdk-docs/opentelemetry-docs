@@ -1,5 +1,5 @@
 ---
-title: Signals
+title: 信号
 description: Learn about the categories of telemetry supported by OpenTelemetry
 aliases:
   - /docs/concepts/data-sources
@@ -7,7 +7,7 @@ aliases:
 weight: 11
 ---
 
-In OpenTelemetry, a **[signal][]** refers to a category of telemetry. A brief
-introduction to the currently supported signals is provided in this section.
+在开放式遥测中，一个 **[信号][]** 表示遥测的一个类别。
+本节将简要介绍当前支持的信号。
 
-[signal]: /docs/specs/otel/glossary/#signals
+[信号]: /docs/specs/otel/glossary/#signals

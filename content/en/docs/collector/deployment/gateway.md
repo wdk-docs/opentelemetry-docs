@@ -1,5 +1,5 @@
 ---
-title: Gateway
+title: 网关
 description:
   Why and how to send signals to a single OTLP end-point and from there to
   backends

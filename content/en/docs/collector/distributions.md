@@ -1,5 +1,5 @@
 ---
-title: Distributions
+title: 分布
 weight: 25
 ---
 

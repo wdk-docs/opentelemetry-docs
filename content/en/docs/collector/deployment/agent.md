@@ -1,5 +1,5 @@
 ---
-title: Agent
+title: 代理
 description:
   Why and how to send signals to collectors and from there to backends
 weight: 2

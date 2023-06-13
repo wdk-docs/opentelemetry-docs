@@ -1,13 +1,11 @@
 ---
-title: Demo Architecture
-linkTitle: Architecture
+title: 演示架构
+linkTitle: 架构
 aliases: [/docs/demo/current_architecture]
 body_class: otel-mermaid-max-width
 ---
 
-**OpenTelemetry Demo** is composed of microservices written in different
-programming languages that talk to each other over gRPC and HTTP; and a load
-generator which uses [Locust](https://locust.io/) to fake user traffic.
+**OpenTelemetry演示** 是由用不同编程语言编写的微服务组成的，这些微服务通过gRPC和HTTP相互通信;以及使用[蝗虫](https://locust.io/)伪造用户流量的负载生成器。
 
 ```mermaid
 graph TD
@@ -114,13 +112,9 @@ classDef rust fill:#dea584,color:black;
 classDef typescript fill:#e98516,color:black;
 ```
 
-Follow these links for the current state of
-[metric](/docs/demo/metric-features/) and [trace](/docs/demo/trace-features/)
-instrumentation of the demo applications.
+按照这些链接查看演示应用程序的[metric](/docs/demo/metric-features/)和[trace](/docs/demo/trace-features/)检测的当前状态。
 
-The collector is configured in
-[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml),
-alternative exporters can be configured here.
+收集器在[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml)中配置，其他导出器可以在这里配置。
 
 ```mermaid
 graph TB
@@ -196,4 +190,4 @@ subgraph tdf[Telemetry Data Flow]
 end
 ```
 
-Find the **Protocol Buffer Definitions** in the `/pb/` directory.
+在`/pb/`目录中找到`协议缓冲区定义`。

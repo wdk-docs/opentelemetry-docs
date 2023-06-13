@@ -3,62 +3,44 @@ title: Metrics
 weight: 2
 ---
 
-A **metric** is a measurement about a service, captured at runtime. Logically,
-the moment of capturing one of these measurements is known as a _metric event_
-which consists not only of the measurement itself, but the time that it was
-captured and associated metadata.
+**metric** 是关于服务的度量，在运行时捕获。
+从逻辑上讲，捕获这些度量之一的时刻称为 *度量事件* ，它不仅包括度量本身，还包括捕获度量的时间和相关的元数据。
 
-Application and request metrics are important indicators of availability and
-performance. Custom metrics can provide insights into how availability
-indicators impact user experience or the business. Collected data can be used to
-alert of an outage or trigger scheduling decisions to scale up a deployment
-automatically upon high demand.
+应用程序和请求度量是可用性和性能的重要指标。
+自定义度量可以深入了解可用性指标如何影响用户体验或业务。
+收集的数据可用于发出停机警报或触发调度决策，以便在高需求时自动扩展部署。
 
-OpenTelemetry defines six _metric instruments_ today which can be created
-through the OpenTelemetry API:
+OpenTelemetry定义了六种 *度量工具*，可以通过OpenTelemetry API创建:
 
-- **Counter**: A value that accumulates over time -- you can think of this like
-  an odometer on a car; it only ever goes up.
-- **Asynchronous Counter**: Same as the **Counter**, but is collected once for
-  each export. Could be used if you don't have access to the continuous
-  increments, but only to the aggregated value.
-- **UpDownCounter**: A value that accumulates over time, but can also go down
-  again. An example could be a queue length, it will increase and decrease with
-  the number of work items in the queue.
-- **Asynchronous UpDownCounter**: Same as the **UpDownCounter**, but is
-  collected once for each export. Could be used if you don't have access to the
-  continuous changes, but only to the aggregated value (e.g., current queue
-  size).
-- **(Asynchronous) Gauge**: Measures a current value at the time it is read. An
-  example would be the fuel gauge in a vehicle. Gauges are _always_
-  asynchronous.
-- **Histogram**: A histogram is a client-side aggregation of values, e.g.,
-  request latencies. A histogram is likely a good choice if you have a lot of
-  values, and are not interested in every individual value, but a statistic
-  about these values (e.g., How many requests take fewer than 1s?)
+- **Counter**: 一个随着时间积累的值- - 你可以把它想象成汽车上的里程表;它只会上升。
+- **Asynchronous Counter**: 与**Counter**相同，但对每个导出只收集一次。
+  如果您不能访问连续增量，而只能访问聚合值，则可以使用。
+- **UpDownCounter**: 随着时间的推移而积累的值，但也可以再次下降。
+  例如队列长度，它将随着队列中工作项的数量而增加或减少。
+- **Asynchronous UpDownCounter**: 与**UpDownCounter**相同，但每个导出只收集一次。
+  如果您无法访问持续更改，而只能访问聚合值(例如，当前队列大小)，则可以使用。
+- **(Asynchronous) Gauge**: 测量读取时的电流值。
+  一个例子就是汽车上的燃油表。仪表*总是*异步的。
+- **Histogram**: 直方图是值的客户端聚合，例如，请求延迟。
+  如果您有很多值，并且对每个单独的值不感兴趣，而是对这些值的统计数据感兴趣(例如，有多少请求花费的时间少于15 ?)，直方图可能是一个不错的选择。
 
-In addition to the metric instruments, the concept of _aggregations_ is an
-important one to understand. An aggregation is a technique whereby a large
-number of measurements are combined into either exact or estimated statistics
-about metric events that took place during a time window. The OTLP protocol
-transports such aggregated metrics. The OpenTelemetry API provides a default
-aggregation for each instrument which can be overridden using the Views API. The
-OpenTelemetry project aims to provide default aggregations that are supported by
-visualizers and telemetry backends.
+除了度量工具之外，_aggregations_ 的概念也是一个需要理解的重要概念。
+聚合是一种技术，通过这种技术，可以将大量度量组合成关于某个时间窗口内发生的度量事件的精确或估计统计信息。
+OTLP协议传输这样的聚合度量。
+OpenTelemetry API为每个仪器提供了一个默认的聚合，可以使用Views API覆盖它。
+OpenTelemetry项目旨在提供由可视化器和遥测后端支持的默认聚合。
 
-Unlike request tracing, which is intended to capture request lifecycles and
-provide context to the individual pieces of a request, metrics are intended to
-provide statistical information in aggregate. Some examples of use cases for
-metrics include:
+与旨在捕获请求生命周期并为请求的各个部分提供上下文的请求跟踪不同，度量旨在提供汇总的统计信息。
+度量的一些用例包括:
 
-- Reporting the total number of bytes read by a service, per protocol type.
-- Reporting the total number of bytes read and the bytes per request.
-- Reporting the duration of a system call.
-- Reporting request sizes in order to determine a trend.
-- Reporting CPU or memory usage of a process.
-- Reporting average balance values from an account.
-- Reporting current active requests being handled.
+- 报告业务按协议类型读出的总字节数。
+- 报告读取的总字节数和每个请求的字节数。
+- 报告系统调用的持续时间。
+- 报告请求大小，以确定趋势。
+- 报告进程的CPU或内存使用情况。
+- 报告账户的平均余额值。
+- 报告当前正在处理的活动请求。
 
-> For more information, see the [metrics specification][].
+> 有关更多信息，请参阅[度量规范][].
 
-[metrics specification]: /docs/specs/otel/overview/#metric-signal
+[度量规范]: /docs/specs/otel/overview/#metric-signal

@@ -1,30 +1,25 @@
 ---
-title: Getting Started
-description: Get started with OpenTelemetry based on your role.
+title: 入门
+description: 根据您的角色开始使用OpenTelemetry。
 no_list: true
 weight: 1
 ---
 
-Select a role[^1] to get started:
+选择角色[^1]开始:
 
-<div class="l-get-started-buttons justify-content-start mt-3 ms-3">
 
 - [Dev](dev/)
 - [Ops](ops/)
 
-</div>
 
-You can also try out the official [OpenTelemetry demo][demo] to _see_ what
-observability with OpenTelemetry looks like!
 
-<div class="l-primary-buttons justify-content-start mt-3 mb-5 ms-3">
+你也可以尝试官方的[OpenTelemetry演示][demo]来 *看看* OpenTelemetry的可观察性是什么样的!
 
-- [Try the demo][demo]
 
-</div>
+- [试试这个演示][demo]
 
-[^1]: If none of these roles apply to you, [let us know!][].
+
+[^1]: 如果这些角色都不适合你，【请告诉我们!][let us know!].
 
 [demo]: /ecosystem/demo/
-[let us know!]:
-  https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add%20a%20new%20persona:%20My%20Persona&body=Provide%20a%20description%20of%20your%20role%20and%20responsibilities%20and%20what%20your%20observability%20goals%20are
+[let us know!]: https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add%20a%20new%20persona:%20My%20Persona&body=Provide%20a%20description%20of%20your%20role%20and%20responsibilities%20and%20what%20your%20observability%20goals%20are

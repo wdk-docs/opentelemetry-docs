@@ -1,5 +1,5 @@
 ---
-title: Building a custom collector
+title: 构建自定义收集器
 weight: 29
 ---
 

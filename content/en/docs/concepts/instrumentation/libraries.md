@@ -1,28 +1,20 @@
 ---
-title: Libraries
+title: 库
 description: Learn how to add native instrumentation to your library.
 aliases: [/docs/concepts/instrumenting-library]
 weight: 40
 ---
 
-OpenTelemetry provides [instrumentation libraries][] for many libraries, which
-is typically done through library hooks or monkey-patching library code.
+OpenTelemetry为许多库提供了[工具库][]，这通常是通过库钩子或猴子补丁库代码完成的。
 
-Native library instrumentation with OpenTelemetry provides better observability
-and developer experience for users, removing the need for libraries to expose
-and document hooks:
+使用OpenTelemetry的本机库插装为用户提供了更好的可观察性和开发体验，消除了库暴露和文档挂钩的需要:
 
-- custom logging hooks can be replaced by common and easy to use OpenTelemetry
-  APIs, users will only interact with OpenTelemetry
-- traces, logs, metrics from library and application code are correlated and
-  coherent
-- common conventions allow users to get similar and consistent telemetry within
-  same technology and across libraries and languages
-- telemetry signals can be fine tuned (filtered, processed, aggregated) for
-  various consumption scenarios using a wide variety of well-documented
-  OpenTelemetry extensibility points.
+- 自定义日志钩子可以被常见的和易于使用的OpenTelemetry api取代，用户将只与OpenTelemetry交互
+- 来自库和应用程序代码的跟踪、日志、指标是相关和一致的
+- 通用约定允许用户在相同的技术和跨库和语言中获得相似和一致的遥测
+- 遥测信号可以使用各种记录良好的OpenTelemetry扩展点对各种消费场景进行微调(过滤、处理、聚合)。
 
-## Semantic Conventions
+## 语义约定
 
 Check out available
 [semantic conventions](/docs/specs/otel/trace/semantic_conventions/) that cover
@@ -43,7 +35,7 @@ contribute!
 [Specification repo](https://github.com/open-telemetry/opentelemetry-specification)
 are a good places to start!
 
-## When **not** to instrument
+## 当**不**仪器
 
 Some libraries are thin clients wrapping network calls. Chances are that
 OpenTelemetry has an instrumentation library for the underlying RPC client
@@ -100,7 +92,7 @@ considerations to help you decide how to minimize dependency hell:
   [stable, but subject to evolution]:
     /docs/specs/otel/versioning-and-stability/#semantic-conventions-stability
 
-### Getting a tracer
+### 获取追踪器
 
 All application configuration is hidden from your library through the Tracer
 API. Libraries should obtain tracer from
@@ -119,7 +111,7 @@ version - they show up on the telemetry and help users process and filter
 telemetry, understand where it came from, and debug/report any instrumentation
 issues.
 
-## What to instrument
+## 仪器仪表
 
 ### Public APIs
 

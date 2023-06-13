@@ -1,5 +1,5 @@
 ---
-title: Building a custom authenticator
+title: 构建自定义身份验证器
 weight: 30
 ---
 

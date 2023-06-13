@@ -1,1 +1,285 @@
-site_name: My Docs
+site_name: OPENTELEMETRY 文档
+site_url: https://wdk-docs.github.io/opentelemetry-docs/
+site_author: OPENTELEMETRY
+site_description: OPENTELEMETRY 文档
+docs_dir: content/en
+site_dir: docs
+dev_addr: 127.0.0.1:8001
+extra_css:
+  - stylesheets/extra.css
+
+repo_name: wdk-docs/opentelemetry-docs
+repo_url: https://github.com/wdk-docs/opentelemetry-docs
+edit_uri: edit/master/content
+
+theme:
+  name: material
+  logo: assets/logo/logo.svg
+  favicon: assets/favicons/favicon.ico
+  language: zh
+  # custom_dir: overrides
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
+    - navigation.top
+    - navigation.indexes # 父菜单索引
+    # - navigation.sections # 全部展开
+    # - navigation.expand # 打开收缩
+    - content.code.annotate
+    - navigation.top # 返回头部
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  # - pymdownx.emoji:
+  #     emoji_generator: !!python/name:materialx.emoji.to_svg
+  #     emoji_index: !!python/name:materialx.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.magiclink
+
+plugins:
+  search:
+    # Spaces, dashes, periods and forward-slash (so serving.knative.dev/blibble can be searched as blibble).
+    separator: '[\/\s\-\.]+'
+  # macros:
+  #   module_name: hack/macros
+  #   include_dir: source/snippets
+  exclude:
+    glob:
+      # Exclude files that contain hugo specific shortcodes
+      # (either the include shortcode or not-converted-yet tabs).
+      - snippets/*
+      - smoketest.md
+  awesome-pages:
+    filename: ".index"
+    collapse_single_pages: true
+    strict: false
+  blogging:
+    # GLOBAL CATEGORY: configs for {{ blog_content }}
+    dirs:
+      - blog
+    # template: override/custom-blog.html
+
+    # INDIVIDUAL CATEGORIES: configs for {{ blog_content name }}
+    categories:
+      - name: reviews
+        dirs:
+          - reviews
+
+    # GLOBAL CONFIG: configs apply to all categories
+    time_format: "%Y-%m-%d"
+    meta_time_format: "%Y-%m-%d"
+    features:
+      tags:
+        index_page: tags.md
+        insert: top
+
+copyright: "版权所有 © 2017-2023 MIT by Sindre Sorhus"
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/sindresorhus
+      name: Sindre Sorhus Twitter
+    - icon: fontawesome/brands/github
+      link: https://github.com/sindresorhus
+      name: Sindre Sorhus Github
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/sindresorhus
+      name: Sindre Sorhus Instagram
+    - icon: fontawesome/brands/blogger
+      link: https://sindresorhus.com/apps
+      name: Sindre Sorhus Blog
+    - icon: fontawesome/brands/mastodon
+      link: https://mastodon.social/@sindresorhus
+      name: Sindre Sorhus Mastodon
+  version_warning: !!python/object/apply:os.getenv ["VERSION_WARNING"]
+  knative_version: !!python/object/apply:os.getenv ["KNATIVE_VERSION"]
+  branch: !!python/object/apply:os.getenv ["SAMPLES_BRANCH", "main"]
+  # analytics:
+  #   provider: google
+  #   property: G-YRMNFYE32R
+  # version:
+  #   provider: mike
+nav:
+  - 首页: index.md
+  - 文档:
+    - ./docs/_index.md
+    - ./docs/what-is-opentelemetry.md
+    - 入门: 
+      - ./docs/getting-started/_index.md
+      - ./docs/getting-started/dev.md
+      - ./docs/getting-started/ops.md
+    - 概念:
+      - ./docs/concepts/_index.md
+      - ./docs/concepts/observability-primer.md
+      - 信号:
+        - ./docs/concepts/signals/_index.md
+        - ./docs/concepts/signals/traces.md
+        - ./docs/concepts/signals/metrics.md
+        - ./docs/concepts/signals/logs.md
+        - ./docs/concepts/signals/baggage.md
+      - 仪表:
+        - ./docs/concepts/instrumentation/_index.md
+        - ./docs/concepts/instrumentation/automatic.md
+        - ./docs/concepts/instrumentation/manual.md
+        - ./docs/concepts/instrumentation/libraries.md
+      - ./docs/concepts/components.md
+      - ./docs/concepts/semantic-conventions.md
+      - 采样:
+        - ./docs/concepts/sampling/index.md
+      - SDK配置:
+        - ./docs/concepts/sdk-configuration/_index.md
+        - ./docs/concepts/sdk-configuration/general-sdk-configuration.md
+        - ./docs/concepts/sdk-configuration/otlp-exporter-configuration.md
+      - ./docs/concepts/distributions.md
+      - ./docs/concepts/glossary.md
+    - 演示:
+      - ./docs/demo/_index.md
+      - ./docs/demo/architecture.md
+      - 采集器数据流仪表板:
+        - ./docs/demo/collector-data-flow-dashboard/index.md
+      - ./docs/demo/development.md
+      - ./docs/demo/docker-deployment.md
+      - ./docs/demo/feature-flags.md
+      - ./docs/demo/features.md
+      - ./docs/demo/forking.md
+      - ./docs/demo/kubernetes-deployment.md
+      - ./docs/demo/manual-span-attributes.md
+      - ./docs/demo/metric-features.md
+      - 需求:
+        - ./docs/demo/requirements/_index.md
+        - ./docs/demo/requirements/application.md
+        - ./docs/demo/requirements/architecture.md
+        - ./docs/demo/requirements/opentelemetry.md
+        - ./docs/demo/requirements/system.md
+      - 场景:
+        - ./docs/demo/scenarios/_index.md
+        - 建议缓存:
+          - ./docs/demo/scenarios/recommendation-cache/index.md
+      - 演示截图: 
+        - ./docs/demo/screenshots/index.md
+      - ./docs/demo/service-table.md
+      - 服务:
+        - ./docs/demo/services/_index.md
+        - ./docs/demo/services/accounting.md
+        - ./docs/demo/services/ad.md
+      - ./docs/demo/tests.md
+      - ./docs/demo/trace-features.md
+    - 仪表:
+      - ./docs/instrumentation/_index.md
+      - C++:
+        - ./docs/instrumentation/cpp/_index.md
+      - .NET:
+        - ./docs/instrumentation/net/_index.md
+      - Erlang/Elixir:
+        - ./docs/instrumentation/erlang/_index.md
+      - Go:
+        - ./docs/instrumentation/go/_index.md
+      - Java:
+        - ./docs/instrumentation/java/_index.md
+      - JavaScript:
+        - ./docs/instrumentation/js/_index.md
+      - PHP:
+        - ./docs/instrumentation/php/_index.md
+      - Python:
+        - ./docs/instrumentation/python/_index.md
+      - Ruby:
+        - ./docs/instrumentation/ruby/_index.md
+      - Rust:
+        - ./docs/instrumentation/rust/_index.md
+      - Swift:
+        - ./docs/instrumentation/swift/_index.md
+      - Other:
+        - ./docs/instrumentation/other/_index.md
+    - 收集器:
+      - ./docs/collector/_index.md
+      - ./docs/collector/getting-started.md
+      - 部署:
+        - ./docs/collector/deployment/_index.md
+        - ./docs/collector/deployment/agent.md
+        - ./docs/collector/deployment/gateway.md
+        - ./docs/collector/deployment/no-collector.md
+      - ./docs/collector/configuration.md
+      - ./docs/collector/management.md
+      - ./docs/collector/distributions.md
+      - ./docs/collector/troubleshooting.md
+      - ./docs/collector/scaling.md
+      - ./docs/collector/transforming-telemetry.md
+      - ./docs/collector/custom-collector.md
+      - ./docs/collector/custom-auth.md
+      - ./docs/collector/trace-receiver.md
+    - K8s 操作符:
+      - ./docs/k8s-operator/_index.md
+      - ./docs/k8s-operator/automatic.md
+    - FaaS:
+      - ./docs/faas/_index.md
+      - ./docs/faas/lambda-auto-instrument.md
+      - ./docs/faas/lambda-collector.md
+      - ./docs/faas/lambda-manual-instrument.md
+    - 迁移:
+      - ./docs/migration/_index.md
+      - ./docs/migration/opencensus.md
+      - ./docs/migration/opentracing.md
+    - 规格:
+      - ./docs/specs/_index.md
+      - ./docs/specs/status.md
+    - 致谢:
+      - ./docs/acknowledgements/_index.md
+  - 生态系统:
+    - ./ecosystem/_index.md
+    - ./ecosystem/demo.md
+    - ./ecosystem/integrations.md
+    - ./ecosystem/vendors.md
+    - registry:
+      - ./ecosystem/registry/_index.md
+      - ./ecosystem/registry/adding.md
+  - 状态: status.md
+  - 社区:
+    - ./community/_index.md
+    - ./community/marketing-guidelines.md
+    - enduser:
+      - ./community/end-user/_index.md
+      - ./community/end-user/discussion-group.md
+      - ./community/end-user/feedback-survey.md
+      - ./community/end-user/interviews-feedback.md
+      - ./community/end-user/otel-in-practice.md
+      - ./community/end-user/slack-channel.md
+  - 博客:
+    - ./blog/index.md

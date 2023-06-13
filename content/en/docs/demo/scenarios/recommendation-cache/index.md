@@ -1,5 +1,5 @@
 ---
-title: Using Metrics and Traces to diagnose a memory leak
+title: 使用度量和跟踪来诊断内存泄漏
 linkTitle: Diagnosing memory leaks
 aliases: [/docs/demo/scenarios/recommendation_cache]
 spelling: cSpell:ignore recommendationservice

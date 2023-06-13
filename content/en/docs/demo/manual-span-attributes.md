@@ -1,5 +1,5 @@
 ---
-title: Manual Span Attributes
+title: 手动跨度属性
 aliases: [/docs/demo/manual_span_attributes]
 ---
 

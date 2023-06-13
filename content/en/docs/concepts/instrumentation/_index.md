@@ -1,44 +1,26 @@
 ---
-title: Instrumentation
+title: 仪表
 description: >-
-  How OpenTelemetry facilitates automatic and manual instrumentation of
-  applications.
+  OpenTelemetry如何促进应用程序的自动和手动仪器。
 aliases: [/docs/concepts/instrumenting]
 weight: 15
 ---
 
-In order to make a system observable, it must be **instrumented**: That is, code
-from the system's components must emit
-[traces](/docs/concepts/observability-primer/#distributed-traces),
-[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
-[logs](/docs/concepts/observability-primer/#logs).
+为了使系统可观察，它必须 **仪器化** :也就是说，来自系统组件的代码必须发出[跟踪](/docs/concepts/observability-primer/#distributed-traces)，[度量](/docs/concepts/observability-primer/#reliability- metrics)和[日志](/docs/concepts/observability-primer/#logs)。
 
-Without being required to modify the source code you can collect telemetry from
-an application using [automatic instrumentation](automatic/). If you previously
-used an APM agent to extract telemetry from your application, Automatic
-Instrumentation will give you a similar out of the box experience.
+不需要修改源代码，您就可以使用[automatic instrumentation](automatic/)从应用程序收集遥测数据。
+如果您以前使用APM代理从应用程序中提取遥测数据，那么自动检测将为您提供类似的开箱即用体验。
 
-To facilitate the instrumentation of applications even more, you can
-[manually instrument](manual/) your applications by coding against the
-OpenTelemetry APIs.
+为了更方便地检测应用程序，您可以通过对OpenTelemetry api进行编码来[手动检测](manual/manual)应用程序。
 
-For that you don't need to instrument all the dependencies used in your
-application:
+为此，你不需要检测应用程序中使用的所有依赖项:
 
-- some of your libraries will be observable out of the box by calling the
-  OpenTelemetry API themselves directly. Those libraries are sometimes called
-  **natively instrumented**.
-- for libraries without such an integration the OpenTelemetry projects provide
-  language specific [Instrumentation Libraries][]
+- 通过直接调用OpenTelemetry API，你的一些库将是开箱即用的可观察的。
+  这些库有时被称为 **本机插装库**。
+- 对于没有这种集成的库，OpenTelemetry项目提供了特定于语言的[仪器库][]
 
-Note, that for most languages it is possible to use both manual and automatic
-instrumentation at the same time: Automatic Instrumentation will allow you to
-gain insights into your application quickly and manual instrumentation will
-enable you to embed granular observability into your code.
+请注意，对于大多数语言，可以同时使用手动和自动插装:自动插装将允许您快速了解应用程序，而手动插装将使您能够将粒度可观察性嵌入到代码中。
 
-The exact installation mechanism for [manual](manual/) and
-[automatic](automatic/) instrumentation varies based on the language you’re
-developing in, but there are some similarities covered in the sections below.
+[manual](manual/)和[automatic](automatic/)检测的确切安装机制因您所使用的开发语言而异，但下面几节将介绍一些相似之处。
 
-[instrumentation libraries]:
-  /docs/specs/otel/overview/#instrumentation-libraries
+[工具库]: /docs/specs/otel/overview/#instrumentation-libraries

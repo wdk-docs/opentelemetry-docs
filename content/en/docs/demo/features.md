@@ -1,5 +1,5 @@
 ---
-title: Demo Features
+title: 演示功能
 linkTitle: Features
 aliases: [/docs/demo/demo_features]
 ---

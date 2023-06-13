@@ -1,5 +1,5 @@
 ---
-title: System Requirements
+title: 系统需求
 linkTitle: System
 aliases: [/docs/demo/requirements/system_requirements]
 ---

@@ -1,5 +1,5 @@
 ---
-title: Tests
+title: 测试
 ---
 
 Currently, the repository includes E2E tests for both the frontend and backend

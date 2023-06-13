@@ -1,15 +1,13 @@
 ---
-title: General SDK Configuration
+title: 通用SDK配置
 description: >-
-  General-purpose environment variables for configuring an OpenTelemetry SDK.
+  用于配置OpenTelemetry SDK的通用环境变量。
 weight: 1
 ---
 
 ## `OTEL_SERVICE_NAME`
 
-Sets the value of the
-[`service.name`](/docs/specs/otel/resource/semantic_conventions/#service)
-resource attribute.
+设置[' service.name '](/docs/specs/otel/resource/semantic_conventions/#service)资源属性的值。
 
 **Default value:** `"unknown_service"`
 

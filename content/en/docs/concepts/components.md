@@ -1,20 +1,19 @@
 ---
-title: Components
-description: The main components that make up OpenTelemetry
+title: 组件
+description: 构成OpenTelemetry的主要组件
 weight: 20
 ---
 
-OpenTelemetry is currently made up of several main components:
+OpenTelemetry目前由几个主要组件组成:
 
-- [Cross-language specification](/docs/specs/otel/)
-- [OpenTelemetry Collector](/docs/collector/)
-- [Per-language SDKs](/docs/instrumentation/)
-- [Per-language instrumentation libraries](/docs/concepts/instrumentation/libraries/)
-- [Per-language automatic instrumentation](/docs/concepts/instrumentation/automatic/)
-- [K8s Operator](/docs/k8s-operator/)
+- [跨语言规范](/docs/specs/otel/)
+- [OpenTelemetry 收集器](/docs/collector/)
+- [每种语言sdk](/docs/instrumentation/)
+- [每种语言的工具库](/docs/concepts/instrumentation/libraries/)
+- [按语言自动检测](/docs/concepts/instrumentation/automatic/)
+- [K8s 操作器](/docs/k8s-operator/)
 
-OpenTelemetry lets you replace the need for vendor-specific SDKs and tools for
-generating and exporting telemetry data.
+OpenTelemetry允许您替换对特定于供应商的sdk和工具的需求，以生成和导出遥测数据。
 
 ## Specification
 

@@ -1,6 +1,5 @@
 ---
-title: Application Requirements
-title: Application
+title: 应用需求
 aliases: [/docs/demo/requirements/application_requirements]
 ---
 

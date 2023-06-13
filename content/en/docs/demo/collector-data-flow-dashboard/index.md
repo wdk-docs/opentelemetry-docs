@@ -1,5 +1,5 @@
 ---
-title: Collector Data Flow Dashboard
+title: 采集器数据流仪表板
 ---
 
 Monitoring data flow through the OpenTelemetry Collector is crucial for several

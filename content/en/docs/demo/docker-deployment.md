@@ -1,5 +1,5 @@
 ---
-title: Docker deployment
+title: Docker 部署
 linkTitle: Docker
 aliases: [/docs/demo/docker_deployment]
 ---

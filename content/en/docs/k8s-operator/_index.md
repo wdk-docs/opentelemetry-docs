@@ -1,36 +1,30 @@
 ---
-title: OpenTelemetry Operator for Kubernetes
+title: Kubernetes开放遥测操作器
 linkTitle: K8s Operator
 weight: 11
-description:
-  An implementation of a Kubernetes Operator, that manages collectors and
-  auto-instrumentation of the workload using OpenTelemetry instrumentation
-  libraries.
+description: Kubernetes操作符的实现，它使用开放的遥测仪器库管理收集器和工作负载的自动检测。
 spelling: cSpell:ignore Otel
 aliases: [/docs/operator]
 ---
 
-## Introduction
+## 介绍
 
-The OpenTelemetry Operator is an implementation of a
-[Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/).
+OpenTelemetry算子是[Kubernetes算子](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)的一个实现。
 
-The operator manages:
+运营商管理:
 
-- OpenTelemetry Collector
-- [auto-instrumentation of the workloads using OpenTelemetry instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
+- OpenTelemetry 收集器
+- [使用OpenTelemetry工具库自动检测工作负载](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
 
-## Getting started
+## 开始
 
-To install the operator in an existing cluster, make sure you have cert-manager
-installed and run:
+要在现有集群中安装操作符，请确保安装了cert-manager并运行:
 
 ```bash
 $ kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
 ```
 
-Once the `opentelemetry-operator` deployment is ready, create an OpenTelemetry
-Collector (otelcol) instance, like:
+一旦`opentelemetry-operator`部署就绪，创建一个开放遥测采集器(otelcol)实例，如下所示:
 
 ```bash
 $ kubectl apply -f - <<EOF
@@ -59,7 +53,4 @@ spec:
 EOF
 ```
 
-For more configuration options and for setting up the injection of
-auto-instrumentation of the workloads using OpenTelemetry instrumentation
-libraries, continue reading
-[here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).
+要了解更多配置选项，以及使用OpenTelemetry工具库设置工作负载的自动检测注入，请继续阅读[这里](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).

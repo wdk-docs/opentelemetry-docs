@@ -1,15 +1,11 @@
 ---
-title: Sampling
-description:
-  Learn about sampling, and the different sampling options available in
-  OpenTelemetry.
+title: 采样
+description: 了解采样，以及OpenTelemetry中可用的不同采样选项。
 weight: 50
 ---
 
-With distributed tracing, you observe requests as they move from one service to
-another in a distributed system. It’s superbly practical for a number of
-reasons, such as understanding your service connections and diagnosing latency
-issues, among many other benefits.
+使用分布式跟踪，您可以观察请求在分布式系统中从一个服务移动到另一个服务的过程。
+它非常实用，原因有很多，比如理解您的服务连接和诊断延迟问题，还有许多其他好处。
 
 However, if the majority of all your requests are successful 200s and finish
 without unacceptable latency or errors, do you really need all that data? Here’s
@@ -30,7 +26,7 @@ want to sample. You might want to customize your sampling strategy to:
   to see traces with specific user attributes.
 - **Filter out noise**: For example, you may want to filter out health checks.
 
-## Terminology
+## 术语
 
 It's important to use consistent terminology when discussing sampling. A trace
 or span is considered "sampled" or "not sampled":
@@ -45,7 +41,7 @@ Sometimes, the definitions of these terms get mixed up. You may find someone
 state that they are "sampling out data" or that data not processed or exported
 is considered "sampled". These are incorrect statements.
 
-## Head Sampling
+## 头抽样
 
 Head sampling is a sampling technique used to make a sampling decision as early
 as possible. A decision to sample or drop a span or trace is not made by
@@ -72,7 +68,7 @@ strategies that must take whole-system information into account. For example, it
 is not possible to use head sampling to ensure that all traces with an error
 within them are sampled. For this, you need Tail Sampling.
 
-## Tail Sampling
+## 尾巴抽样
 
 Tail sampling is where the decision to sample a trace takes place by considering
 all or most of the spans within the trace. Tail Sampling gives you the option to

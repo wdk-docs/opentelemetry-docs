@@ -1,5 +1,5 @@
 ---
-title: Architecture Requirements
+title: 架构需求
 linkTitle: Architecture
 aliases: [/docs/demo/requirements/architecture_requirements]
 spelling: cSpell:ignore shippingservice currencyservice

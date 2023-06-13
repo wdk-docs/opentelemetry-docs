@@ -1,5 +1,5 @@
 ---
-title: Demo Screenshots
+title: 演示截图
 linkTitle: Screenshots
 aliases: [/docs/demo/demo_screenshots]
 ---

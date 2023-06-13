@@ -1,5 +1,5 @@
 ---
-title: Deployment
+title: 部署
 description: Patterns you can apply to deploy the OpenTelemetry collector
 weight: 2
 ---

@@ -1,6 +1,6 @@
 ---
-title: OTLP Exporter Configuration
-description: Environment variables for configuring your OTLP Exporter.
+title: OTLP导出配置
+description: 用于配置OTLP出口商的环境变量。
 weight: 2
 ---
 

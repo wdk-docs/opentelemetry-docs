@@ -1,6 +1,6 @@
 ---
-title: Management
-description: How to manage your OpenTelemetry collector deployment at scale
+title: 管理
+description: 如何大规模管理OpenTelemetry收集器部署
 weight: 23
 ---
 

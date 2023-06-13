@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: 入门
 spelling:
   - cSpell:ignore darwin dpkg GOARCH journalctl kubectl linux otelcorecol pprof
   - cSpell:ignore zpages

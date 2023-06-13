@@ -1,65 +1,45 @@
 ---
-title: Manual
+title: 手动
 description: >-
-  Learn about the essential steps to manually instrument your application.
+  了解手动检测应用程序的基本步骤。
 weight: 20
 ---
 
-## Import the OpenTelemetry API and SDK
+## 导入OpenTelemetry API和SDK
 
-You'll first need to import OpenTelemetry to your service code. If you're
-developing a library or some other component that is intended to be consumed by
-a runnable binary, then you would only take a dependency on the API. If your
-artifact is a standalone process or service, then you would take a dependency on
-the API and the SDK. For more information about the OpenTelemetry API and SDK,
-see the [specification](/docs/specs/otel/).
+首先需要将OpenTelemetry导入到服务代码中。
+如果您正在开发一个库或其他打算由可运行二进制文件使用的组件，那么您只需要依赖于API。
+如果您的工件是一个独立的流程或服务，那么您将依赖于API和SDK。
+有关OpenTelemetry API和SDK的更多信息，请参见[specification](/docs/specs/otel/)。
 
-## Configure the OpenTelemetry API
+## 配置OpenTelemetry API
 
-In order to create traces or metrics, you'll need to first create a tracer
-and/or meter provider. In general, we recommend that the SDK should provide a
-single default provider for these objects. You'll then get a tracer or meter
-instance from that provider, and give it a name and version. The name you choose
-here should identify what exactly is being instrumented -- if you're writing a
-library, for example, then you should name it after your library (for example
-`com.legitimatebusiness.myLibrary`) as this name will namespace all spans or
-metric events produced. It is also recommended that you supply a version string
-(i.e., `semver:1.0.0`) that corresponds to the current version of your library
-or service.
+为了创建跟踪或度量，您需要首先创建跟踪程序和/或度量提供程序。
+通常，我们建议SDK应该为这些对象提供单个默认提供程序。
+然后，您将从该提供程序获得跟踪程序或仪表实例，并为其提供名称和版本。
+您在这里选择的名称应该确定要检测的确切内容——例如，如果您正在编写一个库，那么您应该以您的库(例如`com.legitimatebusiness.myLibrary`)来命名它，因为这个名称将命名生成的所有跨度或度量事件。
+还建议您提供与库或服务的当前版本对应的版本字符串(即' semver:1.0.0 ')。
 
-## Configure the OpenTelemetry SDK
+## 配置OpenTelemetry SDK
 
-If you're building a service process, you'll also need to configure the SDK with
-appropriate options for exporting your telemetry data to some analysis backend.
-We recommend that this configuration be handled programmatically through a
-configuration file or some other mechanism. There are also per-language tuning
-options you may wish to take advantage of.
+如果您正在构建一个服务流程，您还需要为SDK配置适当的选项，以便将遥测数据导出到某个分析后端。
+我们建议通过配置文件或其他机制以编程方式处理此配置。
+您可能还希望利用不同语言的调优选项。
 
-## Create Telemetry Data
+## 创建遥测数据
 
-Once you've configured the API and SDK, you'll then be free to create traces and
-metric events through the tracer and meter objects you obtained from the
-provider. Make use of Instrumentation Libraries for your dependencies -- check
-out the [registry](/ecosystem/registry/) or your language's repository for more
-information on these.
+配置好API和SDK之后，您就可以通过从提供程序获得的跟踪器和度量对象自由地创建跟踪和度量事件。
+为你的依赖项使用工具库——查看[registry](/ecosystem/registry/)或你的语言的存储库，了解更多相关信息。
 
-## Export Data
+## 出口数据
 
-Once you've created telemetry data, you'll want to send it somewhere.
-OpenTelemetry supports two primary methods of exporting data from your process
-to an analysis backend, either directly from a process or by proxying it through
-the [OpenTelemetry Collector](/docs/collector).
+一旦您创建了遥测数据，您将希望将其发送到某个地方。
+OpenTelemetry支持将数据从进程导出到分析后端的两种主要方法，要么直接从进程导出，要么通过[OpenTelemetry Collector](/docs/Collector)进行代理。
 
-In-process export requires you to import and take a dependency on one or more
-_exporters_, libraries that translate OpenTelemetry's in-memory span and metric
-objects into the appropriate format for telemetry analysis tools like Jaeger or
-Prometheus. In addition, OpenTelemetry supports a wire protocol known as `OTLP`,
-which is supported by all OpenTelemetry SDKs. This protocol can be used to send
-data to the OpenTelemetry Collector, a standalone binary process that can be run
-as a proxy or sidecar to your service instances or run on a separate host. The
-Collector can then be configured to forward and export this data to your choice
-of analysis tools.
+进程内导出需要您导入并依赖于一个或多个 _exporters_，这些库将OpenTelemetry的内存跨度和度量对象转换为适合Jaeger或Prometheus等遥测分析工具的格式。
+此外，OpenTelemetry还支持一种名为“OTLP”的有线协议，所有OpenTelemetry sdk都支持该协议。
+该协议可用于向OpenTelemetry Collector发送数据，OpenTelemetry Collector是一个独立的二进制进程，可以作为服务实例的代理或侧车运行，也可以在单独的主机上运行。
+然后可以配置Collector来转发和导出该数据到您选择的分析工具。
 
-In addition to open source tools such as Jaeger or Prometheus, a growing list of
-companies support ingesting telemetry data from OpenTelemetry. For details, see
-[Vendors](/ecosystem/vendors/).
+除了像Jaeger或Prometheus这样的开源工具之外，越来越多的公司支持从OpenTelemetry获取遥测数据。
+详情请参见[vendor](/ecosystem/vendor/)。
