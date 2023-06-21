@@ -1,26 +1,18 @@
 ---
-title: OpenTelemetry Marketing Guidelines for Contributing Organizations
+title: 贡献组织开放遥测营销指南
 linkTitle: Marketing Guidelines
 ---
 
-OpenTelemetry (aka OTel) is a collaboration among end-users, adjacent OSS
-projects, and vendors who ultimately sell products and services built upon OTel
-data or components. Like many standards-oriented projects, the vendors that
-partner on OTel also compete in the marketplace, and for this reason it’s
-important to establish some ground rules and expectations for how contributing
-organizations communicate and message about OTel.
+OpenTelemetry(又名OTel)是终端用户、相邻OSS项目和最终销售基于OTel数据或组件的产品和服务的供应商之间的协作。
+像许多面向标准的项目一样，在OTel上合作的供应商也在市场上竞争，因此，为贡献组织如何沟通和传递有关OTel的信息建立一些基本规则和期望是很重要的。
 
-In fact, OTel’s success depends on both the reality and the perception of
-sincere collaboration between the many parties (and vendors) involved. There’s a
-lot of superb technical work happening within OTel, and we want to make sure
-it’s not overshadowed by an opportunistic marketing department here or there!
 
-This document is divided into two sections:
 
-- **Goals and Guidelines:** What are we trying to achieve? What is our guidance?
-- **Concerns and consequences:** How do we determine that a guideline has been
-  violated? And what do we do about it?
+本文档分为两部分:
 
+- **Goals and Guidelines:** 我们想要达到什么目标?我们的指导是什么?
+- **Concerns and consequences:** 我们如何确定是否违反了指导方针?我们该怎么做呢?
+ 
 ## Goals and Guidelines
 
 There are three high-level focus areas for these goals and guidelines.

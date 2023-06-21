@@ -1,16 +1,15 @@
 ---
-title: Integrations
+title: 集成
 description: OpenTelemetry integrations with other open-source projects
 aliases: [/integrations]
 spelling: cSpell:ignore containerd buildx quarkus
 ---
 
-OpenTelemetry integrates with or is integrated into various open source
-projects.
+OpenTelemetry集成或集成到各种开源项目中。
 
 ## Within OpenTelemetry
 
-OpenTelemetry provides integration with the following open source projects.
+OpenTelemetry提供了与以下开源项目的集成。
 
 | External Project\*                                        | OpenTelemetry Supported Components                       |
 | --------------------------------------------------------- | -------------------------------------------------------- |
@@ -27,11 +26,11 @@ OpenTelemetry provides integration with the following open source projects.
 | [Zipkin](https://zipkin.io/)                              | Collector, DotNet, Go, Java, JS, PHP, Python, Rust       |
 | [W3C trace-context](https://www.w3.org/TR/trace-context/) | DotNet, Go, Java, JS, Python, Ruby                       |
 
-\* _Projects are listed alphabetically_.
+\* _项目按字母顺序列出_.
 
 ## Outside OpenTelemetry
 
-The following open source projects use OpenTelemetry components.
+以下开源项目使用OpenTelemetry组件。
 
 | External Project                                                                           | Applicable OpenTelemetry Components |
 | ------------------------------------------------------------------------------------------ | ----------------------------------- |
@@ -43,7 +42,7 @@ The following open source projects use OpenTelemetry components.
 | [Micrometer](https://micrometer.io/docs/tracing#_micrometer_tracing_opentelemetry_setup)   | Java                                |
 | [Quarkus](https://quarkus.io/guides/opentelemetry)                                         | Java                                |
 
-\* _Projects are listed alphabetically_.
+\* _项目按字母顺序列出_.
 
 [^partial-support]:
-    Projects only partially supported at this time. Full support coming soon!
+    目前只支持部分项目。全力支持即将到来!

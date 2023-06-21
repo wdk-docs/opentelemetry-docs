@@ -2,49 +2,33 @@
 title: Status
 menu: { main: { weight: 30 } }
 aliases: [/project-status, /releases]
-description: Maturity-level of the main OpenTelemetry components
+description: 主要开放遥测组件的成熟度级别
 ---
 
-{{% blocks/section color="white" %}}
+OpenTelemetry 由[几个组件][main-comp]组成，一些特定于语言，另一些与语言无关。在
+查找状态时，请确保从正确的组件页面查找状态。例如，规范中的信号状态可能与特定语言
+SDK 中的信号状态不相同。
 
-## {{% param title %}}
+对于[语言 SDK](./docs/instrumentation/index.md)的开发状态或成熟度级别，请参阅该
+语言的状态部分:
 
-OpenTelemetry is made up of [several components][main-comp], some
-language-specific and others language-agnostic. When looking for a status, make
-sure to look for the status from the right component page. For example, the
-status of a signal in the specification may not be the same as the signal status
-in a particular language SDK.
+- [C++](./docs/instrumentation/cpp/index.md#status-and-releases)
+- [.NET](./docs/instrumentation/net/index.md#status-and-releases)
+- [Erlang/Elixir](./docs/instrumentation/erlang/index.md#status-and-releases)
+- [Go](./docs/instrumentation/go/index.md#status-and-releases)
+- [Java](./docs/instrumentation/java/index.md#status-and-releases)
+- [JavaScript](./docs/instrumentation/js/index.md#status-and-releases)
+- [PHP](./docs/instrumentation/php/index.md#status-and-releases)
+- [Python](./docs/instrumentation/python/index.md#status-and-releases)
+- [Ruby](./docs/instrumentation/ruby/index.md#status-and-releases)
+- [Rust](./docs/instrumentation/rust/index.md#status-and-releases)
+- [Swift](./docs/instrumentation/swift/index.md#status-and-releases)
 
-For the development status, or maturity level, of a
-[language SDK](/docs/instrumentation/), see the status section of that language:
+关
+于[collector](./docs/collector/index.md)和[specification](./docs/specs/otel.md)的
+开发状态或成熟度，请参见:
 
-<div class="l-status-secondary mt-0">
+- [Specification status](./docs/specs/status.md)
+- [Collector status](./docs/collector/index.md#status-and-releases)
 
-- [C++](/docs/instrumentation/cpp/#status-and-releases)
-- [.NET](/docs/instrumentation/net/#status-and-releases)
-- [Erlang/Elixir](/docs/instrumentation/erlang/#status-and-releases)
-- [Go](/docs/instrumentation/go/#status-and-releases)
-- [Java](/docs/instrumentation/java/#status-and-releases)
-- [JavaScript](/docs/instrumentation/js/#status-and-releases)
-- [PHP](/docs/instrumentation/php/#status-and-releases)
-- [Python](/docs/instrumentation/python/#status-and-releases)
-- [Ruby](/docs/instrumentation/ruby/#status-and-releases)
-- [Rust](/docs/instrumentation/rust/#status-and-releases)
-- [Swift](/docs/instrumentation/swift/#status-and-releases)
-
-</div>
-
-For the development status, or maturity level, of the
-[collector](/docs/collector/) and [specification](/docs/specs/otel/), see the
-following:
-
-<div class="l-status-primary mt-0">
-
-- [Specification status](/docs/specs/status/)
-- [Collector status](/docs/collector/#status-and-releases)
-
-</div>
-
-[main-comp]: /docs/concepts/components/
-
-{{% /blocks/section %}}
+[main-comp]: ./docs/concepts/components.md

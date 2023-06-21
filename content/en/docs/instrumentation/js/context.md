@@ -1,15 +1,14 @@
 ---
-title: Context
-description: OpenTelemetry JavaScript Context API Documentation
+title: 上下文
+description: OpenTelemetry JavaScript上下文API文档
 aliases: [/docs/instrumentation/js/api/context]
 weight: 60
 ---
 
-In order for OpenTelemetry to work, it must store and propagate important
-telemetry data. For example, when a request is received and a span is started it
-must be available to a component which creates its child span. To solve this
-problem, OpenTelemetry stores the span in the Context. This document describes
-the OpenTelemetry context API for JavaScript and how it is used.
+创建并启动HTTP服务器为了使OpenTelemetry工作，它必须存储和传播重要的遥测数据。
+例如，当接收到请求并启动span时，它必须对创建子span的组件可用。
+为了解决这个问题，OpenTelemetry将跨度存储在Context中。
+本文档描述了JavaScript的OpenTelemetry上下文API以及如何使用它。
 
 More information:
 

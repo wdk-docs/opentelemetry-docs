@@ -1,5 +1,5 @@
 ---
-title: 什么是OpenTelemetry?
+title: 什么是遥测?
 description: 一个简短的解释什么是OpenTelemetry，什么不是。
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: -1

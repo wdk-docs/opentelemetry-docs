@@ -1,5 +1,5 @@
 ---
-title: Manual
+title: 手动
 aliases:
   - /docs/instrumentation/js/api/tracing
   - /docs/instrumentation/js/instrumentation
@@ -7,8 +7,7 @@ weight: 30
 spelling: cSpell:ignore Millis
 ---
 
-Manual instrumentation is the process of adding observability code to your
-application.
+手动插装是向应用程序添加可观察性代码的过程。
 
 ## Tracing
 

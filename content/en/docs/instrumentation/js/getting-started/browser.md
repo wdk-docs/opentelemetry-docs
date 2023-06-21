@@ -7,7 +7,7 @@ weight: 20
 While this guide uses the example application presented below, the steps to
 instrument your own application should be similar.
 
-## Prerequisites
+## 先决条件
 
 Ensure that you have the following installed locally:
 
@@ -15,7 +15,7 @@ Ensure that you have the following installed locally:
 - [TypeScript](https://www.typescriptlang.org/download), if you will be using
   TypeScript.
 
-## Example Application
+## 示例应用程序
 
 This is a very simple guide, if you'd like to see more complex examples go to
 [examples/opentelemetry-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web).
@@ -51,7 +51,7 @@ Copy the following file into an empty directory and call it `index.html`.
 </html>
 ```
 
-### Installation
+### 安装
 
 To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`,
 and the instrumentation `@opentelemetry/instrumentation-document-load`:
@@ -64,7 +64,7 @@ npm install @opentelemetry/api \
   @opentelemetry/context-zone
 ```
 
-### Initialization and Configuration
+### 初始化与配置
 
 If you are coding in TypeScript, then run the following command:
 
@@ -97,7 +97,7 @@ the following code to your HTML right before the `</body>` closing tag:
 We will add some code that will trace the document load timings and output those
 as OpenTelemetry Spans.
 
-### Creating a Tracer Provider
+### 创建跟踪程序提供程序
 
 Add the following code to the `document-load.ts|js` to create a tracer provider,
 which brings the instrumentation to trace document load:
@@ -133,7 +133,7 @@ your code works.
 
 There will be no output of traces yet, for this we need to add an exporter.
 
-### Creating an Exporter
+### 创建导出器
 
 In the following example, we will use the `ConsoleSpanExporter` which prints all
 spans to the console.
@@ -173,8 +173,8 @@ registerInstrumentations({
 });
 ```
 
-Now, rebuild your application and open the browser again. In the console of the
-developer toolbar you should see some traces being exported:
+现在，重新构建应用程序并再次打开浏览器。
+在开发人员工具栏的控制台中，您应该看到正在导出一些跟踪:
 
 ```json
 {
@@ -229,10 +229,9 @@ developer toolbar you should see some traces being exported:
 }
 ```
 
-### Add Instrumentations
+### 添加的设备
 
-If you want to instrument AJAX requests, User Interactions and others, you can
-register additional instrumentations for those:
+如果你想检测AJAX请求、用户交互和其他，你可以为它们注册额外的检测:
 
 ```javascript
 registerInstrumentations({
@@ -243,7 +242,6 @@ registerInstrumentations({
 });
 ```
 
-## Meta Packages for Web
+## 用于Web的元包
 
-To leverage the most common instrumentations all in one you can simply use the
-[OpenTelemetry Meta Packages for Web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)
+要利用最常见的仪器都在一个你可以简单地使用[开放遥测元包的web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)

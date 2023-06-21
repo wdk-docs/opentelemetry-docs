@@ -1,36 +1,32 @@
 ---
-title: OpenTelemetry Demo
+title: 开遥演示
 linkTitle: Demo
 description:
-  The OpenTelemetry Demo is a microservice-based distributed system intended to
-  illustrate the implementation of OpenTelemetry in a near real-world
+  The 开遥 Demo is a microservice-based distributed system intended to
+  illustrate the implementation of 开遥 in a near real-world
   environment.
 aliases:
   - /community/demo
   - /docs/getting-started/demo
-  - /docs/opentelemetry-demo
+  - /docs/开遥-demo
 weight: 10
 ---
 
-The [OpenTelemetry Demo](/docs/demo/) does the following:
+[开遥演示](../docs/demo/index.md)的功能如下:
 
-- Provides a realistic example of a distributed system that can be used to
-  demonstrate OpenTelemetry instrumentation and observability.
-- Builds a base for vendors, tooling authors, and others to extend and
-  demonstrate their OpenTelemetry integrations.
-- Creates a living example for OpenTelemetry contributors to use for testing new
-  versions of the API, SDK, and other components or enhancements.
+- 提供了一个分布式系统的实际示例，该示例可用于演示开遥仪表和可观察性。
+- 为供应商、工具作者和其他人构建一个基础，以扩展和演示他们的开遥集成。
+- 为开遥贡献者创建一个活生生的示例，用于测试API、SDK和其他组件或增强的新版本。
 
-If you find yourself asking questions like:
+如果你发现自己在问这样的问题:
 
-- How should I use the SDK for my language?
-- What's the best way to use OpenTelemetry APIs?
-- How should my services be configured?
-- How should my OpenTelemetry Collector be configured?
-- How do I consider the [architecture](/docs/demo/architecture/) of a system
-  using OpenTelemetry?
+- 我应该如何为我的语言使用SDK ?
+- 使用开遥 api的最佳方式是什么?
+- 我的服务应该如何配置?
+- 我的开遥收集器应该如何配置?
+- 我如何考虑使用开遥系统的[架构](../docs/demo/architecture.md)?
 
-For more information, see:
+有关更多信息，请参见:
 
-- [Demo documentation](/docs/demo/)
-- [Demo repo](https://github.com/open-telemetry/opentelemetry-demo)
+- [演示文档](/docs/demo/)
+- [演示回购](https://github.com/open-telemetry/opentelemetry-demo)

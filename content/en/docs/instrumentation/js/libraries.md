@@ -1,48 +1,38 @@
 ---
-title: Using instrumentation libraries
+title: 使用工具库
 linkTitle: Libraries
 weight: 40
 spelling: cSpell:ignore autoinstrumentation metapackage
 ---
 
-You can use
-[instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
-in order to generate telemetry data for a library or framework.
+您可以使用[仪表库](../../specs/otel/glossary/#instrumentation-library)为库或框架生成遥测数据。
 
-For example,
-[the instrumentation library for Express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
-will automatically create [spans](/docs/concepts/signals/traces/#spans) based on
-the inbound HTTP requests.
+例如，[用于Express的instrumentation库](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)将根据入站HTTP请求自动创建[span](../../concepts/signals/traces/#span)。
 
 ## Setup
 
-Each instrumentation library is an NPM package, and installation is typically
-done like so:
+每个工具库都是一个NPM包，安装通常是这样完成的:
 
 ```console
 npm install <name-of-package>
 ```
 
-It is typically then registered at application startup time, such as when
-creating a [TracerProvider](/docs/concepts/signals/traces/#tracer-provider).
+它通常在应用程序启动时注册，例如在创建[TracerProvider](../../concepts/signals/traces/#tracer-provider)时.
 
 ## Node.js
 
-### Node autoinstrumentation package
+### Node自动仪表包
 
-OpenTelemetry also defines the
-[auto-instrumentations-node](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node)
-metapackage that bundles all Node.js-based instrumentation libraries into a
-single package. It's a convenient way to add automatically-generated telemetry
-for all your libraries with minimal effort.
+OpenTelemetry还定义了[auto-instrumentations-node](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node)元包，它将所有基于node .js的仪器库捆绑到一个包中。
+这是一种方便的方法，可以为所有库添加自动生成的遥测功能，而且工作量很小。
 
-To use the package, first install it:
+要使用这个包，首先安装它:
 
 ```shell
 npm install @opentelemetry/auto-instrumentations-node
 ```
 
-Then in your tracing initialization code, use `registerInstrumentations`:
+然后在你的跟踪初始化代码中，使用`registerInstrumentations`:
 
 <!-- textlint-disable -->
 
@@ -50,6 +40,7 @@ Then in your tracing initialization code, use `registerInstrumentations`:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
+```ts
 /* tracing.ts */
 
 // Import dependencies
@@ -84,9 +75,11 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
+```
 {{< /tab >}}
 
 {{< tab JavaScript >}}
+```js
 /* tracing.js */
 
 // Require dependencies
@@ -121,6 +114,8 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
+```
+
 {{< /tab >}}
 
 {{< /tabpane >}}
@@ -128,10 +123,9 @@ provider.register();
 
 <!-- textlint-enable -->
 
-### Using individual instrumentation packages
+### 使用单独的仪表包
 
-If you don't wish to use a metapackage, perhaps to decrease your dependency
-graph size, you can install and register individual instrumentation packages.
+如果您不希望使用元包，也许是为了减少依赖关系图的大小，您可以安装和注册单独的工具包。
 
 For example, here's how you can install and register only the
 [instrumentation-express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
@@ -149,6 +143,7 @@ And then register each instrumentation library:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
+```ts
 /* tracing.ts */
 
 // Import dependencies
@@ -186,9 +181,11 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
+```
 {{< /tab >}}
 
 {{< tab JavaScript >}}
+```js
 /* tracing.js */
 
 // Require dependencies
@@ -226,39 +223,29 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
+```
 {{< /tab >}}
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-## Configuring instrumentation libraries
+## 配置工具库
 
-Some instrumentation libraries offer additional configuration options.
+一些工具库提供了额外的配置选项。
 
-For example,
-[Express instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)
-offers ways to ignore specified middleware or enrich spans created automatically
-with a request hook.
+例如，[Express instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)提供了忽略指定中间件或丰富使用请求钩子自动创建的范围的方法。
 
-You'll need to refer to each instrumentation library's documentation for
-advanced configuration.
+您需要参考每个仪器库的文档来进行高级配置。
 
-## Available instrumentation libraries
+## 可用的仪器库
 
-A full list of instrumentation libraries produced by OpenTelemetry is available
-from the
-[opentelemetry-js-contrib](https://github.com/open-telemetry/opentelemetry-js-contrib)
-repository.
+OpenTelemetry生成的仪器库的完整列表可从[opentelemetry-js-contrib](https://github.com/open-telemetry/opentelemetry-js-contrib)存储库获得。
 
-You can also find more instrumentations available in the
-[registry](/ecosystem/registry/?language=js&component=instrumentation).
+您还可以在[registry](../../../ecosystem/registry/index.md?language=js&component=instrumentation)中找到更多可用的工具。
 
-## Next steps
+## 下一个步骤
 
-After you have set up instrumentation libraries, you may want to add
-[manual instrumentation](/docs/instrumentation/js/manual) to collect custom
-telemetry data.
+在你设置好仪器库之后，你可能想添加[手动工具](./manual.md)来收集自定义的遥测数据。
 
-You'll also want to configure an appropriate exporter to
-[export your telemetry data](/docs/instrumentation/js/exporters) to one or more
-telemetry backends.
+
+你还需要配置一个合适的导出器来[导出遥测数据](./exporters.md)到一个或多个遥测后端。

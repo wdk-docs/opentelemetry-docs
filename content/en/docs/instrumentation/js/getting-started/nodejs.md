@@ -6,38 +6,34 @@ spelling: cSpell:ignore rolldice autoinstrumentation autoinstrumentations KHTML
 weight: 10
 ---
 
-This page will show you how to get started with OpenTelemetry in Node.js.
+本页将向您展示如何在Node.js中开始使用OpenTelemetry。
 
-You will learn how you can instrument a simple application automatically, in
-such a way that [traces][], [metrics][] and [logs][] are emitted to the console.
+您将学习如何自动检测一个简单的应用程序，以一种将[traces][]、[metrics][]和[logs][]发送到控制台的方式。
 
-## Prerequisites
+## 先决条件
 
-Ensure that you have the following installed locally:
+确保在本地安装了以下软件:
 
 - [Node.js](https://nodejs.org/en/download/)
-- [TypeScript](https://www.typescriptlang.org/download), if you will be using
-  TypeScript.
+- [TypeScript](https://www.typescriptlang.org/download), 如果你要使用TypeScript。
 
-## Example Application
+## 示例应用程序
 
-The following example uses a basic [Express](https://expressjs.com/)
-application. If you are not using Express, that's ok — you can use OpenTelemetry
-JavaScript with other web frameworks as well, such as Koa and Nest.JS. For a
-complete list of libraries for supported frameworks, see the
-[registry](/ecosystem/registry/?component=instrumentation&language=js).
+下面的示例使用一个基本的[Express](https://expressjs.com/)应用程序。
+如果你不使用Express，没关系——你也可以将OpenTelemetry JavaScript与其他web框架一起使用，比如Koa和Nest.JS。
+要获得支持框架的完整库列表，请参见[registry](/ecosystem/registry/?component=instrumentation&language=js)。
 
-For more elaborate examples, see [examples](/docs/instrumentation/js/examples/).
+有关更详细的示例，请参见[示例](/docs/instrumentation/js/examples/).
 
-### Dependencies
+### 依赖关系
 
-To begin, set up an empty `package.json` in a new directory:
+首先，在新目录中设置一个空的`package.json`:
 
 ```shell
 npm init -y
 ```
 
-Next, install Express dependencies.
+接下来，安装Express依赖项。
 
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
@@ -57,7 +53,7 @@ npm install express
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-### Create and launch an HTTP Server
+### 创建并启动HTTP服务器
 
 Create a file named `app.ts` (or `app.js` if not using typescript) and add the
 following code to it:
@@ -66,6 +62,7 @@ following code to it:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
+```ts
 /*app.ts*/
 import express, { Express } from "express";
 
@@ -83,9 +80,11 @@ app.get("/rolldice", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
+```
 {{< /tab >}}
 
 {{< tab JavaScript >}}
+```js
 /*app.js*/
 const express = require("express");
 
@@ -103,6 +102,7 @@ app.get("/rolldice", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
+```
 {{< /tab >}}
 
 {{< /tabpane>}}
@@ -115,24 +115,28 @@ Run the application with the following command and open
 {{< tabpane lang=console persistLang=false >}}
 
 {{< tab TypeScript >}}
+```sh
 $ npx ts-node app.ts
 Listening for requests on http://localhost:8080
+```
 {{< /tab >}}
 
 {{< tab JavaScript >}}
+```sh
 $ node app.js
 Listening for requests on http://localhost:8080
+```
 {{< /tab >}}
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-## Instrumentation
+## 仪表
 
 The following shows how to install, initialize, and run an application
 instrumented with OpenTelemetry.
 
-### Dependencies
+### 依赖
 
 First, install the Node SDK and autoinstrumentations package.
 
@@ -154,7 +158,7 @@ npm install @opentelemetry/sdk-node \
 To find all autoinstrumentation modules, you can look at the
 [registry](/ecosystem/registry/?language=js&component=instrumentation).
 
-### Setup
+### 设置
 
 The instrumentation setup and configuration must be run _before_ your
 application code. One tool commonly used for this task is the
@@ -167,6 +171,7 @@ typescript) , which will contain your instrumentation setup code.
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
+```ts
 /*instrumentation.ts*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
@@ -183,10 +188,11 @@ const sdk = new NodeSDK({
 
 sdk
   .start()
-
+```
 {{< /tab >}}
 
 {{< tab JavaScript >}}
+```js
 /*instrumentation.js*/
 // Require dependencies
 const { NodeSDK } = require('@opentelemetry/sdk-node');
@@ -204,6 +210,7 @@ const sdk = new NodeSDK({
 
 sdk
   .start()
+```
 {{< /tab >}}
 
 {{< /tabpane >}}
@@ -218,13 +225,17 @@ Now you can run your application as you normally would, but you can use the
 {{< tabpane lang=console persistLang=false >}}
 
 {{< tab TypeScript >}}
+```sh
 $ npx ts-node --require ./instrumentation.ts app.ts
 Listening for requests on http://localhost:8080
+```
 {{< /tab >}}
 
 {{< tab JavaScript >}}
+```sh
 $ node --require ./instrumentation.js app.js
 Listening for requests on http://localhost:8080
+```
 {{< /tab >}}
 
 {{< /tabpane >}}
@@ -470,6 +481,7 @@ OpenTelemetry is initialized correctly:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
+```ts
 /*instrumentation.ts*/
 import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
@@ -477,9 +489,11 @@ import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 // const sdk = new NodeSDK({...
+```
 {{< /tab >}}
 
 {{< tab JavaScript >}}
+```js
 /*instrumentation.js*/
 // Require dependencies
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
@@ -488,6 +502,7 @@ const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 // const sdk = new NodeSDK({...
+```
 {{< /tab >}}
 
 {{< /tabpane >}}

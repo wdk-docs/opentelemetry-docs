@@ -1,40 +1,32 @@
 ---
-title: Resources
+title: 资源
 weight: 70
 ---
 
-A [resource][] represents the entity producing telemetry as resource attributes.
-For example, a process producing telemetry that is running in a container on
-Kubernetes has a Pod name, a namespace, and possibly a deployment name. All
-three of these attributes can be included in the resource.
+[resource][]表示作为资源属性产生遥测的实体。
+例如，在Kubernetes上的容器中运行的产生遥测的进程有一个Pod名称、一个名称空间，可能还有一个部署名称。
+所有这三个属性都可以包含在资源中。
 
-In your observability backend, you can use resource information to better
-investigate interesting behavior. For example, if your trace or metrics data
-indicate latency in your system, you can narrow it down to a specific container,
-pod, or Kubernetes deployment.
+在可观察性后端，您可以使用资源信息来更好地调查有趣的行为。
+例如，如果您的跟踪或度量数据表明系统中的延迟，则可以将其缩小到特定的容器、Pod或Kubernetes部署。
 
-Below you will find some introductions on how to set up resource detection with
-the Node.js SDK.
+下面你会发现一些关于如何使用Node.js SDK设置资源检测的介绍。
 
-## Setup
+## 设置
 
-Follow the instructions in the [Getting Started - Node.js][], so that you have
-the files `package.json`, `app.js` and `tracing.js`.
+按照[入门-Node.js](./getting-started/nodejs.md)中的说明，这样你就有了 `package.json`， `app.js`和`tracing.js`文件。
 
-## Process & Environment Resource Detection
+## 进程和环境资源检测
 
-Out of the box, the Node.js SDK detects [process and process runtime
-resources][] and takes attributes from the environment variable
-`OTEL_RESOURCE_ATTRIBUTES`. You can verify what it detects by turning on
-diagnostic logging in `tracing.js`:
+Node.js SDK开箱即用，检测[进程和进程运行时资源][]并从环境变量 `OTEL_RESOURCE_ATTRIBUTES` 中获取属性。
+你可以通过在 `trace.js` 中打开诊断日志来验证它检测到什么:
 
 ```javascript
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 ```
 
-Run the application with some values set to `OTEL_RESOURCE_ATTRIBUTES`, e.g. we
-set the `host.name` to identify the [Host][]:
+运行应用程序，将一些值设置为`OTEL_RESOURCE_ATTRIBUTES`，例如我们设置`host.name`来标识[host][]:
 
 ```console
 $ env OTEL_RESOURCE_ATTRIBUTES="host.name=localhost" \
@@ -57,16 +49,14 @@ ProcessDetector found resource. Resource {
 ...
 ```
 
-## Adding resources with environment variables
+## 使用环境变量添加资源
 
-In the above example, the SDK detected the process and also added the
-`host.name=localhost` attribute set via the environment variable automatically.
+在上面的示例中，SDK检测到进程，并通过环境变量自动添加了 `host.name=localhost` 属性集。
 
-Below you will find instructions to get resources detected automatically for
-you. However, you might run into the situation that no detector exists for the
-resource you need. In that case you can use the environment
-`OTEL_RESOURCE_ATTRIBUTES` to inject whatever you need. For example the
-following script adds [Service][], [Host][] and [OS][] resource attributes:
+您将在下面找到为您自动检测资源的说明。
+但是，您可能会遇到这样的情况，即您需要的资源不存在检测器。
+在这种情况下，您可以使用环境 `OTEL_RESOURCE_ATTRIBUTES` 来注入您需要的任何内容。
+例如，下面的脚本添加[Service][]， [Host][]和[OS][]资源属性:
 
 ```console
 $ env OTEL_RESOURCE_ATTRIBUTES="service.name=app.js,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME:},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
@@ -87,11 +77,12 @@ EnvDetector found resource. Resource {
 ...
 ```
 
-## Adding resources in code
+## 在代码中添加资源
 
-Custom resources can also be configured in your code. The `NodeSDK` provides a
-configuration option, where you can set them. For example you can update the
-`tracing.js` like the following to have `service.*` attributes set:
+
+自定义资源也可以在代码中配置。
+`NodeSDK`提供了一个配置选项，您可以在其中设置它们。
+例如，你可以像下面这样更新`tracing.js`，设置`service.*`属性:
 
 ```javascript
 ...
@@ -111,13 +102,11 @@ const sdk = new opentelemetry.NodeSDK({
 ...
 ```
 
-**Note**: If you set your resource attributes via environment variable and code,
-the values set via the environment variable take precedence.
+**Note**: 如果通过环境变量和代码设置资源属性，则通过环境变量设置的值优先。
 
-## Container Resource Detection
+## 容器资源检测
 
-Use the same setup (`package.json`, `app.js` and `tracing.js` with debugging
-turned on) and `Dockerfile` with the following content in the same directory:
+使用相同的设置(`package.json`, `app.js` and `tracing.js`打开调试)和`Dockerfile`在同一目录下具有以下内容:
 
 ```Dockerfile
 FROM node:latest
@@ -129,8 +118,7 @@ EXPOSE 8080
 CMD [ "node", "--require", "./tracing.js", "app.js" ]
 ```
 
-To make sure that you can stop your docker container with <kbd>Ctrl + C</kbd>
-(`SIGINT`) add the following to the bottom of `app.js`:
+要确保您可以使用<kbd>Ctrl + C</kbd>(`SIGINT`)将以下内容添加到`app.js`的底部:
 
 ```javascript
 process.on('SIGINT', function () {
@@ -138,14 +126,13 @@ process.on('SIGINT', function () {
 });
 ```
 
-To get the id of your container detected automatically for you, install the
-following additional dependency:
+要获得自动检测到的容器id，安装以下附加依赖项:
 
 ```sh
 npm install @opentelemetry/resource-detector-docker
 ```
 
-Next, update your `tracing.js` like the following:
+接下来，像下面这样更新你的 `tracing.js`:
 
 ```javascript
 const opentelemetry = require('@opentelemetry/sdk-node');
@@ -169,13 +156,13 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-Build your docker image:
+构建docker镜像:
 
 ```sh
 docker build . -t nodejs-otel-getting-started
 ```
 
-Run your docker container:
+运行你的docker容器:
 
 ```sh
 $ docker run --rm -p 8080:8080 nodejs-otel-getting-started
@@ -194,7 +181,9 @@ recognize that in this example, the process attributes and the attributes set
 via an environment variable are missing! To resolve this, when you set the
 `resourceDetectors` list you also need to specify the `envDetector` and
 `processDetector` detectors:
-
+检测器已经为您提取了`container.id`。
+然而，您可能会发现，在本例中，流程属性和通过环境变量设置的属性缺失了!
+为了解决这个问题，当你设置`resourceDetectors`列表时，你还需要指定`envDetector`和`processDetector`探测器:
 ```javascript
 const opentelemetry = require('@opentelemetry/sdk-node');
 const {
@@ -219,7 +208,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-Rebuild your image and run your container once again:
+重新构建镜像并再次运行容器:
 
 ```shell
 docker run --rm -p 8080:8080 nodejs-otel-getting-started
@@ -246,21 +235,17 @@ DockerCGroupV1Detector found resource. Resource {
 ...
 ```
 
-## Next steps
+## 下一步
 
-There are more resource detectors you can add to your configuration, for example
-to get details about your [Cloud] environment or [Deployment][]. You will find a
-list
-[here](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node).
+您可以在配置中添加更多的资源检测器，例如获取有关您的[Cloud]环境或[Deployment][]的详细信息。
+你可以在[这里](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node)找到一份清单.
 
-[resource]: /docs/specs/otel/resource/sdk/
-[getting started - node.js]: /docs/instrumentation/js/getting-started/nodejs/
-[process and process runtime resources]:
-  /docs/specs/otel/resource/semantic_conventions/process/
-[host]: /docs/specs/otel/resource/semantic_conventions/host/
-[otlp exporter]: /docs/instrumentation/js/exporters/#otlp-endpoint
-[cloud]: /docs/specs/otel/resource/semantic_conventions/cloud/
-[deployment]:
-  /docs/specs/otel/resource/semantic_conventions/deployment_environment/
-[service]: /docs/specs/otel/resource/semantic_conventions/#service
-[os]: /docs/specs/otel/resource/semantic_conventions/os/
+[resource]: ../../specs/otel/resource/sdk/
+[getting started - node.js]: ../../instrumentation/js/getting-started/nodejs/
+[process and process runtime resources]: ../../specs/otel/resource/semantic_conventions/process/
+[host]: ../../specs/otel/resource/semantic_conventions/host/
+[otlp exporter]: ../../instrumentation/js/exporters/#otlp-endpoint
+[cloud]: ../../specs/otel/resource/semantic_conventions/cloud/
+[deployment]: ../../specs/otel/resource/semantic_conventions/deployment_environment/
+[service]: ../../specs/otel/resource/semantic_conventions/#service
+[os]: ../../specs/otel/resource/semantic_conventions/os/

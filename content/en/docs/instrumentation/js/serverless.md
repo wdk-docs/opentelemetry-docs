@@ -1,11 +1,10 @@
 ---
-title: Serverless
+title: 无服务
 weight: 100
 spelling: cSpell:ignore otelwrapper
 ---
 
-This guide shows how to get started with tracing serverless functions using
-OpenTelemetry instrumentation libraries.
+本指南展示了如何开始使用OpenTelemetry工具库跟踪无服务器函数。
 
 ## AWS Lambda
 

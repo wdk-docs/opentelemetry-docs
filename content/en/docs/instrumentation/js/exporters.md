@@ -1,22 +1,17 @@
 ---
-title: Exporters
+title: 导出器
 weight: 50
 spelling: cSpell:ignore proto nginx openzipkin
 ---
 
-In order to visualize and analyze your traces, you will need to export them to a
-backend such as [Jaeger](https://www.jaegertracing.io/) or
-[Zipkin](https://zipkin.io/). OpenTelemetry JS provides exporters for some
-common open source backends.
+为了可视化和分析您的痕迹，您需要将它们导出到后端，如[Jaeger](https://www.jaegertracing.io/)或[Zipkin](https://zipkin.io/)。
+OpenTelemetry JS为一些常见的开源后端提供了导出器。
 
-Below you will find some introductions on how to set up backends and the
-matching exporters.
+下面您将找到一些关于如何设置后端和匹配的导出器的介绍。
 
 ## OTLP endpoint
 
-To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
-Jaeger) you'll want to use an exporter package, such as
-`@opentelemetry/exporter-trace-otlp-proto`:
+要将跟踪数据发送到OTLP端点(如[collector](/docs/collector)或Jaeger)，您需要使用导出包，例如`@opentelemetry/exporter-trace-otlp-proto`:
 
 ```shell
 npm install --save @opentelemetry/exporter-trace-otlp-proto \

@@ -1,5 +1,5 @@
 ---
-title: API reference
+title: API 参考
 linkTitle: API
 redirect: https://open-telemetry.github.io/opentelemetry-js/
 manualLinkTarget: _blank

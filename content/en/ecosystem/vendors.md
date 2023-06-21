@@ -1,5 +1,5 @@
 ---
-title: Vendors
+title: 供应商
 description: Vendors who natively support OpenTelemetry
 aliases: [/vendors]
 # Note: the keywords after 'cSpell:ignore' must be on the same line, no wrapping, hence the Prettier ignore directive
@@ -7,11 +7,10 @@ aliases: [/vendors]
 spelling: cSpell:ignore appdynamics aria aspecto bution coralogix daocloud datadoghq distri dynatrace gethelios grafana humio Instana kloudfuse lightstep logz logicmonitor lumigo observiq promscale sentrysoftware signoz solarwinds splunk sumologic uptrace vmware wavefront
 ---
 
-[Distributions](/docs/concepts/distributions/) and vendors who natively support
-OpenTelemetry in their commercial products.
+[发行版](../../concepts/distribution/)和在其商业产品中原生支持OpenTelemetry的供应商。
 
 <!-- prettier-ignore -->
-| Company\*                  | Distri&shy;bution | Native OTLP | Learn more
+| 公司\*                  | Distri&shy;bution | Native OTLP | 了解更多
 | -------------------------- | ----------------- | ----------- | -----------
 | AppDynamics (Cisco)        | Yes               | Yes         | [docs.appdynamics.com/...](https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry)
 | Aria by VMware (Wavefront) | No                | Yes         | [docs.wavefront.com/...](https://docs.wavefront.com/opentelemetry_tracing.html)

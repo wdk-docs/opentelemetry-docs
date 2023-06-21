@@ -1,15 +1,13 @@
 ---
-title: Propagation
+title: 传播
 description: Context propagation for the JS SDK
 aliases: [/docs/instrumentation/js/api/propagation]
 weight: 65
 spelling: cSpell:ignore traceparent tracestate
 ---
 
-Propagation is the mechanism that moves data between services and processes.
-Although not limited to tracing, it is what allows traces to build causal
-information about a system across services that are arbitrarily distributed
-across process and network boundaries.
+传播是在服务和进程之间移动数据的机制。
+虽然不限于跟踪，但它允许跟踪构建关于系统的因果信息，这些信息可以跨任意分布在进程和网络边界上的服务。
 
 ## Context propagation with libraries
 
