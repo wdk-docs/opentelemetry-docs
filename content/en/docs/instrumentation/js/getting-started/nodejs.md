@@ -6,22 +6,25 @@ spelling: cSpell:ignore rolldice autoinstrumentation autoinstrumentations KHTML
 weight: 10
 ---
 
-本页将向您展示如何在Node.js中开始使用OpenTelemetry。
+本页将向您展示如何在 Node.js 中开始使用 OpenTelemetry。
 
-您将学习如何自动检测一个简单的应用程序，以一种将[traces][]、[metrics][]和[logs][]发送到控制台的方式。
+您将学习如何自动检测一个简单的应用程序，以一种
+将[traces][]、[metrics][]和[logs][]发送到控制台的方式。
 
 ## 先决条件
 
 确保在本地安装了以下软件:
 
 - [Node.js](https://nodejs.org/en/download/)
-- [TypeScript](https://www.typescriptlang.org/download), 如果你要使用TypeScript。
+- [TypeScript](https://www.typescriptlang.org/download), 如果你要使用
+  TypeScript。
 
 ## 示例应用程序
 
-下面的示例使用一个基本的[Express](https://expressjs.com/)应用程序。
-如果你不使用Express，没关系——你也可以将OpenTelemetry JavaScript与其他web框架一起使用，比如Koa和Nest.JS。
-要获得支持框架的完整库列表，请参见[registry](/ecosystem/registry/?component=instrumentation&language=js)。
+下面的示例使用一个基本的[Express](https://expressjs.com/)应用程序。如果你不使用
+Express，没关系——你也可以将 OpenTelemetry JavaScript 与其他 web 框架一起使用，比
+如 Koa 和 Nest.JS。要获得支持框架的完整库列表，请参
+见[registry](/ecosystem/registry/?component=instrumentation&language=js)。
 
 有关更详细的示例，请参见[示例](/docs/instrumentation/js/examples/).
 
@@ -33,7 +36,7 @@ weight: 10
 npm init -y
 ```
 
-接下来，安装Express依赖项。
+接下来，安装 Express 依赖项。
 
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
@@ -53,7 +56,7 @@ npm install express
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-### 创建并启动HTTP服务器
+### 创建并启动 HTTP 服务器
 
 Create a file named `app.ts` (or `app.js` if not using typescript) and add the
 following code to it:
@@ -131,7 +134,7 @@ Listening for requests on http://localhost:8080
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-## 仪表
+## 插装
 
 The following shows how to install, initialize, and run an application
 instrumented with OpenTelemetry.

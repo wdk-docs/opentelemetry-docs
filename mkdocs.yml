@@ -218,7 +218,7 @@ nav:
               - docs/demo/services/shipping.md
           - ./docs/demo/tests.md
           - ./docs/demo/trace-features.md
-      - 仪表:
+      - 插装:
           - ./docs/instrumentation/index.md
           - C++:
               - ./docs/instrumentation/cpp/index.md
@@ -252,16 +252,26 @@ nav:
               - docs/instrumentation/erlang/testing.md
           - Go:
               - ./docs/instrumentation/go/index.md
+              - docs/instrumentation/go/api.md
+              - docs/instrumentation/go/examples.md
+              - docs/instrumentation/go/exporters.md
+              - docs/instrumentation/go/getting-started.md
+              - docs/instrumentation/go/libraries.md
+              - docs/instrumentation/go/manual.md
+              - docs/instrumentation/go/resources.md
+              - docs/instrumentation/go/sampling.md
           - Java:
               - ./docs/instrumentation/java/index.md
+              - 自动:
+                  - docs/instrumentation/java/automatic/index.md
+                  - docs/instrumentation/java/automatic/agent-config.md
+                  - docs/instrumentation/java/automatic/annotations.md
+                  - docs/instrumentation/java/automatic/extensions.md
               - docs/instrumentation/java/api.md
               - docs/instrumentation/java/examples.md
               - docs/instrumentation/java/getting-started.md
               - docs/instrumentation/java/manual.md
-              - docs/instrumentation/java/automatic/index.md
-              - docs/instrumentation/java/automatic/agent-config.md
-              - docs/instrumentation/java/automatic/annotations.md
-              - docs/instrumentation/java/automatic/extensions.md
+
           - JavaScript:
               - ./docs/instrumentation/js/index.md
               - 入门:
@@ -293,6 +303,11 @@ nav:
               - docs/instrumentation/php/sdk.md
           - Python:
               - ./docs/instrumentation/python/index.md
+              - 自动:
+                  - ./docs/instrumentation/python/automatic/index.md
+                  - ./docs/instrumentation/python/automatic/operator.md
+                  - ./docs/instrumentation/python/automatic/example.md
+                  - ./docs/instrumentation/python/automatic/agent-config.md
               - docs/instrumentation/python/api.md
               - docs/instrumentation/python/cookbook.md
               - docs/instrumentation/python/distro.md
@@ -301,13 +316,9 @@ nav:
               - docs/instrumentation/python/getting-started.md
               - docs/instrumentation/python/manual.md
               - docs/instrumentation/python/mypy.md
-              - docs/instrumentation/python/automatic/_index.md
-              - docs/instrumentation/python/automatic/agent-config.md
-              - docs/instrumentation/python/automatic/example.md
-              - docs/instrumentation/python/automatic/operator.md
-              - docs/instrumentation/ruby/api.md
           - Ruby:
               - ./docs/instrumentation/ruby/index.md
+              - docs/instrumentation/ruby/api.md
               - docs/instrumentation/ruby/automatic.md
               - docs/instrumentation/ruby/examples.md
               - docs/instrumentation/ruby/exporters.md
@@ -320,16 +331,16 @@ nav:
               - ./docs/instrumentation/swift/index.md
               - docs/instrumentation/swift/libraries.md
               - docs/instrumentation/swift/manual.md
-          - Other:
+          - 其它:
               - ./docs/instrumentation/other/index.md
       - 收集器:
           - ./docs/collector/index.md
           - ./docs/collector/getting-started.md
           - 部署:
               - ./docs/collector/deployment/index.md
+              - ./docs/collector/deployment/no-collector.md
               - ./docs/collector/deployment/agent.md
               - ./docs/collector/deployment/gateway.md
-              - ./docs/collector/deployment/no-collector.md
           - ./docs/collector/configuration.md
           - ./docs/collector/management.md
           - ./docs/collector/distributions.md

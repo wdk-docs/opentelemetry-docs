@@ -57,7 +57,7 @@ OpenTelemetry 支持大量的组件，这些组件从受支持语言的流行库
 
 有关更多信息，请参见[检测库](/docs/concepts/instrumentation/libraries/).
 
-## 自动仪表
+## 自动插装
 
 如果适用，OpenTelemetry 的特定语言实现将提供一种方法来检测您的应用程序，而无需触
 及您的源代码。虽然底层机制取决于语言，但至少这会将 OpenTelemetry API 和 SDK 功能

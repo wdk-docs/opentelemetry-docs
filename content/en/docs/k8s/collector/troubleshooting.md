@@ -1,19 +1,17 @@
 # 故障排除
 
-## Observability
+## 可观察性
 
-The Collector offers multiple ways to measure the health of the Collector as
-well as investigate issues.
+收集器提供多种方法来测量收集器的运行状况以及调查问题。
 
-### Logs
+### 日志
 
-Logs can be helpful in identifying issues. Always start by checking the log
-output and looking for potential issues. The verbosity level defaults to `INFO`
-and can be adjusted.
+日志可以帮助识别问题。总是从检查日志输出和寻找潜在问题开始。冗长级别默认为
+“INFO”，可以调整。
 
-#### Version 0.36 and above:
+#### 0.36 及以上版本:
 
-Set the log level in the config `service::telemetry::logs`
+在配置“service::telemetry::logs”中设置日志级别。
 
 ```yaml
 service:

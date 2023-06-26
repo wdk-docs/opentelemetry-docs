@@ -75,7 +75,7 @@ EOF
     以保持与所引用的 OpenTelemetry Collector 映像的最新版本兼容。
 
 这将创建一个名为`simplest`的 OpenTelemetry Collector 实例，暴露一
-个`jaeger-grpc`端口，以从仪表化的应用程序中消费 `span` ，并通过`logging`导出这些
+个`jaeger-grpc`端口，以从插装化的应用程序中消费 `span` ，并通过`logging`导出这些
 `span`，这将`span`写入接收`span`的 OpenTelemetry Collector 实例的控制台
 (`stdout`)。
 
@@ -222,7 +222,7 @@ EOF
 由[resourcedetection](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)处
 理器使用。
 
-### OpenTelemetry 自动仪表注入
+### OpenTelemetry 自动插装注入
 
 操作员可以注入和配置 OpenTelemetry 自动仪器库。目前支持 Apache HTTPD, DotNet,
 Go, Java, NodeJS 和 Python。
@@ -376,12 +376,13 @@ spec:
 
 在上述情况下，`myapp`和`myapp2`容器将被检测，`myapp3`不会。
 
-**NOTE**: Go 的自动检测**不**支持多容器 pod。当注入 Go 自动检测时，第一个 pod 应
-该是你想要检测的唯一 pod。
+!!! NOTE
+
+    Go 的自动检测 **不** 支持多容器 pod。当注入 Go 自动检测时，第一个 pod 应该是你想要检测的唯一 pod。
 
 #### 使用定制的或供应商的工具
 
-默认情况下，操作符使用上游自动仪表库。可以通过覆盖 CR 中的映像字段来配置自定义自
+默认情况下，操作符使用上游自动插装库。可以通过覆盖 CR 中的映像字段来配置自定义自
 动检测。
 
 ```yaml
@@ -446,7 +447,7 @@ metadata:
 instrumentation.opentelemetry.io/inject-sdk: "true"
 ```
 
-#### 控制仪表功能
+#### 控制插装功能
 
 操作符允许通过特征门指定 Instrumentation 资源可以检测的语言。这些特征门必须通过
 `--feature-gates`标志传递给操作符。该标志允许以逗号分隔的特征门标识符列表。在门

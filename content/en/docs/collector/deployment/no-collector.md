@@ -4,29 +4,28 @@ description: Why and how to send signals directly from app to backends
 weight: 1
 ---
 
-The simplest pattern is not to use a collector at all. This pattern consists of
-applications [instrumented][instrumentation] with an OpenTelemetry SDK that
-export telemetry signals (traces, metrics, logs) directly into a backend:
+最简单的模式是根本不使用收集器。该模式由带有 OpenTelemetry SDK 的应用程
+序[instrumented][instrumentation]组成，该 SDK 将遥测信号(跟踪，度量，日志)直接导
+出到后端:
 
-![No collector deployment concept](../../img/otel_sdk.svg)
+![没有收集器部署概念](../../img/otel_sdk.svg)
 
-## Example
+## 例子
 
-See the [code instrumentation for programming languages][instrumentation] for
-concrete end-to-end examples for how to export signals from your app directly
-into a backend.
+请参阅[编程语言的代码插装][instrumentation]了解如何将信号从应用程序直接导出到后
+端具体的端到端示例。
 
-## Tradeoffs
+## 权衡
 
-Pros:
+优点:
 
-- Simple to use (especially in a dev/test environment)
-- No additional moving parts to operate (in production environments)
+- 使用简单(特别是在开发/测试环境中)
+- 没有额外的移动部件需要操作(在生产环境中)
 
-Cons:
+缺点:
 
-- Requires code changes if collection, processing, or ingestion changes
-- Strong coupling between the application code and the backend
-- There are limited number of exporters per language implementation
+- 如果收集、处理或摄取发生变化，则需要更改代码
+- 应用程序代码和后端之间的强耦合
+- 每种语言实现的导出器数量有限
 
-[instrumentation]: /docs/instrumentation/
+[instrumentation]: ../../instrumentation/index.md

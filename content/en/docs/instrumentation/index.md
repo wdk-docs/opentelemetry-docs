@@ -1,5 +1,5 @@
 ---
-title: 仪表
+title: 插装
 description: >-
   许多流行的编程语言都支持OpenTelemetry代码插装
 weight: 2
@@ -8,7 +8,7 @@ weight: 2
 OpenTelemetry 代码[植入][]支持下面列出的语言。根据语言的不同，所涵盖的主题将包括
 以下部分或全部:
 
-- 自动仪表
+- 自动插装
 - 手动工具
 - 导出数据
 

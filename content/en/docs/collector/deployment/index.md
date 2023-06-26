@@ -1,19 +1,17 @@
 ---
 title: 部署
-description: Patterns you can apply to deploy the OpenTelemetry collector
+description: 可以应用于部署OpenTelemetry收集器的模式
 weight: 2
 ---
 
-The OpenTelemetry collector consists of a single binary which you can use in
-different ways, for different use cases. This section describes deployment
-patterns, their use cases along with pros and cons and best practices for
-collector configurations for cross-environment and multi-backend deployments.
+OpenTelemetry 收集器由单个二进制文件组成，您可以针对不同的用例以不同的方式使用它
+。本节描述部署模式、它们的用例、优缺点以及用于跨环境和多后端部署的收集器配置的最
+佳实践。
 
-## Resources
+## 资源
 
-- KubeCon NA 2021 Talk on [OpenTelemetry Collector Deployment
-  Patterns][y-patterns]
-- [Deployment Patterns][gh-patterns] accompanying the talk
+- KubeCon NA 2021 讲座[OpenTelemetry 收集器部署模式][y-patterns]
+- 伴随着演讲的[部署模式][gh-patterns]
 
 [gh-patterns]:
   https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/

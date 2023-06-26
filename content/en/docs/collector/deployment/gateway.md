@@ -6,152 +6,143 @@ description:
 weight: 3
 ---
 
-The gateway collector deployment pattern consists of applications (or other
-collectors) sending telemetry signals to a single OTLP endpoint provided by one
-or more collector instances running as a standalone service (for example, a
-deployment in Kubernetes), typically per cluster, per data center or per region.
+网关收集器部署模式由应用程序(或其他收集器)组成，这些应用程序(或其他收集器)将遥测
+信号发送到作为独立服务运行的一个或多个收集器实例提供的单个 OTLP 端点(例如
+，Kubernetes 中的部署)，通常是每个集群、每个数据中心或每个区域。
 
-In the general case you can use an out-of-the-box load balancer to distribute
-the load amongst the collectors:
+一般情况下，您可以使用开箱即用的负载均衡器来在收集器之间分配负载:
 
 ![Gateway deployment concept](../../img/otel_gateway_sdk.svg)
 
-For use cases where the processing of the telemetry data processing has to
-happen in a specific collector, you would use a two-tiered setup with a
-collector that has a pipeline configured with the [Trace ID/Service-name aware
-load-balancing exporter][lb-exporter] in the first tier and the collectors
-handling the scale out in the second tier. For example, you will need to use the
-load-balancing exporter when using the [Tail Sampling
-processor][tailsample-processor] so that all spans for a given trace reach the
-same collector instance where the tail sampling policy is applied.
+对于遥测数据处理的处理必须在特定收集器中进行的用例，您可以使用两层设置，其中收集
+器的管道在第一层配置了[跟踪 ID/服务名称感知的负载平衡导出程序][lb-exporter]，而
+收集器在第二层处理向外扩展。例如，在使用[Tail Sampling 处理
+器][tailsample-processor]时，您将需要使用负载平衡导出器，以便给定跟踪的所有跨度
+到达应用尾部抽样策略的同一收集器实例。
 
-Let's have a look at such a case where we are using the load-balancing exporter:
+让我们来看看这样一个使用负载均衡导出器的例子:
 
 ![Gateway deployment with load-balancing exporter](../../img/gateway-lb-sdk.svg)
 
-1. In the app, the SDK is configured to send OTLP data to a central location.
-1. A collector configured using the load-balancing exporter that distributes
-   signals to a group of collectors.
-1. The collectors are configured to send telemetry data to one or more backends.
+1. 在应用程序中，SDK 被配置为将 OTLP 数据发送到中心位置。
+2. 使用负载平衡导出器配置的收集器，它将信号分发到一组收集器。
+3. 采集器配置为将遥测数据发送到一个或多个后端。
 
-{{% alert title="Note" color="info" %}} Currently, the load-balancing exporter
-only supports pipelines of the `traces` type. {{% /alert %}}
+!!! warning
+
+    目前，负载平衡导出器只支持`traces`类型的管道。
 
 ## Example
 
-For a concrete example of the centralized collector deployment pattern we first
-need to have a closer look at the load-balancing exporter. It has two main
-configuration fields:
+对于集中式收集器部署模式的具体示例，我们首先需要仔细研究负载平衡导出器。它有两个
+主要配置字段:
 
-- The `resolver`, which determines where to find the downstream collectors (or:
-  backends). If you use the `static` sub-key here, you will have to manually
-  enumerate the collector URLs. The other supported resolver is the DNS resolver
-  which will periodically check for updates and resolve IP addresses. For this
-  resolver type, the `hostname` sub-key specifies the hostname to query in order
-  to obtain the list of IP addresses.
-- With the `routing_key` field you tell the load-balancing exporter to route
-  spans to specific downstream collectors. If you set this field to `traceID`
-  (default) then the Load-balancing exporter exports spans based on their
-  `traceID`. Otherwise, if you use `service` as the value for `routing_key`, it
-  exports spans based on their service name which is useful when using
-  connectors like the [Span Metrics connector][spanmetrics-connector], so all
-  spans of a service will be send to the same downstream collector for metric
-  collection, guaranteeting accurate aggregations.
+- `resolver`，它决定在哪里找到下游收集器(或:后端)。如果在这里使用 `static`子键，
+  则必须手动枚举收集器的 url。另一个支持的解析器是 DNS 解析器，它将定期检查更新
+  和解析 IP 地址。对于这种解析器类型，`hostname`子键指定要查询的主机名，以便获得
+  IP 地址列表。
+- 使用`routing_key`字段，您可以告诉负载平衡导出器将 spans 路由到特定的下游收集器
+  。如果您将此字段设置为`traceID` (默认)，则负载平衡导出程序将根据其`traceID` 导
+  出 spans。否则，如果你使用`service`作为`routing_key`的值，它会根据它们的服务名
+  称导出 spans，这在使用像[Span Metrics 连接器][spanmetrics-connector]这样的连接
+  器时很有用，所以一个服务的所有 spans 将被发送到相同的下游收集器进行度量收集，
+  保证准确的聚合。
 
-The first-tier collector servicing the OTLP endpoint would be configured as
-shown below:
+服务于 OTLP 端点的第一层收集器将按照如下所示进行配置:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=yaml persistLang=false >}}
-{{< tab Static >}}
-receivers:
-  otlp:
-    protocols:
-      grpc:
+=== "Static"
 
-exporters:
-  loadbalancing:
-    protocol:
+    ```yml
+    receivers:
       otlp:
-        insecure: true
-    resolver:
-      static:
-        hostnames:
-          - collector-1.example.com:4317
-          - collector-2.example.com:5317
-          - collector-3.example.com
+        protocols:
+          grpc:
 
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      exporters: [loadbalancing]
-{{< /tab >}}
-{{< tab DNS >}}
-receivers:
-  otlp:
-    protocols:
-      grpc:
+    exporters:
+      loadbalancing:
+        protocol:
+          otlp:
+            insecure: true
+        resolver:
+          static:
+            hostnames:
+              - collector-1.example.com:4317
+              - collector-2.example.com:5317
+              - collector-3.example.com
 
-exporters:
-  loadbalancing:
-    protocol:
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          exporters: [loadbalancing]
+    ```
+
+=== "DNS"
+
+    ```yml
+    receivers:
       otlp:
-        insecure: true
-    resolver:
-      dns:
-        hostname: collectors.example.com
+        protocols:
+          grpc:
 
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      exporters: [loadbalancing]
-{{< /tab >}}
-{{< tab "DNS with service" >}}
-receivers:
-  otlp:
-    protocols:
-      grpc:
+    exporters:
+      loadbalancing:
+        protocol:
+          otlp:
+            insecure: true
+        resolver:
+          dns:
+            hostname: collectors.example.com
 
-exporters:
-  loadbalancing:
-    routing_key: "service"
-    protocol:
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          exporters: [loadbalancing]
+    ```
+
+=== "DNS with service"
+
+    ```yml
+    receivers:
       otlp:
-        insecure: true
-    resolver:
-      dns:
-        hostname: collectors.example.com
-        port: 5317
+        protocols:
+          grpc:
 
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      exporters: [loadbalancing]
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+    exporters:
+      loadbalancing:
+        routing_key: 'service'
+        protocol:
+          otlp:
+            insecure: true
+        resolver:
+          dns:
+            hostname: collectors.example.com
+            port: 5317
 
-The load-balancing exporter emits metrics including
-`otelcol_loadbalancer_num_backends` and `otelcol_loadbalancer_backend_latency`
-that you can use for health and performance monitoring of the OTLP endpoint
-collector.
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          exporters: [loadbalancing]
+    ```
 
-## Tradeoffs
+负载平衡导出程序发出的指标包括`otelcol_loadbalancer_num_backends` 和
+`otelcol_loadbalancer_backend_latency`，您可以使用这些指标监视 OTLP 端点收集器的
+运行状况和性能。
 
-Pros:
+## 利弊
 
-- Separation of concerns such as centrally managed credentials
-- Centralized policy management (for example, filtering certain logs or
-  sampling)
+优点:
 
-Cons:
+- 关注点分离，例如集中管理的凭据
+- 集中策略管理(例如，过滤某些日志或采样)
 
-- It's one more thing to maintain and that can fail (complexity)
-- Added latency in case of cascaded collectors
-- Higher overall resource usage (costs)
+缺点:
+
+- 它又多了一个需要维护的东西，而且可能会失败(复杂性)
+- 增加了级联收集器情况下的延迟
+- 更高的整体资源使用(成本)
 
 [lb-exporter]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter

@@ -7,34 +7,31 @@ spelling: cSpell:ignore prometheusremotewrite prodevent spanmetrics servicegraph
 spelling: cSpell:ignore oidc cfssl genkey initca cfssljson gencert
 ---
 
-Familiarity with the following pages is assumed:
+假设熟悉以下页面:
 
-- [Data Collection concepts](/docs/concepts/data-collection/) in order to
-  understand the repositories applicable to the OpenTelemetry Collector.
-- [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
+- [数据收集概念](/docs/concepts/data-collection/)以便了解适用于 OpenTelemetry
+  Collector 的存储库。
+- [安全指导](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
-## Basics
+## 基本
 
-The Collector consists of four components that access telemetry data:
+采集器由四个组件组成，用于访问遥测数据:
 
-- <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg"></img>
+- ![](../../assets/img/logos/32x32/Receivers.svg){ width="32" }
   [Receivers](#receivers)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg"></img>
+- ![](../../assets/img/logos/32x32/Processors.svg){ width="32" }
   [Processors](#processors)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
+- ![](../../assets/img/logos/32x32/Exporters.svg){ width="32" }
   [Exporters](#exporters)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg"></img>
+- ![](../../assets/img/logos/32x32/Load_Balancer.svg){ width="32" }
   [Connectors](#connectors)
 
-These components once configured must be enabled via pipelines within the
-[service](#service) section.
+这些组件一旦配置好，就必须通过[service](#service)部分中的管道启用。
 
-Secondarily, there are [extensions](#extensions), which provide capabilities
-that can be added to the Collector, but which do not require direct access to
-telemetry data and are not part of pipelines. They are also enabled within the
-[service](#service) section.
+其次，还有[扩展](#extensions)，它们提供了可以添加到 Collector 的功能，但不需要直
+接访问遥测数据，也不是管道的一部分。它们也在[service](#service)部分中启用。
 
-An example configuration would look like:
+一个示例配置如下:
 
 ```yaml
 receivers:
@@ -72,10 +69,9 @@ service:
       exporters: [otlp]
 ```
 
-Note that receivers, processors, exporters and/or pipelines are defined via
-component identifiers in `type[/name]` format (e.g. `otlp` or `otlp/2`).
-Components of a given type can be defined more than once as long as the
-identifiers are unique. For example:
+请注意，接收器、处理器、输出器和/或管道是通过组件标识符以`type[/name]`格式定义的
+(例如: `otlp` or `otlp/2`)。只要标识符是唯一的，给定类型的组件就可以定义多次。例
+如:
 
 ```yaml
 receivers:
@@ -124,8 +120,8 @@ service:
       exporters: [otlp]
 ```
 
-The configuration can also include other files, causing the Collector to merge
-the two files in a single in-memory representation of the YAML configuration:
+配置也可以包括其他文件，导致 Collector 将两个文件合并到 YAML 配置的单个内存表示
+中:
 
 ```yaml
 receivers:
@@ -144,14 +140,14 @@ service:
       exporters: [otlp]
 ```
 
-With the `exporters.yaml` file being:
+`exporters.yaml` 文件为:
 
 ```yaml
 otlp:
   endpoint: otelcol.observability.svc.cluster.local:443
 ```
 
-The final result in memory will be:
+内存中的最终结果将是:
 
 ```yaml
 receivers:
@@ -172,13 +168,12 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers
+## Receivers - 接收器
 
-<img width="35" class="img-initial" src="/img/logos/32x32/Receivers.svg"></img>
+![](../../assets/img/logos/32x32/Receivers.svg){ width="35" }
 
-A receiver, which can be push or pull based, is how data gets into the
-Collector. Receivers may support one or more
-[data sources](/docs/concepts/signals/).
+接收器可以是基于推或拉的，它是数据进入收集器的方式。接收器可以支持一个或多
+个[数据源](/docs/concepts/signals/)。
 
 The `receivers:` section is how receivers are configured. Many receivers come
 with default settings so simply specifying the name of the receiver is enough to
@@ -187,14 +182,17 @@ wants to change the default configuration then such configuration must be
 defined in this section. Configuration parameters specified for which the
 receiver provides a default configuration are overridden.
 
-> Configuring a receiver does not enable it. Receivers are enabled via pipelines
-> within the [service](#service) section.
+`receivers:`部分是如何配置接收器的。许多接收器都带有默认设置，因此只需指定接收器
+的名称就足以配置它(例如，`zipkin:`)。如果需要配置或者用户希望更改默认配置，则必
+须在本节中定义这种配置。将覆盖接收器为其提供默认配置的指定配置参数。
 
-One or more receivers must be configured. By default, no receivers are
-configured. A basic example of receivers is provided below.
+> 配置接收器不会启用它。接收器通过[service](#service)节中的管道启用。
 
-> For detailed receiver configuration, please see the
-> [receiver README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
+必须配置一个或多个接收器。缺省情况下，没有配置接收器。下面提供了一个接收器的基本
+示例。
+
+> 有关接收器的详细配置，请参
+> 阅[receiver README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
 ```yaml
 receivers:
@@ -249,7 +247,7 @@ receivers:
   zipkin:
 ```
 
-## Processors
+## Processors - 处理器
 
 <img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"></img>
 
@@ -332,7 +330,7 @@ processors:
       separator: '::'
 ```
 
-## Exporters
+## Exporters - 导出器
 
 <img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
 
@@ -411,7 +409,7 @@ exporters:
     endpoint: http://localhost:9411/api/v2/spans
 ```
 
-## Connectors
+## Connectors - 连接器
 
 A connector is both an exporter and receiver. As the name suggests a Connector
 connects two pipelines: It consumes data as an exporter at the end of one
@@ -464,7 +462,7 @@ connectors:
       max_items: 10
 ```
 
-## Extensions
+## Extensions - 扩展
 
 Extensions are available primarily for tasks that do not involve processing
 telemetry data. Examples of extensions include health monitoring, service
@@ -495,7 +493,7 @@ extensions:
     size_mib: 512
 ```
 
-## Service
+## Service - 服务
 
 The service section is used to configure what components are enabled in the
 Collector based on the configuration found in the receivers, processors,
@@ -573,13 +571,12 @@ service:
       address: 0.0.0.0:8888
 ```
 
-## Other Information
+## 其他信息
 
-### Configuration Environment Variables
+### 配置环境变量
 
-The use and expansion of environment variables is supported in the Collector
-configuration. For example to use the values stored on the `DB_KEY` and
-`OPERATION` environment variables you can write the following:
+在 Collector 配置中支持环境变量的使用和扩展。例如，要使用存储
+在`DB_KEY`和`OPERATION`环境变量上的值，你可以这样写:
 
 ```yaml
 processors:
@@ -589,8 +586,7 @@ processors:
         action: ${env:OPERATION}
 ```
 
-Use `$$` to indicate a literal `$`. For example, representing
-`$DataVisualization` would look like the following:
+使用`$$`表示文字`$`。例如，表示`$DataVisualization`看起来像这样:
 
 ```yaml
 exporters:
@@ -599,49 +595,40 @@ exporters:
     namespace: $$DataVisualization
 ```
 
-### Proxy Support
+### 代理支持
 
-Exporters that leverage the `net/http` package (all do today) respect the
-following proxy environment variables:
+利用`net/http`包的出口商(今天都是这样)尊重以下代理环境变量:
 
 - HTTP_PROXY
 - HTTPS_PROXY
 - NO_PROXY
 
-If set at Collector start time then exporters, regardless of protocol, will or
-will not proxy traffic as defined by these environment variables.
+如果在 Collector 启动时间设置，那么无论协议如何，导出程序将会或不会按照这些环境
+变量定义代理流量。
 
-### Authentication
+### 身份验证
 
-Most receivers exposing an HTTP or gRPC port are able to be protected using the
-collector's authentication mechanism, and most exporters using HTTP or gRPC
-clients are able to add authentication data to the outgoing requests.
+大多数暴露 HTTP 或 gRPC 端口的接收器都能够使用收集器的身份验证机制来保护，并且大
+多数使用 HTTP 或 gRPC 客户端的导出器都能够向传出请求添加身份验证数据。
 
-The authentication mechanism in the collector uses the extensions mechanism,
-allowing for custom authenticators to be plugged into collector distributions.
-If you are interested in developing a custom authenticator, check out the
-["Building a custom authenticator"](../custom-auth) document.
+收集器中的身份验证机制使用扩展机制，允许将自定义身份验证器插入收集器发行版中。如
+果您对开发自定义身份验证器感兴趣，请查
+看[构建自定义身份验证器](./custom-auth.md)文档。
 
-Each authentication extension has two possible usages: as client authenticator
-for exporters, adding auth data to outgoing requests, and as server
-authenticator for receivers, authenticating incoming connections. Refer to the
-authentication extension for a list of its capabilities, but in general, an
-authentication extension would only implement one of those traits. For a list of
-known authenticators, use the
-[Registry](/ecosystem/registry/?s=authenticator&component=extension) available
-in this website.
+每个身份验证扩展都有两种可能的用法:作为导出者的客户端身份验证器，向传出请求添加
+身份验证数据;作为接收方的服务器身份验证器，对传入连接进行身份验证。请参考身份验
+证扩展以了解其功能列表，但通常情况下，身份验证扩展只能实现其中一个特征。有关已知
+身份验证器的列表，请使用本网站提供
+的[注册表](/ecosystem/registry/?s=authenticator&component=extension)。
 
-To add a server authenticator to a receiver in your collector, make sure to:
+若要将服务器身份验证器添加到收集器中的接收器，请确保:
 
-1. add the authenticator extension and its configuration under `.extensions`
-1. add a reference to the authenticator to `.services.extensions`, so that it's
-   loaded by the collector
-1. add a reference to the authenticator under
-   `.receivers.<your-receiver>.<http-or-grpc-config>.auth`
+1. 在`.extensions`下添加验证器扩展及其配置
+2. 向`.services.extensions`中添加对验证器的引用，以便收集器加载它
+3. 在`.receivers.<your-receiver>.<http-or-grpc-config>.auth`下添加对验证器的引用
 
-Here's an example that uses the OIDC authenticator on the receiver side, making
-this suitable for a remote collector that receives data from an OpenTelemetry
-Collector acting as agent:
+下面是一个在接收端使用 OIDC 验证器的示例，使其适用于从充当代理的 OpenTelemetry
+collector 接收数据的远程收集器:
 
 ```yaml
 extensions:
@@ -673,8 +660,8 @@ service:
         - logging
 ```
 
-On the agent side, this is an example that makes the OTLP exporter obtain OIDC
-tokens, adding them to every RPC made to a remote collector:
+在代理端，这是一个使 OTLP 导出器获得 OIDC 令牌的示例，并将它们添加到远程收集器的
+每个 RPC 中:
 
 ```yaml
 extensions:
@@ -709,16 +696,13 @@ service:
         - otlp/auth
 ```
 
-### Setting up certificates
+### 设置证书
 
-For a production setup, we strongly recommend using TLS certificates, either for
-secure communication or mTLS for mutual authentication. See the below steps to
-generate self-signed certificates used in this example. You might want to use
-your current cert provisioning procedures to procure a certificate for
-production usage.
+对于生产设置，我们强烈建议使用 TLS 证书，用于安全通信或 mTLS 用于相互身份验证。
+请参见以下步骤生成本示例中使用的自签名证书。您可能希望使用当前的证书供应过程来获
+取用于生产的证书。
 
-Install [cfssl](https://github.com/cloudflare/cfssl), and create the following
-`csr.json` file:
+安装[cfssl](https://github.com/cloudflare/cfssl)，并创建如下 `csr.json` 文件:
 
 ```json
 {
@@ -735,14 +719,13 @@ Install [cfssl](https://github.com/cloudflare/cfssl), and create the following
 }
 ```
 
-Now, run the following commands:
+现在，运行以下命令:
 
 ```bash
 cfssl genkey -initca csr.json | cfssljson -bare ca
 cfssl gencert -ca ca.pem -ca-key ca-key.pem csr.json | cfssljson -bare cert
 ```
 
-This will create two certificates; first, an "OpenTelemetry Example" Certificate
-Authority (CA) in `ca.pem` and the associated key in `ca-key.pem`, and second a
-client certificate in `cert.pem` (signed by the OpenTelemetry Example CA) and
-the associated key in `cert-key.pem`.
+这将创建两个证书;首先，`ca.pem`中的"OpenTelemetry 示例"证书颁发机构(CA)
+和`ca-key.pem`中的关联密钥客户端证书`cert.pem`(由 OpenTelemetry 示例 CA 签名)和
+关联密钥`cert-key.pem`。
