@@ -12,24 +12,24 @@
         <meta name="author" content="OPENTELEMETRY">
       
       
-        <link rel="canonical" href="https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/automatic/_index/">
+        <link rel="canonical" href="https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/go/exporters/">
       
       
-        <link rel="prev" href="../../mypy/">
+        <link rel="prev" href="../examples/">
       
       
-        <link rel="next" href="../agent-config/">
+        <link rel="next" href="../getting-started/">
       
-      <link rel="icon" href="../../../../../assets/favicons/favicon.ico">
+      <link rel="icon" href="../../../../assets/favicons/favicon.ico">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
-        <title>Automatic Instrumentation - OPENTELEMETRY 文档</title>
+        <title>Exporters - OPENTELEMETRY 文档</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.26e3688c.min.css">
       
       
 
@@ -45,9 +45,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup" class="md-skip">
+        <a href="#otlp-endpoint" class="md-skip">
           跳转至
         </a>
       
@@ -85,9 +85,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../../.." title="OPENTELEMETRY 文档" class="md-header__button md-logo" aria-label="OPENTELEMETRY 文档" data-md-component="logo">
+    <a href="../../../.." title="OPENTELEMETRY 文档" class="md-header__button md-logo" aria-label="OPENTELEMETRY 文档" data-md-component="logo">
       
-  <img src="../../../../../assets/logo/logo.svg" alt="logo">
+  <img src="../../../../assets/logo/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Automatic Instrumentation
+              Exporters
             
           </span>
         </div>
@@ -172,7 +172,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../../../.." class="md-tabs__link">
+    <a href="../../../.." class="md-tabs__link">
       首页
     </a>
   </li>
@@ -189,7 +189,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../" class="md-tabs__link md-tabs__link--active">
+      <a href="../../../" class="md-tabs__link md-tabs__link--active">
         文档
       </a>
     </li>
@@ -205,7 +205,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../ecosystem/" class="md-tabs__link">
+      <a href="../../../../ecosystem/" class="md-tabs__link">
         生态系统
       </a>
     </li>
@@ -218,7 +218,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../../../../status/" class="md-tabs__link">
+    <a href="../../../../status/" class="md-tabs__link">
       状态
     </a>
   </li>
@@ -233,7 +233,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../community/" class="md-tabs__link">
+      <a href="../../../../community/" class="md-tabs__link">
         社区
       </a>
     </li>
@@ -249,7 +249,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../blog/" class="md-tabs__link">
+      <a href="../../../../blog/" class="md-tabs__link">
         博客
       </a>
     </li>
@@ -265,7 +265,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../search/" class="md-tabs__link">
+      <a href="../../../../search/" class="md-tabs__link">
         其它
       </a>
     </li>
@@ -299,9 +299,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../.." title="OPENTELEMETRY 文档" class="md-nav__button md-logo" aria-label="OPENTELEMETRY 文档" data-md-component="logo">
+    <a href="../../../.." title="OPENTELEMETRY 文档" class="md-nav__button md-logo" aria-label="OPENTELEMETRY 文档" data-md-component="logo">
       
-  <img src="../../../../../assets/logo/logo.svg" alt="logo">
+  <img src="../../../../assets/logo/logo.svg" alt="logo">
 
     </a>
     OPENTELEMETRY 文档
@@ -329,7 +329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         首页
       </a>
     </li>
@@ -388,7 +388,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../">文档</a>
+          <a href="../../../">文档</a>
           
             <label for="__nav_2">
               <span class="md-nav__icon md-icon"></span>
@@ -411,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../what-is-opentelemetry/" class="md-nav__link">
+      <a href="../../../what-is-opentelemetry/" class="md-nav__link">
         什么是遥测?
       </a>
     </li>
@@ -447,7 +447,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../getting-started/">入门</a>
+          <a href="../../../getting-started/">入门</a>
           
             <label for="__nav_2_3">
               <span class="md-nav__icon md-icon"></span>
@@ -470,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting-started/dev/" class="md-nav__link">
+      <a href="../../../getting-started/dev/" class="md-nav__link">
         开发者入门指南
       </a>
     </li>
@@ -484,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../getting-started/ops/" class="md-nav__link">
+      <a href="../../../getting-started/ops/" class="md-nav__link">
         Ops入门
       </a>
     </li>
@@ -543,7 +543,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../concepts/">概念</a>
+          <a href="../../../concepts/">概念</a>
           
             <label for="__nav_2_4">
               <span class="md-nav__icon md-icon"></span>
@@ -566,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/observability-primer/" class="md-nav__link">
+      <a href="../../../concepts/observability-primer/" class="md-nav__link">
         可观测 Primer
       </a>
     </li>
@@ -606,7 +606,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../concepts/signals/">信号</a>
+          <a href="../../../concepts/signals/">信号</a>
           
             <label for="__nav_2_4_3">
               <span class="md-nav__icon md-icon"></span>
@@ -629,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/signals/traces/" class="md-nav__link">
+      <a href="../../../concepts/signals/traces/" class="md-nav__link">
         Traces
       </a>
     </li>
@@ -643,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/signals/metrics/" class="md-nav__link">
+      <a href="../../../concepts/signals/metrics/" class="md-nav__link">
         Metrics
       </a>
     </li>
@@ -657,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/signals/logs/" class="md-nav__link">
+      <a href="../../../concepts/signals/logs/" class="md-nav__link">
         Logs
       </a>
     </li>
@@ -671,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/signals/baggage/" class="md-nav__link">
+      <a href="../../../concepts/signals/baggage/" class="md-nav__link">
         Baggage
       </a>
     </li>
@@ -716,7 +716,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../concepts/instrumentation/">仪表</a>
+          <a href="../../../concepts/instrumentation/">插装</a>
           
             <label for="__nav_2_4_4">
               <span class="md-nav__icon md-icon"></span>
@@ -727,7 +727,7 @@
       <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2_4_4">
           <span class="md-nav__icon md-icon"></span>
-          仪表
+          插装
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -739,8 +739,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/instrumentation/automatic/" class="md-nav__link">
-        自动
+      <a href="../../../concepts/instrumentation/automatic/" class="md-nav__link">
+        自动插装
       </a>
     </li>
   
@@ -753,8 +753,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/instrumentation/manual/" class="md-nav__link">
-        手动
+      <a href="../../../concepts/instrumentation/manual/" class="md-nav__link">
+        手动插装
       </a>
     </li>
   
@@ -767,8 +767,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/instrumentation/libraries/" class="md-nav__link">
-        库
+      <a href="../../../concepts/instrumentation/libraries/" class="md-nav__link">
+        插装库
       </a>
     </li>
   
@@ -788,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/components/" class="md-nav__link">
+      <a href="../../../concepts/components/" class="md-nav__link">
         组件
       </a>
     </li>
@@ -802,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/semantic-conventions/" class="md-nav__link">
+      <a href="../../../concepts/semantic-conventions/" class="md-nav__link">
         语义约定
       </a>
     </li>
@@ -816,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/data-collection/" class="md-nav__link">
+      <a href="../../../concepts/data-collection/" class="md-nav__link">
         数据收集
       </a>
     </li>
@@ -848,7 +848,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../concepts/sampling/">采样</a>
+          <a href="../../../concepts/sampling/">采样</a>
           
         </div>
       
@@ -896,7 +896,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../concepts/sdk-configuration/">SDK配置</a>
+          <a href="../../../concepts/sdk-configuration/">SDK配置</a>
           
             <label for="__nav_2_4_9">
               <span class="md-nav__icon md-icon"></span>
@@ -919,7 +919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/sdk-configuration/general-sdk-configuration/" class="md-nav__link">
+      <a href="../../../concepts/sdk-configuration/general-sdk-configuration/" class="md-nav__link">
         通用SDK配置
       </a>
     </li>
@@ -933,7 +933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/sdk-configuration/otlp-exporter-configuration/" class="md-nav__link">
+      <a href="../../../concepts/sdk-configuration/otlp-exporter-configuration/" class="md-nav__link">
         OTLP导出配置
       </a>
     </li>
@@ -954,8 +954,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/distributions/" class="md-nav__link">
-        分布
+      <a href="../../../concepts/distributions/" class="md-nav__link">
+        分发
       </a>
     </li>
   
@@ -968,7 +968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../concepts/glossary/" class="md-nav__link">
+      <a href="../../../concepts/glossary/" class="md-nav__link">
         术语表
       </a>
     </li>
@@ -1041,7 +1041,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../demo/">演示</a>
+          <a href="../../../demo/">演示</a>
           
             <label for="__nav_2_5">
               <span class="md-nav__icon md-icon"></span>
@@ -1064,7 +1064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/architecture/" class="md-nav__link">
+      <a href="../../../demo/architecture/" class="md-nav__link">
         演示架构
       </a>
     </li>
@@ -1096,7 +1096,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../demo/collector-data-flow-dashboard/">采集器数据流仪表板</a>
+          <a href="../../../demo/collector-data-flow-dashboard/">采集器数据流仪表板</a>
           
         </div>
       
@@ -1122,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/development/" class="md-nav__link">
+      <a href="../../../demo/development/" class="md-nav__link">
         开发
       </a>
     </li>
@@ -1136,7 +1136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/docker-deployment/" class="md-nav__link">
+      <a href="../../../demo/docker-deployment/" class="md-nav__link">
         Docker 部署
       </a>
     </li>
@@ -1150,7 +1150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/feature-flags/" class="md-nav__link">
+      <a href="../../../demo/feature-flags/" class="md-nav__link">
         功能标志
       </a>
     </li>
@@ -1164,7 +1164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/features/" class="md-nav__link">
+      <a href="../../../demo/features/" class="md-nav__link">
         演示功能
       </a>
     </li>
@@ -1178,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/forking/" class="md-nav__link">
+      <a href="../../../demo/forking/" class="md-nav__link">
         分叉演示存储库
       </a>
     </li>
@@ -1192,7 +1192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/kubernetes-deployment/" class="md-nav__link">
+      <a href="../../../demo/kubernetes-deployment/" class="md-nav__link">
         Kubernetes 开发
       </a>
     </li>
@@ -1206,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/manual-span-attributes/" class="md-nav__link">
+      <a href="../../../demo/manual-span-attributes/" class="md-nav__link">
         手动跨度属性
       </a>
     </li>
@@ -1220,7 +1220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/metric-features/" class="md-nav__link">
+      <a href="../../../demo/metric-features/" class="md-nav__link">
         按服务度量特征覆盖率
       </a>
     </li>
@@ -1260,7 +1260,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../demo/requirements/">需求</a>
+          <a href="../../../demo/requirements/">需求</a>
           
             <label for="__nav_2_5_12">
               <span class="md-nav__icon md-icon"></span>
@@ -1283,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/requirements/application/" class="md-nav__link">
+      <a href="../../../demo/requirements/application/" class="md-nav__link">
         应用需求
       </a>
     </li>
@@ -1297,7 +1297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/requirements/architecture/" class="md-nav__link">
+      <a href="../../../demo/requirements/architecture/" class="md-nav__link">
         架构需求
       </a>
     </li>
@@ -1311,7 +1311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/requirements/opentelemetry/" class="md-nav__link">
+      <a href="../../../demo/requirements/opentelemetry/" class="md-nav__link">
         OpenTelemetry 需求
       </a>
     </li>
@@ -1325,7 +1325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/requirements/system/" class="md-nav__link">
+      <a href="../../../demo/requirements/system/" class="md-nav__link">
         系统需求
       </a>
     </li>
@@ -1366,7 +1366,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../demo/scenarios/">场景</a>
+          <a href="../../../demo/scenarios/">场景</a>
           
             <label for="__nav_2_5_13">
               <span class="md-nav__icon md-icon"></span>
@@ -1407,7 +1407,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../demo/scenarios/recommendation-cache/">建议缓存</a>
+          <a href="../../../demo/scenarios/recommendation-cache/">建议缓存</a>
           
         </div>
       
@@ -1458,7 +1458,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../demo/screenshots/">演示截图</a>
+          <a href="../../../demo/screenshots/">演示截图</a>
           
         </div>
       
@@ -1484,7 +1484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/service-table/" class="md-nav__link">
+      <a href="../../../demo/service-table/" class="md-nav__link">
         服务的角色
       </a>
     </li>
@@ -1550,7 +1550,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../demo/services/">服务</a>
+          <a href="../../../demo/services/">服务</a>
           
             <label for="__nav_2_5_16">
               <span class="md-nav__icon md-icon"></span>
@@ -1573,7 +1573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/accounting/" class="md-nav__link">
+      <a href="../../../demo/services/accounting/" class="md-nav__link">
         Accounting Service
       </a>
     </li>
@@ -1587,7 +1587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/ad/" class="md-nav__link">
+      <a href="../../../demo/services/ad/" class="md-nav__link">
         Ad Service
       </a>
     </li>
@@ -1601,7 +1601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/cart/" class="md-nav__link">
+      <a href="../../../demo/services/cart/" class="md-nav__link">
         Cart Service
       </a>
     </li>
@@ -1615,7 +1615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/checkout/" class="md-nav__link">
+      <a href="../../../demo/services/checkout/" class="md-nav__link">
         Checkout Service
       </a>
     </li>
@@ -1629,7 +1629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/currency/" class="md-nav__link">
+      <a href="../../../demo/services/currency/" class="md-nav__link">
         Currency Service
       </a>
     </li>
@@ -1643,7 +1643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/email/" class="md-nav__link">
+      <a href="../../../demo/services/email/" class="md-nav__link">
         Email Service
       </a>
     </li>
@@ -1657,7 +1657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/feature-flag/" class="md-nav__link">
+      <a href="../../../demo/services/feature-flag/" class="md-nav__link">
         Feature Flag Service
       </a>
     </li>
@@ -1671,7 +1671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/fraud-detection/" class="md-nav__link">
+      <a href="../../../demo/services/fraud-detection/" class="md-nav__link">
         Fraud Detection Service
       </a>
     </li>
@@ -1685,7 +1685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/frontend-proxy/" class="md-nav__link">
+      <a href="../../../demo/services/frontend-proxy/" class="md-nav__link">
         Frontend Proxy (Envoy)
       </a>
     </li>
@@ -1699,7 +1699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/frontend/" class="md-nav__link">
+      <a href="../../../demo/services/frontend/" class="md-nav__link">
         Frontend
       </a>
     </li>
@@ -1713,7 +1713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/kafka/" class="md-nav__link">
+      <a href="../../../demo/services/kafka/" class="md-nav__link">
         Kafka
       </a>
     </li>
@@ -1727,7 +1727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/load-generator/" class="md-nav__link">
+      <a href="../../../demo/services/load-generator/" class="md-nav__link">
         Load Generator
       </a>
     </li>
@@ -1741,7 +1741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/payment/" class="md-nav__link">
+      <a href="../../../demo/services/payment/" class="md-nav__link">
         Payment Service
       </a>
     </li>
@@ -1755,7 +1755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/product-catalog/" class="md-nav__link">
+      <a href="../../../demo/services/product-catalog/" class="md-nav__link">
         Product Catalog Service
       </a>
     </li>
@@ -1769,7 +1769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/quote/" class="md-nav__link">
+      <a href="../../../demo/services/quote/" class="md-nav__link">
         Quote Service
       </a>
     </li>
@@ -1783,7 +1783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/recommendation/" class="md-nav__link">
+      <a href="../../../demo/services/recommendation/" class="md-nav__link">
         Recommendation Service
       </a>
     </li>
@@ -1797,7 +1797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/services/shipping/" class="md-nav__link">
+      <a href="../../../demo/services/shipping/" class="md-nav__link">
         Shipping Service
       </a>
     </li>
@@ -1818,7 +1818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/tests/" class="md-nav__link">
+      <a href="../../../demo/tests/" class="md-nav__link">
         测试
       </a>
     </li>
@@ -1832,7 +1832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../demo/trace-features/" class="md-nav__link">
+      <a href="../../../demo/trace-features/" class="md-nav__link">
         按服务跟踪功能覆盖
       </a>
     </li>
@@ -1897,7 +1897,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../">仪表</a>
+          <a href="../../">插装</a>
           
             <label for="__nav_2_6">
               <span class="md-nav__icon md-icon"></span>
@@ -1908,7 +1908,7 @@
       <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2_6">
           <span class="md-nav__icon md-icon"></span>
-          仪表
+          插装
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1948,7 +1948,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../cpp/">C++</a>
+          <a href="../../cpp/">C++</a>
           
             <label for="__nav_2_6_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1971,7 +1971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cpp/api/" class="md-nav__link">
+      <a href="../../cpp/api/" class="md-nav__link">
         API reference
       </a>
     </li>
@@ -1985,7 +1985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cpp/examples/" class="md-nav__link">
+      <a href="../../cpp/examples/" class="md-nav__link">
         Examples
       </a>
     </li>
@@ -1999,7 +1999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cpp/exporters/" class="md-nav__link">
+      <a href="../../cpp/exporters/" class="md-nav__link">
         Exporters
       </a>
     </li>
@@ -2013,7 +2013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cpp/getting-started/" class="md-nav__link">
+      <a href="../../cpp/getting-started/" class="md-nav__link">
         Getting Started
       </a>
     </li>
@@ -2027,7 +2027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cpp/manual/" class="md-nav__link">
+      <a href="../../cpp/manual/" class="md-nav__link">
         Manual Instrumentation
       </a>
     </li>
@@ -2088,7 +2088,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../net/">.NET</a>
+          <a href="../../net/">.NET</a>
           
             <label for="__nav_2_6_3">
               <span class="md-nav__icon md-icon"></span>
@@ -2111,7 +2111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/automatic/" class="md-nav__link">
+      <a href="../../net/automatic/" class="md-nav__link">
         Automatic Instrumentation
       </a>
     </li>
@@ -2125,7 +2125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/examples/" class="md-nav__link">
+      <a href="../../net/examples/" class="md-nav__link">
         Examples
       </a>
     </li>
@@ -2139,7 +2139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/exporters/" class="md-nav__link">
+      <a href="../../net/exporters/" class="md-nav__link">
         Exporters
       </a>
     </li>
@@ -2153,7 +2153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/getting-started/" class="md-nav__link">
+      <a href="../../net/getting-started/" class="md-nav__link">
         Getting Started
       </a>
     </li>
@@ -2167,7 +2167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/libraries/" class="md-nav__link">
+      <a href="../../net/libraries/" class="md-nav__link">
         Using instrumentation libraries
       </a>
     </li>
@@ -2181,7 +2181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/manual/" class="md-nav__link">
+      <a href="../../net/manual/" class="md-nav__link">
         Manual Instrumentation
       </a>
     </li>
@@ -2195,7 +2195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/metrics-api/" class="md-nav__link">
+      <a href="../../net/metrics-api/" class="md-nav__link">
         Metrics API reference
       </a>
     </li>
@@ -2209,7 +2209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/netframework/" class="md-nav__link">
+      <a href="../../net/netframework/" class="md-nav__link">
         .NET Framework instrumentation configuration
       </a>
     </li>
@@ -2223,7 +2223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/resources/" class="md-nav__link">
+      <a href="../../net/resources/" class="md-nav__link">
         Resources
       </a>
     </li>
@@ -2237,7 +2237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/shim/" class="md-nav__link">
+      <a href="../../net/shim/" class="md-nav__link">
         OpenTelemetry Tracing Shim
       </a>
     </li>
@@ -2251,7 +2251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../net/traces-api/" class="md-nav__link">
+      <a href="../../net/traces-api/" class="md-nav__link">
         Tracing API reference
       </a>
     </li>
@@ -2306,7 +2306,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../erlang/">Erlang/Elixir</a>
+          <a href="../../erlang/">Erlang/Elixir</a>
           
             <label for="__nav_2_6_4">
               <span class="md-nav__icon md-icon"></span>
@@ -2329,7 +2329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../erlang/api/" class="md-nav__link">
+      <a href="../../erlang/api/" class="md-nav__link">
         API reference
       </a>
     </li>
@@ -2343,7 +2343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../erlang/examples/" class="md-nav__link">
+      <a href="../../erlang/examples/" class="md-nav__link">
         Examples
       </a>
     </li>
@@ -2357,7 +2357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../erlang/getting-started/" class="md-nav__link">
+      <a href="../../erlang/getting-started/" class="md-nav__link">
         Getting Started
       </a>
     </li>
@@ -2371,7 +2371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../erlang/manual/" class="md-nav__link">
+      <a href="../../erlang/manual/" class="md-nav__link">
         Manual
       </a>
     </li>
@@ -2385,7 +2385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../erlang/propagation/" class="md-nav__link">
+      <a href="../../erlang/propagation/" class="md-nav__link">
         Propagation
       </a>
     </li>
@@ -2399,7 +2399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../erlang/resources/" class="md-nav__link">
+      <a href="../../erlang/resources/" class="md-nav__link">
         Resources
       </a>
     </li>
@@ -2413,7 +2413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../erlang/sampling/" class="md-nav__link">
+      <a href="../../erlang/sampling/" class="md-nav__link">
         Sampling
       </a>
     </li>
@@ -2427,7 +2427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../erlang/testing/" class="md-nav__link">
+      <a href="../../erlang/testing/" class="md-nav__link">
         Testing
       </a>
     </li>
@@ -2446,27 +2446,53 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_5" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_5" checked>
       
       
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
         
           
         
       
       
-        <label class="md-nav__link" for="__nav_2_6_5" id="__nav_2_6_5_label" tabindex="0">
-          Go
-          <span class="md-nav__icon md-icon"></span>
-        </label>
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Go</a>
+          
+            <label for="__nav_2_6_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_5_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2_6_5">
           <span class="md-nav__icon md-icon"></span>
           Go
@@ -2474,13 +2500,177 @@
         <ul class="md-nav__list" data-md-scrollfix>
           
             
+          
+            
               
   
   
   
     <li class="md-nav__item">
-      <a href="../../../go/index.md" class="md-nav__link">
-        None
+      <a href="../api/" class="md-nav__link">
+        API reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Exporters
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Exporters
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#otlp-endpoint" class="md-nav__link">
+    OTLP endpoint
+  </a>
+  
+    <nav class="md-nav" aria-label="OTLP endpoint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-http" class="md-nav__link">
+    Using HTTP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jaeger" class="md-nav__link">
+    Jaeger
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    Prometheus
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../libraries/" class="md-nav__link">
+        Using instrumentation libraries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manual/" class="md-nav__link">
+        Manual Instrumentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sampling/" class="md-nav__link">
+        Sampling
       </a>
     </li>
   
@@ -2522,21 +2712,13 @@
           
         
           
-            
-          
-        
-          
-        
-          
-        
-          
         
       
       
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../java/">Java</a>
+          <a href="../../java/">Java</a>
           
             <label for="__nav_2_6_6">
               <span class="md-nav__icon md-icon"></span>
@@ -2558,13 +2740,46 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../java/api/" class="md-nav__link">
-        API reference
-      </a>
-    </li>
-  
-
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_6_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../java/automatic/">自动</a>
+          
+            <label for="__nav_2_6_6_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_6_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          自动
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
             
           
             
@@ -2573,63 +2788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../java/examples/" class="md-nav__link">
-        Examples
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../java/getting-started/" class="md-nav__link">
-        Getting Started
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../java/manual/" class="md-nav__link">
-        Manual Instrumentation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../java/automatic/" class="md-nav__link">
-        Automatic Instrumentation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../java/automatic/agent-config/" class="md-nav__link">
+      <a href="../../java/automatic/agent-config/" class="md-nav__link">
         Agent Configuration
       </a>
     </li>
@@ -2643,7 +2802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../java/automatic/annotations/" class="md-nav__link">
+      <a href="../../java/automatic/annotations/" class="md-nav__link">
         Annotations
       </a>
     </li>
@@ -2657,8 +2816,71 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../java/automatic/extensions/" class="md-nav__link">
+      <a href="../../java/automatic/extensions/" class="md-nav__link">
         Extensions
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/api/" class="md-nav__link">
+        API reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/manual/" class="md-nav__link">
+        Manual Instrumentation
       </a>
     </li>
   
@@ -2720,7 +2942,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../js/">JavaScript</a>
+          <a href="../../js/">JavaScript</a>
           
             <label for="__nav_2_6_7">
               <span class="md-nav__icon md-icon"></span>
@@ -2765,7 +2987,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../js/getting-started/">入门</a>
+          <a href="../../js/getting-started/">入门</a>
           
             <label for="__nav_2_6_7_2">
               <span class="md-nav__icon md-icon"></span>
@@ -2788,7 +3010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/getting-started/browser/" class="md-nav__link">
+      <a href="../../js/getting-started/browser/" class="md-nav__link">
         Browser
       </a>
     </li>
@@ -2802,7 +3024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/getting-started/nodejs/" class="md-nav__link">
+      <a href="../../js/getting-started/nodejs/" class="md-nav__link">
         Node.js
       </a>
     </li>
@@ -2843,7 +3065,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../js/automatic/">自动</a>
+          <a href="../../js/automatic/">自动</a>
           
             <label for="__nav_2_6_7_3">
               <span class="md-nav__icon md-icon"></span>
@@ -2866,8 +3088,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/automatic/module-config/" class="md-nav__link">
-        Automatic Instrumentation Configuration
+      <a href="../../js/automatic/module-config/" class="md-nav__link">
+        自动插装配置
       </a>
     </li>
   
@@ -2887,7 +3109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/manual/" class="md-nav__link">
+      <a href="../../js/manual/" class="md-nav__link">
         手动
       </a>
     </li>
@@ -2901,7 +3123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/libraries/" class="md-nav__link">
+      <a href="../../js/libraries/" class="md-nav__link">
         使用工具库
       </a>
     </li>
@@ -2915,7 +3137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/exporters/" class="md-nav__link">
+      <a href="../../js/exporters/" class="md-nav__link">
         导出器
       </a>
     </li>
@@ -2929,7 +3151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/context/" class="md-nav__link">
+      <a href="../../js/context/" class="md-nav__link">
         上下文
       </a>
     </li>
@@ -2943,7 +3165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/propagation/" class="md-nav__link">
+      <a href="../../js/propagation/" class="md-nav__link">
         传播
       </a>
     </li>
@@ -2957,7 +3179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/resources/" class="md-nav__link">
+      <a href="../../js/resources/" class="md-nav__link">
         资源
       </a>
     </li>
@@ -2971,7 +3193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/sampling/" class="md-nav__link">
+      <a href="../../js/sampling/" class="md-nav__link">
         采样
       </a>
     </li>
@@ -2985,7 +3207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/serverless/" class="md-nav__link">
+      <a href="../../js/serverless/" class="md-nav__link">
         无服务
       </a>
     </li>
@@ -2999,7 +3221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/api/" class="md-nav__link">
+      <a href="../../js/api/" class="md-nav__link">
         API 参考
       </a>
     </li>
@@ -3013,7 +3235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../js/examples/" class="md-nav__link">
+      <a href="../../js/examples/" class="md-nav__link">
         示例
       </a>
     </li>
@@ -3068,7 +3290,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../php/">PHP</a>
+          <a href="../../php/">PHP</a>
           
             <label for="__nav_2_6_8">
               <span class="md-nav__icon md-icon"></span>
@@ -3091,7 +3313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../php/automatic/" class="md-nav__link">
+      <a href="../../php/automatic/" class="md-nav__link">
         Automatic Instrumentation
       </a>
     </li>
@@ -3105,7 +3327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../php/examples/" class="md-nav__link">
+      <a href="../../php/examples/" class="md-nav__link">
         Examples
       </a>
     </li>
@@ -3119,7 +3341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../php/exporters/" class="md-nav__link">
+      <a href="../../php/exporters/" class="md-nav__link">
         Exporters
       </a>
     </li>
@@ -3133,7 +3355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../php/getting-started/" class="md-nav__link">
+      <a href="../../php/getting-started/" class="md-nav__link">
         Getting Started
       </a>
     </li>
@@ -3147,7 +3369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../php/manual/" class="md-nav__link">
+      <a href="../../php/manual/" class="md-nav__link">
         Manual Instrumentation
       </a>
     </li>
@@ -3161,7 +3383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../php/propagation/" class="md-nav__link">
+      <a href="../../php/propagation/" class="md-nav__link">
         Propagation
       </a>
     </li>
@@ -3175,7 +3397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../php/resources/" class="md-nav__link">
+      <a href="../../php/resources/" class="md-nav__link">
         Resources
       </a>
     </li>
@@ -3189,7 +3411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../php/sdk/" class="md-nav__link">
+      <a href="../../php/sdk/" class="md-nav__link">
         SDK
       </a>
     </li>
@@ -3208,29 +3430,19 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_9" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_9" >
       
       
         
           
             
-          
-        
-          
-        
-          
-        
-          
-        
           
         
           
@@ -3256,7 +3468,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../">Python</a>
+          <a href="../../python/">Python</a>
           
             <label for="__nav_2_6_9">
               <span class="md-nav__icon md-icon"></span>
@@ -3264,7 +3476,7 @@
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_9_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_9_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2_6_9">
           <span class="md-nav__icon md-icon"></span>
           Python
@@ -3278,203 +3490,46 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../api/" class="md-nav__link">
-        API reference
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cookbook/" class="md-nav__link">
-        Cookbook
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../distro/" class="md-nav__link">
-        OpenTelemetry Distro
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/" class="md-nav__link">
-        Examples
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../exporters/" class="md-nav__link">
-        Exporters
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../getting-started/" class="md-nav__link">
-        Getting Started
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../manual/" class="md-nav__link">
-        Manual Instrumentation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../mypy/" class="md-nav__link">
-        Using mypy
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
     
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Automatic Instrumentation
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_9_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../python/automatic/">自动</a>
+          
+            <label for="__nav_2_6_9_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_6_9_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6_9_2">
           <span class="md-nav__icon md-icon"></span>
+          自动
         </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Automatic Instrumentation
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-the-agent" class="md-nav__link">
-    Configuring the agent
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-libraries-and-frameworks" class="md-nav__link">
-    Supported libraries and frameworks
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    Troubleshooting
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#python-package-installation-failure" class="md-nav__link">
-    Python package installation failure
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#grpc-connectivity" class="md-nav__link">
-    gRPC Connectivity
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
+        <ul class="md-nav__list" data-md-scrollfix>
+          
             
           
             
@@ -3483,35 +3538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../agent-config/" class="md-nav__link">
-        Agent Configuration
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../example/" class="md-nav__link">
-        Auto-Instrumentation Example
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../operator/" class="md-nav__link">
+      <a href="../../python/automatic/operator/" class="md-nav__link">
         Using the OpenTelemetry Operator to Inject Auto-Instrumentation
       </a>
     </li>
@@ -3525,8 +3552,141 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ruby/api/" class="md-nav__link">
+      <a href="../../python/automatic/example/" class="md-nav__link">
+        Auto-Instrumentation Example
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/automatic/agent-config/" class="md-nav__link">
+        Agent Configuration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/api/" class="md-nav__link">
         API reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/cookbook/" class="md-nav__link">
+        Cookbook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/distro/" class="md-nav__link">
+        OpenTelemetry Distro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/exporters/" class="md-nav__link">
+        Exporters
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/manual/" class="md-nav__link">
+        Manual Instrumentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/mypy/" class="md-nav__link">
+        Using mypy
       </a>
     </li>
   
@@ -3571,12 +3731,14 @@
         
           
         
+          
+        
       
       
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../ruby/">Ruby</a>
+          <a href="../../ruby/">Ruby</a>
           
             <label for="__nav_2_6_10">
               <span class="md-nav__icon md-icon"></span>
@@ -3599,7 +3761,21 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ruby/automatic/" class="md-nav__link">
+      <a href="../../ruby/api/" class="md-nav__link">
+        API reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ruby/automatic/" class="md-nav__link">
         Automatic instrumentation
       </a>
     </li>
@@ -3613,7 +3789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ruby/examples/" class="md-nav__link">
+      <a href="../../ruby/examples/" class="md-nav__link">
         Examples
       </a>
     </li>
@@ -3627,7 +3803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ruby/exporters/" class="md-nav__link">
+      <a href="../../ruby/exporters/" class="md-nav__link">
         Exporters
       </a>
     </li>
@@ -3641,7 +3817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ruby/getting-started/" class="md-nav__link">
+      <a href="../../ruby/getting-started/" class="md-nav__link">
         Getting Started
       </a>
     </li>
@@ -3655,7 +3831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ruby/manual/" class="md-nav__link">
+      <a href="../../ruby/manual/" class="md-nav__link">
         Manual Instrumentation
       </a>
     </li>
@@ -3669,7 +3845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../ruby/sampling/" class="md-nav__link">
+      <a href="../../ruby/sampling/" class="md-nav__link">
         Sampling
       </a>
     </li>
@@ -3708,7 +3884,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../rust/">Rust</a>
+          <a href="../../rust/">Rust</a>
           
         </div>
       
@@ -3756,7 +3932,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../swift/">Swift</a>
+          <a href="../../swift/">Swift</a>
           
             <label for="__nav_2_6_12">
               <span class="md-nav__icon md-icon"></span>
@@ -3779,7 +3955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../swift/libraries/" class="md-nav__link">
+      <a href="../../swift/libraries/" class="md-nav__link">
         Instrumentation Libraries
       </a>
     </li>
@@ -3793,7 +3969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../swift/manual/" class="md-nav__link">
+      <a href="../../swift/manual/" class="md-nav__link">
         Manual Instrumentation
       </a>
     </li>
@@ -3832,14 +4008,14 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../other/">Other</a>
+          <a href="../../other/">其它</a>
           
         </div>
       
       <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_13_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_2_6_13">
           <span class="md-nav__icon md-icon"></span>
-          Other
+          其它
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -3905,7 +4081,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../collector/">收集器</a>
+          <a href="../../../collector/">收集器</a>
           
             <label for="__nav_2_7">
               <span class="md-nav__icon md-icon"></span>
@@ -3928,7 +4104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/getting-started/" class="md-nav__link">
+      <a href="../../../collector/getting-started/" class="md-nav__link">
         入门
       </a>
     </li>
@@ -3966,7 +4142,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../collector/deployment/">部署</a>
+          <a href="../../../collector/deployment/">部署</a>
           
             <label for="__nav_2_7_3">
               <span class="md-nav__icon md-icon"></span>
@@ -3989,7 +4165,21 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/deployment/agent/" class="md-nav__link">
+      <a href="../../../collector/deployment/no-collector/" class="md-nav__link">
+        没有收集器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../collector/deployment/agent/" class="md-nav__link">
         代理
       </a>
     </li>
@@ -4003,22 +4193,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/deployment/gateway/" class="md-nav__link">
+      <a href="../../../collector/deployment/gateway/" class="md-nav__link">
         网关
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../collector/deployment/no-collector/" class="md-nav__link">
-        没有收集器
       </a>
     </li>
   
@@ -4038,7 +4214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/configuration/" class="md-nav__link">
+      <a href="../../../collector/configuration/" class="md-nav__link">
         配置
       </a>
     </li>
@@ -4052,7 +4228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/management/" class="md-nav__link">
+      <a href="../../../collector/management/" class="md-nav__link">
         管理
       </a>
     </li>
@@ -4066,7 +4242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/distributions/" class="md-nav__link">
+      <a href="../../../collector/distributions/" class="md-nav__link">
         分布
       </a>
     </li>
@@ -4080,7 +4256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/troubleshooting/" class="md-nav__link">
+      <a href="../../../collector/troubleshooting/" class="md-nav__link">
         故障排除
       </a>
     </li>
@@ -4094,7 +4270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/scaling/" class="md-nav__link">
+      <a href="../../../collector/scaling/" class="md-nav__link">
         扩容采集器
       </a>
     </li>
@@ -4108,7 +4284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/transforming-telemetry/" class="md-nav__link">
+      <a href="../../../collector/transforming-telemetry/" class="md-nav__link">
         改变遥测
       </a>
     </li>
@@ -4122,7 +4298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/custom-collector/" class="md-nav__link">
+      <a href="../../../collector/custom-collector/" class="md-nav__link">
         构建自定义收集器
       </a>
     </li>
@@ -4136,7 +4312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/custom-auth/" class="md-nav__link">
+      <a href="../../../collector/custom-auth/" class="md-nav__link">
         构建自定义身份验证器
       </a>
     </li>
@@ -4150,7 +4326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../collector/trace-receiver/" class="md-nav__link">
+      <a href="../../../collector/trace-receiver/" class="md-nav__link">
         建立跟踪接收器
       </a>
     </li>
@@ -4193,7 +4369,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../k8s/">K8S</a>
+          <a href="../../../k8s/">K8S</a>
           
             <label for="__nav_2_8">
               <span class="md-nav__icon md-icon"></span>
@@ -4238,7 +4414,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../k8s/operator/">Operator</a>
+          <a href="../../../k8s/operator/">Operator</a>
           
             <label for="__nav_2_8_2">
               <span class="md-nav__icon md-icon"></span>
@@ -4261,8 +4437,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/operator/automatic/" class="md-nav__link">
-        注入自动仪表
+      <a href="../../../k8s/operator/automatic/" class="md-nav__link">
+        注入自动插装
       </a>
     </li>
   
@@ -4297,7 +4473,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../k8s/operator/apis/">api</a>
+          <a href="../../../k8s/operator/apis/">api</a>
           
             <label for="__nav_2_8_2_3">
               <span class="md-nav__icon md-icon"></span>
@@ -4320,7 +4496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/operator/apis/Instrumentation/" class="md-nav__link">
+      <a href="../../../k8s/operator/apis/Instrumentation/" class="md-nav__link">
         Instrumentation
       </a>
     </li>
@@ -4334,7 +4510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/operator/apis/OpenTelemetryCollector/" class="md-nav__link">
+      <a href="../../../k8s/operator/apis/OpenTelemetryCollector/" class="md-nav__link">
         OpenTelemetryCollector
       </a>
     </li>
@@ -4408,7 +4584,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../k8s/collector/">Collector</a>
+          <a href="../../../k8s/collector/">Collector</a>
           
             <label for="__nav_2_8_3">
               <span class="md-nav__icon md-icon"></span>
@@ -4431,7 +4607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/vision/" class="md-nav__link">
+      <a href="../../../k8s/collector/vision/" class="md-nav__link">
         采集器的长期愿景
       </a>
     </li>
@@ -4445,7 +4621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/design/" class="md-nav__link">
+      <a href="../../../k8s/collector/design/" class="md-nav__link">
         收集器架构
       </a>
     </li>
@@ -4459,7 +4635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/monitoring/" class="md-nav__link">
+      <a href="../../../k8s/collector/monitoring/" class="md-nav__link">
         监控
       </a>
     </li>
@@ -4473,7 +4649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/performance/" class="md-nav__link">
+      <a href="../../../k8s/collector/performance/" class="md-nav__link">
         收集器性能
       </a>
     </li>
@@ -4487,7 +4663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/security-best-practices/" class="md-nav__link">
+      <a href="../../../k8s/collector/security-best-practices/" class="md-nav__link">
         安全
       </a>
     </li>
@@ -4501,7 +4677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/roadmap/" class="md-nav__link">
+      <a href="../../../k8s/collector/roadmap/" class="md-nav__link">
         长期路线图
       </a>
     </li>
@@ -4515,7 +4691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/ga-roadmap/" class="md-nav__link">
+      <a href="../../../k8s/collector/ga-roadmap/" class="md-nav__link">
         采集器 GA 路线图
       </a>
     </li>
@@ -4529,7 +4705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/observability/" class="md-nav__link">
+      <a href="../../../k8s/collector/observability/" class="md-nav__link">
         收集器可观测性
       </a>
     </li>
@@ -4543,7 +4719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/processing/" class="md-nav__link">
+      <a href="../../../k8s/collector/processing/" class="md-nav__link">
         收集器处理器探索
       </a>
     </li>
@@ -4557,7 +4733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/release/" class="md-nav__link">
+      <a href="../../../k8s/collector/release/" class="md-nav__link">
         收集器释放程序
       </a>
     </li>
@@ -4571,7 +4747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/scraping-receivers/" class="md-nav__link">
+      <a href="../../../k8s/collector/scraping-receivers/" class="md-nav__link">
         抓取指标接收器
       </a>
     </li>
@@ -4585,7 +4761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/service-extensions/" class="md-nav__link">
+      <a href="../../../k8s/collector/service-extensions/" class="md-nav__link">
         收集器:扩展
       </a>
     </li>
@@ -4599,7 +4775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/standard-warnings/" class="md-nav__link">
+      <a href="../../../k8s/collector/standard-warnings/" class="md-nav__link">
         标准的警告
       </a>
     </li>
@@ -4613,7 +4789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../k8s/collector/troubleshooting/" class="md-nav__link">
+      <a href="../../../k8s/collector/troubleshooting/" class="md-nav__link">
         故障排除
       </a>
     </li>
@@ -4665,7 +4841,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../faas/">FaaS</a>
+          <a href="../../../faas/">FaaS</a>
           
             <label for="__nav_2_9">
               <span class="md-nav__icon md-icon"></span>
@@ -4688,7 +4864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../faas/lambda-auto-instrument/" class="md-nav__link">
+      <a href="../../../faas/lambda-auto-instrument/" class="md-nav__link">
         Lambda Auto-Instrumentation
       </a>
     </li>
@@ -4702,7 +4878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../faas/lambda-collector/" class="md-nav__link">
+      <a href="../../../faas/lambda-collector/" class="md-nav__link">
         Lambda Collector Configuration
       </a>
     </li>
@@ -4716,7 +4892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../faas/lambda-manual-instrument/" class="md-nav__link">
+      <a href="../../../faas/lambda-manual-instrument/" class="md-nav__link">
         Lambda Manual Instrumentation
       </a>
     </li>
@@ -4759,7 +4935,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../migration/">迁移</a>
+          <a href="../../../migration/">迁移</a>
           
             <label for="__nav_2_10">
               <span class="md-nav__icon md-icon"></span>
@@ -4782,7 +4958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../migration/opencensus/" class="md-nav__link">
+      <a href="../../../migration/opencensus/" class="md-nav__link">
         Migrating from OpenCensus
       </a>
     </li>
@@ -4796,7 +4972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../migration/opentracing/" class="md-nav__link">
+      <a href="../../../migration/opentracing/" class="md-nav__link">
         Migrating from OpenTracing
       </a>
     </li>
@@ -4839,7 +5015,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../specs/">规格</a>
+          <a href="../../../specs/">规格</a>
           
             <label for="__nav_2_11">
               <span class="md-nav__icon md-icon"></span>
@@ -4862,7 +5038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../specs/status/" class="md-nav__link">
+      <a href="../../../specs/status/" class="md-nav__link">
         Specification Status Summary
       </a>
     </li>
@@ -4876,7 +5052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../specs/otel/" class="md-nav__link">
+      <a href="../../../specs/otel/" class="md-nav__link">
         OpenTelemetry 规范
       </a>
     </li>
@@ -4915,7 +5091,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../acknowledgements/">致谢</a>
+          <a href="../../../acknowledgements/">致谢</a>
           
         </div>
       
@@ -4972,7 +5148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../contribution-guidelines/" class="md-nav__link">
+      <a href="../../../contribution-guidelines/" class="md-nav__link">
         Contribution guidelines
       </a>
     </li>
@@ -5027,7 +5203,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../../ecosystem/">生态系统</a>
+          <a href="../../../../ecosystem/">生态系统</a>
           
             <label for="__nav_3">
               <span class="md-nav__icon md-icon"></span>
@@ -5050,7 +5226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../ecosystem/demo/" class="md-nav__link">
+      <a href="../../../../ecosystem/demo/" class="md-nav__link">
         开遥演示
       </a>
     </li>
@@ -5064,7 +5240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../ecosystem/integrations/" class="md-nav__link">
+      <a href="../../../../ecosystem/integrations/" class="md-nav__link">
         集成
       </a>
     </li>
@@ -5078,7 +5254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../ecosystem/vendors/" class="md-nav__link">
+      <a href="../../../../ecosystem/vendors/" class="md-nav__link">
         供应商
       </a>
     </li>
@@ -5112,7 +5288,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../../ecosystem/registry/">注册表</a>
+          <a href="../../../../ecosystem/registry/">注册表</a>
           
             <label for="__nav_3_5">
               <span class="md-nav__icon md-icon"></span>
@@ -5135,7 +5311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../ecosystem/registry/adding/" class="md-nav__link">
+      <a href="../../../../ecosystem/registry/adding/" class="md-nav__link">
         添加到注册表
       </a>
     </li>
@@ -5164,7 +5340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../status/" class="md-nav__link">
+      <a href="../../../../status/" class="md-nav__link">
         状态
       </a>
     </li>
@@ -5201,7 +5377,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../../community/">社区</a>
+          <a href="../../../../community/">社区</a>
           
             <label for="__nav_5">
               <span class="md-nav__icon md-icon"></span>
@@ -5224,7 +5400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../community/marketing-guidelines/" class="md-nav__link">
+      <a href="../../../../community/marketing-guidelines/" class="md-nav__link">
         贡献组织开放遥测营销指南
       </a>
     </li>
@@ -5266,7 +5442,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../../community/end-user/">enduser</a>
+          <a href="../../../../community/end-user/">enduser</a>
           
             <label for="__nav_5_3">
               <span class="md-nav__icon md-icon"></span>
@@ -5289,7 +5465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../community/end-user/discussion-group/" class="md-nav__link">
+      <a href="../../../../community/end-user/discussion-group/" class="md-nav__link">
         Monthly Discussion Group
       </a>
     </li>
@@ -5303,7 +5479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../community/end-user/feedback-survey/" class="md-nav__link">
+      <a href="../../../../community/end-user/feedback-survey/" class="md-nav__link">
         Feedback Survey
       </a>
     </li>
@@ -5317,7 +5493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../community/end-user/interviews-feedback/" class="md-nav__link">
+      <a href="../../../../community/end-user/interviews-feedback/" class="md-nav__link">
         Interviews or Feedback Sessions
       </a>
     </li>
@@ -5331,7 +5507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../community/end-user/otel-in-practice/" class="md-nav__link">
+      <a href="../../../../community/end-user/otel-in-practice/" class="md-nav__link">
         OpenTelemetry In Practice
       </a>
     </li>
@@ -5345,7 +5521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../community/end-user/slack-channel/" class="md-nav__link">
+      <a href="../../../../community/end-user/slack-channel/" class="md-nav__link">
         Slack Channel
       </a>
     </li>
@@ -5594,7 +5770,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../../blog/">博客</a>
+          <a href="../../../../blog/">博客</a>
           
             <label for="__nav_6">
               <span class="md-nav__icon md-icon"></span>
@@ -5617,7 +5793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2019/opentelemetry-governance-committee-explained/" class="md-nav__link">
+      <a href="../../../../blog/2019/opentelemetry-governance-committee-explained/" class="md-nav__link">
         OpenTelemetry Governance Committee Explained
       </a>
     </li>
@@ -5631,7 +5807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2021/auto-instrumentation-k8s/" class="md-nav__link">
+      <a href="../../../../blog/2021/auto-instrumentation-k8s/" class="md-nav__link">
         Using OpenTelemetry auto-instrumentation/agents in Kubernetes (Medium)
       </a>
     </li>
@@ -5645,7 +5821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2021/collector/" class="md-nav__link">
+      <a href="../../../../blog/2021/collector/" class="md-nav__link">
         OpenTelemetry Collector achieves Tracing stability milestone (Medium)
       </a>
     </li>
@@ -5659,7 +5835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2021/cpp/" class="md-nav__link">
+      <a href="../../../../blog/2021/cpp/" class="md-nav__link">
         OpenTelemetry C++ v1.0 — what’s there, and what next (Medium)
       </a>
     </li>
@@ -5673,7 +5849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2021/gc-election/" class="md-nav__link">
+      <a href="../../../../blog/2021/gc-election/" class="md-nav__link">
         Announcing the 2021 OpenTelemetry Governance Committee Election (Medium)
       </a>
     </li>
@@ -5687,7 +5863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2021/malabi/" class="md-nav__link">
+      <a href="../../../../blog/2021/malabi/" class="md-nav__link">
         Trace-Based Testing with OpenTelemetry: Meet Open Source Malabi (Medium)
 
       </a>
@@ -5702,7 +5878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2021/otel-gc/" class="md-nav__link">
+      <a href="../../../../blog/2021/otel-gc/" class="md-nav__link">
         Welcome to the incoming 2021 OpenTelemetry Governance Committee (Medium)
       </a>
     </li>
@@ -5716,7 +5892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2021/python/" class="md-nav__link">
+      <a href="../../../../blog/2021/python/" class="md-nav__link">
         Announcing OpenTelemetry Python 1.0 (Medium)
       </a>
     </li>
@@ -5730,7 +5906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2021/swift/" class="md-nav__link">
+      <a href="../../../../blog/2021/swift/" class="md-nav__link">
         OpenTelemetry Swift 1.0 Beta (Medium)
       </a>
     </li>
@@ -5744,7 +5920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2021/womens-day/" class="md-nav__link">
+      <a href="../../../../blog/2021/womens-day/" class="md-nav__link">
         OpenTelemetry Observes International Women's Day 2021 (Medium)
       </a>
     </li>
@@ -5758,7 +5934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/announcing-community-manager/" class="md-nav__link">
+      <a href="../../../../blog/2022/announcing-community-manager/" class="md-nav__link">
         Announcing the OpenTelemetry Community Manager
       </a>
     </li>
@@ -5772,7 +5948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/dotnet-instrumentation-first-beta/" class="md-nav__link">
+      <a href="../../../../blog/2022/dotnet-instrumentation-first-beta/" class="md-nav__link">
         OpenTelemetry .NET Automatic Instrumentation Releases its first Beta
       </a>
     </li>
@@ -5786,7 +5962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/dotnet-instrumentation-metrics/" class="md-nav__link">
+      <a href="../../../../blog/2022/dotnet-instrumentation-metrics/" class="md-nav__link">
         OpenTelemetry .NET Automatic Instrumentation metric signal support
       </a>
     </li>
@@ -5800,7 +5976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/gc-candidates/" class="md-nav__link">
+      <a href="../../../../blog/2022/gc-candidates/" class="md-nav__link">
         Final list of candidates for the 2022 OpenTelemetry Governance Committee
       </a>
     </li>
@@ -5814,7 +5990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/gc-election-results/" class="md-nav__link">
+      <a href="../../../../blog/2022/gc-election-results/" class="md-nav__link">
         Announcing the 2022 Governance Committee Election Results
       </a>
     </li>
@@ -5828,7 +6004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/gc-elections/" class="md-nav__link">
+      <a href="../../../../blog/2022/gc-elections/" class="md-nav__link">
         Announcing the 2022 OpenTelemetry Governance Committee Election
       </a>
     </li>
@@ -5842,7 +6018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/kubecon-na-project-update/" class="md-nav__link">
+      <a href="../../../../blog/2022/kubecon-na-project-update/" class="md-nav__link">
         OpenTelemetry Project and Roadmap Update from Kubecon
       </a>
     </li>
@@ -5856,7 +6032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/kubecon-na/" class="md-nav__link">
+      <a href="../../../../blog/2022/kubecon-na/" class="md-nav__link">
         Join us for OpenTelemetry Talks and Activities at Kubecon NA 2022
       </a>
     </li>
@@ -5870,7 +6046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/metrics-announcement/" class="md-nav__link">
+      <a href="../../../../blog/2022/metrics-announcement/" class="md-nav__link">
         OpenTelemetry Metrics Release Candidates
       </a>
     </li>
@@ -5884,7 +6060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/new-end-user-resources/" class="md-nav__link">
+      <a href="../../../../blog/2022/new-end-user-resources/" class="md-nav__link">
         Introducing new resources for OpenTelemetry end users to connect and discover best practices
       </a>
     </li>
@@ -5898,7 +6074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/otel-in-practice/" class="md-nav__link">
+      <a href="../../../../blog/2022/otel-in-practice/" class="md-nav__link">
         OpenTelemetry in Practice: Kubernetes & the Collector
       </a>
     </li>
@@ -5912,7 +6088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/otel-tuesday-v1-sunset/" class="md-nav__link">
+      <a href="../../../../blog/2022/otel-tuesday-v1-sunset/" class="md-nav__link">
         OpenTelemetry Tuesdays, Signing Off!
       </a>
     </li>
@@ -5926,7 +6102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/otel-unplugged-kubecon-na/" class="md-nav__link">
+      <a href="../../../../blog/2022/otel-unplugged-kubecon-na/" class="md-nav__link">
         OTel Unplugged at KubeCon NA 2022!
       </a>
     </li>
@@ -5940,7 +6116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/troubleshooting-nodejs/" class="md-nav__link">
+      <a href="../../../../blog/2022/troubleshooting-nodejs/" class="md-nav__link">
         Checklist for TroublesShooting OpenTelemetry Node.js Tracing Issues
       </a>
     </li>
@@ -5954,7 +6130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/v1.0-trio/" class="md-nav__link">
+      <a href="../../../../blog/2022/v1.0-trio/" class="md-nav__link">
         OpenTelemetry Erlang/Elixir, Javascript, and Ruby v1.0 (Medium)
       </a>
     </li>
@@ -5968,7 +6144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/welcome/" class="md-nav__link">
+      <a href="../../../../blog/2022/welcome/" class="md-nav__link">
         Welcome to the OpenTelemetry blog
       </a>
     </li>
@@ -5982,7 +6158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/announcing-opentelemetry-demo-release/" class="md-nav__link">
+      <a href="../../../../blog/2022/announcing-opentelemetry-demo-release/" class="md-nav__link">
         OpenTelemetry Demo now Generally Available!
       </a>
     </li>
@@ -5996,7 +6172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/apisix/" class="md-nav__link">
+      <a href="../../../../blog/2022/apisix/" class="md-nav__link">
         Apache APISIX Integrates with OpenTelemetry to Collect Tracing Data
       </a>
     </li>
@@ -6010,7 +6186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/collector-builder-sample/" class="md-nav__link">
+      <a href="../../../../blog/2022/collector-builder-sample/" class="md-nav__link">
         Using the Collector Builder with Sample Configs on GCP
       </a>
     </li>
@@ -6024,7 +6200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/debug-otel-with-otel/" class="md-nav__link">
+      <a href="../../../../blog/2022/debug-otel-with-otel/" class="md-nav__link">
         How we used OpenTelemetry to fix a bug in OpenTelemetry
       </a>
     </li>
@@ -6038,7 +6214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/demo-announcement/" class="md-nav__link">
+      <a href="../../../../blog/2022/demo-announcement/" class="md-nav__link">
         Announcing a Community Demo for OpenTelemetry
       </a>
     </li>
@@ -6052,7 +6228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/end-user-discussion-group-apac/" class="md-nav__link">
+      <a href="../../../../blog/2022/end-user-discussion-group-apac/" class="md-nav__link">
         End User Discussion Group: New APAC Sessions Announcement!
       </a>
     </li>
@@ -6066,7 +6242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/exponential-histograms/" class="md-nav__link">
+      <a href="../../../../blog/2022/exponential-histograms/" class="md-nav__link">
         Exponential Histograms: Better Data, Zero Configuration
       </a>
     </li>
@@ -6080,7 +6256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/frontend-overhaul/" class="md-nav__link">
+      <a href="../../../../blog/2022/frontend-overhaul/" class="md-nav__link">
         Front-end Overhaul of the OpenTelemetry Demo (Go to Next.js)
       </a>
     </li>
@@ -6094,7 +6270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/go-web-app-instrumentation/" class="md-nav__link">
+      <a href="../../../../blog/2022/go-web-app-instrumentation/" class="md-nav__link">
         Go Web-app Instrumentation
       </a>
     </li>
@@ -6108,7 +6284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/instrument-apache-httpd-server/" class="md-nav__link">
+      <a href="../../../../blog/2022/instrument-apache-httpd-server/" class="md-nav__link">
         Learn how to instrument Apache Http Server with OpenTelemetry
       </a>
     </li>
@@ -6122,7 +6298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/instrument-kafka-clients/" class="md-nav__link">
+      <a href="../../../../blog/2022/instrument-kafka-clients/" class="md-nav__link">
         Instrumenting Apache Kafka clients with OpenTelemetry
       </a>
     </li>
@@ -6136,7 +6312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/instrument-nginx/" class="md-nav__link">
+      <a href="../../../../blog/2022/instrument-nginx/" class="md-nav__link">
         Learn how to instrument NGINX with OpenTelemetry
       </a>
     </li>
@@ -6150,7 +6326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/jaeger-native-otlp/" class="md-nav__link">
+      <a href="../../../../blog/2022/jaeger-native-otlp/" class="md-nav__link">
         Supporting Jaeger with native OTLP
       </a>
     </li>
@@ -6164,7 +6340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/k8s-metadata/" class="md-nav__link">
+      <a href="../../../../blog/2022/k8s-metadata/" class="md-nav__link">
         Improved troubleshooting using k8s metadata
       </a>
     </li>
@@ -6178,7 +6354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/k8s-otel-expose/" class="md-nav__link">
+      <a href="../../../../blog/2022/k8s-otel-expose/" class="md-nav__link">
         Exposing a Collector for cross cluster communication
       </a>
     </li>
@@ -6192,7 +6368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/knative/" class="md-nav__link">
+      <a href="../../../../blog/2022/knative/" class="md-nav__link">
         Distributed tracing in Knative
       </a>
     </li>
@@ -6206,7 +6382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/opamp/" class="md-nav__link">
+      <a href="../../../../blog/2022/opamp/" class="md-nav__link">
         Using OpenTelemetry OpAMP to modify service telemetry on the go
       </a>
     </li>
@@ -6220,7 +6396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/otel-demo-app-nomad/" class="md-nav__link">
+      <a href="../../../../blog/2022/otel-demo-app-nomad/" class="md-nav__link">
         Running the OpenTelemetry Demo App on HashiCorp Nomad
       </a>
     </li>
@@ -6234,7 +6410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/tail-sampling/" class="md-nav__link">
+      <a href="../../../../blog/2022/tail-sampling/" class="md-nav__link">
         Tail Sampling with OpenTelemetry: Why it’s useful, how to do it, and what to consider
       </a>
     </li>
@@ -6248,7 +6424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/" class="md-nav__link">
+      <a href="../../../../blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/" class="md-nav__link">
         Why and How eBay Pivoted to OpenTelemetry
       </a>
     </li>
@@ -6262,7 +6438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/ecs-otel-semconv-convergence/" class="md-nav__link">
+      <a href="../../../../blog/2023/ecs-otel-semconv-convergence/" class="md-nav__link">
         Announcing the Elastic Common Schema (ECS) and OpenTelemetry Semantic Convention Convergence
       </a>
     </li>
@@ -6276,7 +6452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/end-user-discussions-01/" class="md-nav__link">
+      <a href="../../../../blog/2023/end-user-discussions-01/" class="md-nav__link">
         OpenTelemetry End-User Discussions Summary for January 2023
       </a>
     </li>
@@ -6290,7 +6466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/end-user-discussions-02/" class="md-nav__link">
+      <a href="../../../../blog/2023/end-user-discussions-02/" class="md-nav__link">
         OpenTelemetry End-User Discussions Summary for February 2023
       </a>
     </li>
@@ -6304,7 +6480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/end-user-discussions-03/" class="md-nav__link">
+      <a href="../../../../blog/2023/end-user-discussions-03/" class="md-nav__link">
         OpenTelemetry End-User Discussions Summary for March 2023
       </a>
     </li>
@@ -6318,7 +6494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/end-user-discussions-04/" class="md-nav__link">
+      <a href="../../../../blog/2023/end-user-discussions-04/" class="md-nav__link">
         OpenTelemetry End-User Discussions Summary for April 2023
       </a>
     </li>
@@ -6332,7 +6508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/end-user-q-and-a-01/" class="md-nav__link">
+      <a href="../../../../blog/2023/end-user-q-and-a-01/" class="md-nav__link">
         End-User Q&A Series: Using OTel with GraphQL
       </a>
     </li>
@@ -6346,7 +6522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/end-user-q-and-a-02/" class="md-nav__link">
+      <a href="../../../../blog/2023/end-user-q-and-a-02/" class="md-nav__link">
         End-User Q&A Series: Using OTel at Uplight
       </a>
     </li>
@@ -6360,7 +6536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/end-user-q-and-a-03/" class="md-nav__link">
+      <a href="../../../../blog/2023/end-user-q-and-a-03/" class="md-nav__link">
         End-User Q&A Series: Using OTel at Farfetch
       </a>
     </li>
@@ -6374,7 +6550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/exponential-histograms/" class="md-nav__link">
+      <a href="../../../../blog/2023/exponential-histograms/" class="md-nav__link">
         Exponential Histograms
       </a>
     </li>
@@ -6388,7 +6564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/http-conventions-stability/" class="md-nav__link">
+      <a href="../../../../blog/2023/http-conventions-stability/" class="md-nav__link">
         Final push to HTTP semantic convention stability
       </a>
     </li>
@@ -6402,7 +6578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/kubecon-eu/" class="md-nav__link">
+      <a href="../../../../blog/2023/kubecon-eu/" class="md-nav__link">
         Join us for OpenTelemetry Talks and Activities at KubeCon EU 2023
       </a>
     </li>
@@ -6416,7 +6592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/lambda-release/" class="md-nav__link">
+      <a href="../../../../blog/2023/lambda-release/" class="md-nav__link">
         OpenTelemetry Updates Lambda Support
       </a>
     </li>
@@ -6430,7 +6606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/new-apac-meetings/" class="md-nav__link">
+      <a href="../../../../blog/2023/new-apac-meetings/" class="md-nav__link">
         New APAC Collector-SIG meetings
       </a>
     </li>
@@ -6444,7 +6620,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/otel-in-focus-01/" class="md-nav__link">
+      <a href="../../../../blog/2023/otel-in-focus-01/" class="md-nav__link">
         OpenTelemetry in Focus, January 2023
       </a>
     </li>
@@ -6458,7 +6634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/otel-in-focus-02/" class="md-nav__link">
+      <a href="../../../../blog/2023/otel-in-focus-02/" class="md-nav__link">
         OpenTelemetry in Focus, February 2023
       </a>
     </li>
@@ -6472,7 +6648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/otel-in-focus-03/" class="md-nav__link">
+      <a href="../../../../blog/2023/otel-in-focus-03/" class="md-nav__link">
         OpenTelemetry in Focus, March 2023
       </a>
     </li>
@@ -6486,7 +6662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/otel-in-focus-04/" class="md-nav__link">
+      <a href="../../../../blog/2023/otel-in-focus-04/" class="md-nav__link">
         OpenTelemetry in Focus, April 2023
       </a>
     </li>
@@ -6500,7 +6676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/otel-in-focus-05/" class="md-nav__link">
+      <a href="../../../../blog/2023/otel-in-focus-05/" class="md-nav__link">
         OpenTelemetry in Focus, May 2023
       </a>
     </li>
@@ -6514,7 +6690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/outreachy-may-cohort/" class="md-nav__link">
+      <a href="../../../../blog/2023/outreachy-may-cohort/" class="md-nav__link">
         Call for participation - Outreachy May 2023
       </a>
     </li>
@@ -6528,7 +6704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/php-beta-release/" class="md-nav__link">
+      <a href="../../../../blog/2023/php-beta-release/" class="md-nav__link">
         Opentelemetry PHP Beta Release
       </a>
     </li>
@@ -6542,7 +6718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/submitting-your-first-conference-talk/" class="md-nav__link">
+      <a href="../../../../blog/2023/submitting-your-first-conference-talk/" class="md-nav__link">
         Submitting Your First Conference Talk
       </a>
     </li>
@@ -6556,7 +6732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/sunsetting-opencensus/" class="md-nav__link">
+      <a href="../../../../blog/2023/sunsetting-opencensus/" class="md-nav__link">
         Sunsetting OpenCensus
       </a>
     </li>
@@ -6570,7 +6746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/demo-birthday/" class="md-nav__link">
+      <a href="../../../../blog/2023/demo-birthday/" class="md-nav__link">
         The OpenTelemetry Demo Turns 1(.4)
       </a>
     </li>
@@ -6584,7 +6760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/histograms-vs-summaries/" class="md-nav__link">
+      <a href="../../../../blog/2023/histograms-vs-summaries/" class="md-nav__link">
         Histograms vs Summaries
       </a>
     </li>
@@ -6598,7 +6774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/jmx-metric-insight/" class="md-nav__link">
+      <a href="../../../../blog/2023/jmx-metric-insight/" class="md-nav__link">
         Gaining JMX Metric Insights with the OpenTelemetry Java Agent
       </a>
     </li>
@@ -6612,7 +6788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/k8s-runtime-observability/" class="md-nav__link">
+      <a href="../../../../blog/2023/k8s-runtime-observability/" class="md-nav__link">
         Creating a Kubernetes Cluster with Runtime Observability
       </a>
     </li>
@@ -6626,7 +6802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/php-auto-instrumentation/" class="md-nav__link">
+      <a href="../../../../blog/2023/php-auto-instrumentation/" class="md-nav__link">
         OpenTelemetry PHP Auto-Instrumentation
       </a>
     </li>
@@ -6640,7 +6816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../blog/2023/why-histograms/" class="md-nav__link">
+      <a href="../../../../blog/2023/why-histograms/" class="md-nav__link">
         Why Histograms?
       </a>
     </li>
@@ -6695,7 +6871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../search/" class="md-nav__link">
+      <a href="../../../../search/" class="md-nav__link">
         Search Results
       </a>
     </li>
@@ -6709,7 +6885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../tags/" class="md-nav__link">
+      <a href="../../../../tags/" class="md-nav__link">
         tags
       </a>
     </li>
@@ -6748,50 +6924,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
+  <a href="#otlp-endpoint" class="md-nav__link">
+    OTLP endpoint
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-the-agent" class="md-nav__link">
-    Configuring the agent
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-libraries-and-frameworks" class="md-nav__link">
-    Supported libraries and frameworks
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    Troubleshooting
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
+    <nav class="md-nav" aria-label="OTLP endpoint">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#python-package-installation-failure" class="md-nav__link">
-    Python package installation failure
+  <a href="#using-http" class="md-nav__link">
+    Using HTTP
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#grpc-connectivity" class="md-nav__link">
-    gRPC Connectivity
+  <a href="#jaeger" class="md-nav__link">
+    Jaeger
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    Prometheus
+  </a>
   
 </li>
       
@@ -6813,101 +6975,62 @@
   
 
 
-  <h1>Automatic Instrumentation</h1>
+  <h1>Exporters</h1>
 
-<p>Automatic instrumentation with Python uses a Python agent that can be attached
-to any Python application. It dynamically injects bytecode to capture telemetry
-from many popular libraries and frameworks.</p>
-<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
-<p>Run the following commands to install the appropriate packages.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">pip install opentelemetry-distro \</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="go">    opentelemetry-exporter-otlp</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="go">opentelemetry-bootstrap -a install</span>
+<p>In order to visualize and analyze your <a href="/docs/concepts/signals/traces/">traces</a>
+and metrics, you will need to export them to a backend.</p>
+<h2 id="otlp-endpoint">OTLP endpoint<a class="headerlink" href="#otlp-endpoint" title="Permanent link">&para;</a></h2>
+<p>To send trace data to an OTLP endpoint (like the <a href="/docs/collector">collector</a> or
+Jaeger &gt;= v1.35.0) you'll want to configure an OTLP exporter that sends to your
+endpoint.</p>
+<h3 id="using-http">Using HTTP<a class="headerlink" href="#using-http" title="Permanent link">&para;</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/otlp/otlptrace&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="kd">func</span><span class="w"> </span><span class="nx">installExportPipeline</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracehttp</span><span class="p">.</span><span class="nx">NewClient</span><span class="p">()</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">client</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;creating OTLP trace exporter: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="cm">/* … */</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<p>The <code>opentelemetry-distro</code> package installs the API, SDK, and the
-<code>opentelemetry-bootstrap</code> and <code>opentelemetry-instrument</code> tools.</p>
-<p>The <code>opentelemetry-bootstrap -a install</code> command reads through the list of
-packages installed in your active <code>site-packages</code> folder, and installs the
-corresponding instrumentation libraries for these packages, if applicable. For
-example, if you already installed the <code>flask</code> package, running
-<code>opentelemetry-bootstrap -a install</code> will install
-<code>opentelemetry-instrumentation-flask</code> for you.</p>
-<blockquote>
-<p><strong>NOTE:</strong> If you leave out <code>-a install</code>, the command will simply list out the
-recommended auto-instrumentation packages to be installed. More information
-can be found
-<a href="https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap">here</a>.</p>
-</blockquote>
-<h2 id="configuring-the-agent">Configuring the agent<a class="headerlink" href="#configuring-the-agent" title="Permanent link">&para;</a></h2>
-<p>The agent is highly configurable.</p>
-<p>One option is to configure the agent by way of configuration properties from the
-CLI:</p>
+<p>To learn more on how to use the OTLP HTTP exporter, try out the
+<a href="https://github.com/open-telemetry/opentelemetry-go/tree/main/example/otel-collector">otel-collector</a></p>
+<h3 id="jaeger">Jaeger<a class="headerlink" href="#jaeger" title="Permanent link">&para;</a></h3>
+<p>To try out the OTLP exporter, since v1.35.0 you can run
+<a href="https://www.jaegertracing.io/">Jaeger</a> as an OTLP endpoint and for trace
+visualization in a docker container:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
 <span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="go">opentelemetry-instrument \</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="go">    --traces_exporter console,otlp \</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="go">    --metrics_exporter console \</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="go">    --service_name your-service-name \</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="go">    --exporter_otlp_endpoint 0.0.0.0:4317 \</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="go">    python myapp.py</span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>jaeger<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">COLLECTOR_OTLP_ENABLED</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">16686</span>:16686<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">4318</span>:4318<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">  </span>jaegertracing/all-in-one:latest
 </code></pre></div></td></tr></table></div>
-<p>Alternatively, you can use environment variables to configure the agent:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span>
-<span class="normal"><a href="#__codelineno-2-5">5</a></span>
-<span class="normal"><a href="#__codelineno-2-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="go">OTEL_SERVICE_NAME=your-service-name \</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="go">OTEL_TRACES_EXPORTER=console,otlp \</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="go">OTEL_METRICS_EXPORTER=console \</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="go">OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=0.0.0.0:4317</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="go">opentelemetry-instrument \</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="go">    python myapp.py</span>
-</code></pre></div></td></tr></table></div>
-<p>To see the full range of configuration options, see
-<a href="agent-config">Agent Configuration</a>.</p>
-<h2 id="supported-libraries-and-frameworks">Supported libraries and frameworks<a class="headerlink" href="#supported-libraries-and-frameworks" title="Permanent link">&para;</a></h2>
-<p>A number of popular Python libraries are auto-instrumented, including
-<a href="https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask">Flask</a>
-and
-<a href="https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django">Django</a>.
-You can find the full list
-<a href="/ecosystem/registry/?language=python&amp;component=instrumentation">here</a>.</p>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="python-package-installation-failure">Python package installation failure<a class="headerlink" href="#python-package-installation-failure" title="Permanent link">&para;</a></h3>
-<p>The Python package installs require <code>gcc</code> and <code>gcc-c++</code>, which you may need to
-install if you’re running a slim version of Linux (e.g., CentOS).</p>
-<p>CentOS:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="go">yum -y install python3-devel</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="go">yum -y install gcc-c++</span>
-</code></pre></div></td></tr></table></div>
-<p>Debian/Ubuntu:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="go">apt install -y python3-dev</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="go">apt install -y build-essential</span>
-</code></pre></div></td></tr></table></div>
-<p>Alpine:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="go">apk add python3-dev</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="go">apk add build-base</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="grpc-connectivity">gRPC Connectivity<a class="headerlink" href="#grpc-connectivity" title="Permanent link">&para;</a></h3>
-<p>To debug Python gRPC connectivity issues, set the following gRPC debug
-environment variables:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
-<span class="normal"><a href="#__codelineno-6-2">2</a></span>
-<span class="normal"><a href="#__codelineno-6-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="go">export GRPC_VERBOSITY=debug</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="go">export GRPC_TRACE=http,call_error,connectivity_state</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="go">opentelemetry-instrument python &lt;your_app&gt;.py</span>
-</code></pre></div></td></tr></table></div>
+<h2 id="prometheus">Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h2>
+<p>Prometheus export is available in the
+<code>go.opentelemetry.io/otel/exporters/prometheus</code> package.</p>
+<p>Please find more documentation on
+<a href="https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus">GitHub</a></p>
 
 
 
@@ -7000,10 +7123,10 @@ environment variables:</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "navigation.indexes", "content.code.annotate", "navigation.top"], "search": "../../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.top", "navigation.indexes", "content.code.annotate", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.b4d07000.min.js"></script>
       
     
   </body>

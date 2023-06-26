@@ -1,8 +1,7 @@
 ---
-title: 自动
+title: 自动插装
 description: >-
-  Learn how Automatic Instrumentation can add observability to your application
-  without the need to touch your code
+  了解自动检测如何在不修改代码的情况下为应用程序添加可观察性
 weight: 10
 ---
 

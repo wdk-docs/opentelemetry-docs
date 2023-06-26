@@ -155,7 +155,7 @@ nav:
               - ./docs/concepts/signals/metrics.md
               - ./docs/concepts/signals/logs.md
               - ./docs/concepts/signals/baggage.md
-          - 仪表:
+          - 插装:
               - ./docs/concepts/instrumentation/index.md
               - ./docs/concepts/instrumentation/automatic.md
               - ./docs/concepts/instrumentation/manual.md

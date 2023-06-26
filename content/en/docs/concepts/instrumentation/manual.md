@@ -1,5 +1,5 @@
 ---
-title: 手动
+title: 手动插装
 description: >-
   了解手动检测应用程序的基本步骤。
 weight: 20

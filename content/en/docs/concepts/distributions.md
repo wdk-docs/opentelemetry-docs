@@ -1,63 +1,51 @@
 ---
-title: 分布
+title: 分发
 description: >-
   分发版(不要与fork混淆)是OpenTelemetry组件的定制版本。
 weight: 90
 ---
 
-The OpenTelemetry projects consists of multiple [components](../components) that
-support multiple [signals](../signals). The reference implementation of
-OpenTelemetry is available as:
+OpenTelemetry 项目由多个支持多个[信号](../signals)的[组件](../components) 组成。
+OpenTelemetry 的参考实现如下:
 
-- [Language-specific instrumentation libraries](../instrumentation)
-- [A Collector binary](../data-collection)
+- [特定于语言的工具库](../instrumentation)
+- [收集器二进制文件](../data-collection)
 
-From any reference implementation a distribution may be created.
+可以从任何参考实现创建一个发行版。
 
-## What is a distribution?
+## 什么是分发?
 
-A distribution, not to be confused with a fork, is customized version of an
-OpenTelemetry component. A distribution is a wrapper around an upstream
-OpenTelemetry repository with some customizations. Customizations in a
-distribution may include:
+分发版(不要与 fork 混淆)是 OpenTelemetry 组件的定制版本。发行版是上游
+OpenTelemetry 存储库的包装器，带有一些定制。发行版中的自定义可能包括:
 
-- Scripts to ease use or customize use for a specific back-end or vendor
-- Changes to default settings required for a back-end, vendor, or end-user
-- Additional packaging options that may be vendor or end-user specific
-- Test, performance, and security coverage beyond what OpenTelemetry provides
-- Additional capabilities beyond what OpenTelemetry provides
-- Less capabilities from what OpenTelemetry provides
+- 为特定后端或供应商简化使用或自定义使用的脚本
+- 更改后端、供应商或最终用户所需的默认设置
+- 可能是供应商或最终用户特定的附加包装选项
+- 测试、性能和安全覆盖超出了 OpenTelemetry 提供的范围
+- OpenTelemetry 提供的功能之外的其他功能
+- OpenTelemetry 提供的功能更少
 
-Distributions would broadly fall into the following categories:
+分发将大致分为以下几类:
 
-- **"Pure":** These distributions provide the same functionality as upstream and
-  are 100% compatible. Customizations would typically be to ease of use or
-  packaging. These customizations may be back-end, vendor, or end-user specific.
-- **"Plus":** These distributions provide the same functionality as upstream
-  plus more. Customizations beyond those found in pure distributions would be
-  the inclusion of additional components. Examples of this would include
-  instrumentation libraries or vendor exporters not upstreamed to the
-  OpenTelemetry project.
-- **"Minus":** These distributions provide a reduced set of functionality from
-  upstream. Examples of this would include the removal of instrumentation
-  libraries or receivers/processors/exporters/extensions found in the
-  OpenTelemetry Collector project. These distributions may be provided to
-  increase supportability and security considerations.
+- **"Pure":** 这些发行版提供与上游版本相同的功能，并且 100%兼容。定制通常是为了
+  便于使用或打包。这些定制可能是特定于后端、供应商或最终用户的。
+- **"Plus":** 这些发行版提供了与上游版本相同的功能。除了在纯发行版中发现的定制之
+  外，还包括其他组件。这方面的例子包括没有上溯到 OpenTelemetry 项目的仪器库或供
+  应商导出程序。
+- **"Minus":** 这些发行版提供了来自上游的一组简化的功能。这方面的例子包括移除
+  OpenTelemetry Collector 项目中的仪器库或接收器/处理器/导出器/扩展。提供这些发
+  行版可能是为了增加可支持性和安全性考虑。
 
-## Who would create a distribution?
+## 谁会创造一个分发?
 
-Anyone could create a distribution. Today, several
-[vendors](/ecosystem/vendors/) offer distributions. In addition, end-users may
-consider creating a distribution if they wish to use components in the
-[Registry](/ecosystem/registry/) that are not upstreamed to the OpenTelemetry
-project.
+任何人都可以创建一个发行版。今天，一些[供应商](/ecosystem/vendors/)提供发行版。
+此外，如果终端用户希望在[Registry](/ecosystem/registry/) 中使用没有上行到
+OpenTelemetry 项目的组件，他们可能会考虑创建一个发行版。
 
-## Contribution or distribution?
+## 贡献还是分发?
 
-Before you read on and learn how you can create your own distribution, ask
-yourself if your additions on top of an OpenTelemetry component would be
-beneficial for everyone and therefore should be included in the reference
-implementations:
+在你继续阅读并学习如何创建你自己的发行版之前，问问你自己，你在 OpenTelemetry 组
+件之上添加的东西是否对每个人都有益，因此应该包含在参考实现中:
 
 - Can your scripts for "ease of use" be generalized?
 - Can your changes to default settings be the better option for everyone?
@@ -67,7 +55,7 @@ implementations:
 - Have you checked with the community if your additional capabilities could be
   part of the standard?
 
-## Creating your own distribution
+## 创建自己的发行版
 
 ### Collector
 
@@ -78,14 +66,14 @@ If you are building your own distribution, the
 [OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
 might be a good starting point.
 
-### Language Specific Instrumentation libraries
+### 特定于语言的工具库
 
 There are language specific extensibility mechanisms to customize the
 instrumentation libraries:
 
 - [Javaagent](../../instrumentation/java/automatic/extensions)
 
-## What you should know about distributions
+## 关于发行版，你应该知道些什么
 
 When using OpenTelemetry project collateral such as logo and name for your
 distribution, make sure that you are in line with the [OpenTelemetry Marketing

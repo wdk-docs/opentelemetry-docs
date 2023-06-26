@@ -1,129 +1,111 @@
 ---
-title: 库
+title: 插装库
 description: Learn how to add native instrumentation to your library.
 aliases: [/docs/concepts/instrumenting-library]
 weight: 40
 ---
 
-OpenTelemetry为许多库提供了[工具库][]，这通常是通过库钩子或猴子补丁库代码完成的。
+OpenTelemetry 为许多库提供了[插装库][]，这通常是通过库钩子或猴子补丁库代码完成的
+。
 
-使用OpenTelemetry的本机库插装为用户提供了更好的可观察性和开发体验，消除了库暴露和文档挂钩的需要:
+使用 OpenTelemetry 的本机库插装为用户提供了更好的可观察性和开发体验，消除了库暴
+露和文档挂钩的需要:
 
-- 自定义日志钩子可以被常见的和易于使用的OpenTelemetry api取代，用户将只与OpenTelemetry交互
+- 自定义日志钩子可以被常见的和易于使用的 OpenTelemetry api 取代，用户将只与
+  OpenTelemetry 交互
 - 来自库和应用程序代码的跟踪、日志、指标是相关和一致的
 - 通用约定允许用户在相同的技术和跨库和语言中获得相似和一致的遥测
-- 遥测信号可以使用各种记录良好的OpenTelemetry扩展点对各种消费场景进行微调(过滤、处理、聚合)。
+- 遥测信号可以使用各种记录良好的 OpenTelemetry 扩展点对各种消费场景进行微调(过滤
+  、处理、聚合)。
 
 ## 语义约定
 
-Check out available
-[semantic conventions](/docs/specs/otel/trace/semantic_conventions/) that cover
-web-frameworks, RPC clients, databases, messaging clients, infra pieces and
-more!
+查看可用的[语义约定](../../specs/otel/trace/semantic_conventions.md)，涵盖 web
+框架、RPC 客户端、数据库、消息传递客户端、基础设施等!
 
-If your library is one of those things - follow the conventions, they are the
-main source of truth and tell which information should be included on spans.
-Conventions make instrumentation consistent: users who work with telemetry don't
-have to learn library specifics and observability vendors can build experiences
-for a wide variety of technologies (e.g. databases or messaging systems). When
-libraries follow conventions, many scenarios may be enabled out of the box
-without the user's input or configuration.
+如果您的库是其中之一-遵循惯例，它们是事实的主要来源，并告诉哪些信息应该包含在
+spans 中。约定使检测保持一致:使用遥测技术的用户不必学习库的细节，而可观察性供应
+商可以为各种各样的技术(例如数据库或消息传递系统)构建体验。当库遵循约定时，无需用
+户输入或配置，许多场景就可以开箱即用。
 
-If you have any feedback or want to add a new convention - please come and
-contribute!
-[Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7) or
-[Specification repo](https://github.com/open-telemetry/opentelemetry-specification)
-are a good places to start!
+如果您有任何反馈或想要添加一个新的会议-请来贡献!
+[Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7)或[Specification repo](https://github.com/open-telemetry/opentelemetry-specification)是
+一个很好的开始!
 
-## 当**不**仪器
+## 当 **不** 仪器
 
-Some libraries are thin clients wrapping network calls. Chances are that
-OpenTelemetry has an instrumentation library for the underlying RPC client
-(check out the [registry](/ecosystem/registry/)). In this case, instrumenting
-the wrapper library may not be necessary.
+有些库是包装网络调用的瘦客户机。 OpenTelemetry 很可能有一个用于底层 RPC 客户端的
+工具库(查看[registry](/ecosystem/registry/))。在这种情况下，可能没有必要检测包装
+器库。
 
-Don't instrument if:
+如果:
 
-- your library is a thin proxy on top of documented or self-explanatory APIs
-- _and_ OpenTelemetry has instrumentation for underlying network calls
-- _and_ there are no conventions your library should follow to enrich telemetry
+- 您的库是文档化或自解释 api 之上的瘦代理
+- _和_ OpenTelemetry 有用于底层网络调用的工具
+- _和_ 您的库不应该遵循任何惯例来丰富遥测技术
 
-If you're in doubt - don't instrument - you can always do it later when you see
-a need.
+如果你有疑问-不要仪器-你可以在你看到需要的时候再做。
 
-If you choose not to instrument, it may still be useful to provide a way to
-configure OpenTelemetry handlers for your internal RPC client instance. It's
-essential in languages that don't support fully automatic instrumentation and
-still useful in others.
+如果您选择不进行检测，那么提供一种方法为您的内部 RPC 客户端实例配置
+OpenTelemetry 处理程序可能仍然是有用的。它在不支持全自动插装的语言中是必不可少的
+，但在其他语言中仍然很有用。
 
-The rest of this document gives guidance on what and how to instrument if you
-decide to do it.
+如果您决定这样做，本文的其余部分将指导您使用什么以及如何使用。
 
 ## OpenTelemetry API
 
-The first step is to take dependency on the OpenTelemetry API package.
+第一步是依赖于 OpenTelemetry API 包。
 
-OpenTelemetry has [two main modules](/docs/specs/otel/overview/) - API and SDK.
-OpenTelemetry API is a set of abstractions and not-operational implementations.
-Unless your application imports the OpenTelemetry SDK, your instrumentation does
-nothing and does not impact application performance.
+OpenTelemetry 有[两个主要模块](/docs/specs/otel/overview/)——API 和 SDK。
+OpenTelemetry API 是一组抽象和非操作实现。除非您的应用程序导入 OpenTelemetry
+SDK，否则您的检测工具不会做任何事情，也不会影响应用程序的性能。
 
-**Libraries should only use the OpenTelemetry API.**
+**库应该只使用 OpenTelemetry API。**
 
-You may be rightfully concerned about adding new dependencies, here are some
-considerations to help you decide how to minimize dependency hell:
+你可能有理由担心添加新的依赖，这里有一些注意事项可以帮助你决定如何减少依赖地狱:
 
-- OpenTelemetry Trace API reached stability in early 2021, it follows
-  [Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability) and we
-  take API stability seriously.
-- When taking dependency, use the earliest stable OpenTelemetry API (1.0.\*) and
-  avoid updating it unless you have to use new features.
-- While your instrumentation stabilizes, consider shipping it as a separate
-  package, so that will never cause issues for users who don't use it. You can
-  keep it in your repo, or
-  [add it to OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components),
-  so it will ship with other instrumentation packages.
-- Semantic Conventions are [stable, but subject to evolution][]: while this does
-  not cause any functional issues, you may need to update your instrumentation
-  every once in a while. Having it in a preview plugin or in OpenTelemetry
-  contrib repo may help keeping conventions up-to-date without breaking changes
-  for your users.
+- OpenTelemetry Trace API 在 2021 年初达到稳定，它遵循[语义版本控制
+  2.0](/docs/specs/otel/version -and-stability)和我们认真对待 API 稳定性。
+- 当使用依赖时，请使用最早的稳定 OpenTelemetry API(1.0.\*)并避免更新它，除非您必
+  须使用新功能。
+- 当您的工具稳定下来时，请考虑将其作为一个单独的包发布，这样就不会给不使用它的用
+  户带来问题。您可以将其保留在您的 repo 中，或
+  者[将其添加到 OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components)，
+  这样它将与其他仪器包一起发布。
+- 语义约定是[稳定的，但受制于演变][]:虽然这不会导致任何功能问题，但您可能需要每
+  隔一段时间更新您的工具。将其放在预览插件或 opentelement_contrib_repo 中可能有
+  助于保持惯例的最新，而不会破坏用户的更改。
 
-  [stable, but subject to evolution]:
-    /docs/specs/otel/versioning-and-stability/#semantic-conventions-stability
+[稳定的，但受制于演变]:
+  ../../specs/otel/versioning-and-stability.md#semantic-conventions-stability
 
 ### 获取追踪器
 
-All application configuration is hidden from your library through the Tracer
-API. Libraries should obtain tracer from
-[global `TracerProvider`](/docs/specs/otel/trace/api/#get-a-tracer) by default.
+所有应用程序配置都通过 Tracer API 对库隐藏。默认情况下，库应该
+从[global `TracerProvider`](/docs/specs/otel/trace/api/#get-a-tracer)获取跟踪器
+。
 
 ```java
 private static final Tracer tracer = GlobalOpenTelemetry.getTracer("demo-db-client", "0.1.0-beta1");
 ```
 
-It's useful for libraries to have an API that allows applications to pass
-instances of `TracerProvider` explicitly which enables better dependency
-injection and simplifies testing.
+对于库来说，有一个允许应用程序显式传递`TracerProvider`实例的 API 是很有用的，这
+样可以更好地实现依赖注入并简化测试。
 
-When obtaining the tracer, provide your library (or tracing plugin) name and
-version - they show up on the telemetry and help users process and filter
-telemetry, understand where it came from, and debug/report any instrumentation
-issues.
+在获得跟踪程序时，提供您的库(或跟踪插件)名称和版本——它们显示在遥测数据上，帮助用
+户处理和过滤遥测数据，了解它的来源，并调试/报告任何仪表问题。
 
 ## 仪器仪表
 
-### Public APIs
+### 公共 api
 
-Public APIs are a good candidates for tracing: spans created for public API
-calls allow users to map telemetry to application code, understand the duration
-and outcome of library calls. Which calls to trace:
+公共 API 是很好的跟踪对象:为公共 API 调用创建的范围允许用户将遥测映射到应用程序
+代码，了解库调用的持续时间和结果。调用 trace:
 
-- public methods that make network calls internally or local operations that
-  take significant time and may fail (e.g. IO)
-- handlers that process requests or messages
+- 内部进行网络调用的公共方法或花费大量时间且可能失败的本地操作(例如 IO)
+- 处理请求或消息的处理程序
 
-**Instrumentation example:**
+**插装的例子:**
 
 ```java
 private static final Tracer tracer = GlobalOpenTelemetry.getTracer("demo-db-client", "0.1.0-beta1");
@@ -156,11 +138,10 @@ private Response selectWithTracing(Query query) {
 }
 ```
 
-Follow conventions to populate attributes! If there is no applicable one, check
-out
-[general conventions](/docs/specs/otel/trace/semantic_conventions/span-general/).
+按照约定填充属性!如没有适用的规定，请参
+阅[一般惯例](/docs/specs/otel/trace/semantic_conventions/span-general/).
 
-### Nested network and other spans
+### 嵌套网络和其他 spans
 
 Network calls are usually traced with OpenTelemetry auto-instrumentations
 through corresponding client implementation.
@@ -213,9 +194,9 @@ As a rule of thumb, use events or logs for verbose data instead of spans. Always
 attach events to the span instance that your instrumentation created. Avoid
 using the active span if you can, since you don't control what it refers to.
 
-## Context propagation
+## 上下文传播
 
-### Extracting context
+### 提取上下文
 
 If you work on a library or a service that receives upstream calls, e.g. a web
 framework or a messaging consumer, you should extract context from the incoming
@@ -260,7 +241,7 @@ span you create. Refer to
 for details (WARNING: messaging conventions are
 [under constructions](https://github.com/open-telemetry/oteps/pull/173) 🚧).
 
-### Injecting context
+### 注入上下文
 
 When you make an outbound call, you will usually want to propagate context to
 the downstream service. In this case, you should create a new span to trace the
@@ -302,7 +283,7 @@ There might be some exceptions:
     compatible.
   - or generate and stamp custom correlation ids on the span.
 
-### In-process
+### 进程内的
 
 - **Make your spans active** (aka current): it enables correlating spans with
   logs and any nested auto-instrumentations.
@@ -323,12 +304,12 @@ There might be some exceptions:
 
 ## Misc
 
-### Instrumentation registry
+### 设备注册
 
 Please add your instrumentation library to the
 [OpenTelemetry registry](/ecosystem/registry/), so users can find it.
 
-### Performance
+### 表演
 
 OpenTelemetry API is no-op and very performant when there is no SDK in the
 application. When OpenTelemetry SDK is configured, it
@@ -354,7 +335,7 @@ if (span.isRecording()) {
 }
 ```
 
-### Error handling
+### 错误处理
 
 OpenTelemetry API is
 [forgiving at runtime](/docs/specs/otel/error-handling/#basic-error-handling-principles) -
@@ -362,7 +343,7 @@ does not fail on invalid arguments, never throws, and swallows exceptions. This
 way instrumentation issues do not affect application logic. Test the
 instrumentation to notice issues OpenTelemetry hides at runtime.
 
-### Testing
+### 测试
 
 Since OpenTelemetry has variety of auto-instrumentations, it's useful to try how
 your instrumentation interacts with other telemetry: incoming requests, outgoing
@@ -399,6 +380,5 @@ class TestExporter implements SpanExporter {
 }
 ```
 
-[instrumentation libraries]:
-  /docs/specs/otel/overview/#instrumentation-libraries
+[插装库]: /docs/specs/otel/overview/#instrumentation-libraries
 [span events]: /docs/specs/otel/trace/api/#add-events
