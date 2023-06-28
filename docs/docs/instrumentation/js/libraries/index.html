@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -847,7 +847,7 @@
   
     <li class="md-nav__item">
       <a href="../../../concepts/observability-primer/" class="md-nav__link">
-        可观测 Primer
+        可观测入门指南
       </a>
     </li>
   
@@ -2364,7 +2364,7 @@
   
     <li class="md-nav__item">
       <a href="../getting-started/browser/" class="md-nav__link">
-        Browser
+        浏览器
       </a>
     </li>
   
@@ -2506,8 +2506,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
+  <a href="#_1" class="md-nav__link">
+    设置
   </a>
   
 </li>
@@ -2528,7 +2528,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     使用单独的插装包
   </a>
   
@@ -2540,21 +2540,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     配置工具库
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    可用的仪器库
+  <a href="#_4" class="md-nav__link">
+    可用的插装库
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     下一个步骤
   </a>
   
@@ -9734,8 +9734,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
+  <a href="#_1" class="md-nav__link">
+    设置
   </a>
   
 </li>
@@ -9756,7 +9756,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     使用单独的插装包
   </a>
   
@@ -9768,21 +9768,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     配置工具库
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    可用的仪器库
+  <a href="#_4" class="md-nav__link">
+    可用的插装库
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     下一个步骤
   </a>
   
@@ -9813,7 +9813,7 @@
 <p>例如
 ，<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-express">用于 Express 的 instrumentation 库</a>将
 根据入站 HTTP 请求自动创建<a href="../../concepts/signals/traces/#span">span</a>。</p>
-<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<h2 id="_1">设置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>每个工具库都是一个 NPM 包，安装通常是这样完成的:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">npm install &lt;name-of-package&gt;</span>
 </code></pre></div></td></tr></table></div>
@@ -9821,19 +9821,16 @@
 建<a href="../../concepts/signals/traces/#tracer-provider">TracerProvider</a>时.</p>
 <h2 id="nodejs">Node.js<a class="headerlink" href="#nodejs" title="Permanent link">&para;</a></h2>
 <h3 id="node">Node 自动插装包<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetry 还定义
-了<a href="https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node">auto-instrumentations-node</a>元
-包，它将所有基于 node .js 的仪器库捆绑到一个包中。这是一种方便的方法，可以为所有
-库添加自动生成的遥测功能，而且工作量很小。</p>
+<p>OpenTelemetry 还定义了<a href="https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node">auto-instrumentations-node</a>元包，它将所有基于 Node.js 的
+插装库捆绑到一个包中。这是一种方便的方法，可以为所有库添加自动生成的遥测功能，而
+且工作量很小。</p>
 <p>要使用这个包，首先安装它:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>npm<span class="w"> </span>install<span class="w"> </span>@opentelemetry/auto-instrumentations-node
 </code></pre></div></td></tr></table></div>
 <p>然后在你的跟踪初始化代码中，使用<code>registerInstrumentations</code>:</p>
-<!-- textlint-disable -->
-
-<!-- prettier-ignore-start -->
-<p>{{&lt; tabpane langEqualsHeader=true &gt;}}</p>
-<p>{{&lt; tab TypeScript &gt;}}
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TypeScript</label><label for="__tabbed_1_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
@@ -9902,8 +9899,8 @@
 <a id="__codelineno-2-33" name="__codelineno-2-33"></a>
 <a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; tab JavaScript &gt;}}
+</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -9971,27 +9968,21 @@
 <a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">addSpanProcessor</span><span class="p">(</span><span class="nx">processor</span><span class="p">);</span>
 <a id="__codelineno-3-33" name="__codelineno-3-33"></a>
 <a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
-</code></pre></div></td></tr></table></div></p>
-<p>{{&lt; /tab &gt;}}</p>
-<p>{{&lt; /tabpane &gt;}}</p>
-<!-- prettier-ignore-end -->
-
-<!-- textlint-enable -->
-
-<h3 id="_1">使用单独的插装包<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<h3 id="_2">使用单独的插装包<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>如果您不希望使用元包，也许是为了减少依赖关系图的大小，您可以安装和注册单独的工具
 包。</p>
-<p>For example, here's how you can install and register only the
-<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-express">instrumentation-express</a>
-and
-<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-http">instrumentation-http</a>
-packages to instrument inbound and outbound HTTP traffic.</p>
+<p>例如，以下是如何安装和注册<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-express">instrumentation-express</a>和<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-http">instrumentation-http</a>包来
+检测入站和出站 HTTP 流量的方法。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/instrumentation-http<span class="w"> </span>@opentelemetry/instrumentation-express
 </code></pre></div></td></tr></table></div>
-<p>And then register each instrumentation library:</p>
-<!-- prettier-ignore-start -->
-<p>{{&lt; tabpane langEqualsHeader=true &gt;}}</p>
-<p>{{&lt; tab TypeScript &gt;}}
+<p>然后注册每个插装库:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
@@ -10066,8 +10057,8 @@ packages to instrument inbound and outbound HTTP traffic.</p>
 <a id="__codelineno-5-36" name="__codelineno-5-36"></a>
 <a id="__codelineno-5-37" name="__codelineno-5-37"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; tab JavaScript &gt;}}
+</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
@@ -10142,25 +10133,24 @@ packages to instrument inbound and outbound HTTP traffic.</p>
 <a id="__codelineno-6-36" name="__codelineno-6-36"></a>
 <a id="__codelineno-6-37" name="__codelineno-6-37"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; /tabpane &gt;}}</p>
-<!-- prettier-ignore-end -->
-
-<h2 id="_2">配置工具库<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+</div>
+</div>
+</div>
+<h2 id="_3">配置工具库<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>一些工具库提供了额外的配置选项。</p>
 <p>例如
 ，<a href="https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options">Express instrumentation</a>提
 供了忽略指定中间件或丰富使用请求钩子自动创建的范围的方法。</p>
-<p>您需要参考每个仪器库的文档来进行高级配置。</p>
-<h2 id="_3">可用的仪器库<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>OpenTelemetry 生成的仪器库的完整列表可
+<p>您需要参考每个插装库的文档来进行高级配置。</p>
+<h2 id="_4">可用的插装库<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>OpenTelemetry 生成的插装库的完整列表可
 从<a href="https://github.com/open-telemetry/opentelemetry-js-contrib">opentelemetry-js-contrib</a>存
 储库获得。</p>
 <p>您还可以
 在<a href="../../../../ecosystem/registry/?language=js&amp;component=instrumentation">registry</a>中
 找到更多可用的工具。</p>
-<h2 id="_4">下一个步骤<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>在你设置好仪器库之后，你可能想添加<a href="../manual/">手动工具</a>来收集自定义的遥测数据
+<h2 id="_5">下一个步骤<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>在你设置好插装库之后，你可能想添加<a href="../manual/">手动工具</a>来收集自定义的遥测数据
 。</p>
 <p>你还需要配置一个合适的导出器来<a href="../exporters/">导出遥测数据</a>到一个或多个遥测后端
 。</p>

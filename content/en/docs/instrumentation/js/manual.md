@@ -9,9 +9,9 @@ spelling: cSpell:ignore Millis
 
 手动插装是向应用程序添加可观察性代码的过程。
 
-## Tracing
+## 跟踪
 
-### Initialize Tracing
+### 初始化跟踪
 
 To start [tracing](/docs/concepts/signals/traces/), you'll need to have an
 initialized [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider)
@@ -37,96 +37,94 @@ npm install \
 Next, create a separate `tracing.js|ts` file that has all the SDK initialization
 code in it:
 
-<!-- prettier-ignore-start -->
+=== "TypeScript"
 
-{{< tabpane langEqualsHeader=true >}}
+    ```ts
+    import {
+      BatchSpanProcessor,
+      ConsoleSpanExporter,
+    } from '@opentelemetry/sdk-trace-base';
+    import { Resource } from '@opentelemetry/resources';
+    import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+    import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
+    import { registerInstrumentations } from '@opentelemetry/instrumentation';
 
-{{< tab TypeScript >}}
-/*tracing.ts*/
-import { BatchSpanProcessor, ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
-import { Resource } from "@opentelemetry/resources";
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
-import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
-import { registerInstrumentations } from "@opentelemetry/instrumentation";
+    // Optionally register instrumentation libraries
+    registerInstrumentations({
+      instrumentations: [],
+    });
 
-// Optionally register instrumentation libraries
-registerInstrumentations({
-  instrumentations: [],
-});
+    const resource = Resource.default().merge(
+      new Resource({
+        [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
+        [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+      })
+    );
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+    const provider = new NodeTracerProvider({
+      resource: resource,
+    });
+    const exporter = new ConsoleSpanExporter();
+    const processor = new BatchSpanProcessor(exporter);
+    provider.addSpanProcessor(processor);
 
-const provider = new NodeTracerProvider({
-    resource: resource,
-});
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+    provider.register();
+    ```
 
-provider.register();
-{{< /tab >}}
+=== "JavaScript"
 
-{{< tab JavaScript >}}
-/*tracing.js*/
-const { Resource } = require("@opentelemetry/resources");
-const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
-const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
-const { registerInstrumentations } = require("@opentelemetry/instrumentation");
-const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
+    ```js
+    const { Resource } = require('@opentelemetry/resources');
+    const {
+      SemanticResourceAttributes,
+    } = require('@opentelemetry/semantic-conventions');
+    const { NodeTracerProvider } = require('@opentelemetry/sdk-trace-node');
+    const { registerInstrumentations } = require('@opentelemetry/instrumentation');
+    const {
+      ConsoleSpanExporter,
+      BatchSpanProcessor,
+    } = require('@opentelemetry/sdk-trace-base');
 
-// Optionally register instrumentation libraries
-registerInstrumentations({
-  instrumentations: [],
-});
+    // Optionally register instrumentation libraries
+    registerInstrumentations({
+      instrumentations: [],
+    });
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+    const resource = Resource.default().merge(
+      new Resource({
+        [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
+        [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+      })
+    );
 
-const provider = new NodeTracerProvider({
-    resource: resource,
-});
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+    const provider = new NodeTracerProvider({
+      resource: resource,
+    });
+    const exporter = new ConsoleSpanExporter();
+    const processor = new BatchSpanProcessor(exporter);
+    provider.addSpanProcessor(processor);
 
-provider.register();
-{{< /tab >}}
-
-{{< /tabpane>}}
-
-<!-- prettier-ignore-end -->
+    provider.register();
+    ```
 
 Next, ensure that `tracing.js|ts` is required in your node invocation. This is
 also required if you're registering instrumentation libraries. For example:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+=== "TypeScript"
 
-{{< tab TypeScript >}}
-ts-node --require ./tracing.ts <app-file.ts>
-{{< /tab >}}
+    ```sh
+    ts-node --require ./tracing.ts <app-file.ts>
+    ```
 
-{{< tab JavaScript >}}
-node --require ./tracing.js <app-file.js>
-{{< /tab >}}
+=== "JavaScript"
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+    ```sh
+    node --require ./tracing.js <app-file.js>
+    ```
 
 #### Browser
 
-First, ensure you've got the right packages:
+首先，确保你有正确的软件包:
 
 ```shell
 npm install \
@@ -140,71 +138,76 @@ npm install \
 Create a `tracing.js|ts` file that initialized the Web SDK, creates a
 `TracerProvider`, and exports a `Tracer`.
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import { Resource } from "@opentelemetry/resources";
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
-import { WebTracerProvider } from "@opentelemetry/sdk-trace-web";
-import { registerInstrumentations } from "@opentelemetry/instrumentation";
-import { BatchSpanProcessor, ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
+=== "TypeScript"
 
-// Optionally register automatic instrumentation libraries
-registerInstrumentations({
-  instrumentations: [],
-});
+    ```ts
+    import { Resource } from '@opentelemetry/resources';
+    import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+    import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
+    import { registerInstrumentations } from '@opentelemetry/instrumentation';
+    import {
+      BatchSpanProcessor,
+      ConsoleSpanExporter,
+    } from '@opentelemetry/sdk-trace-base';
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+    // Optionally register automatic instrumentation libraries
+    registerInstrumentations({
+      instrumentations: [],
+    });
 
-const provider = new WebTracerProvider({
-    resource: resource,
-});
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+    const resource = Resource.default().merge(
+      new Resource({
+        [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
+        [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+      })
+    );
 
-provider.register();
-{{< /tab >}}
+    const provider = new WebTracerProvider({
+      resource: resource,
+    });
+    const exporter = new ConsoleSpanExporter();
+    const processor = new BatchSpanProcessor(exporter);
+    provider.addSpanProcessor(processor);
 
-{{< tab JavaScript >}}
-const opentelemetry = require("@opentelemetry/api");
-const { Resource } = require("@opentelemetry/resources");
-const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
-const { WebTracerProvider } = require("@opentelemetry/sdk-trace-web");
-const { registerInstrumentations } = require("@opentelemetry/instrumentation");
-const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
+    provider.register();
+    ```
 
-// Optionally register automatic instrumentation libraries
-registerInstrumentations({
-  instrumentations: [],
-});
+=== "JavaScript"
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+    ```js
+    const opentelemetry = require('@opentelemetry/api');
+    const { Resource } = require('@opentelemetry/resources');
+    const {
+      SemanticResourceAttributes,
+    } = require('@opentelemetry/semantic-conventions');
+    const { WebTracerProvider } = require('@opentelemetry/sdk-trace-web');
+    const { registerInstrumentations } = require('@opentelemetry/instrumentation');
+    const {
+      ConsoleSpanExporter,
+      BatchSpanProcessor,
+    } = require('@opentelemetry/sdk-trace-base');
 
-const provider = new WebTracerProvider({
-    resource: resource,
-});
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+    // Optionally register automatic instrumentation libraries
+    registerInstrumentations({
+      instrumentations: [],
+    });
 
-provider.register();
-{{< /tab >}}
+    const resource = Resource.default().merge(
+      new Resource({
+        [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
+        [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+      })
+    );
 
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+    const provider = new WebTracerProvider({
+      resource: resource,
+    });
+    const exporter = new ConsoleSpanExporter();
+    const processor = new BatchSpanProcessor(exporter);
+    provider.addSpanProcessor(processor);
+
+    provider.register();
+    ```
 
 You'll need to bundle this file with your web application to be able to use
 tracing throughout the rest of your web application.
@@ -232,37 +235,34 @@ In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
-//...
+=== "TypeScript"
 
-const tracer = opentelemetry.trace.getTracer(
-  'my-service-tracer'
-);
+    ```ts
+    import opentelemetry from '@opentelemetry/api';
+    //...
 
-// You can now use a 'tracer' to do tracing!
-{{< /tab >}}
-{{< tab JavaScript >}}
-const opentelemetry = require("@opentelemetry/api");
-//...
+    const tracer = opentelemetry.trace.getTracer('my-service-tracer');
 
-const tracer = opentelemetry.trace.getTracer(
-  'my-service-tracer'
-);
+    // You can now use a 'tracer' to do tracing!
+    ```
 
-// You can now use a 'tracer' to do tracing!
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+=== "JavaScript"
+
+    ```js
+    const opentelemetry = require('@opentelemetry/api');
+    //...
+
+    const tracer = opentelemetry.trace.getTracer('my-service-tracer');
+
+    // You can now use a 'tracer' to do tracing!
+    ```
 
 It's generally recommended to call `getTracer` in your app when you need it
 rather than exporting the `tracer` instance to the rest of your app. This helps
 avoid trickier application load issues when other required dependencies are
 involved.
 
-### Create spans
+### 创建 spans
 
 Now that you have a [`Tracer`](/docs/concepts/signals/traces/#tracer)
 initialized, you can create [`Span`s](/docs/concepts/signals/traces/#spans).
@@ -282,7 +282,7 @@ tracer.startActiveSpan('main', (span) => {
 The above code sample shows how to create an active span, which is the most
 common kind of span to create.
 
-### Create nested spans
+### 创建嵌套 spans
 
 Nested [spans](/docs/concepts/signals/traces/#spans) let you track work that's
 nested in nature. For example, the `doWork` function below represents a nested
@@ -317,7 +317,7 @@ const doWork = (i) => {
 This code will create 3 child spans that have `parentSpan`'s span ID as their
 parent IDs.
 
-### Create independent spans
+### 创建独立 spans
 
 The previous examples showed how to create an active span. In some cases, you'll
 want to create inactive spans that are siblings of one another rather than being
@@ -345,7 +345,7 @@ than being nested under one another.
 This arrangement can be helpful if you have units of work that are grouped
 together but are conceptually independent from one another.
 
-### Get the current span
+### 获取当前 span
 
 Sometimes it's helpful to do something with the current/active
 [span](/docs/concepts/signals/traces/#spans) at a particular point in program
@@ -357,7 +357,7 @@ const activeSpan = opentelemetry.trace.getActiveSpan();
 // do something with the active span, optionally ending it if that is appropriate for your use case.
 ```
 
-### Get a span from context
+### 从上下文中获取 span
 
 It can also be helpful to get the [span](/docs/concepts/signals/traces/#spans)
 from a given context that isn't necessarily the active span.
@@ -369,7 +369,7 @@ const span = opentelemetry.trace.getSpan(ctx);
 // do something with the acquired span, optionally ending it if that is appropriate for your use case.
 ```
 
-### Attributes
+### 属性
 
 [Attributes](/docs/concepts/signals/traces/#attributes) let you attach key/value
 pairs to a [`Span`](/docs/concepts/signals/traces/#spans) so it carries more
@@ -400,7 +400,7 @@ tracer.startActiveSpan(
 );
 ```
 
-#### Semantic Attributes
+#### 语义属性
 
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
@@ -416,16 +416,17 @@ npm install --save @opentelemetry/semantic-conventions
 
 Add the following to the top of your application file:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import { SemanticAttributes } from "@opentelemetry/semantic-conventions";
-{{< /tab >}}
-{{< tab JavaScript >}}
-const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+=== "TypeScript"
+
+    ```ts
+    import { SemanticAttributes } from '@opentelemetry/semantic-conventions';
+    ```
+
+=== "JavaScript"
+
+    ```js
+    const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
+    ```
 
 Finally, you can update your file to include semantic attributes:
 
@@ -442,7 +443,7 @@ const doWork = () => {
 };
 ```
 
-### Span events
+### Span 事件
 
 A [Span Event](/docs/concepts/signals/traces/#span-events) is a human-readable
 message on an [`Span`](/docs/concepts/signals/traces/#spans) that represents a
@@ -466,7 +467,7 @@ span.addEvent('some log', {
 });
 ```
 
-### Span links
+### Span 链接
 
 [`Span`s](/docs/concepts/signals/traces/#spans) can be created with zero or more
 [`Link`s](/docs/concepts/signals/traces/#span-links) to other Spans that are
@@ -491,7 +492,7 @@ const someFunction = (spanToLinkFrom) => {
 }
 ```
 
-### Span Status
+### Span 状态
 
 A [status](/docs/concepts/signals/traces/#span-status) can be set on a span,
 typically used to specify that a span has not completed successfully -
@@ -499,85 +500,87 @@ typically used to specify that a span has not completed successfully -
 
 The status can be set at any time before the span is finished:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry, { SpanStatusCode } from "@opentelemetry/api";
+=== "TypeScript"
 
-// ...
+    ```ts
+    import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
 
-tracer.startActiveSpan('app.doWork', span => {
-  for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
-    if (i > 10000) {
-      span.setStatus({
-        code: SpanStatusCode.ERROR,
-        message: 'Error'
-      });
-    }
-  }
+    // ...
 
-  span.end();
-});
-{{< /tab >}}
-{{< tab JavaScript >}}
-const opentelemetry = require("@opentelemetry/api");
+    tracer.startActiveSpan('app.doWork', (span) => {
+      for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
+        if (i > 10000) {
+          span.setStatus({
+            code: SpanStatusCode.ERROR,
+            message: 'Error',
+          });
+        }
+      }
 
-// ...
+      span.end();
+    });
+    ```
 
-tracer.startActiveSpan('app.doWork', span => {
-  for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
-    if (i > 10000) {
-      span.setStatus({
-        code: opentelemetry.SpanStatusCode.ERROR,
-        message: 'Error'
-      });
-    }
-  }
+=== "JavaScript"
 
-  span.end();
-});
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+    ```js
+    const opentelemetry = require('@opentelemetry/api');
+
+    // ...
+
+    tracer.startActiveSpan('app.doWork', (span) => {
+      for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
+        if (i > 10000) {
+          span.setStatus({
+            code: opentelemetry.SpanStatusCode.ERROR,
+            message: 'Error',
+          });
+        }
+      }
+
+      span.end();
+    });
+    ```
 
 By default, the status for all spans is `Unset` rather than `Ok`. It is
 typically the job of another component in your telemetry pipeline to interpret
 the `Unset` status of a span, so it's best not to override this unless you're
 explicitly tracking an error.
 
-### Recording exceptions
+### 记录异常
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting [span status](#span-status).
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry, { SpanStatusCode } from "@opentelemetry/api";
+=== "TypeScript"
 
-// ...
+    ```ts
+    import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
 
-try {
-  doWork();
-} catch (ex) {
-  span.recordException(ex);
-  span.setStatus({ code: SpanStatusCode.ERROR });
-}
-{{< /tab >}}
-{{< tab JavaScript >}}
-const opentelemetry = require("@opentelemetry/api");
+    // ...
 
-// ...
+    try {
+      doWork();
+    } catch (ex) {
+      span.recordException(ex);
+      span.setStatus({ code: SpanStatusCode.ERROR });
+    }
+    ```
 
-try {
-  doWork();
-} catch (ex) {
-  span.recordException(ex);
-  span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
-}
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+=== "JavaScript"
+
+    ```js
+    const opentelemetry = require('@opentelemetry/api');
+
+    // ...
+
+    try {
+      doWork();
+    } catch (ex) {
+      span.recordException(ex);
+      span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
+    }
+    ```
 
 ### Using `sdk-trace-base` and manually propagating span context
 
@@ -586,52 +589,49 @@ SDK. The biggest difference, aside from initialization code, is that you'll have
 to manually set spans as active in the current context to be able to create
 nested spans.
 
-#### Initializing tracing with `sdk-trace-base`
+#### 使用`sdk-trace-base`初始化跟踪
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
-import {
-  BasicTracerProvider,
-  BatchSpanProcessor,
-  ConsoleSpanExporter
-} from "@opentelemetry/sdk-trace-base";
+=== "TypeScript"
 
-const provider = new BasicTracerProvider();
+    ```ts
+    import opentelemetry from '@opentelemetry/api';
+    import {
+      BasicTracerProvider,
+      BatchSpanProcessor,
+      ConsoleSpanExporter,
+    } from '@opentelemetry/sdk-trace-base';
 
-// Configure span processor to send spans to the exporter
-provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
-provider.register();
+    const provider = new BasicTracerProvider();
 
-// This is what we'll access in all instrumentation code
-const tracer = opentelemetry.trace.getTracer(
-  'example-basic-tracer-node'
-);
-{{< /tab >}}
-{{< tab JavaScript >}}
-const opentelemetry = require("@opentelemetry/api");
-const {
-  BasicTracerProvider,
-  ConsoleSpanExporter,
-  BatchSpanProcessor,
-} = require("@opentelemetry/sdk-trace-base");
+    // Configure span processor to send spans to the exporter
+    provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
+    provider.register();
 
-const provider = new BasicTracerProvider();
+    // This is what we'll access in all instrumentation code
+    const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
+    ```
 
-// Configure span processor to send spans to the exporter
-provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
-provider.register();
+=== "JavaScript"
 
-// This is what we'll access in all instrumentation code
-const tracer = opentelemetry.trace.getTracer(
-    'example-basic-tracer-node'
-);
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+    ```js
+    const opentelemetry = require('@opentelemetry/api');
+    const {
+      BasicTracerProvider,
+      ConsoleSpanExporter,
+      BatchSpanProcessor,
+    } = require('@opentelemetry/sdk-trace-base');
+
+    const provider = new BasicTracerProvider();
+
+    // Configure span processor to send spans to the exporter
+    provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
+    provider.register();
+
+    // This is what we'll access in all instrumentation code
+    const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
+    ```
 
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
@@ -720,95 +720,93 @@ npm install \
 Next, create a separate `instrumentation.js|ts` file that has all the SDK
 initialization code in it:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
-import {
-  ConsoleMetricExporter,
-  MeterProvider,
-  PeriodicExportingMetricReader
-} from "@opentelemetry/sdk-metrics";
-import { Resource } from "@opentelemetry/resources";
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
+=== "TypeScript"
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+    ```ts
+    import opentelemetry from '@opentelemetry/api';
+    import {
+      ConsoleMetricExporter,
+      MeterProvider,
+      PeriodicExportingMetricReader,
+    } from '@opentelemetry/sdk-metrics';
+    import { Resource } from '@opentelemetry/resources';
+    import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 
-const metricReader = new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter(),
+    const resource = Resource.default().merge(
+      new Resource({
+        [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
+        [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+      })
+    );
 
-    // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
-    exportIntervalMillis: 3000,
-});
+    const metricReader = new PeriodicExportingMetricReader({
+      exporter: new ConsoleMetricExporter(),
 
-const myServiceMeterProvider = new MeterProvider({
-  resource: resource,
-});
+      // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
+      exportIntervalMillis: 3000,
+    });
 
-myServiceMeterProvider.addMetricReader(metricReader);
+    const myServiceMeterProvider = new MeterProvider({
+      resource: resource,
+    });
 
-// Set this MeterProvider to be global to the app being instrumented.
-opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
-{{< /tab >}}
+    myServiceMeterProvider.addMetricReader(metricReader);
 
-{{< tab JavaScript >}}
-const opentelemetry = require('@opentelemetry/api')
-const {
-    MeterProvider,
-    PeriodicExportingMetricReader,
-    ConsoleMetricExporter
-  } = require('@opentelemetry/sdk-metrics');
-const { Resource } = require('@opentelemetry/resources');
-const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
+    // Set this MeterProvider to be global to the app being instrumented.
+    opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
+    ```
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+=== "JavaScript"
 
-const metricReader = new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter(),
+    ```js
+    const opentelemetry = require('@opentelemetry/api');
+    const {
+      MeterProvider,
+      PeriodicExportingMetricReader,
+      ConsoleMetricExporter,
+    } = require('@opentelemetry/sdk-metrics');
+    const { Resource } = require('@opentelemetry/resources');
+    const {
+      SemanticResourceAttributes,
+    } = require('@opentelemetry/semantic-conventions');
 
-    // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
-    exportIntervalMillis: 3000,
-});
+    const resource = Resource.default().merge(
+      new Resource({
+        [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
+        [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+      })
+    );
 
-const myServiceMeterProvider = new MeterProvider({
-  resource: resource,
-});
+    const metricReader = new PeriodicExportingMetricReader({
+      exporter: new ConsoleMetricExporter(),
 
-myServiceMeterProvider.addMetricReader(metricReader);
+      // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
+      exportIntervalMillis: 3000,
+    });
 
-// Set this MeterProvider to be global to the app being instrumented.
-opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+    const myServiceMeterProvider = new MeterProvider({
+      resource: resource,
+    });
+
+    myServiceMeterProvider.addMetricReader(metricReader);
+
+    // Set this MeterProvider to be global to the app being instrumented.
+    opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
+    ```
 
 You'll need to `--require` this file when you run your app, such as:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+=== "TypeScript"
 
-{{< tab TypeScript >}}
-ts-node --require ./instrumentation.ts <app-file.ts>
-{{< /tab >}}
+    ```sh
+    ts-node --require ./instrumentation.ts <app-file.ts>
+    ```
 
-{{< tab JavaScript >}}
-node --require ./instrumentation.js <app-file.js>
-{{< /tab >}}
+=== "JavaScript"
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+    ```sh
+    node --require ./instrumentation.js <app-file.js>
+    ```
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
@@ -817,29 +815,25 @@ Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 Anywhere in your application where you have manually instrumented code you can
 call `getMeter` to acquire a meter. For example:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
+=== "TypeScript"
 
-const myMeter = opentelemetry.metrics.getMeter(
-  'my-service-meter'
-);
+    ```ts
+    import opentelemetry from '@opentelemetry/api';
 
-// You can now use a 'meter' to create instruments!
-{{< /tab >}}
+    const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
 
-{{< tab JavaScript >}}
-const opentelemetry = require('@opentelemetry/api')
+    // You can now use a 'meter' to create instruments!
+    ```
 
-const myMeter = opentelemetry.metrics.getMeter(
-  'my-service-meter'
-);
+=== "JavaScript"
 
-// You can now use a 'meter' to create instruments!
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+    ```js
+    const opentelemetry = require('@opentelemetry/api');
+
+    const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
+
+    // You can now use a 'meter' to create instruments!
+    ```
 
 It’s generally recommended to call `getMeter` in your app when you need it
 rather than exporting the meter instance to the rest of your app. This helps
@@ -911,47 +905,47 @@ Histograms are used to measure a distribution of values over time.
 For example, here's how you might report a distribution of response times for an
 API route with Express:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import express from "express";
+=== "TypeScript"
 
-const app = express();
+    ```ts
+    import express from 'express';
 
-app.get('/', (_req, _res) => {
-  const histogram = myMeter.createHistogram("task.duration");
-  const startTime = new Date().getTime()
+    const app = express();
 
-  // do some work in an API call
+    app.get('/', (_req, _res) => {
+      const histogram = myMeter.createHistogram('task.duration');
+      const startTime = new Date().getTime();
 
-  const endTime = new Date().getTime()
-  const executionTime = endTime - startTime
+      // do some work in an API call
 
-  // Record the duration of the task operation
-  histogram.record(executionTime)
-});
-{{< /tab >}}
+      const endTime = new Date().getTime();
+      const executionTime = endTime - startTime;
 
-{{< tab JavaScript >}}
-const express = require('express');
+      // Record the duration of the task operation
+      histogram.record(executionTime);
+    });
+    ```
 
-const app = express();
+=== "JavaScript"
 
-app.get('/', (_req, _res) => {
-  const histogram = myMeter.createHistogram("task.duration");
-  const startTime = new Date().getTime()
+    ```js
+    const express = require('express');
 
-  // do some work in an API call
+    const app = express();
 
-  const endTime = new Date().getTime()
-  const executionTime = endTime - startTime
+    app.get('/', (_req, _res) => {
+      const histogram = myMeter.createHistogram('task.duration');
+      const startTime = new Date().getTime();
 
-  // Record the duration of the task operation
-  histogram.record(executionTime)
-});
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+      // do some work in an API call
+
+      const endTime = new Date().getTime();
+      const executionTime = endTime - startTime;
+
+      // Record the duration of the task operation
+      histogram.record(executionTime);
+    });
+    ```
 
 ### Using Observable (Async) Counters
 

@@ -1,26 +1,26 @@
 ---
-title: Browser
+title: 浏览器
 aliases: [/docs/js/getting_started/browser]
 weight: 20
 ---
 
-While this guide uses the example application presented below, the steps to
-instrument your own application should be similar.
+虽然本指南使用下面提供的示例应用程序，但是检测您自己的应用程序的步骤应该是类似的
+。
 
 ## 先决条件
 
-Ensure that you have the following installed locally:
+确保在本地安装了以下软件:
 
 - [Node.js](https://nodejs.org/en/download/)
-- [TypeScript](https://www.typescriptlang.org/download), if you will be using
-  TypeScript.
+- [TypeScript](https://www.typescriptlang.org/download), 如果你要使用
+  TypeScript。
 
 ## 示例应用程序
 
-This is a very simple guide, if you'd like to see more complex examples go to
+这是一个非常简单的指南，如果你想看更复杂的例子，请访问
 [examples/opentelemetry-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web).
 
-Copy the following file into an empty directory and call it `index.html`.
+将以下文件复制到一个空目录中，并将其命名为`index.html`。
 
 ```html
 <!DOCTYPE html>
@@ -53,8 +53,8 @@ Copy the following file into an empty directory and call it `index.html`.
 
 ### 安装
 
-To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`,
-and the instrumentation `@opentelemetry/instrumentation-document-load`:
+要在浏览器中创建跟踪，你需要`@opentelemetry/sdk-trace-web`和插
+装`@opentelemetry/instrumentation-document-load`:
 
 ```shell
 npm init -y
@@ -66,41 +66,39 @@ npm install @opentelemetry/api \
 
 ### 初始化与配置
 
-If you are coding in TypeScript, then run the following command:
+如果你在用 TypeScript 编码，那么运行下面的命令:
 
 ```shell
 tsc --init
 ```
 
-Then acquire [parcel](https://parceljs.org/), which will (among other things)
-let you work in Typescript.
+然后获取[parcel](https://parceljs.org/)，它可以让你用 Typescript 工作。
 
 ```shell
 npm install --save-dev parcel
 ```
 
-Create an empty code file named `document-load` with a `.ts` or `.js` extension,
-as appropriate, based on the language you've chosen to write your app in. Add
-the following code to your HTML right before the `</body>` closing tag:
+创建一个名为`document-load`的空代码文件，扩展名为`.ts`或`.js`，根据你选择的语言
+编写应用程序。将以下代码添加到 HTML 中，在`</body>`结束标签之前:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=html persistLang=false >}}
-{{< tab TypeScript >}}
-<script type="module" src="document-load.ts"></script>
-{{< /tab >}}
-{{< tab JavaScript >}}
-<script type="module" src="document-load.js"></script>
-{{< /tab >}}
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+=== "TypeScript"
 
-We will add some code that will trace the document load timings and output those
-as OpenTelemetry Spans.
+    ```ts
+    <script type="module" src="document-load.ts"></script>
+    ```
+
+=== "JavaScript"
+
+    ```js
+    <script type="module" src="document-load.js"></script>
+    ```
+
+我们将添加一些代码来跟踪文档加载时间并将其输出为 OpenTelemetry Spans.
 
 ### 创建跟踪程序提供程序
 
-Add the following code to the `document-load.ts|js` to create a tracer provider,
-which brings the instrumentation to trace document load:
+将以下代码添加到 `document-load.ts|js` 中，以创建一个跟踪程序提供程序，它将提供
+跟踪文档加载的工具:
 
 ```js
 /* document-load.ts|js file - the code snippet is the same for both the languages */
@@ -122,31 +120,26 @@ registerInstrumentations({
 });
 ```
 
-Now build the app with parcel:
+现在用包裹构建应用程序:
 
 ```shell
 npx parcel index.html
 ```
 
-and open the development webserver (e.g. at `http://localhost:1234`) to see if
-your code works.
+并打开开发 web 服务器(例如在`http://localhost:1234`)，看看你的代码是否工作。
 
-There will be no output of traces yet, for this we need to add an exporter.
+目前还没有痕迹输出，为此我们需要添加一个导出器。
 
 ### 创建导出器
 
-In the following example, we will use the `ConsoleSpanExporter` which prints all
-spans to the console.
+在下面的示例中，我们将使用`ConsoleSpanExporter`将所有的 spans 打印到控制台。
 
-In order to visualize and analyze your traces, you will need to export them to a
-tracing backend. Follow [these instructions](../../exporters) for setting up a
-backend and exporter.
+为了可视化和分析您的跟踪，您需要将它们导出到跟踪后端。按照[这些说明](../../
+exports)设置后端和导出器。
 
-You may also want to use the `BatchSpanProcessor` to export spans in batches in
-order to more efficiently use resources.
+您可能还想使用`BatchSpanProcessor`来批量导出 spans，以便更有效地使用资源。
 
-To export traces to the console, modify `document-load.ts|js` so that it matches
-the following code snippet:
+要将跟踪信息导出到控制台，请修改`document-load.ts|js`，以便与以下代码片段匹配:
 
 ```js
 /* document-load.ts|js file - the code is the same for both the languages */
@@ -173,8 +166,8 @@ registerInstrumentations({
 });
 ```
 
-现在，重新构建应用程序并再次打开浏览器。
-在开发人员工具栏的控制台中，您应该看到正在导出一些跟踪:
+现在，重新构建应用程序并再次打开浏览器。在开发人员工具栏的控制台中，您应该看到正
+在导出一些跟踪:
 
 ```json
 {
@@ -231,7 +224,7 @@ registerInstrumentations({
 
 ### 添加的设备
 
-如果你想检测AJAX请求、用户交互和其他，你可以为它们注册额外的检测:
+如果你想检测 AJAX 请求、用户交互和其他，你可以为它们注册额外的检测:
 
 ```javascript
 registerInstrumentations({
@@ -242,6 +235,7 @@ registerInstrumentations({
 });
 ```
 
-## 用于Web的元包
+## 用于 Web 的元包
 
-要利用最常见的仪器都在一个你可以简单地使用[开放遥测元包的web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)
+要利用最常见的插装都在一个你可以简单地使
+用[开放遥测元包的 web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)

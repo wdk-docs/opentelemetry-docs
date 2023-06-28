@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Core observability concepts.">
+        <meta name="description" content="核心可观察性概念。">
       
       
         <meta name="author" content="OPENTELEMETRY">
@@ -25,7 +25,7 @@
     
     
       
-        <title>可观测 Primer - OPENTELEMETRY 文档</title>
+        <title>可观测入门指南 - OPENTELEMETRY 文档</title>
       
     
     
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              可观测 Primer
+              可观测入门指南
             
           </span>
         </div>
@@ -856,12 +856,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          可观测 Primer
+          可观测入门指南
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        可观测 Primer
+        可观测入门指南
       </a>
       
         
@@ -2453,7 +2453,7 @@
   
     <li class="md-nav__item">
       <a href="../../instrumentation/js/getting-started/browser/" class="md-nav__link">
-        Browser
+        浏览器
       </a>
     </li>
   
@@ -9816,42 +9816,54 @@
   
 
 
-  <h1>可观测 Primer</h1>
+  <h1>可观测入门指南</h1>
 
 <h2 id="_1">什么是可观察性?<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>可观察性让我们在不知道系统内部运作的情况下对系统提出问题，从而从外部理解系统。
-此外，它允许我们轻松地排除故障并处理新问题(即“未知的未知”)，并帮助我们回答“为什么会发生这种情况?”</p>
-<p>为了能够对系统提出这些问题，必须对应用程序进行适当的检测。
-也就是说，应用程序代码必须发出<a href="/docs/concepts/signals/">信号</a>，例如<a href="/docs/concepts/observability-primer/#distributed-traces">trace</a>， <a href="/docs/concepts/observability-primer/#reliability- metrics">metrics</a>和<a href="/docs/concepts/observability-primer/#logs">logs</a>。
-当开发人员不需要添加更多的检测来解决问题时，应用程序就被适当地检测了，因为他们已经拥有了所需的所有信息。</p>
-<p><a href="/docs/what-is-opentelemetry/">OpenTelemetry</a>是应用程序代码被检测的机制，以帮助使系统可观察。</p>
+<p>可观察性让我们在不知道系统内部运作的情况下对系统提出问题，从而从外部理解系统。此
+外，它允许我们轻松地排除故障并处理新问题(即“未知的未知”)，并帮助我们回答“为什么
+会发生这种情况?”</p>
+<p>为了能够对系统提出这些问题，必须对应用程序进行适当的检测。也就是说，应用程序代码
+必须发出<a href="/docs/concepts/signals/">信号</a>，例
+如<a href="/docs/concepts/observability-primer/#distributed-traces">trace</a>，
+<a href="/docs/concepts/observability-primer/#reliability- metrics">metrics</a>
+和<a href="/docs/concepts/observability-primer/#logs">logs</a>。当开发人员不需要添加更多的
+检测来解决问题时，应用程序就被适当地检测了，因为他们已经拥有了所需的所有信息。</p>
+<p><a href="/docs/what-is-opentelemetry/">OpenTelemetry</a>是应用程序代码被检测的机制，以帮助
+使系统可观察。</p>
 <h2 id="_2">可靠性和度量<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>遥测是指从系统发出的有关其行为的数据。
-数据可以以<a href="#distributed-traces">痕迹</a>、<a href="#reliability- metrics">指标</a>和<a href="#logs">日志</a>的形式出现。</p>
-<p><strong>可靠性</strong> 回答的问题是:“服务是否在做用户期望它做的事情?”系统可以100%正常运行，但如果当用户点击“添加到购物车”将一条黑色裤子添加到购物车时，系统却一直在添加一条红色裤子，那么系统就会被认为是**不**可靠的。</p>
-<p><strong>指标</strong> 是一段时间内关于基础设施或应用程序的数字数据的聚合。
-示例包括:系统错误率、CPU利用率、给定服务的请求率。</p>
-<p><strong>SLI</strong> ，即服务水平指标，表示对服务行为的度量。
-好的SLI从用户的角度来衡量您的服务。
-例如，SLI可以是网页加载的速度。</p>
-<p><strong>SLO</strong> ，即服务水平目标，是向组织/其他团队传达可靠性的手段。
-这可以通过将一个或多个sli附加到业务值来实现。</p>
+<p>遥测是指从系统发出的有关其行为的数据。数据可以
+以<a href="#distributed-traces">痕迹</a>、<a href="#reliability- metrics">指标</a>和<a href="#logs">日志</a>的形
+式出现。</p>
+<p><strong>可靠性</strong> 回答的问题是:“服务是否在做用户期望它做的事情?”系统可以 100%正常运行，
+但如果当用户点击“添加到购物车”将一条黑色裤子添加到购物车时，系统却一直在添加一条
+红色裤子，那么系统就会被认为是**不**可靠的。</p>
+<p><strong>指标</strong> 是一段时间内关于基础设施或应用程序的数字数据的聚合。示例包括:系统错误率
+、CPU 利用率、给定服务的请求率。</p>
+<p><strong>SLI</strong> ，即服务水平指标，表示对服务行为的度量。好的 SLI 从用户的角度来衡量您的
+服务。例如，SLI 可以是网页加载的速度。</p>
+<p><strong>SLO</strong> ，即服务水平目标，是向组织/其他团队传达可靠性的手段。这可以通过将一个或
+多个 sli 附加到业务值来实现。</p>
 <h2 id="_3">理解分布式跟踪<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>为了理解分布式跟踪，让我们从一些基础知识开始。</p>
 <h3 id="_4">日志<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>日志是由服务或其他组件发出的带有时间戳的消息。
-然而，与<a href="#distributed-traces">traces</a>不同，它们不一定与任何特定的用户请求或事务相关联。
-它们在软件中几乎无处不在，并且在过去被开发人员和操作人员严重依赖，以帮助他们理解系统行为。</p>
+<p>日志是由服务或其他组件发出的带有时间戳的消息。然而，
+与<a href="#distributed-traces">traces</a>不同，它们不一定与任何特定的用户请求或事务相关联
+。它们在软件中几乎无处不在，并且在过去被开发人员和操作人员严重依赖，以帮助他们理
+解系统行为。</p>
 <p>示例日志:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902868f730] Started GET &quot;/&quot; for ::1 at 2021-02-23 13:26:23 -0800
 </code></pre></div></td></tr></table></div>
-<p>不幸的是，日志对于跟踪代码执行并不是非常有用，因为它们通常缺乏上下文信息，例如从哪里调用它们。</p>
+<p>不幸的是，日志对于跟踪代码执行并不是非常有用，因为它们通常缺乏上下文信息，例如从
+哪里调用它们。</p>
 <p>当它们作为<a href="#span">span</a>的一部分包含时，它们将变得更加有用。</p>
 <h3 id="spans">Spans<a class="headerlink" href="#spans" title="Permanent link">&para;</a></h3>
-<p><strong>span</strong> 表示一个工作或操作单元。 它跟踪请求所做的特定操作，描绘出在执行该操作期间发生的情况。</p>
-<p>span包含名称、与时间相关的数据、<a href="/docs/concepts/signals/traces/#span-events">结构化日志消息</a>和<a href="/docs/concepts/signals/traces/# Attributes">其他元数据(即属性)</a>，以提供关于它所跟踪的操作的信息。</p>
+<p><strong>span</strong> 表示一个工作或操作单元。 它跟踪请求所做的特定操作，描绘出在执行该操作期
+间发生的情况。</p>
+<p>span 包含名称、与时间相关的数据
+、<a href="/docs/concepts/signals/traces/#span-events">结构化日志消息</a>和<a href="/docs/concepts/signals/traces/#
+Attributes">其他元数据(即属性)</a>，以提供关于它所跟踪的操作的信息。</p>
 <h4 id="span">Span 属性<a class="headerlink" href="#span" title="Permanent link">&para;</a></h4>
-<p>下表包含了span属性的示例:</p>
+<p>下表包含了 span 属性的示例:</p>
 <table>
 <thead>
 <tr>
@@ -9917,18 +9929,23 @@
 <p>For more on spans and how they pertain to OTel, see
 <a href="/docs/concepts/signals/traces/#spans">Spans</a>.</p>
 <h3 id="_5">分布式跟踪<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>分布式跟踪，通常称为跟踪，记录请求(由应用程序或最终用户发出)通过多服务架构(如微服务和无服务器应用程序)传播时所采取的路径。</p>
+<p>分布式跟踪，通常称为跟踪，记录请求(由应用程序或最终用户发出)通过多服务架构(如微
+服务和无服务器应用程序)传播时所采取的路径。</p>
 <p>如果不进行跟踪，就很难确定分布式系统中性能问题的原因。</p>
-<p>它提高了应用程序或系统运行状况的可见性，并允许我们调试难以在本地重现的行为。
-跟踪对于分布式系统至关重要，因为分布式系统通常存在不确定性问题，或者过于复杂而无法在本地重现。</p>
-<p>跟踪通过分解请求流经分布式系统时所发生的事情，使调试和理解分布式系统变得不那么令人生畏。</p>
-<p>迹线由一个或多个跨度组成。第一个跨度表示根跨度。
-每个根跨度代表一个从头到尾的请求。父类下面的跨提供了一个更深入的上下文，说明在请求期间发生了什么(或组成请求的步骤)。</p>
+<p>它提高了应用程序或系统运行状况的可见性，并允许我们调试难以在本地重现的行为。跟踪
+对于分布式系统至关重要，因为分布式系统通常存在不确定性问题，或者过于复杂而无法在
+本地重现。</p>
+<p>跟踪通过分解请求流经分布式系统时所发生的事情，使调试和理解分布式系统变得不那么令
+人生畏。</p>
+<p>迹线由一个或多个跨度组成。第一个跨度表示根跨度。每个根跨度代表一个从头到尾的请求
+。父类下面的跨提供了一个更深入的上下文，说明在请求期间发生了什么(或组成请求的步
+骤)。</p>
 <p>许多可观察性后端将轨迹可视化为瀑布图，如下图所示:</p>
 <p><img alt="Sample Trace" src="../../../assets/img/waterfall_trace.png" title="Trace waterfall diagram" /></p>
-<p>瀑布图显示了根跨度与其子跨度之间的父子关系。
-当一个span封装另一个span时，这也表示嵌套关系。</p>
-<p>有关trace及其与OTel的关系的更多信息，请参见<a href="/docs/concepts/signals/traces/">trace</a>.</p>
+<p>瀑布图显示了根跨度与其子跨度之间的父子关系。当一个 span 封装另一个 span 时，这也
+表示嵌套关系。</p>
+<p>有关 trace 及其与 OTel 的关系的更多信息，请参
+见<a href="/docs/concepts/signals/traces/">trace</a>.</p>
 
 
 

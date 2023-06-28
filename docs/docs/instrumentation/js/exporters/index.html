@@ -847,7 +847,7 @@
   
     <li class="md-nav__item">
       <a href="../../../concepts/observability-primer/" class="md-nav__link">
-        可观测 Primer
+        可观测入门指南
       </a>
     </li>
   
@@ -2364,7 +2364,7 @@
   
     <li class="md-nav__item">
       <a href="../getting-started/browser/" class="md-nav__link">
-        Browser
+        浏览器
       </a>
     </li>
   
@@ -9820,11 +9820,13 @@
 
   <h1>导出器</h1>
 
-<p>为了可视化和分析您的痕迹，您需要将它们导出到后端，如<a href="https://www.jaegertracing.io/">Jaeger</a>或<a href="https://zipkin.io/">Zipkin</a>。
-OpenTelemetry JS为一些常见的开源后端提供了导出器。</p>
+<p>为了可视化和分析您的痕迹，您需要将它们导出到后端，
+如<a href="https://www.jaegertracing.io/">Jaeger</a>或<a href="https://zipkin.io/">Zipkin</a>。
+OpenTelemetry JS 为一些常见的开源后端提供了导出器。</p>
 <p>下面您将找到一些关于如何设置后端和匹配的导出器的介绍。</p>
 <h2 id="otlp-endpoint">OTLP endpoint<a class="headerlink" href="#otlp-endpoint" title="Permanent link">&para;</a></h2>
-<p>要将跟踪数据发送到OTLP端点(如<a href="/docs/collector">collector</a>或Jaeger)，您需要使用导出包，例如<code>@opentelemetry/exporter-trace-otlp-proto</code>:</p>
+<p>要将跟踪数据发送到 OTLP 端点(如<a href="/docs/collector">collector</a>或 Jaeger)，您需要使
+用导出包，例如<code>@opentelemetry/exporter-trace-otlp-proto</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/exporter-trace-otlp-proto<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span>@opentelemetry/exporter-metrics-otlp-proto
@@ -9833,79 +9835,9 @@ OpenTelemetry JS为一些常见的开源后端提供了导出器。</p>
 update <code>instrumentation.ts|js</code> from the
 <a href="/docs/instrumentation/js/getting-started/nodejs/">Getting Started</a> like the
 following:</p>
-<!-- prettier-ignore-start -->
-
-<p>{{&lt; tabpane langEqualsHeader=true &gt;}}
-{{&lt; tab Typescript &gt;}}
-/<em>tracing.ts</em>/
-import * as opentelemetry from "<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/sdk-node" title="GitHub Repository: opentelemetry/sdk-node">opentelemetry/sdk-node</a>";
-import {
-  getNodeAutoInstrumentations,
-} from "<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/auto-instrumentations-node" title="GitHub Repository: opentelemetry/auto-instrumentations-node">opentelemetry/auto-instrumentations-node</a>";
-import {
-  OTLPTraceExporter,
-} from "<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/exporter-trace-otlp-proto" title="GitHub Repository: opentelemetry/exporter-trace-otlp-proto">opentelemetry/exporter-trace-otlp-proto</a>";
-import {
-  OTLPMetricExporter
-} from "<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/exporter-metrics-otlp-proto" title="GitHub Repository: opentelemetry/exporter-metrics-otlp-proto">opentelemetry/exporter-metrics-otlp-proto</a>";
-import {
-  PeriodicExportingMetricReader
-} from "<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/sdk-metrics" title="GitHub Repository: opentelemetry/sdk-metrics">opentelemetry/sdk-metrics</a>";</p>
-<p>const sdk = new opentelemetry.NodeSDK({
-  traceExporter: new OTLPTraceExporter({
-    // optional - default url is <a href="http://localhost:4318/v1/traces">http://localhost:4318/v1/traces</a>
-    url: "<your-otlp-endpoint>/v1/traces",
-    // optional - collection of custom headers to be sent with each request, empty by default
-    headers: {},
-  }),
-  metricReader: new PeriodicExportingMetricReader({
-    exporter: new OTLPMetricExporter({
-      url: '<your-otlp-endpoint>/v1/metrics', // url is optional and can be omitted - default is <a href="http://localhost:4318/v1/metrics">http://localhost:4318/v1/metrics</a>
-      headers: {}, // an optional object containing custom headers to be sent with each request
-    }),
-  }),
-  instrumentations: [getNodeAutoInstrumentations()],
-});
-sdk.start();
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; tab JavaScript &gt;}}
-/<em>tracing.js</em>/
-const opentelemetry = require("<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/sdk-node" title="GitHub Repository: opentelemetry/sdk-node">opentelemetry/sdk-node</a>");
-const {
-  getNodeAutoInstrumentations,
-} = require("<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/auto-instrumentations-node" title="GitHub Repository: opentelemetry/auto-instrumentations-node">opentelemetry/auto-instrumentations-node</a>");
-const {
-  OTLPTraceExporter,
-} = require("<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/exporter-trace-otlp-proto" title="GitHub Repository: opentelemetry/exporter-trace-otlp-proto">opentelemetry/exporter-trace-otlp-proto</a>");
-const {
-  OTLPMetricExporter
-} = require("<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/exporter-metrics-otlp-proto" title="GitHub Repository: opentelemetry/exporter-metrics-otlp-proto">opentelemetry/exporter-metrics-otlp-proto</a>");
-const {
-  PeriodicExportingMetricReader
-} = require('<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/sdk-metrics" title="GitHub Repository: opentelemetry/sdk-metrics">opentelemetry/sdk-metrics</a>');</p>
-<p>const sdk = new opentelemetry.NodeSDK({
-  traceExporter: new OTLPTraceExporter({
-    // optional - default url is <a href="http://localhost:4318/v1/traces">http://localhost:4318/v1/traces</a>
-    url: "<your-otlp-endpoint>/v1/traces",
-    // optional - collection of custom headers to be sent with each request, empty by default
-    headers: {},
-  }),
-  metricReader: new PeriodicExportingMetricReader({
-    exporter: new OTLPMetricExporter({
-      url: '<your-otlp-endpoint>/v1/metrics', // url is optional and can be omitted - default is <a href="http://localhost:4318/v1/metrics">http://localhost:4318/v1/metrics</a>
-      headers: {}, // an optional object containing custom headers to be sent with each request
-      concurrencyLimit: 1, // an optional limit on pending requests
-    }),
-  }),
-  instrumentations: [getNodeAutoInstrumentations()],
-});
-sdk.start();
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; /tabpane&gt;}}</p>
-<!-- prettier-ignore-end -->
-
-<p>To try out the <code>OTLPTraceExporter</code> quickly, you can run Jaeger in a docker
-container:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Typescript</label><label for="__tabbed_1_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
@@ -9919,20 +9851,153 @@ container:</p>
 <span class="normal"><a href="#__codelineno-1-11">11</a></span>
 <span class="normal"><a href="#__codelineno-1-12">12</a></span>
 <span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>jaeger<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">COLLECTOR_ZIPKIN_HOST_PORT</span><span class="o">=</span>:9411<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">COLLECTOR_OTLP_ENABLED</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">6831</span>:6831/udp<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">6832</span>:6832/udp<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">5778</span>:5778<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">16686</span>:16686<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">4317</span>:4317<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">4318</span>:4318<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">14250</span>:14250<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">14268</span>:14268<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">14269</span>:14269<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">9411</span>:9411<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">  </span>jaegertracing/all-in-one:latest
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span>
+<span class="normal"><a href="#__codelineno-1-26">26</a></span>
+<span class="normal"><a href="#__codelineno-1-27">27</a></span>
+<span class="normal"><a href="#__codelineno-1-28">28</a></span>
+<span class="normal"><a href="#__codelineno-1-29">29</a></span>
+<span class="normal"><a href="#__codelineno-1-30">30</a></span>
+<span class="normal"><a href="#__codelineno-1-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">/*tracing.ts*/</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">opentelemetry</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@opentelemetry/sdk-node&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span><span class="nx">getNodeAutoInstrumentations</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@opentelemetry/auto-instrumentations-node&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">  </span><span class="nx">OTLPTraceExporter</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@opentelemetry/exporter-trace-otlp-proto&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">  </span><span class="nx">OTLPMetricExporter</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@opentelemetry/exporter-metrics-otlp-proto&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">  </span><span class="nx">PeriodicExportingMetricReader</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@opentelemetry/sdk-metrics&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">opentelemetry</span><span class="p">.</span><span class="nx">NodeSDK</span><span class="p">({</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">  </span><span class="nx">traceExporter</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">OTLPTraceExporter</span><span class="p">({</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="c1">// optional - default url is http://localhost:4318/v1/traces</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;your-otlp-endpoint&gt;/v1/traces&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="c1">// optional - collection of custom headers to be sent with each request, empty by default</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">  </span><span class="p">}),</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">  </span><span class="nx">metricReader</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">PeriodicExportingMetricReader</span><span class="p">({</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">    </span><span class="nx">exporter</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">OTLPMetricExporter</span><span class="p">({</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">      </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;your-otlp-endpoint&gt;/v1/metrics&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// url is optional and can be omitted - default is http://localhost:4318/v1/metrics</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// an optional object containing custom headers to be sent with each request</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">    </span><span class="p">}),</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28"></a><span class="w">  </span><span class="p">}),</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">getNodeAutoInstrumentations</span><span class="p">()],</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="p">});</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="nx">sdk</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span>
+<span class="normal"><a href="#__codelineno-2-32">32</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">/*tracing.js*/</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">opentelemetry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@opentelemetry/sdk-node&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="nx">getNodeAutoInstrumentations</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@opentelemetry/auto-instrumentations-node&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">  </span><span class="nx">OTLPTraceExporter</span><span class="p">,</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@opentelemetry/exporter-trace-otlp-proto&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">  </span><span class="nx">OTLPMetricExporter</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@opentelemetry/exporter-metrics-otlp-proto&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">  </span><span class="nx">PeriodicExportingMetricReader</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/sdk-metrics&#39;</span><span class="p">);</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">opentelemetry</span><span class="p">.</span><span class="nx">NodeSDK</span><span class="p">({</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">  </span><span class="nx">traceExporter</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OTLPTraceExporter</span><span class="p">({</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="c1">// optional - default url is http://localhost:4318/v1/traces</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">    </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;your-otlp-endpoint&gt;/v1/traces&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">    </span><span class="c1">// optional - collection of custom headers to be sent with each request, empty by default</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">    </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">  </span><span class="p">}),</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">  </span><span class="nx">metricReader</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PeriodicExportingMetricReader</span><span class="p">({</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="w">    </span><span class="nx">exporter</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OTLPMetricExporter</span><span class="p">({</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="w">      </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&lt;your-otlp-endpoint&gt;/v1/metrics&#39;</span><span class="p">,</span><span class="w"> </span><span class="c1">// url is optional and can be omitted - default is http://localhost:4318/v1/metrics</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="c1">// an optional object containing custom headers to be sent with each request</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">      </span><span class="nx">concurrencyLimit</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="c1">// an optional limit on pending requests</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="w">    </span><span class="p">}),</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="w">  </span><span class="p">}),</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">getNodeAutoInstrumentations</span><span class="p">()],</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="p">});</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="nx">sdk</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>To try out the <code>OTLPTraceExporter</code> quickly, you can run Jaeger in a docker
+container:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>jaeger<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">COLLECTOR_ZIPKIN_HOST_PORT</span><span class="o">=</span>:9411<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">COLLECTOR_OTLP_ENABLED</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">6831</span>:6831/udp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">6832</span>:6832/udp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">5778</span>:5778<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">16686</span>:16686<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">4317</span>:4317<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">4318</span>:4318<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">14250</span>:14250<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">14268</span>:14268<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">14269</span>:14269<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">9411</span>:9411<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">  </span>jaegertracing/all-in-one:latest
 </code></pre></div></td></tr></table></div>
 <h3 id="usage-with-the-webtracer">Usage with the WebTracer<a class="headerlink" href="#usage-with-the-webtracer" title="Permanent link">&para;</a></h3>
 <p>When you use the OTLP exporter in a browser-based application, you need to note
@@ -9958,7 +10023,7 @@ right endpoint, i.e., make sure that your port is set to <code>4318</code>.</p>
 <p>If your website is making use of Content Security Policies (CSPs), make sure
 that the domain of your OTLP endpoint is included. If your collector endpoint is
 <code>https://collector.example.com:4318/v1/traces</code>, add the following directive:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>connect-src collector.example.com:4318/v1/traces
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>connect-src collector.example.com:4318/v1/traces
 </code></pre></div></td></tr></table></div>
 <p>If your CSP is not including the OTLP endpoint, you will see an error message,
 stating that the request to your endpoint is violating the CSP directive.</p>
@@ -9969,29 +10034,29 @@ special headers for Cross-Origin Resource Sharing (CORS).</p>
 <p>The OpenTelemetry collector provides <a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md">a feature</a> for http-based receivers to
 add the required headers to allow the receiver to accept traces from a web
 browser:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-3-10">10</a></span>
-<span class="normal"><a href="#__codelineno-3-11">11</a></span>
-<span class="normal"><a href="#__codelineno-3-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nt">receivers</span><span class="p">:</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="nt">otlp</span><span class="p">:</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="nt">protocols</span><span class="p">:</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">      </span><span class="nt">http</span><span class="p">:</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">        </span><span class="nt">include_metadata</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">        </span><span class="nt">cors</span><span class="p">:</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">          </span><span class="nt">allowed_origins</span><span class="p">:</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://foo.bar.com</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://*.test.com</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">          </span><span class="nt">allowed_headers</span><span class="p">:</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example-Header</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">          </span><span class="nt">max_age</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7200</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nt">receivers</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">  </span><span class="nt">otlp</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="nt">protocols</span><span class="p">:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">      </span><span class="nt">http</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">        </span><span class="nt">include_metadata</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">        </span><span class="nt">cors</span><span class="p">:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">          </span><span class="nt">allowed_origins</span><span class="p">:</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://foo.bar.com</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://*.test.com</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">          </span><span class="nt">allowed_headers</span><span class="p">:</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example-Header</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">          </span><span class="nt">max_age</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7200</span>
 </code></pre></div></td></tr></table></div>
 <h4 id="securely-expose-your-collector">Securely expose your collector<a class="headerlink" href="#securely-expose-your-collector" title="Permanent link">&para;</a></h4>
 <p>To receive telemetry from a web application you need to allow the browsers of
@@ -10004,79 +10069,89 @@ proxy can take care of SSL-offloading, setting the right CORS headers, and many
 other features specific to web applications.</p>
 <p>Below you will find a configuration for the popular NGINX web server to get you
 started:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span>
-<span class="normal"><a href="#__codelineno-4-11">11</a></span>
-<span class="normal"><a href="#__codelineno-4-12">12</a></span>
-<span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span>
-<span class="normal"><a href="#__codelineno-4-16">16</a></span>
-<span class="normal"><a href="#__codelineno-4-17">17</a></span>
-<span class="normal"><a href="#__codelineno-4-18">18</a></span>
-<span class="normal"><a href="#__codelineno-4-19">19</a></span>
-<span class="normal"><a href="#__codelineno-4-20">20</a></span>
-<span class="normal"><a href="#__codelineno-4-21">21</a></span>
-<span class="normal"><a href="#__codelineno-4-22">22</a></span>
-<span class="normal"><a href="#__codelineno-4-23">23</a></span>
-<span class="normal"><a href="#__codelineno-4-24">24</a></span>
-<span class="normal"><a href="#__codelineno-4-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">        </span><span class="c1"># Take care of preflight requests</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">        </span><span class="kn">if</span><span class="w"> </span><span class="s">(</span><span class="nv">$request_method</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;OPTIONS&#39;)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Max-Age&#39;</span><span class="w"> </span><span class="mi">1728000</span><span class="p">;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Origin&#39;</span><span class="w"> </span><span class="s">&#39;name.of.your.website.example.com&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Headers&#39;</span><span class="w"> </span><span class="s">&#39;Accept,Accept-Language,Content-Language,Content-Type&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Credentials&#39;</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Content-Type&#39;</span><span class="w"> </span><span class="s">&#39;text/plain</span><span class="w"> </span><span class="s">charset=UTF-8&#39;</span><span class="p">;</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Content-Length&#39;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">             </span><span class="kn">return</span><span class="w"> </span><span class="mi">204</span><span class="p">;</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Origin&#39;</span><span class="w"> </span><span class="s">&#39;name.of.your.website.example.com&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Credentials&#39;</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Headers&#39;</span><span class="w"> </span><span class="s">&#39;Accept,Accept-Language,Content-Language,Content-Type&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">        </span><span class="kn">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://collector:4318</span><span class="p">;</span>
-<a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="p">}</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span>
+<span class="normal"><a href="#__codelineno-6-23">23</a></span>
+<span class="normal"><a href="#__codelineno-6-24">24</a></span>
+<span class="normal"><a href="#__codelineno-6-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">_</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">        </span><span class="c1"># Take care of preflight requests</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">        </span><span class="kn">if</span><span class="w"> </span><span class="s">(</span><span class="nv">$request_method</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;OPTIONS&#39;)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Max-Age&#39;</span><span class="w"> </span><span class="mi">1728000</span><span class="p">;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Origin&#39;</span><span class="w"> </span><span class="s">&#39;name.of.your.website.example.com&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Headers&#39;</span><span class="w"> </span><span class="s">&#39;Accept,Accept-Language,Content-Language,Content-Type&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Credentials&#39;</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Content-Type&#39;</span><span class="w"> </span><span class="s">&#39;text/plain</span><span class="w"> </span><span class="s">charset=UTF-8&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">             </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Content-Length&#39;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">             </span><span class="kn">return</span><span class="w"> </span><span class="mi">204</span><span class="p">;</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Origin&#39;</span><span class="w"> </span><span class="s">&#39;name.of.your.website.example.com&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Credentials&#39;</span><span class="w"> </span><span class="s">&#39;true&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">        </span><span class="kn">add_header</span><span class="w"> </span><span class="s">&#39;Access-Control-Allow-Headers&#39;</span><span class="w"> </span><span class="s">&#39;Accept,Accept-Language,Content-Language,Content-Type&#39;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="w">        </span><span class="kn">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://collector:4318</span><span class="p">;</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="zipkin">Zipkin<a class="headerlink" href="#zipkin" title="Permanent link">&para;</a></h2>
 <p>To set up Zipkin as quickly as possible, run it in a docker container:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">9411</span>:9411<span class="w"> </span>--name<span class="w"> </span>zipkin<span class="w"> </span>openzipkin/zipkin
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">9411</span>:9411<span class="w"> </span>--name<span class="w"> </span>zipkin<span class="w"> </span>openzipkin/zipkin
 </code></pre></div></td></tr></table></div>
 <p>Install the exporter package as a dependency for your application:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/exporter-zipkin
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/exporter-zipkin
 </code></pre></div></td></tr></table></div>
 <p>Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:</p>
-<!-- prettier-ignore-start -->
-<p>{{&lt; tabpane langEqualsHeader=true &gt;}}
-{{&lt; tab Typescript &gt;}}
-import { ZipkinExporter } from "<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/exporter-zipkin" title="GitHub Repository: opentelemetry/exporter-zipkin">opentelemetry/exporter-zipkin</a>";
-import { BatchSpanProcessor } from "<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/sdk-trace-base" title="GitHub Repository: opentelemetry/sdk-trace-base">opentelemetry/sdk-trace-base</a>";</p>
-<p>provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
-{{&lt; /tab&gt;}}</p>
-<p>{{&lt; tab JavaScript &gt;}}
-const { ZipkinExporter } = require("<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/exporter-zipkin" title="GitHub Repository: opentelemetry/exporter-zipkin">opentelemetry/exporter-zipkin</a>");
-const { BatchSpanProcessor } = require("<a class="magiclink magiclink-github magiclink-repository" href="https://github.com/opentelemetry/sdk-trace-base" title="GitHub Repository: opentelemetry/sdk-trace-base">opentelemetry/sdk-trace-base</a>");</p>
-<p>provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
-{{&lt; /tab &gt;}}
-{{&lt; /tabpane&gt;}}</p>
-<!-- prettier-ignore-end -->
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Typescript</label><label for="__tabbed_2_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ZipkinExporter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@opentelemetry/exporter-zipkin&quot;</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BatchSpanProcessor</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@opentelemetry/sdk-trace-base&quot;</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">addSpanProcessor</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">BatchSpanProcessor</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">ZipkinExporter</span><span class="p">()));</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ZipkinExporter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@opentelemetry/exporter-zipkin&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BatchSpanProcessor</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;@opentelemetry/sdk-trace-base&quot;</span><span class="p">);</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">addSpanProcessor</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">BatchSpanProcessor</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">ZipkinExporter</span><span class="p">()));</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 
 
 

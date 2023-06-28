@@ -38,101 +38,87 @@ npm init -y
 
 接下来，安装 Express 依赖项。
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+=== "TypeScript"
 
-{{< tab TypeScript >}}
-npm install typescript \
-  ts-node \
-  @types/node \
-  express \
-  @types/express
-{{< /tab >}}
+    ```sh
+    npm install typescript \
+      ts-node \
+      @types/node \
+      express \
+      @types/express
+    ```
 
-{{< tab JavaScript >}}
-npm install express
-{{< /tab >}}
+=== "JavaScript"
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+    ```sh
+    npm install express
+    ```
 
 ### 创建并启动 HTTP 服务器
 
 Create a file named `app.ts` (or `app.js` if not using typescript) and add the
 following code to it:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+=== "TypeScript"
 
-{{< tab TypeScript >}}
-```ts
-/*app.ts*/
-import express, { Express } from "express";
+    ```ts
+    /*app.ts*/
+    import express, { Express } from 'express';
 
-const PORT: number = parseInt(process.env.PORT || "8080");
-const app: Express = express();
+    const PORT: number = parseInt(process.env.PORT || '8080');
+    const app: Express = express();
 
-function getRandomNumber(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
+    function getRandomNumber(min: number, max: number) {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
 
-app.get("/rolldice", (req, res) => {
-  res.send(getRandomNumber(1, 6).toString());
-});
+    app.get('/rolldice', (req, res) => {
+      res.send(getRandomNumber(1, 6).toString());
+    });
 
-app.listen(PORT, () => {
-  console.log(`Listening for requests on http://localhost:${PORT}`);
-});
-```
-{{< /tab >}}
+    app.listen(PORT, () => {
+      console.log(`Listening for requests on http://localhost:${PORT}`);
+    });
+    ```
 
-{{< tab JavaScript >}}
-```js
-/*app.js*/
-const express = require("express");
+=== "JavaScript"
 
-const PORT = parseInt(process.env.PORT || "8080");
-const app = express();
+    ```js
+    /*app.js*/
+    const express = require('express');
 
-function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
+    const PORT = parseInt(process.env.PORT || '8080');
+    const app = express();
 
-app.get("/rolldice", (req, res) => {
-  res.send(getRandomNumber(1, 6).toString());
-});
+    function getRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
 
-app.listen(PORT, () => {
-  console.log(`Listening for requests on http://localhost:${PORT}`);
-});
-```
-{{< /tab >}}
+    app.get('/rolldice', (req, res) => {
+      res.send(getRandomNumber(1, 6).toString());
+    });
 
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+    app.listen(PORT, () => {
+      console.log(`Listening for requests on http://localhost:${PORT}`);
+    });
+    ```
 
 Run the application with the following command and open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=console persistLang=false >}}
+=== "TypeScript"
 
-{{< tab TypeScript >}}
-```sh
-$ npx ts-node app.ts
-Listening for requests on http://localhost:8080
-```
-{{< /tab >}}
+    ```sh
+    $ npx ts-node app.ts
+    Listening for requests on http://localhost:8080
+    ```
 
-{{< tab JavaScript >}}
-```sh
-$ node app.js
-Listening for requests on http://localhost:8080
-```
-{{< /tab >}}
+=== "JavaScript"
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+    ```sh
+    $ node app.js
+    Listening for requests on http://localhost:8080
+    ```
 
 ## 插装
 
@@ -170,86 +156,79 @@ application code. One tool commonly used for this task is the
 Create a file named `instrumentation.ts` (or `instrumentation.js` if not using
 typescript) , which will contain your instrumentation setup code.
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+=== "TypeScript"
 
-{{< tab TypeScript >}}
-```ts
-/*instrumentation.ts*/
-import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
-import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
-import { PeriodicExportingMetricReader, ConsoleMetricExporter } from '@opentelemetry/sdk-metrics';
+    ```ts
+    /*instrumentation.ts*/
+    import { NodeSDK } from '@opentelemetry/sdk-node';
+    import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+    import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+    import {
+      PeriodicExportingMetricReader,
+      ConsoleMetricExporter,
+    } from '@opentelemetry/sdk-metrics';
 
-const sdk = new NodeSDK({
-  traceExporter: new ConsoleSpanExporter(),
-  metricReader: new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter()
-  }),
-  instrumentations: [getNodeAutoInstrumentations()]
-});
+    const sdk = new NodeSDK({
+      traceExporter: new ConsoleSpanExporter(),
+      metricReader: new PeriodicExportingMetricReader({
+        exporter: new ConsoleMetricExporter(),
+      }),
+      instrumentations: [getNodeAutoInstrumentations()],
+    });
 
-sdk
-  .start()
-```
-{{< /tab >}}
+    sdk.start();
+    ```
 
-{{< tab JavaScript >}}
-```js
-/*instrumentation.js*/
-// Require dependencies
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
-const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
-const { PeriodicExportingMetricReader, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics');
+=== "JavaScript"
 
-const sdk = new NodeSDK({
-  traceExporter: new ConsoleSpanExporter(),
-  metricReader: new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter()
-  }),
-  instrumentations: [getNodeAutoInstrumentations()]
-});
+    ```js
+    /*instrumentation.js*/
+    // Require dependencies
+    const { NodeSDK } = require('@opentelemetry/sdk-node');
+    const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
+    const {
+      getNodeAutoInstrumentations,
+    } = require('@opentelemetry/auto-instrumentations-node');
+    const {
+      PeriodicExportingMetricReader,
+      ConsoleMetricExporter,
+    } = require('@opentelemetry/sdk-metrics');
 
-sdk
-  .start()
-```
-{{< /tab >}}
+    const sdk = new NodeSDK({
+      traceExporter: new ConsoleSpanExporter(),
+      metricReader: new PeriodicExportingMetricReader({
+        exporter: new ConsoleMetricExporter(),
+      }),
+      instrumentations: [getNodeAutoInstrumentations()],
+    });
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+    sdk.start();
+    ```
 
-## Run the instrumented app
+## 运行插装应用
 
-Now you can run your application as you normally would, but you can use the
-`--require` flag to load the instrumentation before the application code.
+现在你可以像平常一样运行你的应用程序了，但是你可以使用`--require`标志在加载应用
+程序代码之前加载工具。
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=console persistLang=false >}}
+=== "TypeScript"
 
-{{< tab TypeScript >}}
-```sh
-$ npx ts-node --require ./instrumentation.ts app.ts
-Listening for requests on http://localhost:8080
-```
-{{< /tab >}}
+    ```sh
+    $ npx ts-node --require ./instrumentation.ts app.ts
+    Listening for requests on http://localhost:8080
+    ```
 
-{{< tab JavaScript >}}
-```sh
-$ node --require ./instrumentation.js app.js
-Listening for requests on http://localhost:8080
-```
-{{< /tab >}}
+=== "JavaScript"
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+    ```sh
+    $ node --require ./instrumentation.js app.js
+    Listening for requests on http://localhost:8080
+    ```
 
-Open <http://localhost:8080/rolldice> in your web browser and reload the page a
-few times. After a while you should see the spans printed in the console by the
-`ConsoleSpanExporter`.
+在你的网页浏览器中打开<http://localhost:8080/rolldice>重新加载页面几次。过了一会
+儿，你应该会看到控制台通过`ConsoleSpanExporter`打印出 spans。
 
 <details>
-<summary>View example output</summary>
+<summary>查看示例输出</summary>
 
 ```json
 {
@@ -332,13 +311,12 @@ few times. After a while you should see the spans printed in the console by the
 
 </details>
 
-The generated span tracks the lifetime of a request to the `/rolldice` route.
+生成的 span 跟踪到`/rolldice`路由的请求的生命周期。
 
-Send a few more requests to the endpoint. After a moment, you'll see metrics in
-the console output, such as the following:
+再向端点发送几个请求。稍后，您将在控制台输出中看到指标，如下所示:
 
 <details>
-<summary>View example output</summary>
+<summary>查看示例输出</summary>
 
 ```yaml
 {
@@ -465,7 +443,7 @@ the console output, such as the following:
 
 </details>
 
-## Next Steps
+## 下一个步骤
 
 Enrich your instrumentation generated automatically with
 [manual instrumentation](/docs/instrumentation/js/manual) of your own codebase.
@@ -475,41 +453,34 @@ You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/js/exporters) to one or more
 telemetry backends.
 
-## Troubleshooting
+## 故障排除
 
-Did something go wrong? You can enable diagnostic logging to validate that
-OpenTelemetry is initialized correctly:
+出什么问题了吗?你可以启用诊断日志来验证 OpenTelemetry 是否被正确初始化:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+=== "TypeScript"
 
-{{< tab TypeScript >}}
-```ts
-/*instrumentation.ts*/
-import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
+    ```ts
+    /*instrumentation.ts*/
+    import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
-// For troubleshooting, set the log level to DiagLogLevel.DEBUG
-diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
+    // For troubleshooting, set the log level to DiagLogLevel.DEBUG
+    diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
-// const sdk = new NodeSDK({...
-```
-{{< /tab >}}
+    // const sdk = new NodeSDK({...
+    ```
 
-{{< tab JavaScript >}}
-```js
-/*instrumentation.js*/
-// Require dependencies
-const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
+=== "JavaScript"
 
-// For troubleshooting, set the log level to DiagLogLevel.DEBUG
-diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
+    ```js
+    /*instrumentation.js*/
+    // Require dependencies
+    const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 
-// const sdk = new NodeSDK({...
-```
-{{< /tab >}}
+    // For troubleshooting, set the log level to DiagLogLevel.DEBUG
+    diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+    // const sdk = new NodeSDK({...
+    ```
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

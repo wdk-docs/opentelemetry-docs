@@ -847,7 +847,7 @@
   
     <li class="md-nav__item">
       <a href="../../../../concepts/observability-primer/" class="md-nav__link">
-        可观测 Primer
+        可观测入门指南
       </a>
     </li>
   
@@ -2366,7 +2366,7 @@
   
     <li class="md-nav__item">
       <a href="../browser/" class="md-nav__link">
-        Browser
+        浏览器
       </a>
     </li>
   
@@ -2470,22 +2470,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-the-instrumented-app" class="md-nav__link">
-    Run the instrumented app
+  <a href="#_7" class="md-nav__link">
+    运行插装应用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    Next Steps
+  <a href="#_8" class="md-nav__link">
+    下一个步骤
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    Troubleshooting
+  <a href="#_9" class="md-nav__link">
+    故障排除
   </a>
   
 </li>
@@ -9824,22 +9824,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-the-instrumented-app" class="md-nav__link">
-    Run the instrumented app
+  <a href="#_7" class="md-nav__link">
+    运行插装应用
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    Next Steps
+  <a href="#_8" class="md-nav__link">
+    下一个步骤
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    Troubleshooting
+  <a href="#_9" class="md-nav__link">
+    故障排除
   </a>
   
 </li>
@@ -9885,120 +9885,123 @@ Express，没关系——你也可以将 OpenTelemetry JavaScript 与其他 web 
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>npm<span class="w"> </span>init<span class="w"> </span>-y
 </code></pre></div></td></tr></table></div>
 <p>接下来，安装 Express 依赖项。</p>
-<!-- prettier-ignore-start -->
-<p>{{&lt; tabpane lang=shell persistLang=false &gt;}}</p>
-<p>{{&lt; tab TypeScript &gt;}}
-npm install typescript \
-  ts-node \
-  <a class="magiclink magiclink-github magiclink-repository" href="https://github.com/types/node" title="GitHub Repository: types/node">types/node</a> \
-  express \
-  <a class="magiclink magiclink-github magiclink-repository" href="https://github.com/types/express" title="GitHub Repository: types/express">types/express</a>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; tab JavaScript &gt;}}
-npm install express
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; /tabpane &gt;}}</p>
-<!-- prettier-ignore-end -->
-
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TypeScript</label><label for="__tabbed_1_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>npm<span class="w"> </span>install<span class="w"> </span>typescript<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span>ts-node<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">  </span>@types/node<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span>express<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">  </span>@types/express
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>npm<span class="w"> </span>install<span class="w"> </span>express
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <h3 id="http">创建并启动 HTTP 服务器<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
 <p>Create a file named <code>app.ts</code> (or <code>app.js</code> if not using typescript) and add the
 following code to it:</p>
-<!-- prettier-ignore-start -->
-<p>{{&lt; tabpane langEqualsHeader=true &gt;}}</p>
-<p>{{&lt; tab TypeScript &gt;}}
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span>
-<span class="normal"><a href="#__codelineno-1-15">15</a></span>
-<span class="normal"><a href="#__codelineno-1-16">16</a></span>
-<span class="normal"><a href="#__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="cm">/*app.ts*/</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Express</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;express&quot;</span><span class="p">;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">PORT</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;8080&quot;</span><span class="p">);</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="o">:</span><span class="w"> </span><span class="kt">Express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="kd">function</span><span class="w"> </span><span class="nx">getRandomNumber</span><span class="p">(</span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">max</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">min</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">min</span><span class="p">);</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">}</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/rolldice&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">getRandomNumber</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">).</span><span class="nx">toString</span><span class="p">());</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="p">});</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Listening for requests on http://localhost:</span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="p">});</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">TypeScript</label><label for="__tabbed_2_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cm">/*app.ts*/</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Express</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">PORT</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;8080&#39;</span><span class="p">);</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="o">:</span><span class="w"> </span><span class="kt">Express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="kd">function</span><span class="w"> </span><span class="nx">getRandomNumber</span><span class="p">(</span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">max</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">min</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">min</span><span class="p">);</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="p">}</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/rolldice&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">getRandomNumber</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">).</span><span class="nx">toString</span><span class="p">());</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="p">});</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Listening for requests on http://localhost:</span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="p">});</span>
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; tab JavaScript &gt;}}
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cm">/*app.js*/</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;8080&quot;</span><span class="p">);</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="kd">function</span><span class="w"> </span><span class="nx">getRandomNumber</span><span class="p">(</span><span class="nx">min</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">max</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">min</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">min</span><span class="p">);</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="p">}</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/rolldice&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">getRandomNumber</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">).</span><span class="nx">toString</span><span class="p">());</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="p">});</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Listening for requests on http://localhost:</span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="p">});</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cm">/*app.js*/</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">PORT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;8080&#39;</span><span class="p">);</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="kd">function</span><span class="w"> </span><span class="nx">getRandomNumber</span><span class="p">(</span><span class="nx">min</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">max</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">min</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">min</span><span class="p">);</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="p">}</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/rolldice&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">getRandomNumber</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">6</span><span class="p">).</span><span class="nx">toString</span><span class="p">());</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="p">});</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">PORT</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Listening for requests on http://localhost:</span><span class="si">${</span><span class="nx">PORT</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="p">});</span>
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; /tabpane&gt;}}</p>
-<!-- prettier-ignore-end -->
-
+</div>
+</div>
+</div>
 <p>Run the application with the following command and open
 <a href="http://localhost:8080/rolldice">http://localhost:8080/rolldice</a> in your web browser to ensure it is working.</p>
-<!-- prettier-ignore-start -->
-<p>{{&lt; tabpane lang=console persistLang=false &gt;}}</p>
-<p>{{&lt; tab TypeScript &gt;}}
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>$<span class="w"> </span>npx<span class="w"> </span>ts-node<span class="w"> </span>app.ts
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>Listening<span class="w"> </span><span class="k">for</span><span class="w"> </span>requests<span class="w"> </span>on<span class="w"> </span>http://localhost:8080
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">TypeScript</label><label for="__tabbed_3_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>$<span class="w"> </span>npx<span class="w"> </span>ts-node<span class="w"> </span>app.ts
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>Listening<span class="w"> </span><span class="k">for</span><span class="w"> </span>requests<span class="w"> </span>on<span class="w"> </span>http://localhost:8080
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; tab JavaScript &gt;}}
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>$<span class="w"> </span>node<span class="w"> </span>app.js
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>Listening<span class="w"> </span><span class="k">for</span><span class="w"> </span>requests<span class="w"> </span>on<span class="w"> </span>http://localhost:8080
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>$<span class="w"> </span>node<span class="w"> </span>app.js
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>Listening<span class="w"> </span><span class="k">for</span><span class="w"> </span>requests<span class="w"> </span>on<span class="w"> </span>http://localhost:8080
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; /tabpane &gt;}}</p>
-<!-- prettier-ignore-end -->
-
+</div>
+</div>
+</div>
 <h2 id="_4">插装<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>The following shows how to install, initialize, and run an application
 instrumented with OpenTelemetry.</p>
@@ -10010,13 +10013,13 @@ defaults that are correct for the majority of use cases.</p>
 will automatically create spans corresponding to code called in libraries. In
 this case, it provides instrumentation for Express, letting the example app
 automatically create spans for each incoming request.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
-<span class="normal"><a href="#__codelineno-5-2">2</a></span>
-<span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>npm<span class="w"> </span>install<span class="w"> </span>@opentelemetry/sdk-node<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">  </span>@opentelemetry/api<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">  </span>@opentelemetry/auto-instrumentations-node<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">  </span>@opentelemetry/sdk-metrics
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>npm<span class="w"> </span>install<span class="w"> </span>@opentelemetry/sdk-node<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span>@opentelemetry/api<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">  </span>@opentelemetry/auto-instrumentations-node<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span>@opentelemetry/sdk-metrics
 </code></pre></div></td></tr></table></div>
 <p>To find all autoinstrumentation modules, you can look at the
 <a href="/ecosystem/registry/?language=js&amp;component=instrumentation">registry</a>.</p>
@@ -10026,559 +10029,566 @@ application code. One tool commonly used for this task is the
 <a href="https://nodejs.org/api/cli.html#-r---require-module">--require</a> flag.</p>
 <p>Create a file named <code>instrumentation.ts</code> (or <code>instrumentation.js</code> if not using
 typescript) , which will contain your instrumentation setup code.</p>
-<!-- prettier-ignore-start -->
-<p>{{&lt; tabpane langEqualsHeader=true &gt;}}</p>
-<p>{{&lt; tab TypeScript &gt;}}
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-6-10">10</a></span>
-<span class="normal"><a href="#__codelineno-6-11">11</a></span>
-<span class="normal"><a href="#__codelineno-6-12">12</a></span>
-<span class="normal"><a href="#__codelineno-6-13">13</a></span>
-<span class="normal"><a href="#__codelineno-6-14">14</a></span>
-<span class="normal"><a href="#__codelineno-6-15">15</a></span>
-<span class="normal"><a href="#__codelineno-6-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="cm">/*instrumentation.ts*/</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NodeSDK</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-node&#39;</span><span class="p">;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ConsoleSpanExporter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-trace-node&#39;</span><span class="p">;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getNodeAutoInstrumentations</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/auto-instrumentations-node&#39;</span><span class="p">;</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PeriodicExportingMetricReader</span><span class="p">,</span><span class="w"> </span><span class="nx">ConsoleMetricExporter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-metrics&#39;</span><span class="p">;</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NodeSDK</span><span class="p">({</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">  </span><span class="nx">traceExporter</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">ConsoleSpanExporter</span><span class="p">(),</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">  </span><span class="nx">metricReader</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">PeriodicExportingMetricReader</span><span class="p">({</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">    </span><span class="nx">exporter</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">ConsoleMetricExporter</span><span class="p">()</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">  </span><span class="p">}),</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">getNodeAutoInstrumentations</span><span class="p">()]</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="p">});</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14"></a>
-<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="nx">sdk</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">  </span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">TypeScript</label><label for="__tabbed_4_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="cm">/*instrumentation.ts*/</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NodeSDK</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-node&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ConsoleSpanExporter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-trace-node&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getNodeAutoInstrumentations</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/auto-instrumentations-node&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">  </span><span class="nx">PeriodicExportingMetricReader</span><span class="p">,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">  </span><span class="nx">ConsoleMetricExporter</span><span class="p">,</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-metrics&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NodeSDK</span><span class="p">({</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">  </span><span class="nx">traceExporter</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">ConsoleSpanExporter</span><span class="p">(),</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="w">  </span><span class="nx">metricReader</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">PeriodicExportingMetricReader</span><span class="p">({</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="w">    </span><span class="nx">exporter</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nx">ConsoleMetricExporter</span><span class="p">(),</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="w">  </span><span class="p">}),</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">getNodeAutoInstrumentations</span><span class="p">()],</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="p">});</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="nx">sdk</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; tab JavaScript &gt;}}
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-7-10">10</a></span>
-<span class="normal"><a href="#__codelineno-7-11">11</a></span>
-<span class="normal"><a href="#__codelineno-7-12">12</a></span>
-<span class="normal"><a href="#__codelineno-7-13">13</a></span>
-<span class="normal"><a href="#__codelineno-7-14">14</a></span>
-<span class="normal"><a href="#__codelineno-7-15">15</a></span>
-<span class="normal"><a href="#__codelineno-7-16">16</a></span>
-<span class="normal"><a href="#__codelineno-7-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="cm">/*instrumentation.js*/</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="c1">// Require dependencies</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NodeSDK</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/sdk-node&#39;</span><span class="p">);</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ConsoleSpanExporter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/sdk-trace-node&#39;</span><span class="p">);</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getNodeAutoInstrumentations</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/auto-instrumentations-node&#39;</span><span class="p">);</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">PeriodicExportingMetricReader</span><span class="p">,</span><span class="w"> </span><span class="nx">ConsoleMetricExporter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/sdk-metrics&#39;</span><span class="p">);</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a>
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NodeSDK</span><span class="p">({</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">  </span><span class="nx">traceExporter</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ConsoleSpanExporter</span><span class="p">(),</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">  </span><span class="nx">metricReader</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PeriodicExportingMetricReader</span><span class="p">({</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="nx">exporter</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ConsoleMetricExporter</span><span class="p">()</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">  </span><span class="p">}),</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">getNodeAutoInstrumentations</span><span class="p">()]</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="p">});</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15"></a>
-<a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="nx">sdk</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">  </span><span class="p">.</span><span class="nx">start</span><span class="p">()</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="cm">/*instrumentation.js*/</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="c1">// Require dependencies</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">NodeSDK</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/sdk-node&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ConsoleSpanExporter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/sdk-trace-node&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">  </span><span class="nx">getNodeAutoInstrumentations</span><span class="p">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/auto-instrumentations-node&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">  </span><span class="nx">PeriodicExportingMetricReader</span><span class="p">,</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">  </span><span class="nx">ConsoleMetricExporter</span><span class="p">,</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/sdk-metrics&#39;</span><span class="p">);</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sdk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NodeSDK</span><span class="p">({</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w">  </span><span class="nx">traceExporter</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ConsoleSpanExporter</span><span class="p">(),</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="w">  </span><span class="nx">metricReader</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PeriodicExportingMetricReader</span><span class="p">({</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="w">    </span><span class="nx">exporter</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ConsoleMetricExporter</span><span class="p">(),</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="w">  </span><span class="p">}),</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">getNodeAutoInstrumentations</span><span class="p">()],</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="p">});</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a>
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a><span class="nx">sdk</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; /tabpane &gt;}}</p>
-<!-- prettier-ignore-end -->
-
-<h2 id="run-the-instrumented-app">Run the instrumented app<a class="headerlink" href="#run-the-instrumented-app" title="Permanent link">&para;</a></h2>
-<p>Now you can run your application as you normally would, but you can use the
-<code>--require</code> flag to load the instrumentation before the application code.</p>
-<!-- prettier-ignore-start -->
-<p>{{&lt; tabpane lang=console persistLang=false &gt;}}</p>
-<p>{{&lt; tab TypeScript &gt;}}
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
-<span class="normal"><a href="#__codelineno-8-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>$<span class="w"> </span>npx<span class="w"> </span>ts-node<span class="w"> </span>--require<span class="w"> </span>./instrumentation.ts<span class="w"> </span>app.ts
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a>Listening<span class="w"> </span><span class="k">for</span><span class="w"> </span>requests<span class="w"> </span>on<span class="w"> </span>http://localhost:8080
+</div>
+</div>
+</div>
+<h2 id="_7">运行插装应用<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>现在你可以像平常一样运行你的应用程序了，但是你可以使用<code>--require</code>标志在加载应用
+程序代码之前加载工具。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">TypeScript</label><label for="__tabbed_5_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>$<span class="w"> </span>npx<span class="w"> </span>ts-node<span class="w"> </span>--require<span class="w"> </span>./instrumentation.ts<span class="w"> </span>app.ts
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>Listening<span class="w"> </span><span class="k">for</span><span class="w"> </span>requests<span class="w"> </span>on<span class="w"> </span>http://localhost:8080
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; tab JavaScript &gt;}}
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
-<span class="normal"><a href="#__codelineno-9-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>$<span class="w"> </span>node<span class="w"> </span>--require<span class="w"> </span>./instrumentation.js<span class="w"> </span>app.js
-<a id="__codelineno-9-2" name="__codelineno-9-2"></a>Listening<span class="w"> </span><span class="k">for</span><span class="w"> </span>requests<span class="w"> </span>on<span class="w"> </span>http://localhost:8080
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>$<span class="w"> </span>node<span class="w"> </span>--require<span class="w"> </span>./instrumentation.js<span class="w"> </span>app.js
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>Listening<span class="w"> </span><span class="k">for</span><span class="w"> </span>requests<span class="w"> </span>on<span class="w"> </span>http://localhost:8080
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; /tabpane &gt;}}</p>
-<!-- prettier-ignore-end -->
-
-<p>Open <a href="http://localhost:8080/rolldice">http://localhost:8080/rolldice</a> in your web browser and reload the page a
-few times. After a while you should see the spans printed in the console by the
-<code>ConsoleSpanExporter</code>.</p>
+</div>
+</div>
+</div>
+<p>在你的网页浏览器中打开<a href="http://localhost:8080/rolldice">http://localhost:8080/rolldice</a>重新加载页面几次。过了一会
+儿，你应该会看到控制台通过<code>ConsoleSpanExporter</code>打印出 spans。</p>
 <details>
-<summary>View example output</summary>
+<summary>查看示例输出</summary>
 
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-10-10">10</a></span>
-<span class="normal"><a href="#__codelineno-10-11">11</a></span>
-<span class="normal"><a href="#__codelineno-10-12">12</a></span>
-<span class="normal"><a href="#__codelineno-10-13">13</a></span>
-<span class="normal"><a href="#__codelineno-10-14">14</a></span>
-<span class="normal"><a href="#__codelineno-10-15">15</a></span>
-<span class="normal"><a href="#__codelineno-10-16">16</a></span>
-<span class="normal"><a href="#__codelineno-10-17">17</a></span>
-<span class="normal"><a href="#__codelineno-10-18">18</a></span>
-<span class="normal"><a href="#__codelineno-10-19">19</a></span>
-<span class="normal"><a href="#__codelineno-10-20">20</a></span>
-<span class="normal"><a href="#__codelineno-10-21">21</a></span>
-<span class="normal"><a href="#__codelineno-10-22">22</a></span>
-<span class="normal"><a href="#__codelineno-10-23">23</a></span>
-<span class="normal"><a href="#__codelineno-10-24">24</a></span>
-<span class="normal"><a href="#__codelineno-10-25">25</a></span>
-<span class="normal"><a href="#__codelineno-10-26">26</a></span>
-<span class="normal"><a href="#__codelineno-10-27">27</a></span>
-<span class="normal"><a href="#__codelineno-10-28">28</a></span>
-<span class="normal"><a href="#__codelineno-10-29">29</a></span>
-<span class="normal"><a href="#__codelineno-10-30">30</a></span>
-<span class="normal"><a href="#__codelineno-10-31">31</a></span>
-<span class="normal"><a href="#__codelineno-10-32">32</a></span>
-<span class="normal"><a href="#__codelineno-10-33">33</a></span>
-<span class="normal"><a href="#__codelineno-10-34">34</a></span>
-<span class="normal"><a href="#__codelineno-10-35">35</a></span>
-<span class="normal"><a href="#__codelineno-10-36">36</a></span>
-<span class="normal"><a href="#__codelineno-10-37">37</a></span>
-<span class="normal"><a href="#__codelineno-10-38">38</a></span>
-<span class="normal"><a href="#__codelineno-10-39">39</a></span>
-<span class="normal"><a href="#__codelineno-10-40">40</a></span>
-<span class="normal"><a href="#__codelineno-10-41">41</a></span>
-<span class="normal"><a href="#__codelineno-10-42">42</a></span>
-<span class="normal"><a href="#__codelineno-10-43">43</a></span>
-<span class="normal"><a href="#__codelineno-10-44">44</a></span>
-<span class="normal"><a href="#__codelineno-10-45">45</a></span>
-<span class="normal"><a href="#__codelineno-10-46">46</a></span>
-<span class="normal"><a href="#__codelineno-10-47">47</a></span>
-<span class="normal"><a href="#__codelineno-10-48">48</a></span>
-<span class="normal"><a href="#__codelineno-10-49">49</a></span>
-<span class="normal"><a href="#__codelineno-10-50">50</a></span>
-<span class="normal"><a href="#__codelineno-10-51">51</a></span>
-<span class="normal"><a href="#__codelineno-10-52">52</a></span>
-<span class="normal"><a href="#__codelineno-10-53">53</a></span>
-<span class="normal"><a href="#__codelineno-10-54">54</a></span>
-<span class="normal"><a href="#__codelineno-10-55">55</a></span>
-<span class="normal"><a href="#__codelineno-10-56">56</a></span>
-<span class="normal"><a href="#__codelineno-10-57">57</a></span>
-<span class="normal"><a href="#__codelineno-10-58">58</a></span>
-<span class="normal"><a href="#__codelineno-10-59">59</a></span>
-<span class="normal"><a href="#__codelineno-10-60">60</a></span>
-<span class="normal"><a href="#__codelineno-10-61">61</a></span>
-<span class="normal"><a href="#__codelineno-10-62">62</a></span>
-<span class="normal"><a href="#__codelineno-10-63">63</a></span>
-<span class="normal"><a href="#__codelineno-10-64">64</a></span>
-<span class="normal"><a href="#__codelineno-10-65">65</a></span>
-<span class="normal"><a href="#__codelineno-10-66">66</a></span>
-<span class="normal"><a href="#__codelineno-10-67">67</a></span>
-<span class="normal"><a href="#__codelineno-10-68">68</a></span>
-<span class="normal"><a href="#__codelineno-10-69">69</a></span>
-<span class="normal"><a href="#__codelineno-10-70">70</a></span>
-<span class="normal"><a href="#__codelineno-10-71">71</a></span>
-<span class="normal"><a href="#__codelineno-10-72">72</a></span>
-<span class="normal"><a href="#__codelineno-10-73">73</a></span>
-<span class="normal"><a href="#__codelineno-10-74">74</a></span>
-<span class="normal"><a href="#__codelineno-10-75">75</a></span>
-<span class="normal"><a href="#__codelineno-10-76">76</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="p">{</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3f1fe6256ea46d19ec3ca97b3409ad6d&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">  </span><span class="nt">&quot;parentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0b7b340dd6e08a7&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;middleware - query&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41a27f331c7bfed3&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">  </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1624982589722992</span><span class="p">,</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">  </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">417</span><span class="p">,</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w">  </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="w">    </span><span class="nt">&quot;http.route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="w">    </span><span class="nt">&quot;express.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">    </span><span class="nt">&quot;express.type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;middleware&quot;</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-10-15" name="__codelineno-10-15"></a><span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
-<a id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="p">}</span>
-<a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="p">{</span>
-<a id="__codelineno-10-18" name="__codelineno-10-18"></a><span class="w">  </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3f1fe6256ea46d19ec3ca97b3409ad6d&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-19" name="__codelineno-10-19"></a><span class="w">  </span><span class="nt">&quot;parentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0b7b340dd6e08a7&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-20" name="__codelineno-10-20"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;middleware - expressInit&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-21" name="__codelineno-10-21"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e0ed537a699f652a&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-22" name="__codelineno-10-22"></a><span class="w">  </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-10-23" name="__codelineno-10-23"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1624982589725778</span><span class="p">,</span>
-<a id="__codelineno-10-24" name="__codelineno-10-24"></a><span class="w">  </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">673</span><span class="p">,</span>
-<a id="__codelineno-10-25" name="__codelineno-10-25"></a><span class="w">  </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-26" name="__codelineno-10-26"></a><span class="w">    </span><span class="nt">&quot;http.route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-27" name="__codelineno-10-27"></a><span class="w">    </span><span class="nt">&quot;express.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expressInit&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-28" name="__codelineno-10-28"></a><span class="w">    </span><span class="nt">&quot;express.type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;middleware&quot;</span>
-<a id="__codelineno-10-29" name="__codelineno-10-29"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-10-30" name="__codelineno-10-30"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">code</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-10-31" name="__codelineno-10-31"></a><span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
-<a id="__codelineno-10-32" name="__codelineno-10-32"></a><span class="p">}</span>
-<a id="__codelineno-10-33" name="__codelineno-10-33"></a><span class="p">{</span>
-<a id="__codelineno-10-34" name="__codelineno-10-34"></a><span class="w">  </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3f1fe6256ea46d19ec3ca97b3409ad6d&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-35" name="__codelineno-10-35"></a><span class="w">  </span><span class="nt">&quot;parentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0b7b340dd6e08a7&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-36" name="__codelineno-10-36"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;request handler - /&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-37" name="__codelineno-10-37"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8614a81e1847b7ef&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-38" name="__codelineno-10-38"></a><span class="w">  </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-10-39" name="__codelineno-10-39"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1624982589726941</span><span class="p">,</span>
-<a id="__codelineno-10-40" name="__codelineno-10-40"></a><span class="w">  </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span>
-<a id="__codelineno-10-41" name="__codelineno-10-41"></a><span class="w">  </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-42" name="__codelineno-10-42"></a><span class="w">    </span><span class="nt">&quot;http.route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-43" name="__codelineno-10-43"></a><span class="w">    </span><span class="nt">&quot;express.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-44" name="__codelineno-10-44"></a><span class="w">    </span><span class="nt">&quot;express.type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;request_handler&quot;</span>
-<a id="__codelineno-10-45" name="__codelineno-10-45"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-10-46" name="__codelineno-10-46"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">code</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-10-47" name="__codelineno-10-47"></a><span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
-<a id="__codelineno-10-48" name="__codelineno-10-48"></a><span class="p">}</span>
-<a id="__codelineno-10-49" name="__codelineno-10-49"></a><span class="p">{</span>
-<a id="__codelineno-10-50" name="__codelineno-10-50"></a><span class="w">  </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3f1fe6256ea46d19ec3ca97b3409ad6d&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-51" name="__codelineno-10-51"></a><span class="w">  </span><span class="nt">&quot;parentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">u</span><span class="kc">n</span><span class="err">de</span><span class="kc">f</span><span class="err">i</span><span class="kc">ne</span><span class="err">d</span><span class="p">,</span>
-<a id="__codelineno-10-52" name="__codelineno-10-52"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET /&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-53" name="__codelineno-10-53"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0b7b340dd6e08a7&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-54" name="__codelineno-10-54"></a><span class="w">  </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-10-55" name="__codelineno-10-55"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1624982589720260</span><span class="p">,</span>
-<a id="__codelineno-10-56" name="__codelineno-10-56"></a><span class="w">  </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11380</span><span class="p">,</span>
-<a id="__codelineno-10-57" name="__codelineno-10-57"></a><span class="w">  </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-10-58" name="__codelineno-10-58"></a><span class="w">    </span><span class="nt">&quot;http.url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:8080/&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-59" name="__codelineno-10-59"></a><span class="w">    </span><span class="nt">&quot;http.host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost:8080&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-60" name="__codelineno-10-60"></a><span class="w">    </span><span class="nt">&quot;net.host.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-61" name="__codelineno-10-61"></a><span class="w">    </span><span class="nt">&quot;http.method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-62" name="__codelineno-10-62"></a><span class="w">    </span><span class="nt">&quot;http.route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-63" name="__codelineno-10-63"></a><span class="w">    </span><span class="nt">&quot;http.target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-64" name="__codelineno-10-64"></a><span class="w">    </span><span class="nt">&quot;http.user_agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-65" name="__codelineno-10-65"></a><span class="w">    </span><span class="nt">&quot;http.flavor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-66" name="__codelineno-10-66"></a><span class="w">    </span><span class="nt">&quot;net.transport&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ip_tcp&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-67" name="__codelineno-10-67"></a><span class="w">    </span><span class="nt">&quot;net.host.ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;::1&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-68" name="__codelineno-10-68"></a><span class="w">    </span><span class="nt">&quot;net.host.port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8080</span><span class="p">,</span>
-<a id="__codelineno-10-69" name="__codelineno-10-69"></a><span class="w">    </span><span class="nt">&quot;net.peer.ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;::1&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-70" name="__codelineno-10-70"></a><span class="w">    </span><span class="nt">&quot;net.peer.port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">61520</span><span class="p">,</span>
-<a id="__codelineno-10-71" name="__codelineno-10-71"></a><span class="w">    </span><span class="nt">&quot;http.status_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">304</span><span class="p">,</span>
-<a id="__codelineno-10-72" name="__codelineno-10-72"></a><span class="w">    </span><span class="nt">&quot;http.status_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NOT MODIFIED&quot;</span>
-<a id="__codelineno-10-73" name="__codelineno-10-73"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-10-74" name="__codelineno-10-74"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span>
-<a id="__codelineno-10-75" name="__codelineno-10-75"></a><span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
-<a id="__codelineno-10-76" name="__codelineno-10-76"></a><span class="p">}</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span>
+<span class="normal"><a href="#__codelineno-12-23">23</a></span>
+<span class="normal"><a href="#__codelineno-12-24">24</a></span>
+<span class="normal"><a href="#__codelineno-12-25">25</a></span>
+<span class="normal"><a href="#__codelineno-12-26">26</a></span>
+<span class="normal"><a href="#__codelineno-12-27">27</a></span>
+<span class="normal"><a href="#__codelineno-12-28">28</a></span>
+<span class="normal"><a href="#__codelineno-12-29">29</a></span>
+<span class="normal"><a href="#__codelineno-12-30">30</a></span>
+<span class="normal"><a href="#__codelineno-12-31">31</a></span>
+<span class="normal"><a href="#__codelineno-12-32">32</a></span>
+<span class="normal"><a href="#__codelineno-12-33">33</a></span>
+<span class="normal"><a href="#__codelineno-12-34">34</a></span>
+<span class="normal"><a href="#__codelineno-12-35">35</a></span>
+<span class="normal"><a href="#__codelineno-12-36">36</a></span>
+<span class="normal"><a href="#__codelineno-12-37">37</a></span>
+<span class="normal"><a href="#__codelineno-12-38">38</a></span>
+<span class="normal"><a href="#__codelineno-12-39">39</a></span>
+<span class="normal"><a href="#__codelineno-12-40">40</a></span>
+<span class="normal"><a href="#__codelineno-12-41">41</a></span>
+<span class="normal"><a href="#__codelineno-12-42">42</a></span>
+<span class="normal"><a href="#__codelineno-12-43">43</a></span>
+<span class="normal"><a href="#__codelineno-12-44">44</a></span>
+<span class="normal"><a href="#__codelineno-12-45">45</a></span>
+<span class="normal"><a href="#__codelineno-12-46">46</a></span>
+<span class="normal"><a href="#__codelineno-12-47">47</a></span>
+<span class="normal"><a href="#__codelineno-12-48">48</a></span>
+<span class="normal"><a href="#__codelineno-12-49">49</a></span>
+<span class="normal"><a href="#__codelineno-12-50">50</a></span>
+<span class="normal"><a href="#__codelineno-12-51">51</a></span>
+<span class="normal"><a href="#__codelineno-12-52">52</a></span>
+<span class="normal"><a href="#__codelineno-12-53">53</a></span>
+<span class="normal"><a href="#__codelineno-12-54">54</a></span>
+<span class="normal"><a href="#__codelineno-12-55">55</a></span>
+<span class="normal"><a href="#__codelineno-12-56">56</a></span>
+<span class="normal"><a href="#__codelineno-12-57">57</a></span>
+<span class="normal"><a href="#__codelineno-12-58">58</a></span>
+<span class="normal"><a href="#__codelineno-12-59">59</a></span>
+<span class="normal"><a href="#__codelineno-12-60">60</a></span>
+<span class="normal"><a href="#__codelineno-12-61">61</a></span>
+<span class="normal"><a href="#__codelineno-12-62">62</a></span>
+<span class="normal"><a href="#__codelineno-12-63">63</a></span>
+<span class="normal"><a href="#__codelineno-12-64">64</a></span>
+<span class="normal"><a href="#__codelineno-12-65">65</a></span>
+<span class="normal"><a href="#__codelineno-12-66">66</a></span>
+<span class="normal"><a href="#__codelineno-12-67">67</a></span>
+<span class="normal"><a href="#__codelineno-12-68">68</a></span>
+<span class="normal"><a href="#__codelineno-12-69">69</a></span>
+<span class="normal"><a href="#__codelineno-12-70">70</a></span>
+<span class="normal"><a href="#__codelineno-12-71">71</a></span>
+<span class="normal"><a href="#__codelineno-12-72">72</a></span>
+<span class="normal"><a href="#__codelineno-12-73">73</a></span>
+<span class="normal"><a href="#__codelineno-12-74">74</a></span>
+<span class="normal"><a href="#__codelineno-12-75">75</a></span>
+<span class="normal"><a href="#__codelineno-12-76">76</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="p">{</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">  </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3f1fe6256ea46d19ec3ca97b3409ad6d&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">  </span><span class="nt">&quot;parentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0b7b340dd6e08a7&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;middleware - query&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41a27f331c7bfed3&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">  </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1624982589722992</span><span class="p">,</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">  </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">417</span><span class="p">,</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">  </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">    </span><span class="nt">&quot;http.route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="w">    </span><span class="nt">&quot;express.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;query&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a><span class="w">    </span><span class="nt">&quot;express.type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;middleware&quot;</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a><span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="p">}</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="p">{</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a><span class="w">  </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3f1fe6256ea46d19ec3ca97b3409ad6d&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="w">  </span><span class="nt">&quot;parentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0b7b340dd6e08a7&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;middleware - expressInit&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;e0ed537a699f652a&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="w">  </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1624982589725778</span><span class="p">,</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24"></a><span class="w">  </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">673</span><span class="p">,</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25"></a><span class="w">  </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26"></a><span class="w">    </span><span class="nt">&quot;http.route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27"></a><span class="w">    </span><span class="nt">&quot;express.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;expressInit&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28"></a><span class="w">    </span><span class="nt">&quot;express.type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;middleware&quot;</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">code</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-12-31" name="__codelineno-12-31"></a><span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-12-32" name="__codelineno-12-32"></a><span class="p">}</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33"></a><span class="p">{</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34"></a><span class="w">  </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3f1fe6256ea46d19ec3ca97b3409ad6d&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-35" name="__codelineno-12-35"></a><span class="w">  </span><span class="nt">&quot;parentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0b7b340dd6e08a7&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-36" name="__codelineno-12-36"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;request handler - /&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-37" name="__codelineno-12-37"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8614a81e1847b7ef&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-38" name="__codelineno-12-38"></a><span class="w">  </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-12-39" name="__codelineno-12-39"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1624982589726941</span><span class="p">,</span>
+<a id="__codelineno-12-40" name="__codelineno-12-40"></a><span class="w">  </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span>
+<a id="__codelineno-12-41" name="__codelineno-12-41"></a><span class="w">  </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-42" name="__codelineno-12-42"></a><span class="w">    </span><span class="nt">&quot;http.route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-43" name="__codelineno-12-43"></a><span class="w">    </span><span class="nt">&quot;express.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-44" name="__codelineno-12-44"></a><span class="w">    </span><span class="nt">&quot;express.type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;request_handler&quot;</span>
+<a id="__codelineno-12-45" name="__codelineno-12-45"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-12-46" name="__codelineno-12-46"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">code</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-12-47" name="__codelineno-12-47"></a><span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-12-48" name="__codelineno-12-48"></a><span class="p">}</span>
+<a id="__codelineno-12-49" name="__codelineno-12-49"></a><span class="p">{</span>
+<a id="__codelineno-12-50" name="__codelineno-12-50"></a><span class="w">  </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3f1fe6256ea46d19ec3ca97b3409ad6d&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-51" name="__codelineno-12-51"></a><span class="w">  </span><span class="nt">&quot;parentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="err">u</span><span class="kc">n</span><span class="err">de</span><span class="kc">f</span><span class="err">i</span><span class="kc">ne</span><span class="err">d</span><span class="p">,</span>
+<a id="__codelineno-12-52" name="__codelineno-12-52"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET /&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-53" name="__codelineno-12-53"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;f0b7b340dd6e08a7&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-54" name="__codelineno-12-54"></a><span class="w">  </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-12-55" name="__codelineno-12-55"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1624982589720260</span><span class="p">,</span>
+<a id="__codelineno-12-56" name="__codelineno-12-56"></a><span class="w">  </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11380</span><span class="p">,</span>
+<a id="__codelineno-12-57" name="__codelineno-12-57"></a><span class="w">  </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-58" name="__codelineno-12-58"></a><span class="w">    </span><span class="nt">&quot;http.url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:8080/&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-59" name="__codelineno-12-59"></a><span class="w">    </span><span class="nt">&quot;http.host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost:8080&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-60" name="__codelineno-12-60"></a><span class="w">    </span><span class="nt">&quot;net.host.name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-61" name="__codelineno-12-61"></a><span class="w">    </span><span class="nt">&quot;http.method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-62" name="__codelineno-12-62"></a><span class="w">    </span><span class="nt">&quot;http.route&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-63" name="__codelineno-12-63"></a><span class="w">    </span><span class="nt">&quot;http.target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-64" name="__codelineno-12-64"></a><span class="w">    </span><span class="nt">&quot;http.user_agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-65" name="__codelineno-12-65"></a><span class="w">    </span><span class="nt">&quot;http.flavor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-66" name="__codelineno-12-66"></a><span class="w">    </span><span class="nt">&quot;net.transport&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ip_tcp&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-67" name="__codelineno-12-67"></a><span class="w">    </span><span class="nt">&quot;net.host.ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;::1&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-68" name="__codelineno-12-68"></a><span class="w">    </span><span class="nt">&quot;net.host.port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8080</span><span class="p">,</span>
+<a id="__codelineno-12-69" name="__codelineno-12-69"></a><span class="w">    </span><span class="nt">&quot;net.peer.ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;::1&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-70" name="__codelineno-12-70"></a><span class="w">    </span><span class="nt">&quot;net.peer.port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">61520</span><span class="p">,</span>
+<a id="__codelineno-12-71" name="__codelineno-12-71"></a><span class="w">    </span><span class="nt">&quot;http.status_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">304</span><span class="p">,</span>
+<a id="__codelineno-12-72" name="__codelineno-12-72"></a><span class="w">    </span><span class="nt">&quot;http.status_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NOT MODIFIED&quot;</span>
+<a id="__codelineno-12-73" name="__codelineno-12-73"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-12-74" name="__codelineno-12-74"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-12-75" name="__codelineno-12-75"></a><span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<a id="__codelineno-12-76" name="__codelineno-12-76"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 
 </details>
 
-<p>The generated span tracks the lifetime of a request to the <code>/rolldice</code> route.</p>
-<p>Send a few more requests to the endpoint. After a moment, you'll see metrics in
-the console output, such as the following:</p>
+<p>生成的 span 跟踪到<code>/rolldice</code>路由的请求的生命周期。</p>
+<p>再向端点发送几个请求。稍后，您将在控制台输出中看到指标，如下所示:</p>
 <details>
-<summary>View example output</summary>
+<summary>查看示例输出</summary>
 
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">  1</a></span>
-<span class="normal"><a href="#__codelineno-11-2">  2</a></span>
-<span class="normal"><a href="#__codelineno-11-3">  3</a></span>
-<span class="normal"><a href="#__codelineno-11-4">  4</a></span>
-<span class="normal"><a href="#__codelineno-11-5">  5</a></span>
-<span class="normal"><a href="#__codelineno-11-6">  6</a></span>
-<span class="normal"><a href="#__codelineno-11-7">  7</a></span>
-<span class="normal"><a href="#__codelineno-11-8">  8</a></span>
-<span class="normal"><a href="#__codelineno-11-9">  9</a></span>
-<span class="normal"><a href="#__codelineno-11-10"> 10</a></span>
-<span class="normal"><a href="#__codelineno-11-11"> 11</a></span>
-<span class="normal"><a href="#__codelineno-11-12"> 12</a></span>
-<span class="normal"><a href="#__codelineno-11-13"> 13</a></span>
-<span class="normal"><a href="#__codelineno-11-14"> 14</a></span>
-<span class="normal"><a href="#__codelineno-11-15"> 15</a></span>
-<span class="normal"><a href="#__codelineno-11-16"> 16</a></span>
-<span class="normal"><a href="#__codelineno-11-17"> 17</a></span>
-<span class="normal"><a href="#__codelineno-11-18"> 18</a></span>
-<span class="normal"><a href="#__codelineno-11-19"> 19</a></span>
-<span class="normal"><a href="#__codelineno-11-20"> 20</a></span>
-<span class="normal"><a href="#__codelineno-11-21"> 21</a></span>
-<span class="normal"><a href="#__codelineno-11-22"> 22</a></span>
-<span class="normal"><a href="#__codelineno-11-23"> 23</a></span>
-<span class="normal"><a href="#__codelineno-11-24"> 24</a></span>
-<span class="normal"><a href="#__codelineno-11-25"> 25</a></span>
-<span class="normal"><a href="#__codelineno-11-26"> 26</a></span>
-<span class="normal"><a href="#__codelineno-11-27"> 27</a></span>
-<span class="normal"><a href="#__codelineno-11-28"> 28</a></span>
-<span class="normal"><a href="#__codelineno-11-29"> 29</a></span>
-<span class="normal"><a href="#__codelineno-11-30"> 30</a></span>
-<span class="normal"><a href="#__codelineno-11-31"> 31</a></span>
-<span class="normal"><a href="#__codelineno-11-32"> 32</a></span>
-<span class="normal"><a href="#__codelineno-11-33"> 33</a></span>
-<span class="normal"><a href="#__codelineno-11-34"> 34</a></span>
-<span class="normal"><a href="#__codelineno-11-35"> 35</a></span>
-<span class="normal"><a href="#__codelineno-11-36"> 36</a></span>
-<span class="normal"><a href="#__codelineno-11-37"> 37</a></span>
-<span class="normal"><a href="#__codelineno-11-38"> 38</a></span>
-<span class="normal"><a href="#__codelineno-11-39"> 39</a></span>
-<span class="normal"><a href="#__codelineno-11-40"> 40</a></span>
-<span class="normal"><a href="#__codelineno-11-41"> 41</a></span>
-<span class="normal"><a href="#__codelineno-11-42"> 42</a></span>
-<span class="normal"><a href="#__codelineno-11-43"> 43</a></span>
-<span class="normal"><a href="#__codelineno-11-44"> 44</a></span>
-<span class="normal"><a href="#__codelineno-11-45"> 45</a></span>
-<span class="normal"><a href="#__codelineno-11-46"> 46</a></span>
-<span class="normal"><a href="#__codelineno-11-47"> 47</a></span>
-<span class="normal"><a href="#__codelineno-11-48"> 48</a></span>
-<span class="normal"><a href="#__codelineno-11-49"> 49</a></span>
-<span class="normal"><a href="#__codelineno-11-50"> 50</a></span>
-<span class="normal"><a href="#__codelineno-11-51"> 51</a></span>
-<span class="normal"><a href="#__codelineno-11-52"> 52</a></span>
-<span class="normal"><a href="#__codelineno-11-53"> 53</a></span>
-<span class="normal"><a href="#__codelineno-11-54"> 54</a></span>
-<span class="normal"><a href="#__codelineno-11-55"> 55</a></span>
-<span class="normal"><a href="#__codelineno-11-56"> 56</a></span>
-<span class="normal"><a href="#__codelineno-11-57"> 57</a></span>
-<span class="normal"><a href="#__codelineno-11-58"> 58</a></span>
-<span class="normal"><a href="#__codelineno-11-59"> 59</a></span>
-<span class="normal"><a href="#__codelineno-11-60"> 60</a></span>
-<span class="normal"><a href="#__codelineno-11-61"> 61</a></span>
-<span class="normal"><a href="#__codelineno-11-62"> 62</a></span>
-<span class="normal"><a href="#__codelineno-11-63"> 63</a></span>
-<span class="normal"><a href="#__codelineno-11-64"> 64</a></span>
-<span class="normal"><a href="#__codelineno-11-65"> 65</a></span>
-<span class="normal"><a href="#__codelineno-11-66"> 66</a></span>
-<span class="normal"><a href="#__codelineno-11-67"> 67</a></span>
-<span class="normal"><a href="#__codelineno-11-68"> 68</a></span>
-<span class="normal"><a href="#__codelineno-11-69"> 69</a></span>
-<span class="normal"><a href="#__codelineno-11-70"> 70</a></span>
-<span class="normal"><a href="#__codelineno-11-71"> 71</a></span>
-<span class="normal"><a href="#__codelineno-11-72"> 72</a></span>
-<span class="normal"><a href="#__codelineno-11-73"> 73</a></span>
-<span class="normal"><a href="#__codelineno-11-74"> 74</a></span>
-<span class="normal"><a href="#__codelineno-11-75"> 75</a></span>
-<span class="normal"><a href="#__codelineno-11-76"> 76</a></span>
-<span class="normal"><a href="#__codelineno-11-77"> 77</a></span>
-<span class="normal"><a href="#__codelineno-11-78"> 78</a></span>
-<span class="normal"><a href="#__codelineno-11-79"> 79</a></span>
-<span class="normal"><a href="#__codelineno-11-80"> 80</a></span>
-<span class="normal"><a href="#__codelineno-11-81"> 81</a></span>
-<span class="normal"><a href="#__codelineno-11-82"> 82</a></span>
-<span class="normal"><a href="#__codelineno-11-83"> 83</a></span>
-<span class="normal"><a href="#__codelineno-11-84"> 84</a></span>
-<span class="normal"><a href="#__codelineno-11-85"> 85</a></span>
-<span class="normal"><a href="#__codelineno-11-86"> 86</a></span>
-<span class="normal"><a href="#__codelineno-11-87"> 87</a></span>
-<span class="normal"><a href="#__codelineno-11-88"> 88</a></span>
-<span class="normal"><a href="#__codelineno-11-89"> 89</a></span>
-<span class="normal"><a href="#__codelineno-11-90"> 90</a></span>
-<span class="normal"><a href="#__codelineno-11-91"> 91</a></span>
-<span class="normal"><a href="#__codelineno-11-92"> 92</a></span>
-<span class="normal"><a href="#__codelineno-11-93"> 93</a></span>
-<span class="normal"><a href="#__codelineno-11-94"> 94</a></span>
-<span class="normal"><a href="#__codelineno-11-95"> 95</a></span>
-<span class="normal"><a href="#__codelineno-11-96"> 96</a></span>
-<span class="normal"><a href="#__codelineno-11-97"> 97</a></span>
-<span class="normal"><a href="#__codelineno-11-98"> 98</a></span>
-<span class="normal"><a href="#__codelineno-11-99"> 99</a></span>
-<span class="normal"><a href="#__codelineno-11-100">100</a></span>
-<span class="normal"><a href="#__codelineno-11-101">101</a></span>
-<span class="normal"><a href="#__codelineno-11-102">102</a></span>
-<span class="normal"><a href="#__codelineno-11-103">103</a></span>
-<span class="normal"><a href="#__codelineno-11-104">104</a></span>
-<span class="normal"><a href="#__codelineno-11-105">105</a></span>
-<span class="normal"><a href="#__codelineno-11-106">106</a></span>
-<span class="normal"><a href="#__codelineno-11-107">107</a></span>
-<span class="normal"><a href="#__codelineno-11-108">108</a></span>
-<span class="normal"><a href="#__codelineno-11-109">109</a></span>
-<span class="normal"><a href="#__codelineno-11-110">110</a></span>
-<span class="normal"><a href="#__codelineno-11-111">111</a></span>
-<span class="normal"><a href="#__codelineno-11-112">112</a></span>
-<span class="normal"><a href="#__codelineno-11-113">113</a></span>
-<span class="normal"><a href="#__codelineno-11-114">114</a></span>
-<span class="normal"><a href="#__codelineno-11-115">115</a></span>
-<span class="normal"><a href="#__codelineno-11-116">116</a></span>
-<span class="normal"><a href="#__codelineno-11-117">117</a></span>
-<span class="normal"><a href="#__codelineno-11-118">118</a></span>
-<span class="normal"><a href="#__codelineno-11-119">119</a></span>
-<span class="normal"><a href="#__codelineno-11-120">120</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.server.duration&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">inbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">  </span><span class="p p-Indicator">},</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">    </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="nt">      attributes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">],</span>
-<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="nt">      startTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
-<a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="nt">      endTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
-<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="nt">      value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="w">    </span><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">  </span><span class="p p-Indicator">]</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-20" name="__codelineno-11-20"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.client.duration&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-23" name="__codelineno-11-23"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">outbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
-<a id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="w">  </span><span class="p p-Indicator">},</span>
-<a id="__codelineno-11-27" name="__codelineno-11-27"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-28" name="__codelineno-11-28"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<a id="__codelineno-11-29" name="__codelineno-11-29"></a><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-30" name="__codelineno-11-30"></a><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-31" name="__codelineno-11-31"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-32" name="__codelineno-11-32"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;db.client.connections.usage&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-33" name="__codelineno-11-33"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;UP_DOWN_COUNTER&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-34" name="__codelineno-11-34"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">connections</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">currently</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">referenced</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">&quot;state&quot;.&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-35" name="__codelineno-11-35"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{connections}&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-36" name="__codelineno-11-36"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
-<a id="__codelineno-11-37" name="__codelineno-11-37"></a><span class="w">  </span><span class="p p-Indicator">},</span>
-<a id="__codelineno-11-38" name="__codelineno-11-38"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-39" name="__codelineno-11-39"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<a id="__codelineno-11-40" name="__codelineno-11-40"></a><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-41" name="__codelineno-11-41"></a><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-42" name="__codelineno-11-42"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-43" name="__codelineno-11-43"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.server.duration&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-44" name="__codelineno-11-44"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-45" name="__codelineno-11-45"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">inbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-46" name="__codelineno-11-46"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-47" name="__codelineno-11-47"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
-<a id="__codelineno-11-48" name="__codelineno-11-48"></a><span class="w">  </span><span class="p p-Indicator">},</span>
-<a id="__codelineno-11-49" name="__codelineno-11-49"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-50" name="__codelineno-11-50"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
-<a id="__codelineno-11-51" name="__codelineno-11-51"></a><span class="w">    </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-52" name="__codelineno-11-52"></a><span class="nt">      attributes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">],</span>
-<a id="__codelineno-11-53" name="__codelineno-11-53"></a><span class="nt">      startTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
-<a id="__codelineno-11-54" name="__codelineno-11-54"></a><span class="nt">      endTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
-<a id="__codelineno-11-55" name="__codelineno-11-55"></a><span class="nt">      value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-11-56" name="__codelineno-11-56"></a><span class="w">    </span><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-57" name="__codelineno-11-57"></a><span class="w">  </span><span class="p p-Indicator">]</span>
-<a id="__codelineno-11-58" name="__codelineno-11-58"></a><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-59" name="__codelineno-11-59"></a><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-60" name="__codelineno-11-60"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-61" name="__codelineno-11-61"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.client.duration&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-62" name="__codelineno-11-62"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-63" name="__codelineno-11-63"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">outbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-64" name="__codelineno-11-64"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-65" name="__codelineno-11-65"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
-<a id="__codelineno-11-66" name="__codelineno-11-66"></a><span class="w">  </span><span class="p p-Indicator">},</span>
-<a id="__codelineno-11-67" name="__codelineno-11-67"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-68" name="__codelineno-11-68"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<a id="__codelineno-11-69" name="__codelineno-11-69"></a><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-70" name="__codelineno-11-70"></a><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-71" name="__codelineno-11-71"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-72" name="__codelineno-11-72"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;db.client.connections.usage&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-73" name="__codelineno-11-73"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;UP_DOWN_COUNTER&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-74" name="__codelineno-11-74"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">connections</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">currently</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">referenced</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">&quot;state&quot;.&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-75" name="__codelineno-11-75"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{connections}&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-76" name="__codelineno-11-76"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
-<a id="__codelineno-11-77" name="__codelineno-11-77"></a><span class="w">  </span><span class="p p-Indicator">},</span>
-<a id="__codelineno-11-78" name="__codelineno-11-78"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-79" name="__codelineno-11-79"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<a id="__codelineno-11-80" name="__codelineno-11-80"></a><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-81" name="__codelineno-11-81"></a><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-82" name="__codelineno-11-82"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-83" name="__codelineno-11-83"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.server.duration&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-84" name="__codelineno-11-84"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-85" name="__codelineno-11-85"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">inbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-86" name="__codelineno-11-86"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-87" name="__codelineno-11-87"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
-<a id="__codelineno-11-88" name="__codelineno-11-88"></a><span class="w">  </span><span class="p p-Indicator">},</span>
-<a id="__codelineno-11-89" name="__codelineno-11-89"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-90" name="__codelineno-11-90"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
-<a id="__codelineno-11-91" name="__codelineno-11-91"></a><span class="w">    </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-92" name="__codelineno-11-92"></a><span class="nt">      attributes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">],</span>
-<a id="__codelineno-11-93" name="__codelineno-11-93"></a><span class="nt">      startTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
-<a id="__codelineno-11-94" name="__codelineno-11-94"></a><span class="nt">      endTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
-<a id="__codelineno-11-95" name="__codelineno-11-95"></a><span class="nt">      value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-11-96" name="__codelineno-11-96"></a><span class="w">    </span><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-97" name="__codelineno-11-97"></a><span class="w">  </span><span class="p p-Indicator">]</span>
-<a id="__codelineno-11-98" name="__codelineno-11-98"></a><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-99" name="__codelineno-11-99"></a><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-100" name="__codelineno-11-100"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-101" name="__codelineno-11-101"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.client.duration&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-102" name="__codelineno-11-102"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-103" name="__codelineno-11-103"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">outbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-104" name="__codelineno-11-104"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-105" name="__codelineno-11-105"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
-<a id="__codelineno-11-106" name="__codelineno-11-106"></a><span class="w">  </span><span class="p p-Indicator">},</span>
-<a id="__codelineno-11-107" name="__codelineno-11-107"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-108" name="__codelineno-11-108"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<a id="__codelineno-11-109" name="__codelineno-11-109"></a><span class="p p-Indicator">}</span>
-<a id="__codelineno-11-110" name="__codelineno-11-110"></a><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-111" name="__codelineno-11-111"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<a id="__codelineno-11-112" name="__codelineno-11-112"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;db.client.connections.usage&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-113" name="__codelineno-11-113"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;UP_DOWN_COUNTER&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-114" name="__codelineno-11-114"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">connections</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">currently</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">referenced</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">&quot;state&quot;.&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-115" name="__codelineno-11-115"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{connections}&#39;</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-116" name="__codelineno-11-116"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
-<a id="__codelineno-11-117" name="__codelineno-11-117"></a><span class="w">  </span><span class="p p-Indicator">},</span>
-<a id="__codelineno-11-118" name="__codelineno-11-118"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
-<a id="__codelineno-11-119" name="__codelineno-11-119"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<a id="__codelineno-11-120" name="__codelineno-11-120"></a><span class="p p-Indicator">}</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-13-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-13-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-13-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-13-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-13-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-13-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-13-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-13-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-13-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-13-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-13-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-13-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-13-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-13-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-13-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-13-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-13-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-13-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-13-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-13-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-13-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-13-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-13-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-13-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-13-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-13-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-13-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-13-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-13-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-13-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-13-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-13-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-13-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-13-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-13-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-13-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-13-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-13-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-13-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-13-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-13-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-13-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-13-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-13-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-13-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-13-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-13-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-13-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-13-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-13-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-13-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-13-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-13-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-13-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-13-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-13-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-13-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-13-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-13-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-13-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-13-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-13-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-13-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-13-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-13-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-13-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-13-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-13-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-13-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-13-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-13-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-13-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-13-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-13-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-13-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-13-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-13-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-13-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-13-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-13-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-13-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-13-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-13-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-13-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-13-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-13-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-13-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-13-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-13-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-13-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-13-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-13-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-13-100">100</a></span>
+<span class="normal"><a href="#__codelineno-13-101">101</a></span>
+<span class="normal"><a href="#__codelineno-13-102">102</a></span>
+<span class="normal"><a href="#__codelineno-13-103">103</a></span>
+<span class="normal"><a href="#__codelineno-13-104">104</a></span>
+<span class="normal"><a href="#__codelineno-13-105">105</a></span>
+<span class="normal"><a href="#__codelineno-13-106">106</a></span>
+<span class="normal"><a href="#__codelineno-13-107">107</a></span>
+<span class="normal"><a href="#__codelineno-13-108">108</a></span>
+<span class="normal"><a href="#__codelineno-13-109">109</a></span>
+<span class="normal"><a href="#__codelineno-13-110">110</a></span>
+<span class="normal"><a href="#__codelineno-13-111">111</a></span>
+<span class="normal"><a href="#__codelineno-13-112">112</a></span>
+<span class="normal"><a href="#__codelineno-13-113">113</a></span>
+<span class="normal"><a href="#__codelineno-13-114">114</a></span>
+<span class="normal"><a href="#__codelineno-13-115">115</a></span>
+<span class="normal"><a href="#__codelineno-13-116">116</a></span>
+<span class="normal"><a href="#__codelineno-13-117">117</a></span>
+<span class="normal"><a href="#__codelineno-13-118">118</a></span>
+<span class="normal"><a href="#__codelineno-13-119">119</a></span>
+<span class="normal"><a href="#__codelineno-13-120">120</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.server.duration&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">inbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="w">    </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="nt">      attributes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">],</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="nt">      startTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="nt">      endTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="nt">      value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="w">    </span><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17"></a><span class="w">  </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18"></a><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19"></a><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.client.duration&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">outbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-25" name="__codelineno-13-25"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-13-27" name="__codelineno-13-27"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-28" name="__codelineno-13-28"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-13-29" name="__codelineno-13-29"></a><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-30" name="__codelineno-13-30"></a><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-31" name="__codelineno-13-31"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-32" name="__codelineno-13-32"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;db.client.connections.usage&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-33" name="__codelineno-13-33"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;UP_DOWN_COUNTER&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-34" name="__codelineno-13-34"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">connections</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">currently</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">referenced</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">&quot;state&quot;.&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-35" name="__codelineno-13-35"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{connections}&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-36" name="__codelineno-13-36"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
+<a id="__codelineno-13-37" name="__codelineno-13-37"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-13-38" name="__codelineno-13-38"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-39" name="__codelineno-13-39"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-13-40" name="__codelineno-13-40"></a><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-41" name="__codelineno-13-41"></a><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-42" name="__codelineno-13-42"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-43" name="__codelineno-13-43"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.server.duration&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-44" name="__codelineno-13-44"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-45" name="__codelineno-13-45"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">inbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-46" name="__codelineno-13-46"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-47" name="__codelineno-13-47"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
+<a id="__codelineno-13-48" name="__codelineno-13-48"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-13-49" name="__codelineno-13-49"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-50" name="__codelineno-13-50"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<a id="__codelineno-13-51" name="__codelineno-13-51"></a><span class="w">    </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-52" name="__codelineno-13-52"></a><span class="nt">      attributes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">],</span>
+<a id="__codelineno-13-53" name="__codelineno-13-53"></a><span class="nt">      startTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
+<a id="__codelineno-13-54" name="__codelineno-13-54"></a><span class="nt">      endTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
+<a id="__codelineno-13-55" name="__codelineno-13-55"></a><span class="nt">      value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-13-56" name="__codelineno-13-56"></a><span class="w">    </span><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-57" name="__codelineno-13-57"></a><span class="w">  </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-13-58" name="__codelineno-13-58"></a><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-59" name="__codelineno-13-59"></a><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-60" name="__codelineno-13-60"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-61" name="__codelineno-13-61"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.client.duration&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-62" name="__codelineno-13-62"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-63" name="__codelineno-13-63"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">outbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-64" name="__codelineno-13-64"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-65" name="__codelineno-13-65"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
+<a id="__codelineno-13-66" name="__codelineno-13-66"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-13-67" name="__codelineno-13-67"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-68" name="__codelineno-13-68"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-13-69" name="__codelineno-13-69"></a><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-70" name="__codelineno-13-70"></a><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-71" name="__codelineno-13-71"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-72" name="__codelineno-13-72"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;db.client.connections.usage&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-73" name="__codelineno-13-73"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;UP_DOWN_COUNTER&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-74" name="__codelineno-13-74"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">connections</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">currently</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">referenced</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">&quot;state&quot;.&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-75" name="__codelineno-13-75"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{connections}&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-76" name="__codelineno-13-76"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
+<a id="__codelineno-13-77" name="__codelineno-13-77"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-13-78" name="__codelineno-13-78"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-79" name="__codelineno-13-79"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-13-80" name="__codelineno-13-80"></a><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-81" name="__codelineno-13-81"></a><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-82" name="__codelineno-13-82"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-83" name="__codelineno-13-83"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.server.duration&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-84" name="__codelineno-13-84"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-85" name="__codelineno-13-85"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">inbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-86" name="__codelineno-13-86"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-87" name="__codelineno-13-87"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
+<a id="__codelineno-13-88" name="__codelineno-13-88"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-13-89" name="__codelineno-13-89"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-90" name="__codelineno-13-90"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<a id="__codelineno-13-91" name="__codelineno-13-91"></a><span class="w">    </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-92" name="__codelineno-13-92"></a><span class="nt">      attributes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">],</span>
+<a id="__codelineno-13-93" name="__codelineno-13-93"></a><span class="nt">      startTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
+<a id="__codelineno-13-94" name="__codelineno-13-94"></a><span class="nt">      endTime</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Array</span><span class="p p-Indicator">],</span>
+<a id="__codelineno-13-95" name="__codelineno-13-95"></a><span class="nt">      value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Object</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-13-96" name="__codelineno-13-96"></a><span class="w">    </span><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-97" name="__codelineno-13-97"></a><span class="w">  </span><span class="p p-Indicator">]</span>
+<a id="__codelineno-13-98" name="__codelineno-13-98"></a><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-99" name="__codelineno-13-99"></a><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-100" name="__codelineno-13-100"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-101" name="__codelineno-13-101"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;http.client.duration&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-102" name="__codelineno-13-102"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;HISTOGRAM&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-103" name="__codelineno-13-103"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;measures</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">duration</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">outbound</span><span class="nv"> </span><span class="s">HTTP</span><span class="nv"> </span><span class="s">requests&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-104" name="__codelineno-13-104"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ms&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-105" name="__codelineno-13-105"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
+<a id="__codelineno-13-106" name="__codelineno-13-106"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-13-107" name="__codelineno-13-107"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-108" name="__codelineno-13-108"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-13-109" name="__codelineno-13-109"></a><span class="p p-Indicator">}</span>
+<a id="__codelineno-13-110" name="__codelineno-13-110"></a><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-111" name="__codelineno-13-111"></a><span class="nt">  descriptor</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<a id="__codelineno-13-112" name="__codelineno-13-112"></a><span class="nt">    name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;db.client.connections.usage&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-113" name="__codelineno-13-113"></a><span class="nt">    type</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;UP_DOWN_COUNTER&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-114" name="__codelineno-13-114"></a><span class="nt">    description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;The</span><span class="nv"> </span><span class="s">number</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">connections</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">currently</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">referenced</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">attribute</span><span class="nv"> </span><span class="s">&quot;state&quot;.&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-115" name="__codelineno-13-115"></a><span class="nt">    unit</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{connections}&#39;</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-116" name="__codelineno-13-116"></a><span class="nt">    valueType</span><span class="p">:</span><span class="w"> </span><span class="nv">1</span>
+<a id="__codelineno-13-117" name="__codelineno-13-117"></a><span class="w">  </span><span class="p p-Indicator">},</span>
+<a id="__codelineno-13-118" name="__codelineno-13-118"></a><span class="nt">  dataPointType</span><span class="p">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
+<a id="__codelineno-13-119" name="__codelineno-13-119"></a><span class="nt">  dataPoints</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<a id="__codelineno-13-120" name="__codelineno-13-120"></a><span class="p p-Indicator">}</span>
 </code></pre></div></td></tr></table></div>
 
 </details>
 
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<h2 id="_8">下一个步骤<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>Enrich your instrumentation generated automatically with
 <a href="/docs/instrumentation/js/manual">manual instrumentation</a> of your own codebase.
 This gets you customized observability data.</p>
 <p>You'll also want to configure an appropriate exporter to
 <a href="/docs/instrumentation/js/exporters">export your telemetry data</a> to one or more
 telemetry backends.</p>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p>Did something go wrong? You can enable diagnostic logging to validate that
-OpenTelemetry is initialized correctly:</p>
-<!-- prettier-ignore-start -->
-<p>{{&lt; tabpane langEqualsHeader=true &gt;}}</p>
-<p>{{&lt; tab TypeScript &gt;}}
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
-<span class="normal"><a href="#__codelineno-12-2">2</a></span>
-<span class="normal"><a href="#__codelineno-12-3">3</a></span>
-<span class="normal"><a href="#__codelineno-12-4">4</a></span>
-<span class="normal"><a href="#__codelineno-12-5">5</a></span>
-<span class="normal"><a href="#__codelineno-12-6">6</a></span>
-<span class="normal"><a href="#__codelineno-12-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="cm">/*instrumentation.ts*/</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">diag</span><span class="p">,</span><span class="w"> </span><span class="nx">DiagConsoleLogger</span><span class="p">,</span><span class="w"> </span><span class="nx">DiagLogLevel</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/api&#39;</span><span class="p">;</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="c1">// For troubleshooting, set the log level to DiagLogLevel.DEBUG</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="nx">diag</span><span class="p">.</span><span class="nx">setLogger</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">DiagConsoleLogger</span><span class="p">(),</span><span class="w"> </span><span class="nx">DiagLogLevel</span><span class="p">.</span><span class="nx">INFO</span><span class="p">);</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6"></a>
-<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="c1">// const sdk = new NodeSDK({...</span>
+<h2 id="_9">故障排除<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>出什么问题了吗?你可以启用诊断日志来验证 OpenTelemetry 是否被正确初始化:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">TypeScript</label><label for="__tabbed_6_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span>
+<span class="normal"><a href="#__codelineno-14-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="cm">/*instrumentation.ts*/</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">diag</span><span class="p">,</span><span class="w"> </span><span class="nx">DiagConsoleLogger</span><span class="p">,</span><span class="w"> </span><span class="nx">DiagLogLevel</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/api&#39;</span><span class="p">;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="c1">// For troubleshooting, set the log level to DiagLogLevel.DEBUG</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="nx">diag</span><span class="p">.</span><span class="nx">setLogger</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">DiagConsoleLogger</span><span class="p">(),</span><span class="w"> </span><span class="nx">DiagLogLevel</span><span class="p">.</span><span class="nx">INFO</span><span class="p">);</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="c1">// const sdk = new NodeSDK({...</span>
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; tab JavaScript &gt;}}
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
-<span class="normal"><a href="#__codelineno-13-2">2</a></span>
-<span class="normal"><a href="#__codelineno-13-3">3</a></span>
-<span class="normal"><a href="#__codelineno-13-4">4</a></span>
-<span class="normal"><a href="#__codelineno-13-5">5</a></span>
-<span class="normal"><a href="#__codelineno-13-6">6</a></span>
-<span class="normal"><a href="#__codelineno-13-7">7</a></span>
-<span class="normal"><a href="#__codelineno-13-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="cm">/*instrumentation.js*/</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="c1">// Require dependencies</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">diag</span><span class="p">,</span><span class="w"> </span><span class="nx">DiagConsoleLogger</span><span class="p">,</span><span class="w"> </span><span class="nx">DiagLogLevel</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/api&#39;</span><span class="p">);</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4"></a>
-<a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="c1">// For troubleshooting, set the log level to DiagLogLevel.DEBUG</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="nx">diag</span><span class="p">.</span><span class="nx">setLogger</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">DiagConsoleLogger</span><span class="p">(),</span><span class="w"> </span><span class="nx">DiagLogLevel</span><span class="p">.</span><span class="nx">INFO</span><span class="p">);</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7"></a>
-<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="c1">// const sdk = new NodeSDK({...</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span>
+<span class="normal"><a href="#__codelineno-15-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="cm">/*instrumentation.js*/</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="c1">// Require dependencies</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">diag</span><span class="p">,</span><span class="w"> </span><span class="nx">DiagConsoleLogger</span><span class="p">,</span><span class="w"> </span><span class="nx">DiagLogLevel</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;@opentelemetry/api&#39;</span><span class="p">);</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="c1">// For troubleshooting, set the log level to DiagLogLevel.DEBUG</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="nx">diag</span><span class="p">.</span><span class="nx">setLogger</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">DiagConsoleLogger</span><span class="p">(),</span><span class="w"> </span><span class="nx">DiagLogLevel</span><span class="p">.</span><span class="nx">INFO</span><span class="p">);</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="c1">// const sdk = new NodeSDK({...</span>
 </code></pre></div></td></tr></table></div>
-{{&lt; /tab &gt;}}</p>
-<p>{{&lt; /tabpane &gt;}}</p>
-<!-- prettier-ignore-end -->
+</div>
+</div>
+</div>
 
 
 

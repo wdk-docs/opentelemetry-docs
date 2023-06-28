@@ -28,8 +28,8 @@ spelling: cSpell:ignore Otel
 将遥测数据从容器发送到[收集器](../../collector/index.md)而不是直接发送到后端是最
 佳实践。
 
-Collector 有助于简化秘密管理，从应用程序中解耦数据导出问题( 例如需要重试)，并允
-许您向遥测添加额外的数据，例如使用[k8sattributesprocessor]组件。
+收集器有助于简化秘密管理，从应用程序中解耦数据导出问题( 例如需要重试)，并允许您
+向遥测添加额外的数据，例如使用[k8sattributesprocessor]组件。
 
 !!! note
 
@@ -38,11 +38,10 @@ Collector 有助于简化秘密管理，从应用程序中解耦数据导出问�
 [k8sattributesprocessor]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor
 
-Operator 为 Collector 提供一个[自定义资源定义(CRD)][CRD]，用于创建一个由
-Operator 管理的 Collector 实例。
+Operator 为收集器提供一个[自定义资源定义(CRD)][CRD]，用于创建一个由 Operator 管
+理的收集器实例。
 
-下面的示例将 Collector 部署为`Deployment`(默认设置)，但也可以使用其
-他[部署模式]。
+下面的示例将收集器部署为`Deployment`(默认设置)，但也可以使用其他[部署模式]。
 
 [CRD]:
   https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector
@@ -97,22 +96,20 @@ EOF
 
 上面的命令会执行 Collector 的部署，您可以将其用作 Pod 中自动检测的端点。
 
-## 配置自动 Instrumentation
+## 配置自动插装
 
-为了能够管理自动 Instrumentation，操作人员需要进行配置，以了解要对哪些 Pod 进行
-Instrumentation 以及对这些 Pod 使用哪种自动 Instrumentation。这是通
-过[Instrumentation CRD]完成的。
+为了能够管理自动插装，操作人员需要进行配置，以了解要对哪些 Pod 进行插装以及对这
+些 Pod 使用哪种自动插装。这是通过[插装 CRD]完成的。
 
-[Instrumentation CRD]:
+[插装 CRD]:
   https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation
 
-正确创建 Instrumentation 资源对于使自动检测工作起着至关重要的作用。要使自动检测
-正常工作，需要确保所有端点和环境变量都正确。
+正确创建插装资源对于使自动检测工作起着至关重要的作用。要使自动检测正常工作，需要
+确保所有端点和环境变量都正确。
 
 ### .NET
 
-下面的命令将创建一个基本的 Instrumentation 资源，该资源是专门为 Instrumentation
-.NET 服务配置的。
+下面的命令将创建一个基本的插装资源，该资源是专门为插装 .NET 服务配置的。
 
 ```bash
 kubectl apply -f - <<EOF
@@ -266,11 +263,11 @@ EOF
 软件包或禁用特定的软件包。如果您不想使用默认映像包含的包，那么您必须提供自己的映
 像，该映像只包含您想要的包，或者使用手动检测。
 
-更多细节请参见[Node.js auto-instrumentation].
+更多细节请参见[Node.js 自动插装].
 
 [检测库]:
   https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations
-[Node.js auto-instrumentation]:
+[Node.js 自动插装]:
   ../../instrumentation/js/libraries.md#node-autoinstrumentation-package
 
 ### Python

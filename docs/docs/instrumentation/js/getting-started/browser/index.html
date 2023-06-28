@@ -25,7 +25,7 @@
     
     
       
-        <title>Browser - OPENTELEMETRY 文档</title>
+        <title>浏览器 - OPENTELEMETRY 文档</title>
       
     
     
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Browser
+              浏览器
             
           </span>
         </div>
@@ -847,7 +847,7 @@
   
     <li class="md-nav__item">
       <a href="../../../../concepts/observability-primer/" class="md-nav__link">
-        可观测 Primer
+        可观测入门指南
       </a>
     </li>
   
@@ -2373,12 +2373,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Browser
+          浏览器
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Browser
+        浏览器
       </a>
       
         
@@ -2451,7 +2451,7 @@
       
         <li class="md-nav__item">
   <a href="#web" class="md-nav__link">
-    用于Web的元包
+    用于 Web 的元包
   </a>
   
 </li>
@@ -9799,7 +9799,7 @@
       
         <li class="md-nav__item">
   <a href="#web" class="md-nav__link">
-    用于Web的元包
+    用于 Web 的元包
   </a>
   
 </li>
@@ -9822,21 +9822,21 @@
   
 
 
-  <h1>Browser</h1>
+  <h1>浏览器</h1>
 
-<p>While this guide uses the example application presented below, the steps to
-instrument your own application should be similar.</p>
+<p>虽然本指南使用下面提供的示例应用程序，但是检测您自己的应用程序的步骤应该是类似的
+。</p>
 <h2 id="_1">先决条件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>Ensure that you have the following installed locally:</p>
+<p>确保在本地安装了以下软件:</p>
 <ul>
 <li><a href="https://nodejs.org/en/download/">Node.js</a></li>
-<li><a href="https://www.typescriptlang.org/download">TypeScript</a>, if you will be using
-  TypeScript.</li>
+<li><a href="https://www.typescriptlang.org/download">TypeScript</a>, 如果你要使用
+  TypeScript。</li>
 </ul>
 <h2 id="_2">示例应用程序<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>This is a very simple guide, if you'd like to see more complex examples go to
+<p>这是一个非常简单的指南，如果你想看更复杂的例子，请访问
 <a href="https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web">examples/opentelemetry-web</a>.</p>
-<p>Copy the following file into an empty directory and call it <code>index.html</code>.</p>
+<p>将以下文件复制到一个空目录中，并将其命名为<code>index.html</code>。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -9890,8 +9890,8 @@ instrument your own application should be similar.</p>
 <a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="_3">安装<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>To create traces in the browser, you will need <code>@opentelemetry/sdk-trace-web</code>,
-and the instrumentation <code>@opentelemetry/instrumentation-document-load</code>:</p>
+<p>要在浏览器中创建跟踪，你需要<code>@opentelemetry/sdk-trace-web</code>和插
+装<code>@opentelemetry/instrumentation-document-load</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
@@ -9903,82 +9903,30 @@ and the instrumentation <code>@opentelemetry/instrumentation-document-load</code
 <a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">  </span>@opentelemetry/context-zone
 </code></pre></div></td></tr></table></div>
 <h3 id="_4">初始化与配置<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>If you are coding in TypeScript, then run the following command:</p>
+<p>如果你在用 TypeScript 编码，那么运行下面的命令:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>tsc<span class="w"> </span>--init
 </code></pre></div></td></tr></table></div>
-<p>Then acquire <a href="https://parceljs.org/">parcel</a>, which will (among other things)
-let you work in Typescript.</p>
+<p>然后获取<a href="https://parceljs.org/">parcel</a>，它可以让你用 Typescript 工作。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>parcel
 </code></pre></div></td></tr></table></div>
-<p>Create an empty code file named <code>document-load</code> with a <code>.ts</code> or <code>.js</code> extension,
-as appropriate, based on the language you've chosen to write your app in. Add
-the following code to your HTML right before the <code>&lt;/body&gt;</code> closing tag:</p>
-<!-- prettier-ignore-start -->
-<p>{{&lt; tabpane lang=html persistLang=false &gt;}}
-{{&lt; tab TypeScript &gt;}}</p>
-<script type="module" src="document-load.ts"></script>
-<p>{{&lt; /tab &gt;}}
-{{&lt; tab JavaScript &gt;}}</p>
-<script type="module" src="document-load.js"></script>
-<p>{{&lt; /tab &gt;}}
-{{&lt; /tabpane &gt;}}</p>
-<!-- prettier-ignore-end -->
-
-<p>We will add some code that will trace the document load timings and output those
-as OpenTelemetry Spans.</p>
+<p>创建一个名为<code>document-load</code>的空代码文件，扩展名为<code>.ts</code>或<code>.js</code>，根据你选择的语言
+编写应用程序。将以下代码添加到 HTML 中，在<code>&lt;/body&gt;</code>结束标签之前:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TypeScript</label><label for="__tabbed_1_2">JavaScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="kr">type</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="w"> </span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;document-load.ts&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="o">&lt;</span><span class="nx">script</span><span class="w"> </span><span class="nx">type</span><span class="o">=</span><span class="s2">&quot;module&quot;</span><span class="w"> </span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;document-load.js&quot;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>我们将添加一些代码来跟踪文档加载时间并将其输出为 OpenTelemetry Spans.</p>
 <h3 id="_5">创建跟踪程序提供程序<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>Add the following code to the <code>document-load.ts|js</code> to create a tracer provider,
-which brings the instrumentation to trace document load:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span>
-<span class="normal"><a href="#__codelineno-4-11">11</a></span>
-<span class="normal"><a href="#__codelineno-4-12">12</a></span>
-<span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span>
-<span class="normal"><a href="#__codelineno-4-16">16</a></span>
-<span class="normal"><a href="#__codelineno-4-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="cm">/* document-load.ts|js file - the code snippet is the same for both the languages */</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">WebTracerProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-trace-web&#39;</span><span class="p">;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">DocumentLoadInstrumentation</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/instrumentation-document-load&#39;</span><span class="p">;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ZoneContextManager</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/context-zone&#39;</span><span class="p">;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerInstrumentations</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/instrumentation&#39;</span><span class="p">;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebTracerProvider</span><span class="p">();</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">register</span><span class="p">({</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">  </span><span class="c1">// Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">  </span><span class="nx">contextManager</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ZoneContextManager</span><span class="p">(),</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="p">});</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a>
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="c1">// Registering instrumentations</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="nx">registerInstrumentations</span><span class="p">({</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">DocumentLoadInstrumentation</span><span class="p">()],</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="p">});</span>
-</code></pre></div></td></tr></table></div>
-<p>Now build the app with parcel:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>npx<span class="w"> </span>parcel<span class="w"> </span>index.html
-</code></pre></div></td></tr></table></div>
-<p>and open the development webserver (e.g. at <code>http://localhost:1234</code>) to see if
-your code works.</p>
-<p>There will be no output of traces yet, for this we need to add an exporter.</p>
-<h3 id="_6">创建导出器<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>In the following example, we will use the <code>ConsoleSpanExporter</code> which prints all
-spans to the console.</p>
-<p>In order to visualize and analyze your traces, you will need to export them to a
-tracing backend. Follow <a href="../../exporters">these instructions</a> for setting up a
-backend and exporter.</p>
-<p>You may also want to use the <code>BatchSpanProcessor</code> to export spans in batches in
-order to more efficiently use resources.</p>
-<p>To export traces to the console, modify <code>document-load.ts|js</code> so that it matches
-the following code snippet:</p>
+<p>将以下代码添加到 <code>document-load.ts|js</code> 中，以创建一个跟踪程序提供程序，它将提供
+跟踪文档加载的工具:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
@@ -9995,152 +9943,198 @@ the following code snippet:</p>
 <span class="normal"><a href="#__codelineno-6-14">14</a></span>
 <span class="normal"><a href="#__codelineno-6-15">15</a></span>
 <span class="normal"><a href="#__codelineno-6-16">16</a></span>
-<span class="normal"><a href="#__codelineno-6-17">17</a></span>
-<span class="normal"><a href="#__codelineno-6-18">18</a></span>
-<span class="normal"><a href="#__codelineno-6-19">19</a></span>
-<span class="normal"><a href="#__codelineno-6-20">20</a></span>
-<span class="normal"><a href="#__codelineno-6-21">21</a></span>
-<span class="normal"><a href="#__codelineno-6-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="cm">/* document-load.ts|js file - the code is the same for both the languages */</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">  </span><span class="nx">ConsoleSpanExporter</span><span class="p">,</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">  </span><span class="nx">SimpleSpanProcessor</span><span class="p">,</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-trace-base&#39;</span><span class="p">;</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">WebTracerProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-trace-web&#39;</span><span class="p">;</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">DocumentLoadInstrumentation</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/instrumentation-document-load&#39;</span><span class="p">;</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ZoneContextManager</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/context-zone&#39;</span><span class="p">;</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerInstrumentations</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/instrumentation&#39;</span><span class="p">;</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10"></a>
-<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebTracerProvider</span><span class="p">();</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">addSpanProcessor</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">SimpleSpanProcessor</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">ConsoleSpanExporter</span><span class="p">()));</span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="cm">/* document-load.ts|js file - the code snippet is the same for both the languages */</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">WebTracerProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-trace-web&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">DocumentLoadInstrumentation</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/instrumentation-document-load&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ZoneContextManager</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/context-zone&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerInstrumentations</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/instrumentation&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebTracerProvider</span><span class="p">();</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">register</span><span class="p">({</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">  </span><span class="c1">// Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">  </span><span class="nx">contextManager</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ZoneContextManager</span><span class="p">(),</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="p">});</span>
 <a id="__codelineno-6-13" name="__codelineno-6-13"></a>
-<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">register</span><span class="p">({</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="w">  </span><span class="c1">// Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">  </span><span class="nx">contextManager</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ZoneContextManager</span><span class="p">(),</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="c1">// Registering instrumentations</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="nx">registerInstrumentations</span><span class="p">({</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">DocumentLoadInstrumentation</span><span class="p">()],</span>
 <a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="p">});</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18"></a>
-<a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="c1">// Registering instrumentations</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="nx">registerInstrumentations</span><span class="p">({</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">DocumentLoadInstrumentation</span><span class="p">()],</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="p">});</span>
 </code></pre></div></td></tr></table></div>
-<p>现在，重新构建应用程序并再次打开浏览器。
-在开发人员工具栏的控制台中，您应该看到正在导出一些跟踪:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-7-10">10</a></span>
-<span class="normal"><a href="#__codelineno-7-11">11</a></span>
-<span class="normal"><a href="#__codelineno-7-12">12</a></span>
-<span class="normal"><a href="#__codelineno-7-13">13</a></span>
-<span class="normal"><a href="#__codelineno-7-14">14</a></span>
-<span class="normal"><a href="#__codelineno-7-15">15</a></span>
-<span class="normal"><a href="#__codelineno-7-16">16</a></span>
-<span class="normal"><a href="#__codelineno-7-17">17</a></span>
-<span class="normal"><a href="#__codelineno-7-18">18</a></span>
-<span class="normal"><a href="#__codelineno-7-19">19</a></span>
-<span class="normal"><a href="#__codelineno-7-20">20</a></span>
-<span class="normal"><a href="#__codelineno-7-21">21</a></span>
-<span class="normal"><a href="#__codelineno-7-22">22</a></span>
-<span class="normal"><a href="#__codelineno-7-23">23</a></span>
-<span class="normal"><a href="#__codelineno-7-24">24</a></span>
-<span class="normal"><a href="#__codelineno-7-25">25</a></span>
-<span class="normal"><a href="#__codelineno-7-26">26</a></span>
-<span class="normal"><a href="#__codelineno-7-27">27</a></span>
-<span class="normal"><a href="#__codelineno-7-28">28</a></span>
-<span class="normal"><a href="#__codelineno-7-29">29</a></span>
-<span class="normal"><a href="#__codelineno-7-30">30</a></span>
-<span class="normal"><a href="#__codelineno-7-31">31</a></span>
-<span class="normal"><a href="#__codelineno-7-32">32</a></span>
-<span class="normal"><a href="#__codelineno-7-33">33</a></span>
-<span class="normal"><a href="#__codelineno-7-34">34</a></span>
-<span class="normal"><a href="#__codelineno-7-35">35</a></span>
-<span class="normal"><a href="#__codelineno-7-36">36</a></span>
-<span class="normal"><a href="#__codelineno-7-37">37</a></span>
-<span class="normal"><a href="#__codelineno-7-38">38</a></span>
-<span class="normal"><a href="#__codelineno-7-39">39</a></span>
-<span class="normal"><a href="#__codelineno-7-40">40</a></span>
-<span class="normal"><a href="#__codelineno-7-41">41</a></span>
-<span class="normal"><a href="#__codelineno-7-42">42</a></span>
-<span class="normal"><a href="#__codelineno-7-43">43</a></span>
-<span class="normal"><a href="#__codelineno-7-44">44</a></span>
-<span class="normal"><a href="#__codelineno-7-45">45</a></span>
-<span class="normal"><a href="#__codelineno-7-46">46</a></span>
-<span class="normal"><a href="#__codelineno-7-47">47</a></span>
-<span class="normal"><a href="#__codelineno-7-48">48</a></span>
-<span class="normal"><a href="#__codelineno-7-49">49</a></span>
-<span class="normal"><a href="#__codelineno-7-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">{</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ab42124a3c573678d4d8b21ba52df3bf&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">  </span><span class="nt">&quot;parentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cfb565047957cb0d&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;documentFetch&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5123fc802ffb5255&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">  </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1606814247811266</span><span class="p">,</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">  </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9390</span><span class="p">,</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">  </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">    </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document-load&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="nt">&quot;http.response_content_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">905</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">  </span><span class="p">},</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fetchStart&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">811266158</span><span class="p">]</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domainLookupStart&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">811266158</span><span class="p">]</span>
-<a id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domainLookupEnd&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-27" name="__codelineno-7-27"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">811266158</span><span class="p">]</span>
-<a id="__codelineno-7-28" name="__codelineno-7-28"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-7-29" name="__codelineno-7-29"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;connectStart&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">811266158</span><span class="p">]</span>
-<a id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-7-34" name="__codelineno-7-34"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;connectEnd&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-35" name="__codelineno-7-35"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">811266158</span><span class="p">]</span>
-<a id="__codelineno-7-36" name="__codelineno-7-36"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-7-37" name="__codelineno-7-37"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-7-38" name="__codelineno-7-38"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;requestStart&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-39" name="__codelineno-7-39"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">819101158</span><span class="p">]</span>
-<a id="__codelineno-7-40" name="__codelineno-7-40"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-7-41" name="__codelineno-7-41"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-7-42" name="__codelineno-7-42"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;responseStart&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-43" name="__codelineno-7-43"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">819791158</span><span class="p">]</span>
-<a id="__codelineno-7-44" name="__codelineno-7-44"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-7-46" name="__codelineno-7-46"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;responseEnd&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-47" name="__codelineno-7-47"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">820656158</span><span class="p">]</span>
-<a id="__codelineno-7-48" name="__codelineno-7-48"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-7-49" name="__codelineno-7-49"></a><span class="w">  </span><span class="p">]</span>
-<a id="__codelineno-7-50" name="__codelineno-7-50"></a><span class="p">}</span>
+<p>现在用包裹构建应用程序:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>npx<span class="w"> </span>parcel<span class="w"> </span>index.html
+</code></pre></div></td></tr></table></div>
+<p>并打开开发 web 服务器(例如在<code>http://localhost:1234</code>)，看看你的代码是否工作。</p>
+<p>目前还没有痕迹输出，为此我们需要添加一个导出器。</p>
+<h3 id="_6">创建导出器<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>在下面的示例中，我们将使用<code>ConsoleSpanExporter</code>将所有的 spans 打印到控制台。</p>
+<p>为了可视化和分析您的跟踪，您需要将它们导出到跟踪后端。按照<a href="../../
+exports">这些说明</a>设置后端和导出器。</p>
+<p>您可能还想使用<code>BatchSpanProcessor</code>来批量导出 spans，以便更有效地使用资源。</p>
+<p>要将跟踪信息导出到控制台，请修改<code>document-load.ts|js</code>，以便与以下代码片段匹配:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="cm">/* document-load.ts|js file - the code is the same for both the languages */</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">  </span><span class="nx">ConsoleSpanExporter</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span><span class="nx">SimpleSpanProcessor</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-trace-base&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">WebTracerProvider</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/sdk-trace-web&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">DocumentLoadInstrumentation</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/instrumentation-document-load&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ZoneContextManager</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/context-zone&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">registerInstrumentations</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@opentelemetry/instrumentation&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="kd">const</span><span class="w"> </span><span class="nx">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebTracerProvider</span><span class="p">();</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">addSpanProcessor</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">SimpleSpanProcessor</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">ConsoleSpanExporter</span><span class="p">()));</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="nx">provider</span><span class="p">.</span><span class="nx">register</span><span class="p">({</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="w">  </span><span class="c1">// Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="w">  </span><span class="nx">contextManager</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ZoneContextManager</span><span class="p">(),</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="p">});</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="c1">// Registering instrumentations</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="nx">registerInstrumentations</span><span class="p">({</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="ow">new</span><span class="w"> </span><span class="nx">DocumentLoadInstrumentation</span><span class="p">()],</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a><span class="p">});</span>
+</code></pre></div></td></tr></table></div>
+<p>现在，重新构建应用程序并再次打开浏览器。在开发人员工具栏的控制台中，您应该看到正
+在导出一些跟踪:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span>
+<span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span>
+<span class="normal"><a href="#__codelineno-9-30">30</a></span>
+<span class="normal"><a href="#__codelineno-9-31">31</a></span>
+<span class="normal"><a href="#__codelineno-9-32">32</a></span>
+<span class="normal"><a href="#__codelineno-9-33">33</a></span>
+<span class="normal"><a href="#__codelineno-9-34">34</a></span>
+<span class="normal"><a href="#__codelineno-9-35">35</a></span>
+<span class="normal"><a href="#__codelineno-9-36">36</a></span>
+<span class="normal"><a href="#__codelineno-9-37">37</a></span>
+<span class="normal"><a href="#__codelineno-9-38">38</a></span>
+<span class="normal"><a href="#__codelineno-9-39">39</a></span>
+<span class="normal"><a href="#__codelineno-9-40">40</a></span>
+<span class="normal"><a href="#__codelineno-9-41">41</a></span>
+<span class="normal"><a href="#__codelineno-9-42">42</a></span>
+<span class="normal"><a href="#__codelineno-9-43">43</a></span>
+<span class="normal"><a href="#__codelineno-9-44">44</a></span>
+<span class="normal"><a href="#__codelineno-9-45">45</a></span>
+<span class="normal"><a href="#__codelineno-9-46">46</a></span>
+<span class="normal"><a href="#__codelineno-9-47">47</a></span>
+<span class="normal"><a href="#__codelineno-9-48">48</a></span>
+<span class="normal"><a href="#__codelineno-9-49">49</a></span>
+<span class="normal"><a href="#__codelineno-9-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">  </span><span class="nt">&quot;traceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ab42124a3c573678d4d8b21ba52df3bf&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">  </span><span class="nt">&quot;parentId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cfb565047957cb0d&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;documentFetch&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5123fc802ffb5255&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">  </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1606814247811266</span><span class="p">,</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">  </span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9390</span><span class="p">,</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">  </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">    </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;document-load&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">    </span><span class="nt">&quot;http.response_content_length&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">905</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w">    </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="w">  </span><span class="nt">&quot;events&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fetchStart&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">811266158</span><span class="p">]</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domainLookupStart&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">811266158</span><span class="p">]</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domainLookupEnd&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">811266158</span><span class="p">]</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;connectStart&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">811266158</span><span class="p">]</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;connectEnd&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">811266158</span><span class="p">]</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-9-37" name="__codelineno-9-37"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-38" name="__codelineno-9-38"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;requestStart&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-39" name="__codelineno-9-39"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">819101158</span><span class="p">]</span>
+<a id="__codelineno-9-40" name="__codelineno-9-40"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-9-41" name="__codelineno-9-41"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-42" name="__codelineno-9-42"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;responseStart&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-43" name="__codelineno-9-43"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">819791158</span><span class="p">]</span>
+<a id="__codelineno-9-44" name="__codelineno-9-44"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-9-45" name="__codelineno-9-45"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-46" name="__codelineno-9-46"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;responseEnd&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-47" name="__codelineno-9-47"></a><span class="w">      </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1606814247</span><span class="p">,</span><span class="w"> </span><span class="mi">820656158</span><span class="p">]</span>
+<a id="__codelineno-9-48" name="__codelineno-9-48"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-49" name="__codelineno-9-49"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-9-50" name="__codelineno-9-50"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="_7">添加的设备<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>如果你想检测AJAX请求、用户交互和其他，你可以为它们注册额外的检测:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
-<span class="normal"><a href="#__codelineno-8-2">2</a></span>
-<span class="normal"><a href="#__codelineno-8-3">3</a></span>
-<span class="normal"><a href="#__codelineno-8-4">4</a></span>
-<span class="normal"><a href="#__codelineno-8-5">5</a></span>
-<span class="normal"><a href="#__codelineno-8-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nx">registerInstrumentations</span><span class="p">({</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserInteractionInstrumentation</span><span class="p">(),</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">XMLHttpRequestInstrumentation</span><span class="p">(),</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">  </span><span class="p">],</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="p">});</span>
+<p>如果你想检测 AJAX 请求、用户交互和其他，你可以为它们注册额外的检测:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nx">registerInstrumentations</span><span class="p">({</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span><span class="nx">instrumentations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserInteractionInstrumentation</span><span class="p">(),</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">XMLHttpRequestInstrumentation</span><span class="p">(),</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">  </span><span class="p">],</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="p">});</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="web">用于Web的元包<a class="headerlink" href="#web" title="Permanent link">&para;</a></h2>
-<p>要利用最常见的仪器都在一个你可以简单地使用<a href="https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web">开放遥测元包的web</a></p>
+<h2 id="web">用于 Web 的元包<a class="headerlink" href="#web" title="Permanent link">&para;</a></h2>
+<p>要利用最常见的插装都在一个你可以简单地使
+用<a href="https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web">开放遥测元包的 web</a></p>
 
 
 

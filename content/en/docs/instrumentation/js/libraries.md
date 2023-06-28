@@ -12,7 +12,7 @@ spelling: cSpell:ignore autoinstrumentation metapackage
 ，[用于 Express 的 instrumentation 库](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)将
 根据入站 HTTP 请求自动创建[span](../../concepts/signals/traces/#span)。
 
-## Setup
+## 设置
 
 每个工具库都是一个 NPM 包，安装通常是这样完成的:
 
@@ -27,10 +27,12 @@ npm install <name-of-package>
 
 ### Node 自动插装包
 
-OpenTelemetry 还定义
-了[auto-instrumentations-node](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node)元
-包，它将所有基于 node .js 的仪器库捆绑到一个包中。这是一种方便的方法，可以为所有
-库添加自动生成的遥测功能，而且工作量很小。
+OpenTelemetry 还定义了[auto-instrumentations-node]元包，它将所有基于 Node.js 的
+插装库捆绑到一个包中。这是一种方便的方法，可以为所有库添加自动生成的遥测功能，而
+且工作量很小。
+
+[auto-instrumentations-node]:
+  https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node
 
 要使用这个包，首先安装它:
 
@@ -40,201 +42,186 @@ npm install @opentelemetry/auto-instrumentations-node
 
 然后在你的跟踪初始化代码中，使用`registerInstrumentations`:
 
-<!-- textlint-disable -->
+=== "TypeScript"
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+    ```ts
+    /* tracing.ts */
 
-{{< tab TypeScript >}}
-```ts
-/* tracing.ts */
+    // Import dependencies
+    import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
+    import opentelemetry from "@opentelemetry/api";
+    import { Resource } from "@opentelemetry/resources";
+    import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
+    import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
+    import { registerInstrumentations } from "@opentelemetry/instrumentation";
+    import { ConsoleSpanExporter, BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
 
-// Import dependencies
-import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
-import opentelemetry from "@opentelemetry/api";
-import { Resource } from "@opentelemetry/resources";
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
-import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
-import { registerInstrumentations } from "@opentelemetry/instrumentation";
-import { ConsoleSpanExporter, BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
+    // This registers all instrumentation packages
+    registerInstrumentations({
+      instrumentations: [
+        getNodeAutoInstrumentations()
+      ],
+    });
 
-// This registers all instrumentation packages
-registerInstrumentations({
-  instrumentations: [
-    getNodeAutoInstrumentations()
-  ],
-});
+    const resource =
+      Resource.default().merge(
+        new Resource({
+          [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+          [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+        })
+      );
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+    const provider = new NodeTracerProvider({
+        resource: resource,
+    });
+    const exporter = new ConsoleSpanExporter();
+    const processor = new BatchSpanProcessor(exporter);
+    provider.addSpanProcessor(processor);
 
-const provider = new NodeTracerProvider({
-    resource: resource,
-});
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+    provider.register();
+    ```
 
-provider.register();
-```
-{{< /tab >}}
+=== "JavaScript"
 
-{{< tab JavaScript >}}
-```js
-/* tracing.js */
+    ```js
+    /* tracing.js */
 
-// Require dependencies
-const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node");
-const opentelemetry = require("@opentelemetry/api");
-const { Resource } = require("@opentelemetry/resources");
-const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
-const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
-const { registerInstrumentations } = require("@opentelemetry/instrumentation");
-const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
+    // Require dependencies
+    const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node");
+    const opentelemetry = require("@opentelemetry/api");
+    const { Resource } = require("@opentelemetry/resources");
+    const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
+    const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
+    const { registerInstrumentations } = require("@opentelemetry/instrumentation");
+    const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
-// This registers all instrumentation packages
-registerInstrumentations({
-  instrumentations: [
-    getNodeAutoInstrumentations()
-  ],
-});
+    // This registers all instrumentation packages
+    registerInstrumentations({
+      instrumentations: [
+        getNodeAutoInstrumentations()
+      ],
+    });
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+    const resource =
+      Resource.default().merge(
+        new Resource({
+          [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+          [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+        })
+      );
 
-const provider = new NodeTracerProvider({
-    resource: resource,
-});
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+    const provider = new NodeTracerProvider({
+        resource: resource,
+    });
+    const exporter = new ConsoleSpanExporter();
+    const processor = new BatchSpanProcessor(exporter);
+    provider.addSpanProcessor(processor);
 
-provider.register();
-```
-
-{{< /tab >}}
-
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-
-<!-- textlint-enable -->
+    provider.register();
+    ```
 
 ### 使用单独的插装包
 
 如果您不希望使用元包，也许是为了减少依赖关系图的大小，您可以安装和注册单独的工具
 包。
 
-For example, here's how you can install and register only the
-[instrumentation-express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
-and
-[instrumentation-http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
-packages to instrument inbound and outbound HTTP traffic.
+例如，以下是如何安装和注册[instrumentation-express]和[instrumentation-http]包来
+检测入站和出站 HTTP 流量的方法。
+
+[instrumentation-express]:
+  https://www.npmjs.com/package/@opentelemetry/instrumentation-express
+[instrumentation-http]:
+  https://www.npmjs.com/package/@opentelemetry/instrumentation-http
 
 ```shell
 npm install --save @opentelemetry/instrumentation-http @opentelemetry/instrumentation-express
 ```
 
-And then register each instrumentation library:
+然后注册每个插装库:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+=== "TypeScript"
 
-{{< tab TypeScript >}}
-```ts
-/* tracing.ts */
+    ```ts
+    /* tracing.ts */
 
-// Import dependencies
-import { HttpInstrumentation } from "@opentelemetry/instrumentation-http";
-import { ExpressInstrumentation } from "@opentelemetry/instrumentation-express";
-import opentelemetry from "@opentelemetry/api";
-import { Resource } from "@opentelemetry/resources";
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
-import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
-import { registerInstrumentations } from "@opentelemetry/instrumentation";
-import { ConsoleSpanExporter, BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
+    // Import dependencies
+    import { HttpInstrumentation } from "@opentelemetry/instrumentation-http";
+    import { ExpressInstrumentation } from "@opentelemetry/instrumentation-express";
+    import opentelemetry from "@opentelemetry/api";
+    import { Resource } from "@opentelemetry/resources";
+    import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
+    import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
+    import { registerInstrumentations } from "@opentelemetry/instrumentation";
+    import { ConsoleSpanExporter, BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
 
-// This registers all instrumentation packages
-registerInstrumentations({
-  instrumentations: [
-    // Express instrumentation expects HTTP layer to be instrumented
-    new HttpInstrumentation(),
-    new ExpressInstrumentation(),
-  ],
-});
+    // This registers all instrumentation packages
+    registerInstrumentations({
+      instrumentations: [
+        // Express instrumentation expects HTTP layer to be instrumented
+        new HttpInstrumentation(),
+        new ExpressInstrumentation(),
+      ],
+    });
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+    const resource =
+      Resource.default().merge(
+        new Resource({
+          [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+          [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+        })
+      );
 
-const provider = new NodeTracerProvider({
-    resource: resource,
-});
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+    const provider = new NodeTracerProvider({
+        resource: resource,
+    });
+    const exporter = new ConsoleSpanExporter();
+    const processor = new BatchSpanProcessor(exporter);
+    provider.addSpanProcessor(processor);
 
-provider.register();
-```
-{{< /tab >}}
+    provider.register();
+    ```
 
-{{< tab JavaScript >}}
-```js
-/* tracing.js */
+=== "JavaScript"
 
-// Require dependencies
-const { HttpInstrumentation } = require("@opentelemetry/instrumentation-http");
-const { ExpressInstrumentation } = require("@opentelemetry/instrumentation-express");
-const opentelemetry = require("@opentelemetry/api");
-const { Resource } = require("@opentelemetry/resources");
-const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
-const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
-const { registerInstrumentations } = require("@opentelemetry/instrumentation");
-const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
+    ```js
+    /* tracing.js */
 
-// This registers all instrumentation packages
-registerInstrumentations({
-  instrumentations: [
-    // Express instrumentation expects HTTP layer to be instrumented
-    new HttpInstrumentation(),
-    new ExpressInstrumentation(),
-  ],
-});
+    // Require dependencies
+    const { HttpInstrumentation } = require("@opentelemetry/instrumentation-http");
+    const { ExpressInstrumentation } = require("@opentelemetry/instrumentation-express");
+    const opentelemetry = require("@opentelemetry/api");
+    const { Resource } = require("@opentelemetry/resources");
+    const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
+    const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
+    const { registerInstrumentations } = require("@opentelemetry/instrumentation");
+    const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+    // This registers all instrumentation packages
+    registerInstrumentations({
+      instrumentations: [
+        // Express instrumentation expects HTTP layer to be instrumented
+        new HttpInstrumentation(),
+        new ExpressInstrumentation(),
+      ],
+    });
 
-const provider = new NodeTracerProvider({
-    resource: resource,
-});
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
+    const resource =
+      Resource.default().merge(
+        new Resource({
+          [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+          [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+        })
+      );
 
-provider.register();
-```
-{{< /tab >}}
+    const provider = new NodeTracerProvider({
+        resource: resource,
+    });
+    const exporter = new ConsoleSpanExporter();
+    const processor = new BatchSpanProcessor(exporter);
+    provider.addSpanProcessor(processor);
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+    provider.register();
+    ```
 
 ## 配置工具库
 
@@ -244,11 +231,11 @@ provider.register();
 ，[Express instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)提
 供了忽略指定中间件或丰富使用请求钩子自动创建的范围的方法。
 
-您需要参考每个仪器库的文档来进行高级配置。
+您需要参考每个插装库的文档来进行高级配置。
 
-## 可用的仪器库
+## 可用的插装库
 
-OpenTelemetry 生成的仪器库的完整列表可
+OpenTelemetry 生成的插装库的完整列表可
 从[opentelemetry-js-contrib](https://github.com/open-telemetry/opentelemetry-js-contrib)存
 储库获得。
 
@@ -258,7 +245,7 @@ OpenTelemetry 生成的仪器库的完整列表可
 
 ## 下一个步骤
 
-在你设置好仪器库之后，你可能想添加[手动工具](./manual.md)来收集自定义的遥测数据
+在你设置好插装库之后，你可能想添加[手动工具](./manual.md)来收集自定义的遥测数据
 。
 
 你还需要配置一个合适的导出器来[导出遥测数据](./exporters.md)到一个或多个遥测后端
