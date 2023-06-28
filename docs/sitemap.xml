@@ -2,1517 +2,2117 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/search/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/status/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/tags/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2019/opentelemetry-governance-committee-explained/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2021/auto-instrumentation-k8s/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2021/collector/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2021/cpp/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2021/gc-election/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2021/malabi/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2021/otel-gc/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2021/python/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2021/swift/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2021/womens-day/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/announcing-community-manager/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/dotnet-instrumentation-first-beta/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/dotnet-instrumentation-metrics/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/gc-candidates/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/gc-election-results/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/gc-elections/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/kubecon-na-project-update/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/kubecon-na/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/metrics-announcement/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/new-end-user-resources/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/otel-in-practice/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/otel-tuesday-v1-sunset/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/otel-unplugged-kubecon-na/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/troubleshooting-nodejs/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/v1.0-trio/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/welcome/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/announcing-opentelemetry-demo-release/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/apisix/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/collector-builder-sample/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/debug-otel-with-otel/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/demo-announcement/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/end-user-discussion-group-apac/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/exponential-histograms/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/frontend-overhaul/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/go-web-app-instrumentation/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/instrument-apache-httpd-server/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/instrument-kafka-clients/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/instrument-nginx/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/jaeger-native-otlp/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/k8s-metadata/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/k8s-otel-expose/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/knative/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/opamp/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/otel-demo-app-nomad/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/tail-sampling/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/ecs-otel-semconv-convergence/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/end-user-discussions-01/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/end-user-discussions-02/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/end-user-discussions-03/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/end-user-discussions-04/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/end-user-q-and-a-01/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/end-user-q-and-a-02/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/end-user-q-and-a-03/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/exponential-histograms/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/http-conventions-stability/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/kubecon-eu/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/lambda-release/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/new-apac-meetings/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/otel-in-focus-01/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/otel-in-focus-02/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/otel-in-focus-03/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/otel-in-focus-04/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/otel-in-focus-05/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/outreachy-may-cohort/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/php-beta-release/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/submitting-your-first-conference-talk/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/sunsetting-opencensus/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/demo-birthday/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/histograms-vs-summaries/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/jmx-metric-insight/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/k8s-runtime-observability/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/php-auto-instrumentation/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/blog/2023/why-histograms/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/community/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/community/marketing-guidelines/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/community/end-user/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/community/end-user/discussion-group/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/community/end-user/feedback-survey/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/community/end-user/interviews-feedback/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/community/end-user/otel-in-practice/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/community/end-user/slack-channel/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/contribution-guidelines/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/what-is-opentelemetry/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/acknowledgements/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/configuration/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/custom-auth/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/custom-collector/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/distributions/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/management/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/scaling/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/trace-receiver/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/transforming-telemetry/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/troubleshooting/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/deployment/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/deployment/agent/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/deployment/gateway/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/collector/deployment/no-collector/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/components/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/data-collection/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/distributions/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/glossary/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/observability-primer/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/semantic-conventions/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/instrumentation/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/instrumentation/automatic/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/instrumentation/libraries/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/instrumentation/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/sampling/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/sdk-configuration/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/sdk-configuration/general-sdk-configuration/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/sdk-configuration/otlp-exporter-configuration/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/signals/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/signals/baggage/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/signals/logs/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/signals/metrics/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/concepts/signals/traces/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/architecture/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/development/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/docker-deployment/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/feature-flags/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/features/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/forking/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/kubernetes-deployment/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/manual-span-attributes/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/metric-features/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/service-table/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/tests/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/trace-features/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/collector-data-flow-dashboard/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/requirements/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/requirements/application/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/requirements/architecture/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/requirements/opentelemetry/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/requirements/system/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/scenarios/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/scenarios/recommendation-cache/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/screenshots/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/accounting/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/ad/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/cart/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/checkout/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/currency/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/email/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/feature-flag/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/fraud-detection/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/frontend-proxy/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/frontend/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/kafka/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/load-generator/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/payment/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/product-catalog/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/quote/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/recommendation/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/demo/services/shipping/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/faas/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/faas/lambda-auto-instrument/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/faas/lambda-collector/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/faas/lambda-manual-instrument/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/getting-started/dev/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/getting-started/ops/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/cpp/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/cpp/api/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/cpp/examples/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/cpp/exporters/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/cpp/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/cpp/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/erlang/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/erlang/api/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/erlang/examples/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/erlang/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/erlang/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/erlang/propagation/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/erlang/resources/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/erlang/sampling/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/erlang/testing/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/go/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/go/api/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/go/examples/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/go/exporters/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/go/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/go/libraries/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/go/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/go/resources/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/go/sampling/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/java/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/java/api/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/java/examples/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/java/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/java/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/java/automatic/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/java/automatic/agent-config/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/java/automatic/annotations/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/java/automatic/extensions/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/api/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/context/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/examples/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/exporters/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/libraries/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/propagation/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/resources/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/sampling/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/serverless/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/automatic/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/automatic/module-config/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/getting-started/browser/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/js/getting-started/nodejs/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/automatic/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/examples/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/exporters/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/libraries/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/metrics-api/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/netframework/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/resources/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/shim/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/net/traces-api/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/other/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/php/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/php/automatic/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/php/examples/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/php/exporters/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/php/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/php/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/php/propagation/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/php/resources/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/php/sdk/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/api/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/cookbook/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/distro/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/examples/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/exporters/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/mypy/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/automatic/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/automatic/agent-config/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/automatic/example/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/python/automatic/operator/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/ruby/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/ruby/api/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/ruby/automatic/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/ruby/examples/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/ruby/exporters/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/ruby/getting-started/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/ruby/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/ruby/sampling/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/rust/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/swift/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/swift/libraries/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/instrumentation/swift/manual/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/design/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/ga-roadmap/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/monitoring/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/observability/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/performance/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/processing/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/release/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/roadmap/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/scraping-receivers/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/security-best-practices/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/service-extensions/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/standard-warnings/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/troubleshooting/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/collector/vision/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/operator/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/operator/automatic/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/operator/apis/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/operator/apis/Instrumentation/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/k8s/operator/apis/OpenTelemetryCollector/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/migration/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/migration/opencensus/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/migration/opentracing/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/</loc>
-         <lastmod>2023-06-26</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/status/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/document-status/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/error-handling/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/glossary/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/library-guidelines/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/library-layout/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/overview/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/performance-benchmark/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/performance/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/project-management/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/semantic-conventions/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/telemetry-stability/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/vendors/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/versioning-and-stability/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/baggage/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/baggage/api/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/common/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/common/attribute-naming/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/common/attribute-requirement-level/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/common/attribute-type-mapping/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/common/mapping-to-non-otlp/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/common/url/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/compatibility/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/compatibility/logging_trace_context/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/compatibility/opencensus/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/compatibility/opentracing/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/compatibility/prometheus_and_openmetrics/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/configuration/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/configuration/file-configuration/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/configuration/sdk-configuration/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/configuration/sdk-environment-variables/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/context/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/context/api-propagators/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/bridge-api/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/data-model-appendix/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/data-model/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/event-api/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/noop/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/sdk/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/semantic_conventions/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/semantic_conventions/events/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/semantic_conventions/exceptions/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/semantic_conventions/feature-flags/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/semantic_conventions/general/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/logs/semantic_conventions/media/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/api/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/data-model/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/metric-requirement-level/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/noop/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/sdk/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/supplementary-guidelines/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/sdk_exporters/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/sdk_exporters/in-memory/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/sdk_exporters/otlp/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/sdk_exporters/prometheus/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/sdk_exporters/stdout/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/database-metrics/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/faas-metrics/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/hardware-metrics/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/http-metrics/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/process-metrics/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/rpc-metrics/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/runtime-environment-metrics/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/system-metrics/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/instrumentation/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/metrics/semantic_conventions/instrumentation/kafka/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/protocol/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/protocol/design-goals/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/protocol/exporter/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/protocol/file-exporter/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/protocol/otlp/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/protocol/requirements/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/sdk/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/browser/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/cloud/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/container/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/deployment_environment/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/device/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/faas/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/host/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/k8s/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/os/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/process/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/webengine/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/cloud_provider/heroku/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/cloud_provider/aws/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/cloud_provider/aws/ecs/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/cloud_provider/aws/eks/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/cloud_provider/aws/logs/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/cloud_provider/gcp/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/resource/semantic_conventions/cloud_provider/gcp/cloud_run/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/schemas/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/schemas/file_format_v1.0.0/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/schemas/file_format_v1.1.0/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/api/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/exceptions/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/sdk/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/tracestate-handling/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/tracestate-probability-sampling/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/sdk_exporters/jaeger/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/sdk_exporters/zipkin/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/cloudevents/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/compatibility/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/database/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/exceptions/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/faas/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/feature-flags/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/http/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/messaging/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/rpc/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/span-general/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/instrumentation/aws-lambda/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/instrumentation/aws-sdk/</loc>
+         <lastmod>2023-06-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://wdk-docs.github.io/opentelemetry-docs/docs/specs/otel/trace/semantic_conventions/instrumentation/graphql/</loc>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/ecosystem/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/ecosystem/demo/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/ecosystem/integrations/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/ecosystem/vendors/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/ecosystem/registry/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://wdk-docs.github.io/opentelemetry-docs/ecosystem/registry/adding/</loc>
-         <lastmod>2023-06-26</lastmod>
+         <lastmod>2023-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

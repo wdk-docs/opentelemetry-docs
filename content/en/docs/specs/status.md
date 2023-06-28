@@ -1,34 +1,29 @@
 ---
-title: Specification Status Summary
+title: 规范状态摘要
 linkTitle: Status
 aliases: [/docs/specs/otel/status]
 weight: 10
 ---
 
-OpenTelemetry is developed on a signal by signal basis. Tracing, metrics,
-baggage, and logging are examples of signals. Signals are built on top of
-context propagation, a shared mechanism for correlating data across distributed
-systems.
+OpenTelemetry 是在一个信号一个信号的基础上开发的。跟踪、度量、行李和日志记录都是
+信号的例子。信号建立在上下文传播之上，上下文传播是一种跨分布式系统关联数据的共享
+机制。
 
-Each signal consists of four [core components](/docs/concepts/components/):
+每个信号由四个[核心成分](../concepts/components.md)组成:
 
 - APIs
 - SDKs
-- [OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP)
+- [OpenTelemetry Protocol](/docs/specs/otlp/README.md) (OTLP)
 - [Collector](/docs/collector/)
 
-Signals also have contrib components, an ecosystem of plugins and
-instrumentation. All instrumentation shares the same semantic conventions, to
-ensure that they produce the same data when observing common operations, such as
-HTTP requests.
+信号也有贡献组件，一个插件和仪器的生态系统。所有检测工具都共享相同的语义约定，以
+确保它们在观察常见操作(如 HTTP 请求)时生成相同的数据。
 
-To learn more about signals and components, see the OTel specification
-[Overview](/docs/specs/otel/overview/).
+要了解有关信号和组件的更多信息，请参阅 OTel 规范[概述](./otel/overview.md).
 
-## Component Lifecycle
+## 组件生命周期
 
-Components follow a development lifecycle: Draft, Experimental, Stable,
-Deprecated, Removed.
+组件遵循开发生命周期:草稿、实验、稳定、弃用、删除。
 
 - **Draft** components are under design, and have not been added to the
   specification.
@@ -37,14 +32,13 @@ Deprecated, Removed.
   support.
 - **Deprecated** components are stable but may eventually be removed.
 
-For complete definitions of lifecycles and long term support, see
-[Versioning and stability](/docs/specs/otel/versioning-and-stability/).
+有关生命周期和长期支持的完整定义，请参
+见[版本控制和稳定性]。(/docs/specs/otel/versioning-and-stability/).
 
-## Current Status
+## 当前的状态
 
-The following is a high level status report for currently available signals.
-Note that while the OpenTelemetry clients conform to a shared specification,
-they are developed independently.
+以下是当前可用信号的高级状态报告。请注意，虽然 OpenTelemetry 客户端遵循共享规范
+，但它们是独立开发的。
 
 Checking the current status for each client in the README of its
 [github repo](https://github.com/open-telemetry) is recommended. Client support

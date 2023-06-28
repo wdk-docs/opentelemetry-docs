@@ -120,14 +120,14 @@ OpenTelemetry 项目使用的术语您可能不熟悉，也可能不熟悉。此
 ### **Instrumented Library**
 
 表示收集遥测信号([`Traces`](#trace), [`Metrics`](#metric), [`Logs`](#log))
-的[`Library`](#library)。 [更多][spec-instrumented-lib]。
+的[`库`](#library)。 [更多][spec-instrumented-lib]。
 
 ### **Instrumentation Library**
 
 表示为给定的[`Instrumented Library`](#instrumented-library)提供检测
-的[`Library`](#library)。
+的[`库`](#library)。
 [`Instrumented Library`](#instrumented-library)和[`Instrumentation Library`](#instrumentation-library)可
-能是相同的[`Library`](#library)，如果它有内置的 OpenTelemetry 仪器。 [更
+能是相同的[`库`](#library)，如果它有内置的 OpenTelemetry 插装。 [更
 多][spec-instrumentation-lib]。
 
 ### **JSON**
@@ -337,35 +337,35 @@ Metadata)。 查看[更多][metric].
 
 #### **[Metric Conventions](/docs/specs/otel/metrics/semantic_conventions)**
 
-[baggage]: /docs/specs/otel/baggage/api/
-[attribute]: /docs/specs/otel/common/#attributes
-[collector]: /docs/collector
-[context propagation]: /docs/specs/otel/overview#context-propagation
+[baggage]: ../../specs/otel/baggage/api/
+[attribute]: ../../specs/otel/common/#attributes
+[collector]: ../../collector
+[context propagation]: ../../specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
-[distributed tracing]: /docs/concepts/signals/traces/
-[field]: /docs/specs/otel/logs/data-model#field-kinds
+[distributed tracing]: ../../concepts/signals/traces/
+[field]: ../../specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 [json]: https://en.wikipedia.org/wiki/JSON
-[log]: /docs/specs/otel/glossary#log
-[log record]: /docs/specs/otel/glossary#log-record
-[metric]: /docs/concepts/signals/metrics/
+[log]: ../../specs/otel/glossary#log
+[log record]: ../../specs/otel/glossary#log-record
+[metric]: ../../concepts/signals/metrics/
 [opencensus]: https://opencensus.io
 [opentracing]: https://opentracing.io
-[propagators]: /docs/instrumentation/go/manual/#propagators-and-context
+[propagators]: ../../instrumentation/go/manual/#propagators-and-context
 [proto]: https://github.com/open-telemetry/opentelemetry-proto
-[receiver]: /docs/collector/configuration/#receivers
+[receiver]: ../../collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
-[sampling]: /docs/specs/otel/trace/sdk#sampling
-[signals]: /docs/concepts/signals/
-[span]: /docs/specs/otel/trace/api#span
-[spans]: /docs/specs/otel/trace/api#add-events
-[spec-exporter-lib]: /docs/specs/otel/glossary/#exporter-library
-[spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
-[spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library
-[specification]: /docs/concepts/components/#specification
-[status]: /docs/specs/otel/trace/api#set-status
-[trace]: /docs/specs/otel/overview#traces
-[tracer]: /docs/specs/otel/trace/api#tracer
+[sampling]: ../../specs/otel/trace/sdk#sampling
+[signals]: ../../concepts/signals/
+[span]: ../../specs/otel/trace/api#span
+[spans]: ../../specs/otel/trace/api#add-events
+[spec-exporter-lib]: ../../specs/otel/glossary/#exporter-library
+[spec-instrumentation-lib]: ../../specs/otel/glossary/#instrumentation-library
+[spec-instrumented-lib]: ../../specs/otel/glossary/#instrumented-library
+[specification]: ../../concepts/components/#specification
+[status]: ../../specs/otel/trace/api#set-status
+[trace]: ../../specs/otel/overview#traces
+[tracer]: ../../specs/otel/trace/api#tracer
 [zpages]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/experimental/trace/zpages.md
