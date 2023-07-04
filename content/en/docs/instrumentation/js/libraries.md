@@ -1,5 +1,5 @@
 ---
-title: 使用工具库
+title: 插装库
 linkTitle: Libraries
 weight: 40
 spelling: cSpell:ignore autoinstrumentation metapackage
@@ -8,9 +8,11 @@ spelling: cSpell:ignore autoinstrumentation metapackage
 您可以使用[插装库](../../specs/otel/glossary/#instrumentation-library)为库或框架
 生成遥测数据。
 
-例如
-，[用于 Express 的 instrumentation 库](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)将
-根据入站 HTTP 请求自动创建[span](../../concepts/signals/traces/#span)。
+例如，[用于 Express 的插装库][instrumentation-express]将根据入站 HTTP 请求自动创
+建[span](../../concepts/signals/traces/#span)。
+
+[instrumentation-express]:
+  https://www.npmjs.com/package/@opentelemetry/instrumentation-express
 
 ## 设置
 
@@ -223,13 +225,15 @@ npm install --save @opentelemetry/instrumentation-http @opentelemetry/instrument
     provider.register();
     ```
 
-## 配置工具库
+## 配置插装库
 
 一些工具库提供了额外的配置选项。
 
-例如
-，[Express instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)提
-供了忽略指定中间件或丰富使用请求钩子自动创建的范围的方法。
+例如，[Express instrumentation]提供了忽略指定中间件或丰富使用请求钩子自动创建的
+范围的方法。
+
+[Express instrumentation]:
+  https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options
 
 您需要参考每个插装库的文档来进行高级配置。
 

@@ -1,14 +1,12 @@
 # 抓取指标接收器
 
-Scraping metrics receivers are receivers that pull data from external sources at
-regular intervals and translate it into [pdata](../pdata/README.md) which is
-sent further in the pipeline. The external source of metrics usually is a
-monitored system providing data about itself in some arbitrary format. There are
-two types of scraping metrics receivers:
+抓取指标接收器是定期从外部数据源提取数据并将其转换
+为[pdata](../pdata/README.md)的接收器，该接收器在管道中进一步发送。度量的外部来
+源通常是一个被监视的系统，它以某种任意格式提供有关自身的数据。有两种类型的抓取指
+标接收器:
 
-- **Generic scraping metrics receivers:** The set of metrics emitted by this
-  type of receiver fully depends on the state of the external source and/or the
-  user settings. Examples:
+- **Generic scraping metrics receivers:** 这种类型的接收器发出的指标集完全取决于
+  外部源的状态和/或用户设置。例子:
 
   - [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
   - [SQL Query Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlqueryreceiver)
@@ -24,7 +22,7 @@ This document covers built-in scraping metrics receivers. It defines which
 metrics these receivers can emit, defines stability guarantees and provides
 guidelines for metric updates.
 
-## Defining emitted metrics
+## 定义发出的度量
 
 Each built-in scraping metrics receiver has a `metadata.yaml` file that MUST
 define all the metrics emitted by the receiver. The file is being used to
@@ -42,7 +40,7 @@ There are two categories of the metrics emitted by scraping receivers:
 - **Optional metrics**: not emitted by default, but can be enabled in user
   settings.
 
-### How to identify if new metric should be default or optional?
+### 如何确定新度量应该是默认的还是可选的?
 
 There is no strict rule to differentiate default metrics from optional. As a
 rule of thumb, default metrics SHOULD be treated as metrics essential to
@@ -64,14 +62,14 @@ MUST be marked as optional:
 - **The source must be configured in an unusual way.**
 - **It requires dedicated configuration in the receiver.**
 
-## Stability levels of scraping receivers
+## 刮擦接收器的稳定水平
 
 All the requirements defined for components in
 [the Collector's README](../README.md#stability-levels) are applicable to the
 scraping receivers as well. In addition, the following rules applied
 specifically to scraping metrics receivers:
 
-### Development
+### 开发
 
 The receiver is not ready for use. All the metrics emitted by the receiver are
 not finalized and can change in any way.
@@ -98,7 +96,7 @@ system. Given that, occasional breaking changes in the emitted metrics are
 expected even in the stable receivers. Any breaking change MUST be applied
 following [the deprecation process](#changing-the-emitted-metrics).
 
-## Changing the emitted metrics
+## 更改发出的指标
 
 Some changes are not considered breaking and can be applied to metrics emitted
 by scraping receivers of any stability level:
@@ -115,7 +113,7 @@ Any warnings SHOULD include the version starting from which the next step will
 take effect. If a breaking change is more complicated and many metrics are
 involved in the change, feature gates SHOULD be used instead.
 
-### Removing an optional metric
+### 删除可选度量
 
 Steps to remove an optional metric:
 
@@ -124,7 +122,7 @@ Steps to remove an optional metric:
    `enabled` option is set explicitly to `true` in user settings.
 2. Remove the metric.
 
-### Removing a default metric
+### 删除默认度量
 
 Steps to remove a default metric:
 
@@ -135,7 +133,7 @@ Steps to remove a default metric:
    the `enabled` option is set to `true` in user settings.
 3. Remove the metric.
 
-### Making a default metric optional
+### 使默认度量成为可选的
 
 Steps to turn a metric from default to optional:
 
@@ -145,7 +143,7 @@ Steps to turn a metric from default to optional:
    want to keep it, please enable it explicitly in the receiver settings."
 2. Remove the warning and update `metadata.yaml` to make the metric optional.
 
-### Adding a new default metric or turning an existing optional metric into default
+### 添加新的默认度量或将现有的可选度量转换为默认度量
 
 Adding a new default metric is a breaking change for a scraping receiver because
 it introduces an unexpected output for users and additional load on metric
@@ -158,7 +156,7 @@ backends. Steps to apply such a change:
    metric to be emitted, please disable it in the receiver settings."
 2. Remove the warning and update `metadata.yaml` to make the metric default.
 
-### Other changes
+### 其他的变化
 
 Other breaking changes SHOULD follow similar strategies inspecting presence of
 `enabled` field in user settings. For example, if a metric has to be renamed for

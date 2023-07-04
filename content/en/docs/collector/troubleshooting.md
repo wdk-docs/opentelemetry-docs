@@ -4,35 +4,29 @@ description: 对采集器故障处理的建议
 weight: 25
 ---
 
-This page describes some options when troubleshooting the health or performance
-of the OpenTelemetry Collector. The Collector provides a variety of metrics,
-logs, and extensions for debugging issues.
+本页描述对 OpenTelemetry Collector 的运行状况或性能进行故障排除时的一些选项。
+Collector 为调试问题提供了各种度量、日志和扩展。
 
-## Sending test data
+## 发送测试数据
 
-For certain types of issues, particularly verifying configuration and debugging
-network issues, it can be helpful to send a small amount of data to a collector
-configured to output to local logs. For details, see
-[Local exporters](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#local-exporters).
+对于某些类型的问题，特别是验证配置和调试网络问题，将少量数据发送到配置为输出到本
+地日志的收集器可能会有所帮助。详情请参
+阅[本地出口商](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#local-exporters).
 
-## Checklist for debugging complex pipelines
+## 调试复杂管道的检查表
 
-It can be difficult to isolate problems when telemetry flows through multiple
-collectors and networks. For each "hop" of telemetry data through a collector or
-other component in your telemetry pipeline, it’s important to verify the
-following:
+当遥测数据流经多个收集器和网络时，很难隔离问题。对于通过采集器或遥测管道中的其他
+组件的遥测数据的每个"hop"，重要的是要验证以下内容:
 
-- Are there error messages in the logs of the collector?
-- How is the telemetry being ingested into this component?
-- How is the telemetry being modified (i.e. sampling, redacting) by this
-  component?
-- How is the telemetry being exported from this component?
-- What format is the telemetry in?
-- How is the next hop configured?
-- Are there any network policies that prevent data from getting in or out?
+- 采集器日志中是否有错误信息?
+- 遥测技术是如何被吸收到这个组件中的?
+- 该组件如何修改遥测(即采样，编辑)?
+- 如何从该组件导出遥测数据?
+- 遥测采用什么格式?
+- 下一跳是如何配置的?
+- 是否有阻止数据进出的网络策略?
 
-### More
+### 更多的
 
-For detailed recommendations, including common problems, see
-[Troubleshooting](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md)
-from the Collector repo.
+有关详细建议(包括常见问题)，请参阅 Collector repo 中
+的[故障排除](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md)。

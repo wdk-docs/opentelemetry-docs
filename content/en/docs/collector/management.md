@@ -4,103 +4,79 @@ description: 如何大规模管理OpenTelemetry收集器部署
 weight: 23
 ---
 
-This document describes how you can manage your OpenTelemetry collector
-deployment at scale.
+本文档描述了如何大规模管理 OpenTelemetry 收集器部署。
 
-To get the most out of this page you should know how to install and configure
-the collector. These topics are covered elsewhere:
+要充分利用此页，您应该了解如何安装和配置收集器。这些主题在其他地方有介绍:
 
-- [Getting Started][otel-collector-getting-started] to understand how to install
-  the OpenTelemetry collector.
-- [Configuration][otel-collector-configuration] for how to configure the
-  OpenTelemetry collector, setting up telemetry pipelines.
+- [入门][otel-collector-getting-started]了解如何安装 OpenTelemetry 收集器。
+- [配置][otel-collector-configuration]关于如何配置 OpenTelemetry 收集器，设置遥
+  测管道。
 
-## Basics
+## 基础
 
-Telemetry collection at scale requires a structured approach to manage agents.
-Typical agent management tasks include:
+大规模的遥测收集需要一种结构化的方法来管理代理。典型的代理管理任务包括:
 
-1. Querying the agent information and configuration. The agent information can
-   include its version, operating system related information, or capabilities.
-   The configuration of the agent refers to its telemetry collection setup, for
-   example, the OpenTelemetry collector
-   [configuration][otel-collector-configuration].
-1. Upgrading/downgrading agents and management of agent-specific packages,
-   including the base agent functionality and plugins.
-1. Applying new configurations to agents. This might be required because of
-   changes in the environment or due to policy changes.
-1. Health and performance monitoring of the agents, typically CPU and memory
-   usage and also agent-specific metrics, for example, the rate of processing or
-   backpressure-related information.
-1. Connection management between a control plane and the agent such as handling
-   of TLS certificates (revocation and rotation).
+1. 查询座席信息和配置。代理信息可以包括其版本、操作系统相关信息或功能。代理的配
+   置指的是它的遥测收集设置，例如，OpenTelemetry 收集器[配
+   置][otel-collector-configuration].
+2. 升级/降级代理和管理特定于代理的包，包括基本代理功能和插件。
+3. 将新配置应用于代理。由于环境的变化或政策的变化，可能需要这样做。
+4. 代理的运行状况和性能监视，通常是 CPU 和内存使用情况，以及特定于代理的指标，例
+   如，处理速率或与背压相关的信息。
+5. 控制平面与代理之间的连接管理，例如处理 TLS 证书(吊销和轮换)。
 
-Not every use case requires support for all of the above agent management tasks.
-In the context of OpenTelemetry task _4. Health and performance monitoring_ is
-ideally done using OpenTelemetry.
+并非每个用例都需要支持上述所有代理管理任务。在 OpenTelemetry 的上下文中，任务
+_4. 健康状况和性能监视_ 最好使用 OpenTelemetry 完成。
 
 ## OpAMP
 
-Observability vendors and cloud providers offer proprietary solutions for agent
-management. In the open source observability space, there is an emerging
-standard that you can use for agent management: Open Agent Management Protocol
-(OpAMP).
+可观察性供应商和云提供商为代理管理提供专有解决方案。在开源可观察性领域，有一个新
+兴的标准可以用于代理管理: 开放代理管理协议(OpAMP)。
 
-The [OpAMP specification][opamp-spec] defines how to manage a fleet of telemetry
-data agents. These agents can be [OpenTelemetry collectors][otel-collector],
-Fluent Bit or other agents in any arbitrary combination.
+[OpAMP 规范][opamp-spec]定义了如何管理一组遥测数据代理。这些代理可以
+是[OpenTelemetry 收集器][otel-collector]、Fluent Bit 或其他任意组合的代理。
 
-> **Note** The term "agent" is used here as a catch-all term for OpenTelemetry
-> components that respond to OpAMP, this could be the collector but also SDK
-> components.
+!!! Note
 
-OpAMP is a client/server protocol that supports communication over HTTP and over
-WebSockets:
+    这里使用术语 "agent" “代理”作为响应OpAMP的OpenTelemetry组件的统称，它可以是收集器，也可以是SDK组件。
 
-- The **OpAMP server** is part of the control plane and acts as the
-  orchestrator, managing a fleet of telemetry agents.
-- The **OpAMP client** is part of the data plane. The client side of OpAMP can
-  be implemented in-process, for example, as the case in [OpAMP support in the
-  OpenTelemetry collector][opamp-in-otel-collector]. The client side of OpAMP
-  could alternatively be implemented out-of-process. For this latter option, you
-  can use a supervisor that takes care of the OpAMP specific communication with
-  the OpAMP server and at the same time controls the telemetry agent, for
-  example to apply a configuration or to upgrade it. Note that the
-  supervisor/telemetry communication is not part of OpAMP.
+OpAMP 是一个客户端/服务器协议，支持通过 HTTP 和 WebSockets 进行通信。
 
-Let's have a look at a concrete setup:
+- OpAMP 服务器是控制平面的一部分，充当协调器，管理一组遥测代理。
+- **OpAMP 客户端** 是数据平面的一部分。 OpAMP 的客户端可以在进程中实现，例
+  如[OpenTelemetry 收集器中的 OpAMP 支持][opamp-in-otel-collector]中的情况。
+  OpAMP 的客户端也可以在进程外实现。对于后一种选项，您可以使用管理器，该管理器负
+  责与 OpAMP 服务器进行特定于 OpAMP 的通信，同时控制遥测代理，例如应用配置或升级
+  它。请注意，主管/遥测通信不是 OpAMP 的一部分。
+
+让我们来看一个具体的设置:
 
 ![OpAMP example setup](../img/opamp.svg)
 
-1. The OpenTelemetry collector, configured with pipeline(s) to:
-   - (A) receive signals from downstream sources
-   - (B) export signals to upstream destinations, potentially including
-     telemetry about the collector itself (represented by the OpAMP `own_xxx`
-     connection settings).
-1. The bi-directional OpAMP control flow between the control plane implementing
-   the server-side OpAMP part and the collector (or a supervisor controlling the
-   collector) implementing OpAMP client-side.
+1. OpenTelemetry 收集器，配置了管道，以:
+   - (A) 接收来自下游源的信号
+   - (B) 输出信号到上游目的地，可能包括有关采集器本身的遥测(由 OpAMP `own_xxx`连
+     接设置表示)。
+2. 实现服务器端 OpAMP 部分的控制平面与实现客户端 OpAMP 的收集器(或控制收集器的主
+   管)之间的双向 OpAMP 控制流。
 
-You can try out a simple OpAMP setup yourself by using the [OpAMP protocol
-implementation in Go][opamp-go]. For the following walkthrough you will need to
-have Go in version 1.19 or above available.
+您可以通过使用[OpAMP 协议在 Go 中的实现][opamp-go]自己尝试一个简单的 OpAMP 设置
+。对于下面的演练，您需要使用 1.19 或更高版本的 Go。
 
-We will set up a simple OpAMP control plane consisting of an example OpAMP
-server and let an OpenTelemetry collector connect to it via an example OpAMP
-supervisor.
+我们将设置一个简单的 OpAMP 控制平面，由示例 OpAMP 服务器组成，并让 OpenTelemetry
+收集器通过示例 OpAMP 管理器连接到它。
 
-First, clone the `open-telemetry/opamp-go` repo:
+首先，克隆`open-telemetry/opamp-go`repo:
 
 ```sh
 git clone https://github.com/open-telemetry/opamp-go.git
 ```
 
-Next, we need an OpenTelemetry collector binary that the OpAMP supervisor can
-manage. For that, install the [OpenTelemetry Collector Contrib][otelcolcontrib]
-distro. The path to the collector binary (where you installed it into) is
-referred to as `$OTEL_COLLECTOR_BINARY` in the following.
+接下来，我们需要 OpAMP 管理器可以管理的 OpenTelemetry 收集器二进制文件。为此，安
+装[OpenTelemetry Collector Contrib][otelcolcontrib]发行版。收集器二进制文件的路
+径(您将其安装到的位置)在下面被称为`$OTEL_COLLECTOR_BINARY`。
 
-In the `./opamp-go/internal/examples/server` directory, launch the OpAMP server:
+在`. /opamp-go/internal/examples/server`目录，启动 OpAMP 服务器:
 
 ```console
 $ go run .
@@ -108,9 +84,9 @@ $ go run .
 2023/02/08 13:31:32.004815 [MAIN] OpAMP Server running...
 ```
 
-In the `./opamp-go/internal/examples/supervisor` directory create a file named
-`supervisor.yaml` with the following content (telling the supervisor where to
-find the server and what OpenTelemetry collector binary to manage):
+在`./opamp-go/internal/examples/supervisor`目录中创建一个名为`supervisor.yaml`
+的文件，其中包含以下内容(告诉 supervisor 在哪里找到服务器以及要管理的
+OpenTelemetry 收集器二进制文件):
 
 ```yaml
 server:
@@ -120,13 +96,13 @@ agent:
   executable: $OTEL_COLLECTOR_BINARY
 ```
 
-> **Note** Make sure to replace `$OTEL_COLLECTOR_BINARY` with the actual file
-> path. For example, in Linux or macOS, if you installed the collector in
-> `/usr/local/bin/` then you would replace `$OTEL_COLLECTOR_BINARY` with
-> `/usr/local/bin/otelcol`.
+!!! Note
 
-Next, create a collector configuration as follows (save it in a file called
-`effective.yaml` in the `./opamp-go/internal/examples/supervisor` directory):
+    确保将`$OTEL_COLLECTOR_BINARY`替换为实际的文件路径。
+    例如，在Linux或macOS中，如果您将收集器安装在`/usr/local/bin/`中，则将`$OTEL_COLLECTOR_BINARY` 替换为`/usr/local/bin/otelcol`。
+
+接下来，按如下方式创建一个收集器配置(将其保存
+在`./opamp-go/internal/examples/supervisor`目录下的`effective.yaml`文件中):
 
 ```yaml
 receivers:
@@ -156,8 +132,7 @@ service:
       exporters: [logging]
 ```
 
-Now it's time to launch the supervisor (which in turn will launch your
-OpenTelemetry collector):
+现在是时候启动管理器了(它将依次启动 OpenTelemetry 收集器):
 
 ```console
 $ go run .
@@ -185,14 +160,12 @@ $ go run .
 2023/02/08 13:32:57 Agent is healthy.
 ```
 
-If everything worked out you should now be able to go to
-[http://localhost:4321/](http://localhost:4321/) and access the OpAMP server UI
-where you should see your collector listed, managed by the supervisor:
+如果一切都解决了，你现在应该能够访问 http://localhost:4321/ ，并访问 OpAMP 服务
+器 UI，你应该看到你的收集器列出，由主管管理:
 
 ![OpAMP example setup](../img/opamp-server-ui.png)
 
-You can also query the collector for the metrics exported (note the label
-values):
+您还可以查询采集器导出的指标(注意标签值):
 
 ```console
 $ curl localhost:8888/metrics
@@ -205,18 +178,17 @@ otelcol_receiver_accepted_metric_points{receiver="prometheus/own_metrics",servic
 otelcol_receiver_refused_metric_points{receiver="prometheus/own_metrics",service_instance_id="01GRRKNBJE06AFVGQT5ZYC0GEK",service_name="io.opentelemetry.collector",service_version="1.0.0",transport="http"} 0
 ```
 
-## Other information
+## 其它信息
 
-- Blog post [Using OpenTelemetry OpAMP to modify service telemetry on the
-  go][blog-opamp-service-telemetry]
-- YouTube videos:
-  - [Lightning Talk: Managing OpenTelemetry Through the OpAMP
-    Protocol][opamp-lt]
-  - [What is OpAMP & What is BindPlane][opamp-bindplane]
+- 博客文章[使用 OpenTelemetry OpAMP 修改 go 语言上的服务遥
+  测][blog-opamp-service-telemetry]
+- YouTube 视频:
+  - [闪电谈话:通过 OpAMP 协议管理 OpenTelemetry][opamp-lt]
+  - [什么是 OpAMP 和什么是 BindPlane][opamp-bindplane]
 
-[otel-collector]: /docs/collector/
-[otel-collector-getting-started]: /docs/collector/getting-started
-[otel-collector-configuration]: /docs/collector/configuration
+[otel-collector]: ./index.md
+[otel-collector-getting-started]: ./getting-started.md
+[otel-collector-configuration]: ./configuration.md
 [opamp-spec]:
   https://github.com/open-telemetry/opamp-spec/blob/main/specification.md
 [opamp-in-otel-collector]:
@@ -224,6 +196,6 @@ otelcol_receiver_refused_metric_points{receiver="prometheus/own_metrics",service
 [opamp-go]: https://github.com/open-telemetry/opamp-go
 [otelcolcontrib]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/releases
-[blog-opamp-service-telemetry]: /blog/2022/opamp/
+[blog-opamp-service-telemetry]: ../../blog/2022/opamp/index.md
 [opamp-lt]: https://www.youtube.com/watch?v=LUsfZFRM4yo
 [opamp-bindplane]: https://www.youtube.com/watch?v=N18z2dOJSd8

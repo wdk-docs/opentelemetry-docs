@@ -5,22 +5,20 @@ aliases: [/docs/instrumentation/js/api/context]
 weight: 60
 ---
 
-创建并启动HTTP服务器为了使OpenTelemetry工作，它必须存储和传播重要的遥测数据。
-例如，当接收到请求并启动span时，它必须对创建子span的组件可用。
-为了解决这个问题，OpenTelemetry将跨度存储在Context中。
-本文档描述了JavaScript的OpenTelemetry上下文API以及如何使用它。
+创建并启动 HTTP 服务器为了使 OpenTelemetry 工作，它必须存储和传播重要的遥测数据
+。例如，当接收到请求并启动 span 时，它必须对创建子 span 的组件可用。为了解决这个
+问题，OpenTelemetry 将跨度存储在 Context 中。本文档描述了 JavaScript 的
+OpenTelemetry 上下文 API 以及如何使用它。
 
-More information:
+更多信息:
 
-- [Context specification](/docs/specs/otel/context/)
-- [Context API reference](https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api.ContextAPI.html)
+- [上下文规范](../../specs/otel/context/README.md)
+- [上下文 API 参考](https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api.ContextAPI.html)
 
-## Context Manager
+## 上下文管理器
 
-The context API depends on a context manager to work. The examples in this
-document will assume you have already configured a context manager. Typically
-the context manager is provided by your SDK, however it is possible to register
-one directly like this:
+上下文 API 依赖于上下文管理器来工作。本文档中的示例将假设您已经配置了上下文管理
+器。通常情况下，上下文管理器是由你的 SDK 提供的，但是也可以像这样直接注册一个:
 
 ```typescript
 import * as api from '@opentelemetry/api';
@@ -31,16 +29,14 @@ contextManager.enable();
 api.context.setGlobalContextManager(contextManager);
 ```
 
-## Root Context
+## 根上下文
 
-The `ROOT_CONTEXT` is the empty context. If no context is active, the
-`ROOT_CONTEXT` is active. Active context is explained below
-[Active Context](#active-context).
+`ROOT_CONTEXT`是空的上下文。如果没有活跃上下文，则`ROOT_CONTEXT`是活跃的。活跃上
+下文将在下面[活跃上下文](#active-context)进行解释。
 
-## Context Keys
+## 上下文的键
 
-Context entries are key-value pairs. Keys can be created by calling
-`api.createContextKey(description)`.
+上下文条目是键值对。可以通过调用`api.createContextKey(description)`来创建键.
 
 ```typescript
 import * as api from '@opentelemetry/api';
@@ -49,11 +45,11 @@ const key1 = api.createContextKey('My first key');
 const key2 = api.createContextKey('My second key');
 ```
 
-## Basic Operations
+## 基本操作
 
-### Get Entry
+### 获得条目
 
-Entries are accessed using the `context.getValue(key)` method.
+使用`context.getValue(key)`方法访问条目。
 
 ```typescript
 import * as api from '@opentelemetry/api';
@@ -65,12 +61,11 @@ const ctx = api.ROOT_CONTEXT;
 const value = ctx.getValue(key);
 ```
 
-### Set Entry
+### 设置条目
 
-Entries are created by using the `context.setValue(key, value)` method. Setting
-a context entry creates a new context with all the entries of the previous
-context, but with the new entry. Setting a context entry does not modify the
-previous context.
+条目是通过使用`context.setValue(key, value)` 方法创建的。设置上下文条目将创建一
+个新上下文，其中包含前一个上下文的所有条目，但包含新条目。设置上下文条目不会修改
+之前的上下文。
 
 ```typescript
 import * as api from '@opentelemetry/api';
@@ -88,12 +83,11 @@ console.log(ctx2.getValue(key)); // "context 2"
 console.log(ctx.getValue(key)); // undefined
 ```
 
-### Delete Entry
+### 删除条目
 
-Entries are removed by calling `context.deleteValue(key)`. Deleting a context
-entry creates a new context with all the entries of the previous context, but
-without the entry identified by the key. Deleting a context entry does not
-modify the previous context.
+通过调用`context.deleteValue(key)`来删除条目。删除上下文条目将创建一个新的上下文
+，其中包含前一个上下文的所有条目，但不包含由键标识的条目。删除上下文条目不会修改
+前一个上下文。
 
 ```typescript
 import * as api from '@opentelemetry/api';
@@ -114,28 +108,27 @@ console.log(ctx2.getValue(key)); // "context 2"
 console.log(ctx.getValue(key)); // undefined
 ```
 
-## Active Context
+## 活跃的上下文
 
-**IMPORTANT**: This assumes you have configured a Context Manager. Without one,
-`api.context.active()` will _ALWAYS_ return the `ROOT_CONTEXT`.
+!!! IMPORTANT
 
-The active context is the context which is returned by `api.context.active()`.
-The context object contains entries which allow tracing components which are
-tracing a single thread of execution to communicate with each other and ensure
-the trace is successfully created. For example, when a span is created it may be
-added to the context. Later, when another span is created it may use the span
-from the context as its parent span. This is accomplished through the use of
-mechanisms like [async_hooks](https://nodejs.org/api/async_hooks.html) or
-[AsyncLocalStorage](https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage)
-in node, or
-[zone.js](https://github.com/angular/angular/tree/main/packages/zone.js) on the
-web in order to propagate the context through a single execution. If no context
-is active, the `ROOT_CONTEXT` is returned, which is just the empty context
-object.
+    这假定您已经配置了上下文管理器。如果没有，`api.context.active()`将总是返回`ROOT_CONTEXT`。
 
-### Get Active Context
+活跃上下文是由`api.context.active()`返回的上下文。上下文对象包含允许跟踪单个执行
+线程的跟踪组件相互通信并确保成功创建跟踪的条目。例如，当创建一个 span 时，可以将
+其添加到上下文中。稍后，当创建另一个 span 时，它可以使用上下文中的 span 作为其父
+span。这是通过使用 node 中的[async_hooks]或[AsyncLocalStorage]或 web 中
+的[zone.js]等机制来完成的，以便通过单次执行传播上下文。如果没有活跃上下文，则返
+回`ROOT_CONTEXT`，它只是一个空的上下文对象。
 
-The active context is the context which is returned by `api.context.active()`.
+[async_hooks]: https://nodejs.org/api/async_hooks.html
+[AsyncLocalStorage]:
+  https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage
+[zone.js]: https://github.com/angular/angular/tree/main/packages/zone.js
+
+### 获得活跃上下文
+
+活跃上下文是由`api.context.active()`返回的上下文。
 
 ```typescript
 import * as api from '@opentelemetry/api';
@@ -145,11 +138,10 @@ import * as api from '@opentelemetry/api';
 const ctx = api.context.active();
 ```
 
-### Set Active Context
+### 设置活跃的上下文
 
-A context can be made active by use of `api.context.with(ctx, callback)`. During
-execution of the `callback`, the context passed to `with` will be returned by
-`context.active`.
+上下文可以通过使用`api.context.with(ctx, callback)`来激活。在`callback`执行期间
+，传递给`with`的上下文将由`context.active`返回。
 
 ```typescript
 import * as api from '@opentelemetry/api';
@@ -163,8 +155,8 @@ api.context.with(ctx.setValue(key, 'context 2'), async () => {
 });
 ```
 
-The return value of `api.context.with(context, callback)` is the return value of
-the callback. The callback is always called synchronously.
+`api.context.with(context, callback)` 的返回值是回调的返回值。回调总是同步调用的
+。
 
 ```typescript
 import * as api from '@opentelemetry/api';
@@ -177,7 +169,7 @@ const name = await api.context.with(api.context.active(), async () => {
 console.log(name); // name returned by the db
 ```
 
-Active context executions may be nested.
+活跃上下文执行可能是嵌套的。
 
 ```typescript
 import * as api from '@opentelemetry/api';
@@ -203,10 +195,9 @@ api.context.with(ctx.setValue(key, 'context 2'), () => {
 console.log(api.context.active().getValue(key)); // undefined
 ```
 
-### Example
+### 例子
 
-This more complex example illustrates how the context is not modified, but new
-context objects are created.
+这个更复杂的示例说明了如何不修改上下文，而是创建新的上下文对象。
 
 ```typescript
 import * as api from '@opentelemetry/api';

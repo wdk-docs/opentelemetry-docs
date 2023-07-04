@@ -1,23 +1,23 @@
-# 收集器释放程序
+# 收集器发布
 
 收集器的构建和测试目前是完全自动化的。然而，为了发布，仍然需要手动执行某些操作。
 
 我们以相同的版本发布 core 和 contrib 收集器，其中 contrib 版本使用 core 版本作为
 依赖。我们把这个过程分为四个部分。发布工程师必须发布:
 
-1. The [Core](#releasing-opentelemetry-collector) collector, including the
-   collector builder CLI tool.
-1. The [Contrib](#releasing-opentelemetry-collector-contrib) collector.
-1. The [artifacts](#producing-the-artifacts)
+1. [Core](#releasing-opentelemetry-collector)收集器，包括收集器构建器 CLI 工具。
+2. [Contrib](#releasing-opentelemetry-collector-contrib)收集器。
+3. [artifacts](#producing-the-artifacts)
 
-**Important Note:** You’ll need to be able to sign git commits/tags in order to
-be able to release a collector version. Follow
-[this guide](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)
-to setup it up.
+!!! danger
 
-**Important Note:** You’ll need to be an approver for both the repos in order to
-be able to make the release. This is required as you’ll need to push tags and
-commits directly to the following repositories:
+      你需要能够签署 git 提交/标签，以便能够发布收集器版本。
+      按照[本指南](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)进行设置。
+
+!!! danger
+
+      为了能够发布，您需要成为两个存储库的审批人。
+      这是必需的，因为您需要将标签直接推送并提交到以下存储库:
 
 - [open-telemetry/opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector)
 - [open-telemetry/opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib)
@@ -25,9 +25,8 @@ commits directly to the following repositories:
 
 ## 发布管理
 
-A release manager is the person responsible for a specific release. While the
-manager might request help from other folks, they are ultimately responsible for
-the success of a release.
+发布管理员是负责特定发布的人。虽然管理员可能会向其他人请求帮助，但他们最终要对发
+布的成功负责。
 
 In order to have more people comfortable with the release process, and in order
 to decrease the burden on a small number of volunteers, all core approvers are
@@ -40,7 +39,7 @@ It is possible that a core approver isn't a contrib approver. In that case, the
 release manager should coordinate with a contrib approver for the steps
 requiring such role, like the publishing of tags.
 
-## Releasing opentelemetry-collector
+## 发布 opentelemetry-collector
 
 1. Determine the version number that will be assigned to the release. During the
    beta phase, we increment the minor version number and set the patch number
@@ -95,7 +94,7 @@ requiring such role, like the publishing of tags.
    newly released Core version and set it to Ready for Review. **Do not** move
    forward until this PR is merged.
 
-## Releasing opentelemetry-collector-contrib
+## 发布 opentelemetry-collector-contrib
 
 1. Manually run the action
    [Automation - Prepare Release](https://github.com/open-telemetry/opentelemetry-collector-contrib/actions/workflows/prepare-release.yml).
@@ -123,13 +122,12 @@ requiring such role, like the publishing of tags.
    Edit it and use the contents from the CHANGELOG.md as the release's
    description.
 
-## Producing the artifacts
+## 生成工件
 
-The last step of the release process creates artifacts for the new version of
-the collector and publishes images to Dockerhub. The steps in this portion of
-the release are done in the
-[opentelemetry-collector-releases](https://github.com/open-telemetry/opentelemetry-collector-releases)
-repo.
+发布过程的最后一步是为新版本的收集器创建工件，并将映像发布到 Dockerhub。该版本的
+这一部分的步骤
+在[opentelemetry-collector-releases](https://github.com/open-telemetry/opentelemetry-collector-releases)
+repo 中完成。
 
 1. Update the `./distribution/**/manifest.yaml` files to include the new release
    version.
@@ -156,7 +154,7 @@ repo.
       the Github release. See
       [example](https://github.com/open-telemetry/opentelemetry-collector-releases/actions/runs/1346637081).
 
-## Troubleshooting
+## 故障排除
 
 1. `unknown revision internal/coreinternal/v0.55.0` -- This is typically an
    indication that there's a dependency on a new module. You can fix it by
@@ -190,9 +188,9 @@ repo.
        done;
    ```
 
-## Bugfix releases
+## 错误修复版本
 
-### Bugfix release criteria
+### bug 修复发布标准
 
 Both `opentelemetry-collector` and `opentelemetry-collector-contrib` have very
 short 2 week release cycles. Because of this, we put a high bar when considering
@@ -227,7 +225,7 @@ The OpenTelemetry Collector maintainers will ultimately have the responsibility
 to assess if a given bug or security issue fulfills all the necessary criteria
 and may grant exceptions in a case-by-case basis.
 
-### Bugfix release procedure
+### bug 修复发布过程
 
 The following documents the procedure to release a bugfix
 
@@ -252,7 +250,7 @@ The following documents the procedure to release a bugfix
    branch via GitHub.
 8. Once the patch is release, disable the **Merge pull request** setting.
 
-## Release schedule
+## 发布时间表
 
 | Date       | Version | Release manager |
 | ---------- | ------- | --------------- |

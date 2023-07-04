@@ -13,7 +13,7 @@ SDK 提供了几个[head-sampling](../../concepts/sampling#head-sampling)。
 
 ## TraceIDRatioBasedSampler
 
-采样时，最常用的头部采样器是 TraceIdRatioBasedSampler。它确定地采样您作为参数传
+采样时，最常用的头部采样器是 TraceIdRatioBasedSampler 。它确定地采样您作为参数传
 入的跟踪的百分比。
 
 ### 环境变量
@@ -25,11 +25,11 @@ export OTEL_TRACES_SAMPLER="traceidratio"
 export OTEL_TRACES_SAMPLER_ARG="0.1"
 ```
 
-This tells the SDK to sample spans such that only 10% of traces get created.
+这告诉 SDK 采样 spans，这样只创建 10%的跟踪。
 
 ### Node.js
 
-您还可以在代码中配置 TraceIdRatioBasedSampler。下面是 Node.js 的一个例子:
+您还可以在代码中配置 TraceIdRatioBasedSampler 。下面是 Node.js 的一个例子:
 
 === "TypeScript"
 
@@ -57,10 +57,9 @@ This tells the SDK to sample spans such that only 10% of traces get created.
     });
     ```
 
-### Browser
+### 浏览器
 
-You can also configure the TraceIdRatioBasedSampler in code. Here's an example
-for browser apps:
+您还可以在代码中配置 TraceIdRatioBasedSampler。下面是一个浏览器应用的例子:
 
 === "TypeScript"
 

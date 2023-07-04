@@ -25,7 +25,7 @@
     
     
       
-        <title>分布 - OPENTELEMETRY 文档</title>
+        <title>发行版 - OPENTELEMETRY 文档</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#custom-distributions" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              分布
+              发行版
             
           </span>
         </div>
@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2473,7 +2473,7 @@
   
     <li class="md-nav__item">
       <a href="../../instrumentation/js/libraries/" class="md-nav__link">
-        使用工具库
+        插装库
       </a>
     </li>
   
@@ -3602,12 +3602,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          分布
+          发行版
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        分布
+        发行版
       </a>
       
         
@@ -3624,8 +3624,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#custom-distributions" class="md-nav__link">
-    Custom Distributions
+  <a href="#_1" class="md-nav__link">
+    自定义的发行版
   </a>
   
 </li>
@@ -3716,7 +3716,7 @@
   
     <li class="md-nav__item">
       <a href="../trace-receiver/" class="md-nav__link">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
     </li>
   
@@ -3998,7 +3998,7 @@
   
     <li class="md-nav__item">
       <a href="../../k8s/collector/vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4124,7 +4124,7 @@
   
     <li class="md-nav__item">
       <a href="../../k8s/collector/release/" class="md-nav__link">
-        收集器释放程序
+        收集器发布
       </a>
     </li>
   
@@ -9684,8 +9684,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#custom-distributions" class="md-nav__link">
-    Custom Distributions
+  <a href="#_1" class="md-nav__link">
+    自定义的发行版
   </a>
   
 </li>
@@ -9708,19 +9708,15 @@
   
 
 
-  <h1>分布</h1>
+  <h1>发行版</h1>
 
-<p>The OpenTelemetry project currently offers <a href="https://github.com/open-telemetry/opentelemetry-collector-releases/releases">pre-built distributions</a> of the
-collector. The components included in the <a href="https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions">distributions</a> can be found by in
-the <code>manifest.yaml</code> of each distribution.</p>
-<p>{{% latest_release "collector-releases" /%}}</p>
-<h2 id="custom-distributions">Custom Distributions<a class="headerlink" href="#custom-distributions" title="Permanent link">&para;</a></h2>
-<p>For various reasons the existing distributions provided by the OpenTelemetry
-project may not meet your needs. Whether you want a smaller version, or have the
-need to implement custom functionality like
-<a href="../custom-auth">custom authenticators</a>, receivers, processors, or exporters.
-The tool used to build distributions <a href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder">ocb</a> (OpenTelemetry Collector Builder)
-is available to build your own distributions.</p>
+<p>OpenTelemetry 项目目前提供了该收集器的<a href="https://github.com/open-telemetry/opentelemetry-collector-releases/releases">预构建发行版</a>。 <a href="https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions">发行版</a>中包含的组件
+可以在每个发行版的<code>manifest.yaml</code>中找到。</p>
+<h2 id="_1">自定义的发行版<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>由于各种原因，OpenTelemetry 项目提供的现有发行版可能无法满足您的需求。无论您是想
+要更小的版本，还是需要实现自定义功能，如<a href="../custom-auth">自定义身份验证器</a>、接收
+器、处理器或导出器。用于构建发行版的工具<a href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder">ocb</a> (OpenTelemetry Collector
+Builder)可用于构建您自己的发行版。</p>
 
 
 

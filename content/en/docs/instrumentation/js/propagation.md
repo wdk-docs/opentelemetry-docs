@@ -6,43 +6,34 @@ weight: 65
 spelling: cSpell:ignore traceparent tracestate
 ---
 
-传播是在服务和进程之间移动数据的机制。
-虽然不限于跟踪，但它允许跟踪构建关于系统的因果信息，这些信息可以跨任意分布在进程和网络边界上的服务。
+传播是在服务和进程之间移动数据的机制。虽然不限于跟踪，但它允许跟踪构建关于系统的
+因果信息，这些信息可以跨任意分布在进程和网络边界上的服务。
 
-## Context propagation with libraries
+## 使用插装库进行上下文传播
 
-For the vast majority of use cases, context propagation is done with
-instrumentation libraries.
+对于绝大多数用例，上下文传播是通过插装库完成的。
 
-For example, if you have several Node.js services that communicate over HTTP,
-you can use the
-[`express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
-and [`http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
-instrumentation libraries to automatically propagate trace context across
-services for you.
+例如，如果你有几个通过 HTTP 通信的 Node.js 服务，你可以使
+用[`express`]和[`http`]插装库在服务之间自动传播跟踪上下文。
 
-**It is highly recommend that you use instrumentation libraries to propagate
-context.** Although it is possible to propagate context manually, if your system
-uses libraries to communicate between services, use a matching instrumentation
-library to propagate context.
+[express]: https://www.npmjs.com/package/@opentelemetry/instrumentation-express
+[http]: https://www.npmjs.com/package/@opentelemetry/instrumentation-http
 
-Refer to [Libraries](/docs/instrumentation/js/libraries) to learn more about
-instrumentation libraries and how to use them.
+**强烈建议您使用插装库来传播上下文。** 虽然可以手动传播上下文，但如果您的系统使
+用插装库在服务之间进行通信，请使用匹配的插装库来传播上下文。
 
-## Manual W3C Trace Context Propagation
+参考[插装库](./libraries.md)了解更多关于插装库以及如何使用它们的信息。
 
-In some cases, it is not possible to propagate context with an instrumentation
-library. There may not be an instrumentation library that matches a library
-you're using to have services communicate with one another. Or you many have
-requirements that instrumentation libraries cannot fulfill, even if they exist.
+## 手动 W3C 跟踪上下文传播
 
-When you must propagate context manually, you can use the
-[context api](/docs/instrumentation/js/context).
+在某些情况下，不可能使用检测库传播上下文。可能没有与您用来使服务相互通信的库匹配
+的插装库。或者您可能有一些需求是插装库无法满足的，即使它们存在。
 
-The following generic example demonstrates how you can propagate trace context
-manually.
+当你必须手动传播上下文时，你可以使用[上下文 api](./context.md)。
 
-First, on the sending service, you'll need to inject the current `context`:
+下面的通用示例演示了如何手动传播跟踪上下文。
+
+首先，在发送服务中，你需要注入当前的`context`:
 
 ```js
 // Sending service
@@ -62,8 +53,8 @@ const { traceparent, tracestate } = output;
 // across services.
 ```
 
-On the receiving service, you'll need to extract `context` (for example, from
-parsed HTTP headers) and then set them as the current trace context.
+在接收服务上，您需要提取`context`(例如，从解析过的 HTTP 标头中)，然后将它们设置
+为当前跟踪上下文。
 
 ```js
 // Receiving service
@@ -92,8 +83,7 @@ let span = tracer.startSpan(
 trace.setSpan(activeContext, span);
 ```
 
-From there, when you have a deserialized active context, you can create spans
-that will be a part of the same trace from the other service.
+从那里，当您有一个反序列化的活动上下文时，您可以创建 spans，这些 spans 将成为来
+自其他服务的相同跟踪的一部分。
 
-You can also use the [Context](/docs/instrumentation/js/context) API to modify
-or set the deserialized context in other ways.
+你也可以使用[上下文](./context.md) API 以其他方式修改或设置反序列化的上下文。

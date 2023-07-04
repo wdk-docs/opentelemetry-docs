@@ -6,8 +6,7 @@ spelling:
 weight: 1
 ---
 
-如果您不熟悉适用于 OpenTelemetry Collector 的部署模型、组件和存储库，请首先查
-看[Data Collection][]和[deployment Methods][]页面。
+如果您不熟悉适用于收集器的部署模型、组件和存储库，请首先查看[数据收集]和[开发方法]页面。
 
 ## 演示
 
@@ -327,8 +326,8 @@ terminal window as well.
     上面显示的命令在bash shell中演示了这个过程。
     对于其他shell，这些命令可能略有不同。
 
-[data collection]: /docs/concepts/data-collection/
-[deployment methods]: ../deployment/
+[数据收集]: ../concepts/data-collection.md
+[开发方法]: ./deployment/index.md
 [readme.md]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/examples/demo
 [opentelemetry helm charts]:

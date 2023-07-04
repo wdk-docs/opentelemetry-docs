@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#basics" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2473,7 +2473,7 @@
   
     <li class="md-nav__item">
       <a href="../../instrumentation/js/libraries/" class="md-nav__link">
-        使用工具库
+        插装库
       </a>
     </li>
   
@@ -3610,8 +3610,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basics" class="md-nav__link">
-    Basics
+  <a href="#_1" class="md-nav__link">
+    基础
   </a>
   
 </li>
@@ -3624,8 +3624,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#other-information" class="md-nav__link">
-    Other information
+  <a href="#_2" class="md-nav__link">
+    其它信息
   </a>
   
 </li>
@@ -3646,7 +3646,7 @@
   
     <li class="md-nav__item">
       <a href="../distributions/" class="md-nav__link">
-        分布
+        发行版
       </a>
     </li>
   
@@ -3730,7 +3730,7 @@
   
     <li class="md-nav__item">
       <a href="../trace-receiver/" class="md-nav__link">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
     </li>
   
@@ -4012,7 +4012,7 @@
   
     <li class="md-nav__item">
       <a href="../../k8s/collector/vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4138,7 +4138,7 @@
   
     <li class="md-nav__item">
       <a href="../../k8s/collector/release/" class="md-nav__link">
-        收集器释放程序
+        收集器发布
       </a>
     </li>
   
@@ -9698,8 +9698,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basics" class="md-nav__link">
-    Basics
+  <a href="#_1" class="md-nav__link">
+    基础
   </a>
   
 </li>
@@ -9712,8 +9712,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#other-information" class="md-nav__link">
-    Other information
+  <a href="#_2" class="md-nav__link">
+    其它信息
   </a>
   
 </li>
@@ -9738,100 +9738,75 @@
 
   <h1>管理</h1>
 
-<p>This document describes how you can manage your OpenTelemetry collector
-deployment at scale.</p>
-<p>To get the most out of this page you should know how to install and configure
-the collector. These topics are covered elsewhere:</p>
+<p>本文档描述了如何大规模管理 OpenTelemetry 收集器部署。</p>
+<p>要充分利用此页，您应该了解如何安装和配置收集器。这些主题在其他地方有介绍:</p>
 <ul>
-<li><a href="/docs/collector/getting-started">Getting Started</a> to understand how to install
-  the OpenTelemetry collector.</li>
-<li><a href="/docs/collector/configuration">Configuration</a> for how to configure the
-  OpenTelemetry collector, setting up telemetry pipelines.</li>
+<li><a href="../getting-started/">入门</a>了解如何安装 OpenTelemetry 收集器。</li>
+<li><a href="../configuration/">配置</a>关于如何配置 OpenTelemetry 收集器，设置遥
+  测管道。</li>
 </ul>
-<h2 id="basics">Basics<a class="headerlink" href="#basics" title="Permanent link">&para;</a></h2>
-<p>Telemetry collection at scale requires a structured approach to manage agents.
-Typical agent management tasks include:</p>
+<h2 id="_1">基础<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>大规模的遥测收集需要一种结构化的方法来管理代理。典型的代理管理任务包括:</p>
 <ol>
-<li>Querying the agent information and configuration. The agent information can
-   include its version, operating system related information, or capabilities.
-   The configuration of the agent refers to its telemetry collection setup, for
-   example, the OpenTelemetry collector
-   <a href="/docs/collector/configuration">configuration</a>.</li>
-<li>Upgrading/downgrading agents and management of agent-specific packages,
-   including the base agent functionality and plugins.</li>
-<li>Applying new configurations to agents. This might be required because of
-   changes in the environment or due to policy changes.</li>
-<li>Health and performance monitoring of the agents, typically CPU and memory
-   usage and also agent-specific metrics, for example, the rate of processing or
-   backpressure-related information.</li>
-<li>Connection management between a control plane and the agent such as handling
-   of TLS certificates (revocation and rotation).</li>
+<li>查询座席信息和配置。代理信息可以包括其版本、操作系统相关信息或功能。代理的配
+   置指的是它的遥测收集设置，例如，OpenTelemetry 收集器<a href="../configuration/">配
+   置</a>.</li>
+<li>升级/降级代理和管理特定于代理的包，包括基本代理功能和插件。</li>
+<li>将新配置应用于代理。由于环境的变化或政策的变化，可能需要这样做。</li>
+<li>代理的运行状况和性能监视，通常是 CPU 和内存使用情况，以及特定于代理的指标，例
+   如，处理速率或与背压相关的信息。</li>
+<li>控制平面与代理之间的连接管理，例如处理 TLS 证书(吊销和轮换)。</li>
 </ol>
-<p>Not every use case requires support for all of the above agent management tasks.
-In the context of OpenTelemetry task <em>4. Health and performance monitoring</em> is
-ideally done using OpenTelemetry.</p>
+<p>并非每个用例都需要支持上述所有代理管理任务。在 OpenTelemetry 的上下文中，任务
+<em>4. 健康状况和性能监视</em> 最好使用 OpenTelemetry 完成。</p>
 <h2 id="opamp">OpAMP<a class="headerlink" href="#opamp" title="Permanent link">&para;</a></h2>
-<p>Observability vendors and cloud providers offer proprietary solutions for agent
-management. In the open source observability space, there is an emerging
-standard that you can use for agent management: Open Agent Management Protocol
-(OpAMP).</p>
-<p>The <a href="https://github.com/open-telemetry/opamp-spec/blob/main/specification.md">OpAMP specification</a> defines how to manage a fleet of telemetry
-data agents. These agents can be <a href="/docs/collector/">OpenTelemetry collectors</a>,
-Fluent Bit or other agents in any arbitrary combination.</p>
-<blockquote>
-<p><strong>Note</strong> The term "agent" is used here as a catch-all term for OpenTelemetry
-components that respond to OpAMP, this could be the collector but also SDK
-components.</p>
-</blockquote>
-<p>OpAMP is a client/server protocol that supports communication over HTTP and over
-WebSockets:</p>
+<p>可观察性供应商和云提供商为代理管理提供专有解决方案。在开源可观察性领域，有一个新
+兴的标准可以用于代理管理: 开放代理管理协议(OpAMP)。</p>
+<p><a href="https://github.com/open-telemetry/opamp-spec/blob/main/specification.md">OpAMP 规范</a>定义了如何管理一组遥测数据代理。这些代理可以
+是<a href="../">OpenTelemetry 收集器</a>、Fluent Bit 或其他任意组合的代理。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这里使用术语 "agent" “代理”作为响应OpAMP的OpenTelemetry组件的统称，它可以是收集器，也可以是SDK组件。</p>
+</div>
+<p>OpAMP 是一个客户端/服务器协议，支持通过 HTTP 和 WebSockets 进行通信。</p>
 <ul>
-<li>The <strong>OpAMP server</strong> is part of the control plane and acts as the
-  orchestrator, managing a fleet of telemetry agents.</li>
-<li>The <strong>OpAMP client</strong> is part of the data plane. The client side of OpAMP can
-  be implemented in-process, for example, as the case in <a href="https://docs.google.com/document/d/1KtH5atZQUs9Achbce6LiOaJxLbksNJenvgvyKLsJrkc/edit#heading=h.ioikt02qpy5f">OpAMP support in the
-  OpenTelemetry collector</a>. The client side of OpAMP
-  could alternatively be implemented out-of-process. For this latter option, you
-  can use a supervisor that takes care of the OpAMP specific communication with
-  the OpAMP server and at the same time controls the telemetry agent, for
-  example to apply a configuration or to upgrade it. Note that the
-  supervisor/telemetry communication is not part of OpAMP.</li>
+<li>OpAMP 服务器是控制平面的一部分，充当协调器，管理一组遥测代理。</li>
+<li><strong>OpAMP 客户端</strong> 是数据平面的一部分。 OpAMP 的客户端可以在进程中实现，例
+  如<a href="https://docs.google.com/document/d/1KtH5atZQUs9Achbce6LiOaJxLbksNJenvgvyKLsJrkc/edit#heading=h.ioikt02qpy5f">OpenTelemetry 收集器中的 OpAMP 支持</a>中的情况。
+  OpAMP 的客户端也可以在进程外实现。对于后一种选项，您可以使用管理器，该管理器负
+  责与 OpAMP 服务器进行特定于 OpAMP 的通信，同时控制遥测代理，例如应用配置或升级
+  它。请注意，主管/遥测通信不是 OpAMP 的一部分。</li>
 </ul>
-<p>Let's have a look at a concrete setup:</p>
+<p>让我们来看一个具体的设置:</p>
 <p><img alt="OpAMP example setup" src="../img/opamp.svg" /></p>
 <ol>
-<li>The OpenTelemetry collector, configured with pipeline(s) to:</li>
-<li>(A) receive signals from downstream sources</li>
-<li>(B) export signals to upstream destinations, potentially including
-     telemetry about the collector itself (represented by the OpAMP <code>own_xxx</code>
-     connection settings).</li>
-<li>The bi-directional OpAMP control flow between the control plane implementing
-   the server-side OpAMP part and the collector (or a supervisor controlling the
-   collector) implementing OpAMP client-side.</li>
+<li>OpenTelemetry 收集器，配置了管道，以:</li>
+<li>(A) 接收来自下游源的信号</li>
+<li>(B) 输出信号到上游目的地，可能包括有关采集器本身的遥测(由 OpAMP <code>own_xxx</code>连
+     接设置表示)。</li>
+<li>实现服务器端 OpAMP 部分的控制平面与实现客户端 OpAMP 的收集器(或控制收集器的主
+   管)之间的双向 OpAMP 控制流。</li>
 </ol>
-<p>You can try out a simple OpAMP setup yourself by using the <a href="https://github.com/open-telemetry/opamp-go">OpAMP protocol
-implementation in Go</a>. For the following walkthrough you will need to
-have Go in version 1.19 or above available.</p>
-<p>We will set up a simple OpAMP control plane consisting of an example OpAMP
-server and let an OpenTelemetry collector connect to it via an example OpAMP
-supervisor.</p>
-<p>First, clone the <code>open-telemetry/opamp-go</code> repo:</p>
+<p>您可以通过使用<a href="https://github.com/open-telemetry/opamp-go">OpAMP 协议在 Go 中的实现</a>自己尝试一个简单的 OpAMP 设置
+。对于下面的演练，您需要使用 1.19 或更高版本的 Go。</p>
+<p>我们将设置一个简单的 OpAMP 控制平面，由示例 OpAMP 服务器组成，并让 OpenTelemetry
+收集器通过示例 OpAMP 管理器连接到它。</p>
+<p>首先，克隆<code>open-telemetry/opamp-go</code>repo:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/open-telemetry/opamp-go.git
 </code></pre></div></td></tr></table></div>
-<p>Next, we need an OpenTelemetry collector binary that the OpAMP supervisor can
-manage. For that, install the <a href="https://github.com/open-telemetry/opentelemetry-collector-releases/releases">OpenTelemetry Collector Contrib</a>
-distro. The path to the collector binary (where you installed it into) is
-referred to as <code>$OTEL_COLLECTOR_BINARY</code> in the following.</p>
-<p>In the <code>./opamp-go/internal/examples/server</code> directory, launch the OpAMP server:</p>
+<p>接下来，我们需要 OpAMP 管理器可以管理的 OpenTelemetry 收集器二进制文件。为此，安
+装<a href="https://github.com/open-telemetry/opentelemetry-collector-releases/releases">OpenTelemetry Collector Contrib</a>发行版。收集器二进制文件的路
+径(您将其安装到的位置)在下面被称为<code>$OTEL_COLLECTOR_BINARY</code>。</p>
+<p>在<code>. /opamp-go/internal/examples/server</code>目录，启动 OpAMP 服务器:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="gp">$ </span>go<span class="w"> </span>run<span class="w"> </span>.
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="go">2023/02/08 13:31:32.004501 [MAIN] OpAMP Server starting...</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="go">2023/02/08 13:31:32.004815 [MAIN] OpAMP Server running...</span>
 </code></pre></div></td></tr></table></div>
-<p>In the <code>./opamp-go/internal/examples/supervisor</code> directory create a file named
-<code>supervisor.yaml</code> with the following content (telling the supervisor where to
-find the server and what OpenTelemetry collector binary to manage):</p>
+<p>在<code>./opamp-go/internal/examples/supervisor</code>目录中创建一个名为<code>supervisor.yaml</code>
+的文件，其中包含以下内容(告诉 supervisor 在哪里找到服务器以及要管理的
+OpenTelemetry 收集器二进制文件):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
@@ -9842,14 +9817,13 @@ find the server and what OpenTelemetry collector binary to manage):</p>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="nt">agent</span><span class="p">:</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span><span class="nt">executable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$OTEL_COLLECTOR_BINARY</span>
 </code></pre></div></td></tr></table></div>
-<blockquote>
-<p><strong>Note</strong> Make sure to replace <code>$OTEL_COLLECTOR_BINARY</code> with the actual file
-path. For example, in Linux or macOS, if you installed the collector in
-<code>/usr/local/bin/</code> then you would replace <code>$OTEL_COLLECTOR_BINARY</code> with
-<code>/usr/local/bin/otelcol</code>.</p>
-</blockquote>
-<p>Next, create a collector configuration as follows (save it in a file called
-<code>effective.yaml</code> in the <code>./opamp-go/internal/examples/supervisor</code> directory):</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>确保将<code>$OTEL_COLLECTOR_BINARY</code>替换为实际的文件路径。
+例如，在Linux或macOS中，如果您将收集器安装在<code>/usr/local/bin/</code>中，则将<code>$OTEL_COLLECTOR_BINARY</code> 替换为<code>/usr/local/bin/otelcol</code>。</p>
+</div>
+<p>接下来，按如下方式创建一个收集器配置(将其保存
+在<code>./opamp-go/internal/examples/supervisor</code>目录下的<code>effective.yaml</code>文件中):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -9900,8 +9874,7 @@ path. For example, in Linux or macOS, if you installed the collector in
 <a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">      </span><span class="nt">receivers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">hostmetrics</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">prometheus/own_metrics</span><span class="p p-Indicator">]</span>
 <a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">logging</span><span class="p p-Indicator">]</span>
 </code></pre></div></td></tr></table></div>
-<p>Now it's time to launch the supervisor (which in turn will launch your
-OpenTelemetry collector):</p>
+<p>现在是时候启动管理器了(它将依次启动 OpenTelemetry 收集器):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
@@ -9948,12 +9921,10 @@ OpenTelemetry collector):</p>
 <a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="go">2023/02/08 13:32:56 Agent is not healthy: health check on http://localhost:13133 returned 503</span>
 <a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="go">2023/02/08 13:32:57 Agent is healthy.</span>
 </code></pre></div></td></tr></table></div>
-<p>If everything worked out you should now be able to go to
-<a href="http://localhost:4321/">http://localhost:4321/</a> and access the OpAMP server UI
-where you should see your collector listed, managed by the supervisor:</p>
+<p>如果一切都解决了，你现在应该能够访问 <a href="http://localhost:4321/">http://localhost:4321/</a> ，并访问 OpAMP 服务
+器 UI，你应该看到你的收集器列出，由主管管理:</p>
 <p><img alt="OpAMP example setup" src="../img/opamp-server-ui.png" /></p>
-<p>You can also query the collector for the metrics exported (note the label
-values):</p>
+<p>您还可以查询采集器导出的指标(注意标签值):</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
 <span class="normal"><a href="#__codelineno-5-3">3</a></span>
@@ -9970,14 +9941,13 @@ values):</p>
 <a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="gp"># </span>TYPE<span class="w"> </span>otelcol_receiver_refused_metric_points<span class="w"> </span>counter
 <a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="go">otelcol_receiver_refused_metric_points{receiver=&quot;prometheus/own_metrics&quot;,service_instance_id=&quot;01GRRKNBJE06AFVGQT5ZYC0GEK&quot;,service_name=&quot;io.opentelemetry.collector&quot;,service_version=&quot;1.0.0&quot;,transport=&quot;http&quot;} 0</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="other-information">Other information<a class="headerlink" href="#other-information" title="Permanent link">&para;</a></h2>
+<h2 id="_2">其它信息<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Blog post <a href="/blog/2022/opamp/">Using OpenTelemetry OpAMP to modify service telemetry on the
-  go</a></li>
-<li>YouTube videos:</li>
-<li><a href="https://www.youtube.com/watch?v=LUsfZFRM4yo">Lightning Talk: Managing OpenTelemetry Through the OpAMP
-    Protocol</a></li>
-<li><a href="https://www.youtube.com/watch?v=N18z2dOJSd8">What is OpAMP &amp; What is BindPlane</a></li>
+<li>博客文章<a href="../../../blog/2022/opamp/">使用 OpenTelemetry OpAMP 修改 go 语言上的服务遥
+  测</a></li>
+<li>YouTube 视频:</li>
+<li><a href="https://www.youtube.com/watch?v=LUsfZFRM4yo">闪电谈话:通过 OpAMP 协议管理 OpenTelemetry</a></li>
+<li><a href="https://www.youtube.com/watch?v=N18z2dOJSd8">什么是 OpAMP 和什么是 BindPlane</a></li>
 </ul>
 
 

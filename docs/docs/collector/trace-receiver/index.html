@@ -25,7 +25,7 @@
     
     
       
-        <title>建立跟踪接收器 - OPENTELEMETRY 文档</title>
+        <title>构建跟踪接收器 - OPENTELEMETRY 文档</title>
       
     
     
@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setting-up-your-receiver-development-and-testing-environment" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              建立跟踪接收器
+              构建跟踪接收器
             
           </span>
         </div>
@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2473,7 +2473,7 @@
   
     <li class="md-nav__item">
       <a href="../../instrumentation/js/libraries/" class="md-nav__link">
-        使用工具库
+        插装库
       </a>
     </li>
   
@@ -3595,7 +3595,7 @@
   
     <li class="md-nav__item">
       <a href="../distributions/" class="md-nav__link">
-        分布
+        发行版
       </a>
     </li>
   
@@ -3686,12 +3686,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          建立跟踪接收器
+          构建跟踪接收器
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
       
         
@@ -3708,111 +3708,52 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-up-your-receiver-development-and-testing-environment" class="md-nav__link">
-    Setting up your receiver development and testing environment
+  <a href="#_1" class="md-nav__link">
+    设置接收器开发和测试环境
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-and-validating-your-receiver-settings" class="md-nav__link">
-    Reading and Validating your Receiver Settings
+  <a href="#_2" class="md-nav__link">
+    读取和验证您的接收器设置
   </a>
-  
-    <nav class="md-nav" aria-label="Reading and Validating your Receiver Settings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_1" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enabling-the-collector-to-instantiate-your-receiver" class="md-nav__link">
-    Enabling the Collector to instantiate your receiver
+  <a href="#_3" class="md-nav__link">
+    使收集器实例化您的接收器
   </a>
   
-    <nav class="md-nav" aria-label="Enabling the Collector to instantiate your receiver">
+    <nav class="md-nav" aria-label="使收集器实例化您的接收器">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#implementing-your-receiverfactory" class="md-nav__link">
-    Implementing your receiver.Factory
+  <a href="#receiverfactory" class="md-nav__link">
+    实现你的 receiver.Factory
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#identifying-and-providing-default-settings-for-the-receiver" class="md-nav__link">
-    Identifying and Providing default settings for the receiver
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifying and Providing default settings for the receiver">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_2" class="md-nav__link">
-    Check your work
+  <a href="#_4" class="md-nav__link">
+    识别并提供接收方的默认设置
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#enabling-the-factory-to-describe-the-receiver-as-capable-of-processing-traces" class="md-nav__link">
-    Enabling the factory to describe the receiver as capable of processing traces
-  </a>
-  
-    <nav class="md-nav" aria-label="Enabling the factory to describe the receiver as capable of processing traces">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_3" class="md-nav__link">
-    Check your work
+  <a href="#_5" class="md-nav__link">
+    使工厂能够将接收器描述为能够处理跟踪
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#adding-the-receiver-factory-to-the-collectors-initialization" class="md-nav__link">
-    Adding the receiver factory to the Collector's initialization
+  <a href="#_6" class="md-nav__link">
+    将接收器工厂添加到收集器的初始化中
   </a>
-  
-    <nav class="md-nav" aria-label="Adding the receiver factory to the Collector's initialization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_4" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -3822,51 +3763,17 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementing-the-trace-receiver-component" class="md-nav__link">
-    Implementing the trace receiver component
+  <a href="#_7" class="md-nav__link">
+    实现跟踪接收器组件
   </a>
   
-    <nav class="md-nav" aria-label="Implementing the trace receiver component">
+    <nav class="md-nav" aria-label="实现跟踪接收器组件">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#check-your-work_5" class="md-nav__link">
-    Check your work
+  <a href="#_8" class="md-nav__link">
+    保存由接收方工厂传递的信息
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_6" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keeping-information-passed-by-the-receivers-factory" class="md-nav__link">
-    Keeping information passed by the receiver's factory
-  </a>
-  
-    <nav class="md-nav" aria-label="Keeping information passed by the receiver's factory">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_7" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_8" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -3876,91 +3783,31 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-collectors-trace-data-model" class="md-nav__link">
-    The Collector's Trace Data Model
+  <a href="#_9" class="md-nav__link">
+    收集器的跟踪数据模型
   </a>
   
-    <nav class="md-nav" aria-label="The Collector's Trace Data Model">
+    <nav class="md-nav" aria-label="收集器的跟踪数据模型">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#working-with-resources" class="md-nav__link">
-    Working with Resources
-  </a>
-  
-    <nav class="md-nav" aria-label="Working with Resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_9" class="md-nav__link">
-    Check your work
+  <a href="#_10" class="md-nav__link">
+    使用资源
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#check-your-work_10" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#describing-resources-through-attributes" class="md-nav__link">
-    Describing Resources through attributes
-  </a>
-  
-    <nav class="md-nav" aria-label="Describing Resources through attributes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_11" class="md-nav__link">
-    Check your work
+  <a href="#_11" class="md-nav__link">
+    通过属性描述资源
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#check-your-work_12" class="md-nav__link">
-    Check your work
+  <a href="#spans" class="md-nav__link">
+    用 spans 表示操作
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#representing-operations-with-spans" class="md-nav__link">
-    Representing operations with spans
-  </a>
-  
-    <nav class="md-nav" aria-label="Representing operations with spans">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_13" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_14" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -4253,7 +4100,7 @@
   
     <li class="md-nav__item">
       <a href="../../k8s/collector/vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4379,7 +4226,7 @@
   
     <li class="md-nav__item">
       <a href="../../k8s/collector/release/" class="md-nav__link">
-        收集器释放程序
+        收集器发布
       </a>
     </li>
   
@@ -9939,111 +9786,52 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-up-your-receiver-development-and-testing-environment" class="md-nav__link">
-    Setting up your receiver development and testing environment
+  <a href="#_1" class="md-nav__link">
+    设置接收器开发和测试环境
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-and-validating-your-receiver-settings" class="md-nav__link">
-    Reading and Validating your Receiver Settings
+  <a href="#_2" class="md-nav__link">
+    读取和验证您的接收器设置
   </a>
-  
-    <nav class="md-nav" aria-label="Reading and Validating your Receiver Settings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_1" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enabling-the-collector-to-instantiate-your-receiver" class="md-nav__link">
-    Enabling the Collector to instantiate your receiver
+  <a href="#_3" class="md-nav__link">
+    使收集器实例化您的接收器
   </a>
   
-    <nav class="md-nav" aria-label="Enabling the Collector to instantiate your receiver">
+    <nav class="md-nav" aria-label="使收集器实例化您的接收器">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#implementing-your-receiverfactory" class="md-nav__link">
-    Implementing your receiver.Factory
+  <a href="#receiverfactory" class="md-nav__link">
+    实现你的 receiver.Factory
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#identifying-and-providing-default-settings-for-the-receiver" class="md-nav__link">
-    Identifying and Providing default settings for the receiver
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifying and Providing default settings for the receiver">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_2" class="md-nav__link">
-    Check your work
+  <a href="#_4" class="md-nav__link">
+    识别并提供接收方的默认设置
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#enabling-the-factory-to-describe-the-receiver-as-capable-of-processing-traces" class="md-nav__link">
-    Enabling the factory to describe the receiver as capable of processing traces
-  </a>
-  
-    <nav class="md-nav" aria-label="Enabling the factory to describe the receiver as capable of processing traces">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_3" class="md-nav__link">
-    Check your work
+  <a href="#_5" class="md-nav__link">
+    使工厂能够将接收器描述为能够处理跟踪
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#adding-the-receiver-factory-to-the-collectors-initialization" class="md-nav__link">
-    Adding the receiver factory to the Collector's initialization
+  <a href="#_6" class="md-nav__link">
+    将接收器工厂添加到收集器的初始化中
   </a>
-  
-    <nav class="md-nav" aria-label="Adding the receiver factory to the Collector's initialization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_4" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -10053,51 +9841,17 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementing-the-trace-receiver-component" class="md-nav__link">
-    Implementing the trace receiver component
+  <a href="#_7" class="md-nav__link">
+    实现跟踪接收器组件
   </a>
   
-    <nav class="md-nav" aria-label="Implementing the trace receiver component">
+    <nav class="md-nav" aria-label="实现跟踪接收器组件">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#check-your-work_5" class="md-nav__link">
-    Check your work
+  <a href="#_8" class="md-nav__link">
+    保存由接收方工厂传递的信息
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_6" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keeping-information-passed-by-the-receivers-factory" class="md-nav__link">
-    Keeping information passed by the receiver's factory
-  </a>
-  
-    <nav class="md-nav" aria-label="Keeping information passed by the receiver's factory">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_7" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_8" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -10107,91 +9861,31 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-collectors-trace-data-model" class="md-nav__link">
-    The Collector's Trace Data Model
+  <a href="#_9" class="md-nav__link">
+    收集器的跟踪数据模型
   </a>
   
-    <nav class="md-nav" aria-label="The Collector's Trace Data Model">
+    <nav class="md-nav" aria-label="收集器的跟踪数据模型">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#working-with-resources" class="md-nav__link">
-    Working with Resources
-  </a>
-  
-    <nav class="md-nav" aria-label="Working with Resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_9" class="md-nav__link">
-    Check your work
+  <a href="#_10" class="md-nav__link">
+    使用资源
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#check-your-work_10" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#describing-resources-through-attributes" class="md-nav__link">
-    Describing Resources through attributes
-  </a>
-  
-    <nav class="md-nav" aria-label="Describing Resources through attributes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_11" class="md-nav__link">
-    Check your work
+  <a href="#_11" class="md-nav__link">
+    通过属性描述资源
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#check-your-work_12" class="md-nav__link">
-    Check your work
+  <a href="#spans" class="md-nav__link">
+    用 spans 表示操作
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#representing-operations-with-spans" class="md-nav__link">
-    Representing operations with spans
-  </a>
-  
-    <nav class="md-nav" aria-label="Representing operations with spans">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_13" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#check-your-work_14" class="md-nav__link">
-    Check your work
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -10218,48 +9912,33 @@
   
 
 
-  <h1>建立跟踪接收器</h1>
+  <h1>构建跟踪接收器</h1>
 
-<p>If you are reading this tutorial, you probably already have an idea of the
-OpenTelemetry concepts behind distributed tracing, but if you don't you can
-quickly read through it <a href="/docs/concepts/signals/traces/">here</a>.</p>
-<p>Here is the definition of those concepts according to OpenTelemetry:</p>
+<p>如果你正在阅读本教程，你可能已经了解了分布式跟踪背后的 OpenTelemetry 概念，但如
+果你还没有，你可以快速阅读它<a href="/docs/concepts/signals/traces/">在这里</a>.</p>
+<p>以下是 OpenTelemetry 对这些概念的定义:</p>
 <blockquote>
-<p>Traces track the progression of a single request, called a trace, as it is
-handled by services that make up an application. The request may be initiated
-by a user or an application. Distributed tracing is a form of tracing that
-traverses process, network and security boundaries.</p>
+<p>跟踪跟踪单个请求的进程，称为跟踪，因为它是由组成应用程序的服务处理的。请求可以
+由用户或应用程序发起。分布式跟踪是一种跨越进程、网络和安全边界的跟踪形式。</p>
 </blockquote>
-<p>Although the definition seems very application centric, you can leverage the
-OpenTelemetry trace model as a way to represent a request and quickly understand
-its duration and the details about every step involved in completing it.</p>
-<p>Assuming you already have a system generating some kind of tracing telemetry,
-the <a href="/docs/collector/">OpenTelemetry Collector</a> is the doorway to help you make
-it available into the OTel world.</p>
-<p>Within the Collector, a trace receiver has the role to receive and convert your
-request telemetry from its original format into the OTel trace model, so the
-information can be properly processed through the Collector's pipelines.</p>
-<p>In order to implement a traces receiver you will need the following:</p>
+<p>尽管这个定义看起来非常以应用程序为中心，但是您可以利用 OpenTelemetry 跟踪模型来
+表示请求，并快速了解请求的持续时间和完成请求所涉及的每个步骤的详细信息。</p>
+<p>假设您已经有了一个生成某种跟踪遥测的系统，那么<a href="/docs/
+Collector /">OpenTelemetry Collector</a>就是帮助您将其用于 OTel 世界的门户。</p>
+<p>在 Collector 中，跟踪接收器的作用是接收您的遥测请求，并将其从原始格式转换为 OTel
+跟踪模型，以便通过 Collector 的管道正确处理信息。</p>
+<p>为了实现跟踪接收器，您将需要以下内容:</p>
 <ul>
-<li>
-<p>A <code>Config</code> implementation to enable the trace receiver to gather and validate
-  its configurations within the Collector's config.yaml.</p>
-</li>
-<li>
-<p>A <code>receiver.Factory</code> implementation so the Collector can properly instantiate
-  the trace receiver component.</p>
-</li>
-<li>
-<p>A <code>TracesReceiver</code> implementation that is responsible to collect the
-  telemetry, convert it to the internal trace representation, and hand the
-  information to the next consumer in the pipeline.</p>
-</li>
+<li>一个<code>Config</code>实现，使跟踪接收器能够在收集器的<code>config.yaml</code>文件中收集和验证其配
+  置。</li>
+<li>一个<code>receiver.Factory</code>实现，以便收集器可以正确地实例化跟踪接收器组件。</li>
+<li>一个<code>TracesReceiver</code>实现，负责收集遥测信息，将其转换为内部跟踪表示，并将信息传
+  递给管道中的下一个消费者。</li>
 </ul>
-<p>In this tutorial we will create a sample trace receiver called <code>tailtracer</code> that
-simulates a pull operation and generates traces as an outcome of that operation.
-The next sections will guide you through the process of implementing the steps
-above in order to create the receiver, so let's get started.</p>
-<h2 id="setting-up-your-receiver-development-and-testing-environment">Setting up your receiver development and testing environment<a class="headerlink" href="#setting-up-your-receiver-development-and-testing-environment" title="Permanent link">&para;</a></h2>
+<p>在本教程中，我们将创建一个名为<code>tailtracer</code>的示例跟踪接收器，它模拟拉操作并生成跟
+踪作为该操作的结果。接下来的部分将指导您完成实现上述步骤的过程，以便创建接收器，
+所以让我们开始吧。</p>
+<h2 id="_1">设置接收器开发和测试环境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>First use the <a href="/docs/collector/custom-collector">Building a Custom Collector</a>
 tutorial to create a Collector instance named <code>otelcol-dev</code>; all you need is to
 copy the <code>builder-config.yaml</code> described on Step 2 and make the following
@@ -10413,7 +10092,7 @@ command looked like:</p>
 <span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>tailtracer
 <a id="__codelineno-6-2" name="__codelineno-6-2"></a>go<span class="w"> </span>mod<span class="w"> </span>init<span class="w"> </span>github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer
 </code></pre></div></td></tr></table></div>
-<h2 id="reading-and-validating-your-receiver-settings">Reading and Validating your Receiver Settings<a class="headerlink" href="#reading-and-validating-your-receiver-settings" title="Permanent link">&para;</a></h2>
+<h2 id="_2">读取和验证您的接收器设置<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>In order to be instantiated and participate in pipelines the Collector needs to
 identify your receiver and properly load its settings from within its
 configuration file.</p>
@@ -10472,7 +10151,7 @@ requirements above.</p>
 <a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work">Check your work<a class="headerlink" href="#check-your-work" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>I added the <code>Interval</code> and the <code>NumberOfTraces</code> fields so I can properly
   have access to their values from the config.yaml.</li>
@@ -10541,7 +10220,7 @@ like after implementing the <code>Validate</code> method.</p>
 <a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_1">Check your work<a class="headerlink" href="#check-your-work_1" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>I imported the <code>fmt</code> package, so I can properly format print my error
   messages.</li>
@@ -10557,7 +10236,7 @@ configuration aspects of a component, take a look at the
 <a href="https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
 param collectorVersion %}}/component/config.go">component/config.go</a> file inside the Collector's
 GitHub project.</p>
-<h2 id="enabling-the-collector-to-instantiate-your-receiver">Enabling the Collector to instantiate your receiver<a class="headerlink" href="#enabling-the-collector-to-instantiate-your-receiver" title="Permanent link">&para;</a></h2>
+<h2 id="_3">使收集器实例化您的接收器<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>At the beginning of this tutorial, you created your <code>otelcol-dev</code> instance,
 which is bootstrapped with the following components:</p>
 <ul>
@@ -10654,7 +10333,7 @@ definition in the
 param collectorVersion %}}/receiver/receiver.go#L69">receiver/receiver.go</a> file within the Collector's
 project ), the right way to provide the implementation is by using the functions
 available within the <code>go.opentelemetry.io/collector/receiver</code> package.</p>
-<h3 id="implementing-your-receiverfactory">Implementing your receiver.Factory<a class="headerlink" href="#implementing-your-receiverfactory" title="Permanent link">&para;</a></h3>
+<h3 id="receiverfactory">实现你的 receiver.Factory<a class="headerlink" href="#receiverfactory" title="Permanent link">&para;</a></h3>
 <p>Start by creating a file named factory.go within the <code>tailtracer</code> folder.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
 <span class="normal"><a href="#__codelineno-13-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>tailtracer
@@ -10705,7 +10384,7 @@ requires the following parameters:</p>
 </ul>
 <p>Let's now implement the code to support all the parameters required by
 <code>receiver.NewFactory()</code>.</p>
-<h3 id="identifying-and-providing-default-settings-for-the-receiver">Identifying and Providing default settings for the receiver<a class="headerlink" href="#identifying-and-providing-default-settings-for-the-receiver" title="Permanent link">&para;</a></h3>
+<h3 id="_4">识别并提供接收方的默认设置<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>Previously, we said that the <code>interval</code> setting for our <code>tailtracer</code> receiver
 would be optional, in that case you will need to provide a default value for it
 so it can be used as part of the default settings.</p>
@@ -10787,7 +10466,7 @@ what your <code>factory.go</code> file should look like with the proper imports:
 <a id="__codelineno-18-24" name="__codelineno-18-24"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_2">Check your work<a class="headerlink" href="#check-your-work_2" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Importing the <code>time</code> package in order to support the time.Duration type for
   the defaultInterval</li>
@@ -10806,7 +10485,7 @@ what your <code>factory.go</code> file should look like with the proper imports:
   <code>defaultInterval</code> constant.</li>
 </ul>
 </blockquote>
-<h3 id="enabling-the-factory-to-describe-the-receiver-as-capable-of-processing-traces">Enabling the factory to describe the receiver as capable of processing traces<a class="headerlink" href="#enabling-the-factory-to-describe-the-receiver-as-capable-of-processing-traces" title="Permanent link">&para;</a></h3>
+<h3 id="_5">使工厂能够将接收器描述为能够处理跟踪<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>The same receiver component can process traces, metrics, and logs. The
 receiver's factory is responsible for describing those capabilities.</p>
 <p>Given that traces are the subject of the tutorial, that's the only signal we
@@ -10934,7 +10613,7 @@ what your <code>factory.go</code> file should look like with the proper imports:
 <a id="__codelineno-22-33" name="__codelineno-22-33"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_3">Check your work<a class="headerlink" href="#check-your-work_3" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Importing the <code>context</code> package in order to support the <code>context.Context</code>
   type referenced in the <code>createTracesReceiver</code> function</li>
@@ -10952,7 +10631,7 @@ what your <code>factory.go</code> file should look like with the proper imports:
 Collector to validate the <code>tailtracer</code> receiver settings if they are defined
 within the <code>config.yaml</code>. You just need to add it to the Collector's
 initialization process.</p>
-<h3 id="adding-the-receiver-factory-to-the-collectors-initialization">Adding the receiver factory to the Collector's initialization<a class="headerlink" href="#adding-the-receiver-factory-to-the-collectors-initialization" title="Permanent link">&para;</a></h3>
+<h3 id="_6">将接收器工厂添加到收集器的初始化中<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>As explained before, all the Collector components are instantiated by the
 <code>components()</code> function within the <code>components.go</code> file.</p>
 <p>The <code>tailtracer</code> receiver factory instance has to be added to the <code>factories</code>
@@ -11067,7 +10746,7 @@ support that:</p>
 <a id="__codelineno-23-52" name="__codelineno-23-52"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_4">Check your work<a class="headerlink" href="#check-your-work_4" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Importing the
   <code>github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer</code>
@@ -11119,7 +10798,7 @@ for running the Collector will look like:</p>
 <p>The <code>tailtracer</code> receiver factory and config requirements are done and the
 Collector is properly loading your component. You can now move to the core of
 your receiver, the implementation of the component itself.</p>
-<h2 id="implementing-the-trace-receiver-component">Implementing the trace receiver component<a class="headerlink" href="#implementing-the-trace-receiver-component" title="Permanent link">&para;</a></h2>
+<h2 id="_7">实现跟踪接收器组件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>In the previous section, I mentioned the fact that a receiver can process any of
 the OpenTelemetry signals, and the Collector's API is designed to help you
 accomplish that.</p>
@@ -11212,7 +10891,7 @@ methods implementation:</p>
 <a id="__codelineno-28-17" name="__codelineno-28-17"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_5">Check your work<a class="headerlink" href="#check-your-work_5" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Importing the <code>context</code> package which is where the <code>Context</code> type and
   functions are declared</li>
@@ -11303,7 +10982,7 @@ above:</p>
 <a id="__codelineno-30-24" name="__codelineno-30-24"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_6">Check your work<a class="headerlink" href="#check-your-work_6" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Updated the <code>Start()</code> method by adding the initialization to the <code>host</code>
   field with the <code>component.Host</code> reference passed by the Collector and the
@@ -11314,7 +10993,7 @@ above:</p>
   cancellation function.</li>
 </ul>
 </blockquote>
-<h3 id="keeping-information-passed-by-the-receivers-factory">Keeping information passed by the receiver's factory<a class="headerlink" href="#keeping-information-passed-by-the-receivers-factory" title="Permanent link">&para;</a></h3>
+<h3 id="_8">保存由接收方工厂传递的信息<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>Now that you have implemented the <code>receiver.Traces</code> interface methods, your
 <code>tailtracer</code> receiver component is ready to be instantiated and returned by its
 factory.</p>
@@ -11426,7 +11105,7 @@ lifecycle.</p>
 <a id="__codelineno-31-45" name="__codelineno-31-45"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_7">Check your work<a class="headerlink" href="#check-your-work_7" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Importing the <code>go.opentelemetry.io/collector/consumer</code> which is where the
   pipeline's consumer types and interfaces are declared.</li>
@@ -11563,7 +11242,7 @@ validation.</p>
 <a id="__codelineno-32-46" name="__codelineno-32-46"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_8">Check your work<a class="headerlink" href="#check-your-work_8" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Added a guard clause that verifies if the consumer is properly instantiated
   and if not returns the <code>component.ErrNilNextConsumer</code>error.</li>
@@ -11687,7 +11366,7 @@ like:</p>
 means the component is responding correctly to the <code>Shutdown()</code> event. In the
 next section you will learn more about the OpenTelemetry Trace data model so the
 <code>tailtracer</code> receiver can finally generate traces!</p>
-<h2 id="the-collectors-trace-data-model">The Collector's Trace Data Model<a class="headerlink" href="#the-collectors-trace-data-model" title="Permanent link">&para;</a></h2>
+<h2 id="_9">收集器的跟踪数据模型<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p>You might be familiar with OpenTelemetry traces by using the SDKs and
 instrumenting an application so you can see and evaluate your traces within a
 distributed tracing backend like Jaeger.</p>
@@ -11704,7 +11383,7 @@ trace data model :</p>
 <p>Creating a trace within the trace receiver will be slightly different than the
 way you would do it with the SDKs, so let's start reviewing the high level
 concepts.</p>
-<h3 id="working-with-resources">Working with Resources<a class="headerlink" href="#working-with-resources" title="Permanent link">&para;</a></h3>
+<h3 id="_10">使用资源<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>In the OTel world, all telemetry is generated by a <code>Resource</code>, here is the
 definition according to the <a href="/docs/specs/otel/resource/sdk">OTel spec</a>:</p>
 <blockquote>
@@ -11959,7 +11638,7 @@ helper functions to generate the instances of those types.</p>
 <a id="__codelineno-38-86" name="__codelineno-38-86"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_9">Check your work<a class="headerlink" href="#check-your-work_9" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Imported the <code>math/rand</code> and <code>time</code> packages to support the implementation
   of the <code>generateRandomNumber</code> function</li>
@@ -12063,7 +11742,7 @@ with the <code>ResourceSpan</code>.</p>
 <a id="__codelineno-40-13" name="__codelineno-40-13"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_10">Check your work<a class="headerlink" href="#check-your-work_10" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Added the <code>resourceSpan</code> variable and initialized it with the <code>ResourceSpan</code>
   reference returned by the <code>traces.ResourceSpans().AppendEmpty()</code> call</li>
@@ -12071,7 +11750,7 @@ with the <code>ResourceSpan</code>.</p>
   <code>pcommon.Resource</code> reference returned by the <code>resourceSpan.Resource()</code> call</li>
 </ul>
 </blockquote>
-<h3 id="describing-resources-through-attributes">Describing Resources through attributes<a class="headerlink" href="#describing-resources-through-attributes" title="Permanent link">&para;</a></h3>
+<h3 id="_11">通过属性描述资源<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>The Collector's API provides a package named <code>pcommon</code> (nested under the <code>pdata</code>
 package) with all the types and helper functions required to describe a
 <code>Resource</code>.</p>
@@ -12117,7 +11796,7 @@ and write them as attributes (grouped by the prefix "atm.") into a
 <a id="__codelineno-41-7" name="__codelineno-41-7"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_11">Check your work<a class="headerlink" href="#check-your-work_11" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Declared a variable called <code>atmAttrs</code> and initialized it with the
   <code>pcommon.Map</code> reference returned by the <code>resource.Attributes()</code> call</li>
@@ -12515,7 +12194,7 @@ properly assign the "service." group attributes:</p>
 <a id="__codelineno-43-149" name="__codelineno-43-149"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_12">Check your work<a class="headerlink" href="#check-your-work_12" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Imported the <code>go.opentelemetry.io/collector/semconv/v1.9.0</code> package as
   <code>conventions</code>, in order to have access to all resource semantic conventions
@@ -12532,7 +12211,7 @@ properly assign the "service." group attributes:</p>
   and <code>fillResourceWithBackendSystem()</code> functions</li>
 </ul>
 </blockquote>
-<h3 id="representing-operations-with-spans">Representing operations with spans<a class="headerlink" href="#representing-operations-with-spans" title="Permanent link">&para;</a></h3>
+<h3 id="spans">用 spans 表示操作<a class="headerlink" href="#spans" title="Permanent link">&para;</a></h3>
 <p>You now have a <code>ResourceSpan</code> instance with their respective <code>Resource</code> properly
 filled with attributes to represent the <code>Atm</code> and <code>BackendSystem</code> entities, you
 are ready to represent the operations that each <code>Resource</code> execute as part of a
@@ -12787,7 +12466,7 @@ implementation for the <code>appendTraceSpans()</code> function looks like:</p>
 <a id="__codelineno-48-16" name="__codelineno-48-16"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_13">Check your work<a class="headerlink" href="#check-your-work_13" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Added <code>traceId</code> and <code>backendSpanId</code> variables to respectively represent the
   trace and the span id and initialized them with the helper functions created
@@ -12915,7 +12594,7 @@ follow:</p>
 <a id="__codelineno-50-22" name="__codelineno-50-22"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
 <blockquote>
-<h4 id="check-your-work_14">Check your work<a class="headerlink" href="#check-your-work_14" title="Permanent link">&para;</a></h4>
+<p><strong>检查你的工作</strong></p>
 <ul>
 <li>Added a line under the <code>case &lt;=ticker.C</code> condition calling the
   <code>tailtracerRcvr.nextConsumer.ConsumeTraces()</code> method passing the new context

@@ -25,7 +25,7 @@
     
     
       
-        <title>使用工具库 - OPENTELEMETRY 文档</title>
+        <title>插装库 - OPENTELEMETRY 文档</title>
       
     
     
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              使用工具库
+              插装库
             
           </span>
         </div>
@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2484,12 +2484,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          使用工具库
+          插装库
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        使用工具库
+        插装库
       </a>
       
         
@@ -2541,7 +2541,7 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    配置工具库
+    配置插装库
   </a>
   
 </li>
@@ -3682,7 +3682,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/distributions/" class="md-nav__link">
-        分布
+        发行版
       </a>
     </li>
   
@@ -3766,7 +3766,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/trace-receiver/" class="md-nav__link">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
     </li>
   
@@ -4048,7 +4048,7 @@
   
     <li class="md-nav__item">
       <a href="../../../k8s/collector/vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4174,7 +4174,7 @@
   
     <li class="md-nav__item">
       <a href="../../../k8s/collector/release/" class="md-nav__link">
-        收集器释放程序
+        收集器发布
       </a>
     </li>
   
@@ -9769,7 +9769,7 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    配置工具库
+    配置插装库
   </a>
   
 </li>
@@ -9806,13 +9806,12 @@
   
 
 
-  <h1>使用工具库</h1>
+  <h1>插装库</h1>
 
 <p>您可以使用<a href="../../specs/otel/glossary/#instrumentation-library">插装库</a>为库或框架
 生成遥测数据。</p>
-<p>例如
-，<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-express">用于 Express 的 instrumentation 库</a>将
-根据入站 HTTP 请求自动创建<a href="../../concepts/signals/traces/#span">span</a>。</p>
+<p>例如，<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-express">用于 Express 的插装库</a>将根据入站 HTTP 请求自动创
+建<a href="../../concepts/signals/traces/#span">span</a>。</p>
 <h2 id="_1">设置<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>每个工具库都是一个 NPM 包，安装通常是这样完成的:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="go">npm install &lt;name-of-package&gt;</span>
@@ -10136,11 +10135,10 @@
 </div>
 </div>
 </div>
-<h2 id="_3">配置工具库<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_3">配置插装库<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>一些工具库提供了额外的配置选项。</p>
-<p>例如
-，<a href="https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options">Express instrumentation</a>提
-供了忽略指定中间件或丰富使用请求钩子自动创建的范围的方法。</p>
+<p>例如，<a href="https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options">Express instrumentation</a>提供了忽略指定中间件或丰富使用请求钩子自动创建的
+范围的方法。</p>
 <p>您需要参考每个插装库的文档来进行高级配置。</p>
 <h2 id="_4">可用的插装库<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>OpenTelemetry 生成的插装库的完整列表可

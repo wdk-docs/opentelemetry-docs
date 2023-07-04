@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2473,7 +2473,7 @@
   
     <li class="md-nav__item">
       <a href="../../instrumentation/js/libraries/" class="md-nav__link">
-        使用工具库
+        插装库
       </a>
     </li>
   
@@ -3715,7 +3715,7 @@
   
     <li class="md-nav__item">
       <a href="../distributions/" class="md-nav__link">
-        分布
+        发行版
       </a>
     </li>
   
@@ -3799,7 +3799,7 @@
   
     <li class="md-nav__item">
       <a href="../trace-receiver/" class="md-nav__link">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
     </li>
   
@@ -4081,7 +4081,7 @@
   
     <li class="md-nav__item">
       <a href="../../k8s/collector/vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4207,7 +4207,7 @@
   
     <li class="md-nav__item">
       <a href="../../k8s/collector/release/" class="md-nav__link">
-        收集器释放程序
+        收集器发布
       </a>
     </li>
   
@@ -9878,8 +9878,7 @@
 
 <p>假设熟悉以下页面:</p>
 <ul>
-<li><a href="/docs/concepts/data-collection/">数据收集概念</a>以便了解适用于 OpenTelemetry
-  Collector 的存储库。</li>
+<li><a href="../../concepts/data-collection.md">数据收集</a>以便了解适用于收集器的存储库。</li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md">安全指导</a></li>
 </ul>
 <h2 id="_1">基本<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -9965,7 +9964,7 @@
 <a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">otlp</span><span class="p p-Indicator">]</span>
 </code></pre></div></td></tr></table></div>
 <p>请注意，接收器、处理器、输出器和/或管道是通过组件标识符以<code>type[/name]</code>格式定义的
-(例如: <code>otlp</code> or <code>otlp/2</code>)。只要标识符是唯一的，给定类型的组件就可以定义多次。例
+(例如: <code>otlp</code> 或 <code>otlp/2</code>)。只要标识符是唯一的，给定类型的组件就可以定义多次。例
 如:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
@@ -10055,8 +10054,7 @@
 <a id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w">      </span><span class="nt">processors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">batch</span><span class="p p-Indicator">]</span>
 <a id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">otlp</span><span class="p p-Indicator">]</span>
 </code></pre></div></td></tr></table></div>
-<p>配置也可以包括其他文件，导致 Collector 将两个文件合并到 YAML 配置的单个内存表示
-中:</p>
+<p>配置也可以引入其他文件，收集器可以将两个文件合并到 YAML 配置的单个文件中:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
@@ -10123,27 +10121,21 @@
 <a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">      </span><span class="nt">processors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 <a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">otlp</span><span class="p p-Indicator">]</span>
 </code></pre></div></td></tr></table></div>
+<p><a name="receivers"></a></p>
 <h2 id="receivers-">Receivers - 接收器<a class="headerlink" href="#receivers-" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../../../assets/img/logos/32x32/Receivers.svg" width="35" /></p>
 <p>接收器可以是基于推或拉的，它是数据进入收集器的方式。接收器可以支持一个或多
 个<a href="/docs/concepts/signals/">数据源</a>。</p>
-<p>The <code>receivers:</code> section is how receivers are configured. Many receivers come
-with default settings so simply specifying the name of the receiver is enough to
-configure it (for example, <code>zipkin:</code>). If configuration is required or a user
-wants to change the default configuration then such configuration must be
-defined in this section. Configuration parameters specified for which the
-receiver provides a default configuration are overridden.</p>
-<p><code>receivers:</code>部分是如何配置接收器的。许多接收器都带有默认设置，因此只需指定接收器
-的名称就足以配置它(例如，<code>zipkin:</code>)。如果需要配置或者用户希望更改默认配置，则必
-须在本节中定义这种配置。将覆盖接收器为其提供默认配置的指定配置参数。</p>
+<p><code>receivers:</code>部分介绍如何配置接收器的。许多接收器都带有默认设置，因此只需指定接收
+器的名称就足以配置它(例如，<code>zipkin:</code>)。如果需要配置或者用户希望更改默认配置，则
+必须在本节中定义这种配置。将覆盖接收器为其提供默认配置的指定配置参数。</p>
 <blockquote>
 <p>配置接收器不会启用它。接收器通过<a href="#service">service</a>节中的管道启用。</p>
 </blockquote>
 <p>必须配置一个或多个接收器。缺省情况下，没有配置接收器。下面提供了一个接收器的基本
 示例。</p>
 <blockquote>
-<p>有关接收器的详细配置，请参
-阅<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md">receiver README.md</a>.</p>
+<p>有关接收器的详细配置，请参阅<a href="../receiver/">receiver</a> README.md.</p>
 </blockquote>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
@@ -10245,27 +10237,23 @@ receiver provides a default configuration are overridden.</p>
 <a id="__codelineno-5-49" name="__codelineno-5-49"></a><span class="w">  </span><span class="c1"># Data sources: traces</span>
 <a id="__codelineno-5-50" name="__codelineno-5-50"></a><span class="w">  </span><span class="nt">zipkin</span><span class="p">:</span>
 </code></pre></div></td></tr></table></div>
+<p><a name="processors"></a></p>
 <h2 id="processors-">Processors - 处理器<a class="headerlink" href="#processors-" title="Permanent link">&para;</a></h2>
-<p><img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"></img></p>
-<p>Processors are run on data between being received and being exported. Processors
-are optional though
-<a href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors">some are recommended</a>.</p>
-<p>The <code>processors:</code> section is how processors are configured. Processors may come
-with default settings, but many require configuration. Any configuration for a
-processor must be done in this section. Configuration parameters specified for
-which the processor provides a default configuration are overridden.</p>
+<p><img alt="" src="./img/logos/32x32/Processors.svg" width="35" /></p>
+<p>处理器在接收和导出之间的数据上运行。处理器是可选
+的<a href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors">有些是推荐的</a>.</p>
+<p><code>processors:</code>部分是如何配置处理器的。处理器可能带有默认设置，但许多处理器需要配
+置。处理器的任何配置都必须在本节中完成。处理器为其提供默认配置的配置参数将被覆盖
+。</p>
 <blockquote>
-<p>Configuring a processor does not enable it. Processors are enabled via
-pipelines within the <a href="#service">service</a> section.</p>
+<p>配置处理器不能启用它。处理器是通过<a href="#service">service</a>节中的管道启用的。</p>
 </blockquote>
-<p>A basic example of the default processors is provided below. The full list of
-processors can be found by combining the list found
-<a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor">here</a>
-and
-<a href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor">here</a>.</p>
+<p>下面提供了默认处理器的一个基本示例。完整的处理器列表可以通过组
+合<a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor">这里</a>和<a href="https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor">这里</a>找
+到。</p>
 <blockquote>
-<p>For detailed processor configuration, please see the
-<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md">processor README.md</a>.</p>
+<p>有关详细的处理器配置，请参
+阅<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md">processor README.md</a>.</p>
 </blockquote>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
@@ -10377,27 +10365,23 @@ and
 <a id="__codelineno-6-54" name="__codelineno-6-54"></a><span class="w">      </span><span class="nt">from_attributes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">db.svc</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">operation</span><span class="p p-Indicator">]</span>
 <a id="__codelineno-6-55" name="__codelineno-6-55"></a><span class="w">      </span><span class="nt">separator</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;::&#39;</span>
 </code></pre></div></td></tr></table></div>
+<p><a name="exporters"></a></p>
 <h2 id="exporters-">Exporters - 导出器<a class="headerlink" href="#exporters-" title="Permanent link">&para;</a></h2>
-<p><img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img></p>
-<p>An exporter, which can be push or pull based, is how you send data to one or
-more backends/destinations. Exporters may support one or more
-<a href="/docs/concepts/signals/">data sources</a>.</p>
-<p>The <code>exporters:</code> section is how exporters are configured. Exporters may come
-with default settings, but many require configuration to specify at least the
-destination and security settings. Any configuration for an exporter must be
-done in this section. Configuration parameters specified for which the exporter
-provides a default configuration are overridden.</p>
+<p><img alt="" src="./img/logos/32x32/Exporters.svg" width="35" /></p>
+<p>导出器可以是基于推或拉的，它是将数据发送到一个或多个后端/目的地的方式。导出器可
+以支持一个或多个<a href="../../concepts/signals/">数据源</a>。</p>
+<p><code>exporters:</code>部分是如何配置导出器的。导出程序可能带有默认设置，但许多导出程序需要
+配置以至少指定目标和安全设置。导出器的任何配置都必须在本节中完成。将覆盖导出器为
+其提供默认配置的指定配置参数。</p>
 <blockquote>
-<p>Configuring an exporter does not enable it. Exporters are enabled via
-pipelines within the <a href="#service">service</a> section.</p>
+<p>配置导出器不会启用它。导出器是通过<a href="#service">service</a>部分中的管道启用的。</p>
 </blockquote>
-<p>One or more exporters must be configured. By default, no exporters are
-configured. A basic example of exporters is provided below. Certain exporter
-configurations require x.509 certificates to be created in order to be secure,
-as described in <a href="#setting-up-certificates">setting up certificates</a>.</p>
+<p>必须配置一个或多个导出器。缺省情况下，没有配置导出器。下面提供了一个导出器的基本
+示例。为了保证安全，某些导出器配置需要创建 x.509 证书，
+如<a href="#setting-up-certificates">设置证书</a>中所述。</p>
 <blockquote>
-<p>For detailed exporter configuration, see the
-<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md">exporter README.md</a>.</p>
+<p>有关导出器的详细配置，请参
+阅<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md">导出器 README.md</a>.</p>
 </blockquote>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
@@ -10501,23 +10485,21 @@ as described in <a href="#setting-up-certificates">setting up certificates</a>.<
 <a id="__codelineno-7-50" name="__codelineno-7-50"></a><span class="w">  </span><span class="nt">zipkin</span><span class="p">:</span>
 <a id="__codelineno-7-51" name="__codelineno-7-51"></a><span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://localhost:9411/api/v2/spans</span>
 </code></pre></div></td></tr></table></div>
+<p><a name="connectors"></a></p>
 <h2 id="connectors-">Connectors - 连接器<a class="headerlink" href="#connectors-" title="Permanent link">&para;</a></h2>
-<p>A connector is both an exporter and receiver. As the name suggests a Connector
-connects two pipelines: It consumes data as an exporter at the end of one
-pipeline and emits data as a receiver at the start of another pipeline. It may
-consume and emit data of the same data type, or of different data types. A
-connector may generate and emit data to summarize the consumed data, or it may
-simply replicate or route data.</p>
-<p>The <code>connectors:</code> section is how connectors are configured.</p>
+<p>连接器既是输出器又是接收器。顾名思义，连接器连接两个管道:它在一个管道的末端作为
+输出者使用数据，在另一个管道的开始作为接收者发出数据。它可以使用和发出相同数据类
+型或不同数据类型的数据。连接器可以生成和发出数据来总结所使用的数据，也可以简单地
+复制或路由数据。</p>
+<p><code>connectors:</code>部分是如何配置连接器的。</p>
 <blockquote>
-<p>Configuring a connectors does not enable it. Connectors are enabled via
-pipelines within the <a href="#service">service</a> section.</p>
+<p>配置连接器不会启用它。连接器是通过<a href="#service">service</a>节中的管道启用的。</p>
 </blockquote>
-<p>One or more connectors may be configured. By default, no connectors are
-configured. A basic example of connectors is provided below.</p>
+<p>可以配置一个或多个连接器。默认情况下，没有配置连接器。下面提供了一个连接器的基本
+示例。</p>
 <blockquote>
-<p>For detailed connector configuration, please see the
-<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md">connector README.md</a>.</p>
+<p>有关连接器的详细配置，请参
+阅<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md">connector README.md</a>.</p>
 </blockquote>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
@@ -10579,25 +10561,20 @@ configured. A basic example of connectors is provided below.</p>
 <a id="__codelineno-8-29" name="__codelineno-8-29"></a><span class="w">      </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1s</span>
 <a id="__codelineno-8-30" name="__codelineno-8-30"></a><span class="w">      </span><span class="nt">max_items</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div></td></tr></table></div>
+<p><a name="extensions"></a></p>
 <h2 id="extensions-">Extensions - 扩展<a class="headerlink" href="#extensions-" title="Permanent link">&para;</a></h2>
-<p>Extensions are available primarily for tasks that do not involve processing
-telemetry data. Examples of extensions include health monitoring, service
-discovery, and data forwarding. Extensions are optional.</p>
-<p>The <code>extensions:</code> section is how extensions are configured. Many extensions come
-with default settings so simply specifying the name of the extension is enough
-to configure it (for example, <code>health_check:</code>). If configuration is required or
-a user wants to change the default configuration then such configuration must be
-defined in this section. Configuration parameters specified for which the
-extension provides a default configuration are overridden.</p>
+<p>扩展主要用于不涉及处理遥测数据的任务。扩展的示例包括运行状况监视、服务发现和数据
+转发。扩展是可选的。</p>
+<p><code>extensions:</code>部分是如何配置扩展的。许多扩展都带有默认设置，因此只需指定扩展的名
+称就足以配置它(例如，<code>health_check:</code>)。如果需要配置或者用户希望更改默认配置，则
+必须在本节中定义这种配置。扩展为其提供默认配置的指定配置参数将被覆盖。</p>
 <blockquote>
-<p>Configuring an extension does not enable it. Extensions are enabled within the
-<a href="#service">service</a> section.</p>
+<p>配置扩展并不启用它。扩展在<a href="#service">service</a>部分中启用。</p>
 </blockquote>
-<p>By default, no extensions are configured. A basic example of extensions is
-provided below.</p>
+<p>默认情况下，没有配置任何扩展。下面提供了一个基本的扩展示例。</p>
 <blockquote>
-<p>For detailed extension configuration, please see the
-<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md">extension README.md</a>.</p>
+<p>有关详细的扩展配置，请参
+阅<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md">extension README.md</a>.</p>
 </blockquote>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
 <span class="normal"><a href="#__codelineno-9-2">2</a></span>
@@ -10611,38 +10588,37 @@ provided below.</p>
 <a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">  </span><span class="nt">memory_ballast</span><span class="p">:</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">    </span><span class="nt">size_mib</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512</span>
 </code></pre></div></td></tr></table></div>
+<p><a name="service"></a></p>
 <h2 id="service-">Service - 服务<a class="headerlink" href="#service-" title="Permanent link">&para;</a></h2>
-<p>The service section is used to configure what components are enabled in the
-Collector based on the configuration found in the receivers, processors,
-exporters, and extensions sections. If a component is configured, but not
-defined within the service section then it is not enabled. The service section
-consists of three sub-sections:</p>
+<p>service 部分用于根据接收器、处理器、导出器和扩展部分中的配置配置在 Collector 中
+启用哪些组件。如果一个组件被配置了，但没有在服务部分中定义，那么它是不启用的。服
+务部分由三个部分组成:</p>
 <ul>
 <li>extensions</li>
 <li>pipelines</li>
 <li>telemetry</li>
 </ul>
-<p>Extensions consist of a list of all extensions to enable. For example:</p>
+<p>扩展包含要启用的所有扩展的列表。例如:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
 <span class="normal"><a href="#__codelineno-10-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nt">service</span><span class="p">:</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span><span class="nt">extensions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">health_check</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pprof</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">zpages</span><span class="p p-Indicator">]</span>
 </code></pre></div></td></tr></table></div>
-<p>Pipelines can be of the following types:</p>
+<p>管道可以是以下类型:</p>
 <ul>
-<li>traces: collects and processes trace data.</li>
-<li>metrics: collects and processes metric data.</li>
-<li>logs: collects and processes log data.</li>
+<li>traces: 收集和处理跟踪数据。</li>
+<li>metrics: 收集和处理度量数据。</li>
+<li>logs: 收集和处理日志数据。</li>
 </ul>
-<p>A pipeline consists of a set of receivers, processors and exporters. Each
-receiver/processor/exporter must be defined in the configuration outside of the
-service section to be included in a pipeline.</p>
-<p><em>Note:</em> Each receiver/processor/exporter can be used in more than one pipeline.
-For processor(s) referenced in multiple pipelines, each pipeline will get a
-separate instance of that processor(s). This is in contrast to
-receiver(s)/exporter(s) referenced in multiple pipelines, where only one
-instance of a receiver/exporter is used for all pipelines. Also note that the
-order of processors dictates the order in which data is processed.</p>
-<p>The following is an example pipeline configuration:</p>
+<p>管道由一组接收器、处理器和输出器组成。每个接收器/处理器/输出器必须在服务部分之外
+的配置中定义，以便包含在管道中。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>每个接收器/处理器/输出器可以在多个管道中使用。
+对于在多个管道中引用的处理器，每个管道将获得该处理器的一个单独实例。
+这与在多个管道中引用的接收器/导出器形成对比，在多个管道中，只有一个接收器/导出器实例用于所有管道。
+还要注意，处理器的顺序决定了处理数据的顺序。</p>
+</div>
+<p>管道配置示例如下:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
 <span class="normal"><a href="#__codelineno-11-2">2</a></span>
 <span class="normal"><a href="#__codelineno-11-3">3</a></span>
@@ -10661,18 +10637,14 @@ order of processors dictates the order in which data is processed.</p>
 <a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">      </span><span class="nt">processors</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">batch</span><span class="p p-Indicator">]</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">      </span><span class="nt">exporters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">opencensus</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">zipkin</span><span class="p p-Indicator">]</span>
 </code></pre></div></td></tr></table></div>
-<p>Telemetry is where the telemetry for the collector itself can be configured. It
-has two subsections: <code>logs</code> and <code>metrics</code>.</p>
-<p>The <code>logs</code> subsection allows configuration of the logs generated by the
-collector. By default the collector will write its logs to stderr with a log
-level of <code>INFO</code>. You can also add static key-value pairs to all logs using the
-<code>initial_fields</code> section.
-<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L41-L97">View the full list of <code>logs</code> options here.</a></p>
-<p>The <code>metrics</code> subsection allows configuration of the metrics generated by the
-collector. By default the collector will generate basic metrics about itself and
-expose them for scraping at <code>localhost:8888/metrics</code>
-<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L99-L111">View the full list of <code>metrics</code> options here.</a></p>
-<p>The following is an example telemetry configuration:</p>
+<p>遥测是可以配置收集器本身的遥测的地方。它有两个子部分:“日志”和“指标”。</p>
+<p><code>logs</code>小节允许对收集器生成的日志进行配置。默认情况下，收集器将其日志以<code>INFO</code>的日
+志级别写入 stderr。您还可以使用<code>initial_fields</code> 部分向所有日志添加静态键值对。
+<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L41-L97">在这里查看<code>logs</code>选项的完整列表</a></p>
+<p><code>metrics</code>小节允许配置收集器生成的指标。默认情况下，收集器将生成关于自身的基本指
+标，并将其暴露
+在<code>localhost:8888/metrics</code>.<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L99-L111">查看完整的“指标”选项列表</a></p>
+<p>遥测配置举例如下:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
 <span class="normal"><a href="#__codelineno-12-2">2</a></span>
 <span class="normal"><a href="#__codelineno-12-3">3</a></span>

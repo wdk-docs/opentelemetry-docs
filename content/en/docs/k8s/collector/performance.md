@@ -18,7 +18,7 @@ depends on a variety of factors including:
 - CPU / Memory allocation
 - Operating System: Linux
 
-## Testing
+## 测试
 
 Testing was completed on Linux using the
 [Synthetic Load Generator utility](https://github.com/Omnition/synthetic-load-generator)
@@ -32,7 +32,7 @@ below.
 - MaxQueueSize [default: 100]
 - SubmissionRate(spans/sec): 100,000
 
-## Results without tail-based sampling
+## 无尾抽样的结果
 
 | Span<br>Format | CPU<br>(2+ GHz) | RAM<br>(GB) | Sustained<br>Rate | Recommended<br>Maximum |
 | :------------: | :-------------: | :---------: | :---------------: | :--------------------: |
@@ -51,9 +51,11 @@ either:
 - Scale-out by putting one or more collectors behind a load balancer or k8s
   service
 
-## Results with tail-based sampling
+## 基于尾部抽样的结果
 
-> Note: Additional memory is required for tail-based sampling
+!!! Note
+
+    基于尾部的采样需要额外的内存
 
 | Span<br>Format | CPU<br>(2+ GHz) | RAM<br>(GB) | Sustained<br>Rate | Recommended<br>Maximum |
 | :------------: | :-------------: | :---------: | :---------------: | :--------------------: |

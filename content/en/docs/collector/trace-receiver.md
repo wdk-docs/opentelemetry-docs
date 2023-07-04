@@ -1,49 +1,38 @@
 ---
-title: 建立跟踪接收器
+title: 构建跟踪接收器
 spelling: cSpell:ignore struct tailtracer
 ---
 
-If you are reading this tutorial, you probably already have an idea of the
-OpenTelemetry concepts behind distributed tracing, but if you don't you can
-quickly read through it [here](/docs/concepts/signals/traces/).
+如果你正在阅读本教程，你可能已经了解了分布式跟踪背后的 OpenTelemetry 概念，但如
+果你还没有，你可以快速阅读它[在这里](/docs/concepts/signals/traces/).
 
-Here is the definition of those concepts according to OpenTelemetry:
+以下是 OpenTelemetry 对这些概念的定义:
 
-> Traces track the progression of a single request, called a trace, as it is
-> handled by services that make up an application. The request may be initiated
-> by a user or an application. Distributed tracing is a form of tracing that
-> traverses process, network and security boundaries.
+> 跟踪跟踪单个请求的进程，称为跟踪，因为它是由组成应用程序的服务处理的。请求可以
+> 由用户或应用程序发起。分布式跟踪是一种跨越进程、网络和安全边界的跟踪形式。
 
-Although the definition seems very application centric, you can leverage the
-OpenTelemetry trace model as a way to represent a request and quickly understand
-its duration and the details about every step involved in completing it.
+尽管这个定义看起来非常以应用程序为中心，但是您可以利用 OpenTelemetry 跟踪模型来
+表示请求，并快速了解请求的持续时间和完成请求所涉及的每个步骤的详细信息。
 
-Assuming you already have a system generating some kind of tracing telemetry,
-the [OpenTelemetry Collector](/docs/collector/) is the doorway to help you make
-it available into the OTel world.
+假设您已经有了一个生成某种跟踪遥测的系统，那么[OpenTelemetry Collector](/docs/
+Collector /)就是帮助您将其用于 OTel 世界的门户。
 
-Within the Collector, a trace receiver has the role to receive and convert your
-request telemetry from its original format into the OTel trace model, so the
-information can be properly processed through the Collector's pipelines.
+在 Collector 中，跟踪接收器的作用是接收您的遥测请求，并将其从原始格式转换为 OTel
+跟踪模型，以便通过 Collector 的管道正确处理信息。
 
-In order to implement a traces receiver you will need the following:
+为了实现跟踪接收器，您将需要以下内容:
 
-- A `Config` implementation to enable the trace receiver to gather and validate
-  its configurations within the Collector's config.yaml.
+- 一个`Config`实现，使跟踪接收器能够在收集器的`config.yaml`文件中收集和验证其配
+  置。
+- 一个`receiver.Factory`实现，以便收集器可以正确地实例化跟踪接收器组件。
+- 一个`TracesReceiver`实现，负责收集遥测信息，将其转换为内部跟踪表示，并将信息传
+  递给管道中的下一个消费者。
 
-- A `receiver.Factory` implementation so the Collector can properly instantiate
-  the trace receiver component.
+在本教程中，我们将创建一个名为`tailtracer`的示例跟踪接收器，它模拟拉操作并生成跟
+踪作为该操作的结果。接下来的部分将指导您完成实现上述步骤的过程，以便创建接收器，
+所以让我们开始吧。
 
-- A `TracesReceiver` implementation that is responsible to collect the
-  telemetry, convert it to the internal trace representation, and hand the
-  information to the next consumer in the pipeline.
-
-In this tutorial we will create a sample trace receiver called `tailtracer` that
-simulates a pull operation and generates traces as an outcome of that operation.
-The next sections will guide you through the process of implementing the steps
-above in order to create the receiver, so let's get started.
-
-## Setting up your receiver development and testing environment
+## 设置接收器开发和测试环境
 
 First use the [Building a Custom Collector](/docs/collector/custom-collector)
 tutorial to create a Collector instance named `otelcol-dev`; all you need is to
@@ -167,7 +156,7 @@ cd tailtracer
 go mod init github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer
 ```
 
-## Reading and Validating your Receiver Settings
+## 读取和验证您的接收器设置
 
 In order to be instantiated and participate in pipelines the Collector needs to
 identify your receiver and properly load its settings from within its
@@ -225,7 +214,7 @@ type Config struct {
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - I added the `Interval` and the `NumberOfTraces` fields so I can properly
 >   have access to their values from the config.yaml.
@@ -271,7 +260,7 @@ func (cfg *Config) Validate() error {
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - I imported the `fmt` package, so I can properly format print my error
 >   messages.
@@ -287,7 +276,7 @@ configuration aspects of a component, take a look at the
 param collectorVersion %}}/component/config.go) file inside the Collector's
 GitHub project.
 
-## Enabling the Collector to instantiate your receiver
+## 使收集器实例化您的接收器
 
 At the beginning of this tutorial, you created your `otelcol-dev` instance,
 which is bootstrapped with the following components:
@@ -358,7 +347,7 @@ param collectorVersion %}}/receiver/receiver.go#L69) file within the Collector's
 project ), the right way to provide the implementation is by using the functions
 available within the `go.opentelemetry.io/collector/receiver` package.
 
-### Implementing your receiver.Factory
+### 实现你的 receiver.Factory
 
 Start by creating a file named factory.go within the `tailtracer` folder.
 
@@ -406,7 +395,7 @@ requires the following parameters:
 Let's now implement the code to support all the parameters required by
 `receiver.NewFactory()`.
 
-### Identifying and Providing default settings for the receiver
+### 识别并提供接收方的默认设置
 
 Previously, we said that the `interval` setting for our `tailtracer` receiver
 would be optional, in that case you will need to provide a default value for it
@@ -468,7 +457,7 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Importing the `time` package in order to support the time.Duration type for
 >   the defaultInterval
@@ -486,7 +475,7 @@ func NewFactory() receiver.Factory {
 > - The `tailtracer.Config.Interval` field was initialized with the
 >   `defaultInterval` constant.
 
-### Enabling the factory to describe the receiver as capable of processing traces
+### 使工厂能够将接收器描述为能够处理跟踪
 
 The same receiver component can process traces, metrics, and logs. The
 receiver's factory is responsible for describing those capabilities.
@@ -586,7 +575,7 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Importing the `context` package in order to support the `context.Context`
 >   type referenced in the `createTracesReceiver` function
@@ -604,7 +593,7 @@ Collector to validate the `tailtracer` receiver settings if they are defined
 within the `config.yaml`. You just need to add it to the Collector's
 initialization process.
 
-### Adding the receiver factory to the Collector's initialization
+### 将接收器工厂添加到收集器的初始化中
 
 As explained before, all the Collector components are instantiated by the
 `components()` function within the `components.go` file.
@@ -672,7 +661,7 @@ func components() (otelcol.Factories, error) {
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Importing the
 >   `github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer`
@@ -722,7 +711,7 @@ The `tailtracer` receiver factory and config requirements are done and the
 Collector is properly loading your component. You can now move to the core of
 your receiver, the implementation of the component itself.
 
-## Implementing the trace receiver component
+## 实现跟踪接收器组件
 
 In the previous section, I mentioned the fact that a receiver can process any of
 the OpenTelemetry signals, and the Collector's API is designed to help you
@@ -810,7 +799,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Importing the `context` package which is where the `Context` type and
 >   functions are declared
@@ -882,7 +871,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Updated the `Start()` method by adding the initialization to the `host`
 >   field with the `component.Host` reference passed by the Collector and the
@@ -892,7 +881,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 > - Updated the `Stop()` method by adding a call to the `cancel()` context
 >   cancellation function.
 
-### Keeping information passed by the receiver's factory
+### 保存由接收方工厂传递的信息
 
 Now that you have implemented the `receiver.Traces` interface methods, your
 `tailtracer` receiver component is ready to be instantiated and returned by its
@@ -965,7 +954,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Importing the `go.opentelemetry.io/collector/consumer` which is where the
 >   pipeline's consumer types and interfaces are declared.
@@ -1063,7 +1052,7 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Added a guard clause that verifies if the consumer is properly instantiated
 >   and if not returns the `component.ErrNilNextConsumer`error.
@@ -1155,7 +1144,7 @@ means the component is responding correctly to the `Shutdown()` event. In the
 next section you will learn more about the OpenTelemetry Trace data model so the
 `tailtracer` receiver can finally generate traces!
 
-## The Collector's Trace Data Model
+## 收集器的跟踪数据模型
 
 You might be familiar with OpenTelemetry traces by using the SDKs and
 instrumenting an application so you can see and evaluate your traces within a
@@ -1177,7 +1166,7 @@ Creating a trace within the trace receiver will be slightly different than the
 way you would do it with the SDKs, so let's start reviewing the high level
 concepts.
 
-### Working with Resources
+### 使用资源
 
 In the OTel world, all telemetry is generated by a `Resource`, here is the
 definition according to the [OTel spec](/docs/specs/otel/resource/sdk):
@@ -1337,7 +1326,7 @@ func getRandomNumber(min int, max int) int {
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Imported the `math/rand` and `time` packages to support the implementation
 >   of the `generateRandomNumber` function
@@ -1433,14 +1422,14 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Added the `resourceSpan` variable and initialized it with the `ResourceSpan`
 >   reference returned by the `traces.ResourceSpans().AppendEmpty()` call
 > - Added the `atmResource` variable and initialized it with the
 >   `pcommon.Resource` reference returned by the `resourceSpan.Resource()` call
 
-### Describing Resources through attributes
+### 通过属性描述资源
 
 The Collector's API provides a package named `pcommon` (nested under the `pdata`
 package) with all the types and helper functions required to describe a
@@ -1489,7 +1478,7 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Declared a variable called `atmAttrs` and initialized it with the
 >   `pcommon.Map` reference returned by the `resource.Attributes()` call
@@ -1720,7 +1709,7 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Imported the `go.opentelemetry.io/collector/semconv/v1.9.0` package as
 >   `conventions`, in order to have access to all resource semantic conventions
@@ -1736,7 +1725,7 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 >   both `Atm` and `BackendSystem` entities using the `fillResourceWithAtm()`
 >   and `fillResourceWithBackendSystem()` functions
 
-### Representing operations with spans
+### 用 spans 表示操作
 
 You now have a `ResourceSpan` instance with their respective `Resource` properly
 filled with attributes to represent the `Atm` and `BackendSystem` entities, you
@@ -1943,7 +1932,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Added `traceId` and `backendSpanId` variables to respectively represent the
 >   trace and the span id and initialized them with the helper functions created
@@ -2034,7 +2023,7 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 }
 ```
 
-> #### Check your work
+> **检查你的工作**
 >
 > - Added a line under the `case <=ticker.C` condition calling the
 >   `tailtracerRcvr.nextConsumer.ConsumeTraces()` method passing the new context

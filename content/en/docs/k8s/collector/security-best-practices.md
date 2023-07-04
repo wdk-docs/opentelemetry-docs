@@ -1,10 +1,8 @@
 # 安全
 
-The OpenTelemetry Collector defaults to operating in a secure manner, but is
-configuration driven. This document captures important security aspects and
-considerations for the Collector. This document is intended for both end-users
-and component developers. It assumes at least a basic understanding of the
-Collector architecture and functionality.
+OpenTelemetry Collector 默认以安全的方式运行，但它是配置驱动的。本文档介绍了收集
+器的重要安全方面和注意事项。本文档适用于最终用户和组件开发人员。它假定至少对
+Collector 体系结构和功能有基本的了解。
 
 > Note: Please review the
 > [configuration documentation](https://opentelemetry.io/docs/collector/configuration/)
@@ -12,7 +10,7 @@ Collector architecture and functionality.
 
 ## TL;DR
 
-### End-users
+### 终端用户
 
 - Configuration
   - SHOULD only enable the minimum required components
@@ -34,7 +32,7 @@ Collector architecture and functionality.
 > [this](https://medium.com/opentelemetry/securing-your-opentelemetry-collector-1a4f9fa5bd6f)
 > blog post.
 
-### Component Developers
+### 组件开发人员
 
 - Configuration
   - MUST come from the central configuration file
@@ -48,7 +46,7 @@ Collector architecture and functionality.
 - Extensions
   - SHOULD NOT expose sensitive health or telemetry data by default
 
-## Configuration
+## 配置
 
 The Collector binary does not contain an embedded or default configuration and
 MUST NOT start without a configuration file being specified. The configuration
@@ -100,7 +98,7 @@ configuration file. Component developers SHOULD leverage
 
 More information about configuration is provided in the following sections.
 
-## Permissions
+## 权限
 
 The Collector supports running as a custom user and SHOULD NOT be run as a
 root/admin user. For the majority of use-cases, the Collector SHOULD NOT require
@@ -113,7 +111,7 @@ document what requires privileged access and why.
 
 More information about permissions is provided in the following sections.
 
-## Receivers and Exporters
+## 接收器和出口器
 
 Receivers and Exporters can be either push or pull-based. In either case, the
 connection established SHOULD be over a secure and authenticated channel. Unused
@@ -137,7 +135,7 @@ and
 [http](https://github.com/open-telemetry/opentelemetry-collector/tree/main/config/confighttp)
 helper functions.
 
-### Safeguards against denial of service attacks
+### 防止拒绝服务攻击
 
 Users SHOULD bind receivers' servers to addresses that limit connections to
 authorized users. For example, if the OTLP receiver OTLP/gRPC server only has
@@ -155,13 +153,13 @@ Generally, `localhost`-like addresses should be preferred over the 0.0.0.0
 address. For more information, see
 [CWE-1327](https://cwe.mitre.org/data/definitions/1327.html).
 
-## Processors
+## 处理器
 
 Processors sit between receivers and exporters. They are responsible for
 processing the data in some way. From a security perspective, they are useful in
 a couple ways.
 
-### Scrubbing sensitive data
+### 清除敏感数据
 
 It is common for a Collector to be used to scrub sensitive data before exporting
 it to a backend. This is especially important when sending the data to a
@@ -172,7 +170,7 @@ sensitive data before exporting.
 > [#2466](https://github.com/open-telemetry/opentelemetry-collector/issues/2466)
 > proposes adding default obfuscation or scrubbing of known sensitive metadata.
 
-### Safeguards around resource utilization
+### 保护资源利用
 
 In addition, processors offer safeguards around resource utilization. The
 `batch` and especially `memory_limiter` processor help ensure that the Collector
@@ -183,12 +181,12 @@ two processors SHOULD be enabled on every defined pipeline.
 > [this](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)
 > documentation.
 
-## Extensions
+## 扩展
 
 While receivers, processors, and exporters handle telemetry data directly,
 extensions typical serve different needs.
 
-### Health and Telemetry
+### 健康和遥测
 
 The initial extensions provided health check information, Collector metrics and
 traces, and the ability to generate and collect profiling data. When enabled
@@ -200,7 +198,7 @@ be exposed as a result.
 Component developers SHOULD NOT expose health or telemetry data outside the
 Collector by default.
 
-### Forwarding
+### 转发
 
 A forwarding extension is typically used when some telemetry data not natively
 supported by the Collector needs to be collected. For example, the
@@ -208,7 +206,7 @@ supported by the Collector needs to be collected. For example, the
 extensions are similar to receivers and exporters so the same security
 considerations apply.
 
-### Observers
+### 观察者
 
 An observer is capable of performing service discovery of endpoints. Other
 components of the collector such as receivers MAY subscribe to these extensions
@@ -217,7 +215,7 @@ permissions in order to perform service discovery. For example, the
 `k8s_observer` requires certain RBAC permissions in Kubernetes, while the
 `host_observer` requires the Collector to run in privileged mode.
 
-### Subprocesses
+### 子流程
 
 Extensions may also be used to run subprocesses. This can be useful when
 collection mechanisms that cannot natively be run by the Collector (e.g.

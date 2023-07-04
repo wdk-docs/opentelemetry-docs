@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#context-propagation-with-libraries" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2477,7 +2477,7 @@
   
     <li class="md-nav__item">
       <a href="../libraries/" class="md-nav__link">
-        使用工具库
+        插装库
       </a>
     </li>
   
@@ -2548,15 +2548,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#context-propagation-with-libraries" class="md-nav__link">
-    Context propagation with libraries
+  <a href="#_1" class="md-nav__link">
+    使用插装库进行上下文传播
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#manual-w3c-trace-context-propagation" class="md-nav__link">
-    Manual W3C Trace Context Propagation
+  <a href="#w3c" class="md-nav__link">
+    手动 W3C 跟踪上下文传播
   </a>
   
 </li>
@@ -3641,7 +3641,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/distributions/" class="md-nav__link">
-        分布
+        发行版
       </a>
     </li>
   
@@ -3725,7 +3725,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/trace-receiver/" class="md-nav__link">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
     </li>
   
@@ -4007,7 +4007,7 @@
   
     <li class="md-nav__item">
       <a href="../../../k8s/collector/vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4133,7 +4133,7 @@
   
     <li class="md-nav__item">
       <a href="../../../k8s/collector/release/" class="md-nav__link">
-        收集器释放程序
+        收集器发布
       </a>
     </li>
   
@@ -9693,15 +9693,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#context-propagation-with-libraries" class="md-nav__link">
-    Context propagation with libraries
+  <a href="#_1" class="md-nav__link">
+    使用插装库进行上下文传播
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#manual-w3c-trace-context-propagation" class="md-nav__link">
-    Manual W3C Trace Context Propagation
+  <a href="#w3c" class="md-nav__link">
+    手动 W3C 跟踪上下文传播
   </a>
   
 </li>
@@ -9726,33 +9726,21 @@
 
   <h1>传播</h1>
 
-<p>传播是在服务和进程之间移动数据的机制。
-虽然不限于跟踪，但它允许跟踪构建关于系统的因果信息，这些信息可以跨任意分布在进程和网络边界上的服务。</p>
-<h2 id="context-propagation-with-libraries">Context propagation with libraries<a class="headerlink" href="#context-propagation-with-libraries" title="Permanent link">&para;</a></h2>
-<p>For the vast majority of use cases, context propagation is done with
-instrumentation libraries.</p>
-<p>For example, if you have several Node.js services that communicate over HTTP,
-you can use the
-<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-express"><code>express</code></a>
-and <a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-http"><code>http</code></a>
-instrumentation libraries to automatically propagate trace context across
-services for you.</p>
-<p><strong>It is highly recommend that you use instrumentation libraries to propagate
-context.</strong> Although it is possible to propagate context manually, if your system
-uses libraries to communicate between services, use a matching instrumentation
-library to propagate context.</p>
-<p>Refer to <a href="/docs/instrumentation/js/libraries">Libraries</a> to learn more about
-instrumentation libraries and how to use them.</p>
-<h2 id="manual-w3c-trace-context-propagation">Manual W3C Trace Context Propagation<a class="headerlink" href="#manual-w3c-trace-context-propagation" title="Permanent link">&para;</a></h2>
-<p>In some cases, it is not possible to propagate context with an instrumentation
-library. There may not be an instrumentation library that matches a library
-you're using to have services communicate with one another. Or you many have
-requirements that instrumentation libraries cannot fulfill, even if they exist.</p>
-<p>When you must propagate context manually, you can use the
-<a href="/docs/instrumentation/js/context">context api</a>.</p>
-<p>The following generic example demonstrates how you can propagate trace context
-manually.</p>
-<p>First, on the sending service, you'll need to inject the current <code>context</code>:</p>
+<p>传播是在服务和进程之间移动数据的机制。虽然不限于跟踪，但它允许跟踪构建关于系统的
+因果信息，这些信息可以跨任意分布在进程和网络边界上的服务。</p>
+<h2 id="_1">使用插装库进行上下文传播<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>对于绝大多数用例，上下文传播是通过插装库完成的。</p>
+<p>例如，如果你有几个通过 HTTP 通信的 Node.js 服务，你可以使
+用[<code>express</code>]和[<code>http</code>]插装库在服务之间自动传播跟踪上下文。</p>
+<p><strong>强烈建议您使用插装库来传播上下文。</strong> 虽然可以手动传播上下文，但如果您的系统使
+用插装库在服务之间进行通信，请使用匹配的插装库来传播上下文。</p>
+<p>参考<a href="../libraries/">插装库</a>了解更多关于插装库以及如何使用它们的信息。</p>
+<h2 id="w3c">手动 W3C 跟踪上下文传播<a class="headerlink" href="#w3c" title="Permanent link">&para;</a></h2>
+<p>在某些情况下，不可能使用检测库传播上下文。可能没有与您用来使服务相互通信的库匹配
+的插装库。或者您可能有一些需求是插装库无法满足的，即使它们存在。</p>
+<p>当你必须手动传播上下文时，你可以使用<a href="../context/">上下文 api</a>。</p>
+<p>下面的通用示例演示了如何手动传播跟踪上下文。</p>
+<p>首先，在发送服务中，你需要注入当前的<code>context</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
@@ -9783,8 +9771,8 @@ manually.</p>
 <a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="c1">// data to whatever mechanism you use to propagate</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="c1">// across services.</span>
 </code></pre></div></td></tr></table></div>
-<p>On the receiving service, you'll need to extract <code>context</code> (for example, from
-parsed HTTP headers) and then set them as the current trace context.</p>
+<p>在接收服务上，您需要提取<code>context</code>(例如，从解析过的 HTTP 标头中)，然后将它们设置
+为当前跟踪上下文。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
@@ -9833,10 +9821,9 @@ parsed HTTP headers) and then set them as the current trace context.</p>
 <a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="c1">// Set the created span as active in the deserialized context.</span>
 <a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="nx">trace</span><span class="p">.</span><span class="nx">setSpan</span><span class="p">(</span><span class="nx">activeContext</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="p">);</span>
 </code></pre></div></td></tr></table></div>
-<p>From there, when you have a deserialized active context, you can create spans
-that will be a part of the same trace from the other service.</p>
-<p>You can also use the <a href="/docs/instrumentation/js/context">Context</a> API to modify
-or set the deserialized context in other ways.</p>
+<p>从那里，当您有一个反序列化的活动上下文时，您可以创建 spans，这些 spans 将成为来
+自其他服务的相同跟踪的一部分。</p>
+<p>你也可以使用<a href="../context/">上下文</a> API 以其他方式修改或设置反序列化的上下文。</p>
 
 
 

@@ -1,12 +1,9 @@
 # 标准的警告
 
-Some components have scenarios that could cause issues. Some components require
-the collector be interacted with in a specific way in order to ensure the
-component works as intended. This document describes common warnings that may
-affect a component in the collector.
+某些组件具有可能导致问题的场景。有些组件需要以特定的方式与收集器进行交互，以确保
+组件按预期工作。本文档描述了可能影响收集器中组件的常见警告。
 
-Visit a component's README to see if it is affected by any of these standard
-warnings.
+访问组件的 README，看看它是否受到这些标准警告的影响。
 
 ## Unsound Transformations
 

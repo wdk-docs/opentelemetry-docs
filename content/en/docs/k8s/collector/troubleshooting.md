@@ -20,7 +20,7 @@ service:
       level: 'debug'
 ```
 
-#### Version 0.35 and below:
+#### 版本 0.35 及以下:
 
 Pass `--log-level` flag to the `otelcol` process. See `--help` for more details.
 
@@ -28,13 +28,13 @@ Pass `--log-level` flag to the `otelcol` process. See `--help` for more details.
 $ otelcol --log-level DEBUG
 ```
 
-### Metrics
+### 指标
 
 Prometheus metrics are exposed locally on port `8888` and path `/metrics`. For
 containerized environments it may be desirable to expose this port on a public
 interface instead of just locally.
 
-#### Version 0.43.0 and above:
+#### 版本 0.43.0 及以上:
 
 Set the address in the config `service::telemetry::metrics`
 
@@ -45,7 +45,7 @@ service:
       address: ':8888'
 ```
 
-#### Version 0.42.0 and below:
+#### 版本 0.42.0 及以下:
 
 Pass `--metrics-addr <ADDR>` flag to the `otelcol` process. See `--help` for
 more details.
@@ -101,7 +101,7 @@ extensions:
     endpoint: 0.0.0.0:55679
 ```
 
-### Local exporters
+### 本地导出器
 
 [Local exporters](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter#general-information)
 can be configured to inspect the data being processed by the Collector.

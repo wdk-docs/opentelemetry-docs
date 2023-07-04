@@ -637,26 +637,23 @@ spec:
 
 ## 兼容性矩阵
 
-### OpenTelemetry 操作符与 OpenTelemetry 收集器
+### OpenTelemetry Operator 与 OpenTelemetry Collector
 
 OpenTelemetry Operator 遵循与操作数(OpenTelemetry Collector)相同的版本控制，直到
 版本的次要部分。例如，OpenTelemetry Operator v0.18.1 跟踪 OpenTelemetry
 Collector 0.18.0。版本的补丁部分表示操作符本身的补丁级别，而不是 OpenTelemetry
 Collector 的补丁级别。每当 OpenTelemetry Collector 的新补丁版本发布时，我们将发
-布操作符的新补丁版本。
+布 Operator 的新补丁版本。
 
-By default, the OpenTelemetry Operator ensures consistent versioning between
-itself and the managed `OpenTelemetryCollector` resources. That is, if the
-OpenTelemetry Operator is based on version `0.40.0`, it will create resources
-with an underlying OpenTelemetry Collector at version `0.40.0`.
+默认情况下，OpenTelemetry Operator 确保自身和托管的`OpenTelemetryCollector`资源
+之间保持一致的版本控制。也就是说，如果 OpenTelemetry Operator 基于版本`0.40.0`，
+它将使用版本`0.40.0`的底层 OpenTelemetry Collector 创建资源。
 
-When a custom `Spec.Image` is used with an `OpenTelemetryCollector` resource,
-the OpenTelemetry Operator will not manage this versioning and upgrading. In
-this scenario, it is best practice that the OpenTelemetry Operator version
-should match the underlying core version. Given a `OpenTelemetryCollector`
-resource with a `Spec.Image` configured to a custom image based on underlying
-OpenTelemetry Collector at version `0.40.0`, it is recommended that the
-OpenTelemetry Operator is kept at version `0.40.0`.
+当自定义的`Spec.Image` 与`OpenTelemetryCollector`资源一起使用时，OpenTelemetry
+Operator 将不会管理此版本控制和升级。在这种情况下，最佳实践是 OpenTelemetry
+Operator 版本应该与底层核心版本匹配。给定一个`OpenTelemetryCollector` 资源，
+其`Spec.Image`配置为基于底层 OpenTelemetryCollector 的自定义镜像，版本
+为`0.40.0`，建议将 OpenTelemetry Operator 保持在`0.40.0`版本。
 
 ### OpenTelemetry Operator vs. Kubernetes vs. Cert Manager
 
@@ -695,64 +692,6 @@ OpenTelemetry 操作符 _可能_ 在给定范围之外的版本上工作，但�
 | v0.58.0                | v1.19 to v1.24 | v1           |
 | v0.57.2                | v1.19 to v1.24 | v1           |
 | v0.56.0                | v1.19 to v1.24 | v1           |
-
-## 贡献与开发
-
-Please see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-In addition to the
-[core responsibilities](https://github.com/open-telemetry/community/blob/main/community-membership.md)
-the operator project requires approvers and maintainers to be responsible for
-releasing the project. See [RELEASE.md](./RELEASE.md) for more information and
-release schedule.
-
-Approvers
-([@open-telemetry/operator-approvers](https://github.com/orgs/open-telemetry/teams/operator-approvers)):
-
-- [Benedikt Bongartz](https://github.com/frzifus), Red Hat
-- [Tyler Helmuth](https://github.com/TylerHelmuth), Honeycomb
-- [Yuri Oliveira Sa](https://github.com/yuriolisa), Red Hat
-
-Emeritus Approvers:
-
-- [Anthony Mirabella](https://github.com/Aneurysm9), AWS
-- [Dmitrii Anoshin](https://github.com/dmitryax), Splunk
-- [Jay Camp](https://github.com/jrcamp), Splunk
-- [James Bebbington](https://github.com/james-bebbington), Google
-- [Owais Lone](https://github.com/owais), Splunk
-- [Pablo Baeyens](https://github.com/mx-psi), DataDog
-
-Target Allocator Maintainers
-([@open-telemetry/operator-ta-maintainers](https://github.com/orgs/open-telemetry/teams/operator-ta-maintainers)):
-
-- [Anthony Mirabella](https://github.com/Aneurysm9), AWS
-- [Kristina Pathak](https://github.com/kristinapathak), Lightstep
-- [Sebastian Poxhofer](https://github.com/secustor)
-
-Maintainers
-([@open-telemetry/operator-maintainers](https://github.com/orgs/open-telemetry/teams/operator-maintainers)):
-
-- [Jacob Aronoff](https://github.com/jaronoff97), Lightstep
-- [Pavol Loffay](https://github.com/pavolloffay), Red Hat
-- [Vineeth Pothulapati](https://github.com/VineethReddy02), Timescale
-
-Emeritus Maintainers
-
-- [Alex Boten](https://github.com/codeboten), Lightstep
-- [Bogdan Drutu](https://github.com/BogdanDrutu), Splunk
-- [Juraci Paixão Kröhling](https://github.com/jpkrohling), Grafana Labs
-- [Tigran Najaryan](https://github.com/tigrannajaryan), Splunk
-
-Learn more about roles in the
-[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md).
-
-Thanks to all the people who already contributed!
-
-[![Contributors][contributors-img]][contributors]
-
-## License
-
-[Apache 2.0 License](./LICENSE).
 
 [github-workflow]:
   https://github.com/open-telemetry/opentelemetry-operator/actions

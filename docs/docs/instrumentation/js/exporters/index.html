@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#otlp-endpoint" class="md-skip">
+        <a href="#otlp" class="md-skip">
           跳转至
         </a>
       
@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2477,7 +2477,7 @@
   
     <li class="md-nav__item">
       <a href="../libraries/" class="md-nav__link">
-        使用工具库
+        插装库
       </a>
     </li>
   
@@ -2520,38 +2520,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#otlp-endpoint" class="md-nav__link">
-    OTLP endpoint
+  <a href="#otlp" class="md-nav__link">
+    OTLP 端点
   </a>
   
-    <nav class="md-nav" aria-label="OTLP endpoint">
+    <nav class="md-nav" aria-label="OTLP 端点">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#usage-with-the-webtracer" class="md-nav__link">
-    Usage with the WebTracer
+  <a href="#webtracer" class="md-nav__link">
+    与 WebTracer 一起使用
   </a>
   
-    <nav class="md-nav" aria-label="Usage with the WebTracer">
+    <nav class="md-nav" aria-label="与 WebTracer 一起使用">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#use-otlp-exporter-with-httpjson" class="md-nav__link">
-    Use OTLP exporter with HTTP/JSON
+  <a href="#httpjson-otlp" class="md-nav__link">
+    使用 HTTP/JSON 的 OTLP 导出器
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-csps" class="md-nav__link">
-    Configure CSPs
+  <a href="#csps" class="md-nav__link">
+    配置 CSPs
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-cors-headers" class="md-nav__link">
-    Configure CORS headers
+  <a href="#cors" class="md-nav__link">
+    配置 CORS 标头
   </a>
   
 </li>
@@ -3688,7 +3688,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/distributions/" class="md-nav__link">
-        分布
+        发行版
       </a>
     </li>
   
@@ -3772,7 +3772,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/trace-receiver/" class="md-nav__link">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
     </li>
   
@@ -4054,7 +4054,7 @@
   
     <li class="md-nav__item">
       <a href="../../../k8s/collector/vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4180,7 +4180,7 @@
   
     <li class="md-nav__item">
       <a href="../../../k8s/collector/release/" class="md-nav__link">
-        收集器释放程序
+        收集器发布
       </a>
     </li>
   
@@ -9740,38 +9740,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#otlp-endpoint" class="md-nav__link">
-    OTLP endpoint
+  <a href="#otlp" class="md-nav__link">
+    OTLP 端点
   </a>
   
-    <nav class="md-nav" aria-label="OTLP endpoint">
+    <nav class="md-nav" aria-label="OTLP 端点">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#usage-with-the-webtracer" class="md-nav__link">
-    Usage with the WebTracer
+  <a href="#webtracer" class="md-nav__link">
+    与 WebTracer 一起使用
   </a>
   
-    <nav class="md-nav" aria-label="Usage with the WebTracer">
+    <nav class="md-nav" aria-label="与 WebTracer 一起使用">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#use-otlp-exporter-with-httpjson" class="md-nav__link">
-    Use OTLP exporter with HTTP/JSON
+  <a href="#httpjson-otlp" class="md-nav__link">
+    使用 HTTP/JSON 的 OTLP 导出器
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-csps" class="md-nav__link">
-    Configure CSPs
+  <a href="#csps" class="md-nav__link">
+    配置 CSPs
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-cors-headers" class="md-nav__link">
-    Configure CORS headers
+  <a href="#cors" class="md-nav__link">
+    配置 CORS 标头
   </a>
   
 </li>
@@ -9824,17 +9824,15 @@
 如<a href="https://www.jaegertracing.io/">Jaeger</a>或<a href="https://zipkin.io/">Zipkin</a>。
 OpenTelemetry JS 为一些常见的开源后端提供了导出器。</p>
 <p>下面您将找到一些关于如何设置后端和匹配的导出器的介绍。</p>
-<h2 id="otlp-endpoint">OTLP endpoint<a class="headerlink" href="#otlp-endpoint" title="Permanent link">&para;</a></h2>
+<h2 id="otlp">OTLP 端点<a class="headerlink" href="#otlp" title="Permanent link">&para;</a></h2>
 <p>要将跟踪数据发送到 OTLP 端点(如<a href="/docs/collector">collector</a>或 Jaeger)，您需要使
 用导出包，例如<code>@opentelemetry/exporter-trace-otlp-proto</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/exporter-trace-otlp-proto<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span>@opentelemetry/exporter-metrics-otlp-proto
 </code></pre></div></td></tr></table></div>
-<p>Next, configure the exporter to point at an OTLP endpoint. For example you can
-update <code>instrumentation.ts|js</code> from the
-<a href="/docs/instrumentation/js/getting-started/nodejs/">Getting Started</a> like the
-following:</p>
+<p>接下来，将导出器配置为指向 OTLP 端点。例如，你可以
+从<a href="../getting-started/nodejs/">入门</a>中更新<code>instrumentation.ts|js</code>，如下所示:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Typescript</label><label for="__tabbed_1_2">JavaScript</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -9969,8 +9967,7 @@ following:</p>
 </div>
 </div>
 </div>
-<p>To try out the <code>OTLPTraceExporter</code> quickly, you can run Jaeger in a docker
-container:</p>
+<p>要快速试用<code>OTLPTraceExporter</code>，你可以在 docker 容器中运行 Jaeger:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
@@ -9999,41 +9996,34 @@ container:</p>
 <a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">  </span>-p<span class="w"> </span><span class="m">9411</span>:9411<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">  </span>jaegertracing/all-in-one:latest
 </code></pre></div></td></tr></table></div>
-<h3 id="usage-with-the-webtracer">Usage with the WebTracer<a class="headerlink" href="#usage-with-the-webtracer" title="Permanent link">&para;</a></h3>
-<p>When you use the OTLP exporter in a browser-based application, you need to note
-that:</p>
+<h3 id="webtracer">与 WebTracer 一起使用<a class="headerlink" href="#webtracer" title="Permanent link">&para;</a></h3>
+<p>当您在基于浏览器的应用程序中使用 OTLP 导出器时，您需要注意:</p>
 <ol>
-<li>Using gRPC &amp; http/proto for exporting is not supported</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/">Content Security Policies</a> (CSPs) of your website might block your exports</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing</a> (CORS) headers might not allow your exports
-   to be sent</li>
-<li>You might need to expose your collector to the public internet</li>
+<li>不支持使用 gRPC 和 http/proto 进行导出</li>
+<li>您网站的[内容安全策略]<a href="csp"></a>可能会阻止您的导出</li>
+<li>[跨域资源共享]<a href="CORS"></a>报头可能不允许发送导出文件</li>
+<li>您可能需要将您的收集器公开到公共互联网上</li>
 </ol>
-<p>Below you will find instructions to use the right exporter, to configure your
-CSPs and CORS headers and what precautions you have to take when exposing your
-collector.</p>
-<h4 id="use-otlp-exporter-with-httpjson">Use OTLP exporter with HTTP/JSON<a class="headerlink" href="#use-otlp-exporter-with-httpjson" title="Permanent link">&para;</a></h4>
-<p><a href="https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc">OpenTelemetry Collector Exporter with gRPC</a> and <a href="https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto">OpenTelemetry Collector
-Exporter with protobuf</a> do only work with Node.js, therefore you are limited
-to use the <a href="https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http">OpenTelemetry Collector Exporter with HTTP</a>.</p>
-<p>Make sure that the receiving end of your exporter (collector or observability
-backend) does support <code>http/json</code>, and that you are exporting your data to the
-right endpoint, i.e., make sure that your port is set to <code>4318</code>.</p>
-<h4 id="configure-csps">Configure CSPs<a class="headerlink" href="#configure-csps" title="Permanent link">&para;</a></h4>
-<p>If your website is making use of Content Security Policies (CSPs), make sure
-that the domain of your OTLP endpoint is included. If your collector endpoint is
-<code>https://collector.example.com:4318/v1/traces</code>, add the following directive:</p>
+<p>下面将介绍如何使用正确的导出器，如何配置 csp 和 CORS 标头，以及在暴露收集器时必
+须采取的预防措施。</p>
+<h4 id="httpjson-otlp">使用 HTTP/JSON 的 OTLP 导出器<a class="headerlink" href="#httpjson-otlp" title="Permanent link">&para;</a></h4>
+<p>[OpenTelemetry Collector exporters with gRPC][]和[OpenTelemetry Collector
+exporters with protobuf][]只能与 Node.js 一起工作，因此你只能使用[OpenTelemetry
+Collector exporters with HTTP][]。</p>
+<p>确保导出器的接收端(收集器或可观察性后端)支持<code>http/json</code>，并且将数据导出到正确的
+端点，即确保端口设置为“4318”。</p>
+<h4 id="csps">配置 CSPs<a class="headerlink" href="#csps" title="Permanent link">&para;</a></h4>
+<p>如果您的网站正在使用内容安全策略(csp)，请确保包含 OTLP 端点的域。如果你的收集器
+端点是<code>https://collector.example.com:4318/v1/traces</code>,添加以下指令:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>connect-src collector.example.com:4318/v1/traces
 </code></pre></div></td></tr></table></div>
-<p>If your CSP is not including the OTLP endpoint, you will see an error message,
-stating that the request to your endpoint is violating the CSP directive.</p>
-<h4 id="configure-cors-headers">Configure CORS headers<a class="headerlink" href="#configure-cors-headers" title="Permanent link">&para;</a></h4>
-<p>If your website and collector are hosted at a different origin, your browser
-might block the requests going out to your collector. You need to configure
-special headers for Cross-Origin Resource Sharing (CORS).</p>
-<p>The OpenTelemetry collector provides <a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md">a feature</a> for http-based receivers to
-add the required headers to allow the receiver to accept traces from a web
-browser:</p>
+<p>如果您的 CSP 不包括 OTLP 端点，您将看到一条错误消息，指出对您的端点的请求违反了
+CSP 指令。</p>
+<h4 id="cors">配置 CORS 标头<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h4>
+<p>如果您的网站和收集器托管在不同的来源，您的浏览器可能会阻止发送到收集器的请求。跨
+域资源共享(Cross-Origin Resource Sharing, CORS)需要配置特殊的头信息。</p>
+<p>OpenTelemetry 收集器为基于 http 的接收器提供了[一个特性][]来添加所需的标头，以允
+许接收器接受来自 web 浏览器的跟踪:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>

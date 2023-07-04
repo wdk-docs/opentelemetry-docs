@@ -9,8 +9,7 @@ spelling: cSpell:ignore oidc cfssl genkey initca cfssljson gencert
 
 假设熟悉以下页面:
 
-- [数据收集概念](/docs/concepts/data-collection/)以便了解适用于 OpenTelemetry
-  Collector 的存储库。
+- [数据收集](../../concepts/data-collection.md)以便了解适用于收集器的存储库。
 - [安全指导](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
 ## 基本
@@ -70,7 +69,7 @@ service:
 ```
 
 请注意，接收器、处理器、输出器和/或管道是通过组件标识符以`type[/name]`格式定义的
-(例如: `otlp` or `otlp/2`)。只要标识符是唯一的，给定类型的组件就可以定义多次。例
+(例如: `otlp` 或 `otlp/2`)。只要标识符是唯一的，给定类型的组件就可以定义多次。例
 如:
 
 ```yaml
@@ -120,8 +119,7 @@ service:
       exporters: [otlp]
 ```
 
-配置也可以包括其他文件，导致 Collector 将两个文件合并到 YAML 配置的单个内存表示
-中:
+配置也可以引入其他文件，收集器可以将两个文件合并到 YAML 配置的单个文件中:
 
 ```yaml
 receivers:
@@ -168,6 +166,8 @@ service:
       exporters: [otlp]
 ```
 
+<a name="receivers"></a>
+
 ## Receivers - 接收器
 
 ![](../../assets/img/logos/32x32/Receivers.svg){ width="35" }
@@ -175,24 +175,18 @@ service:
 接收器可以是基于推或拉的，它是数据进入收集器的方式。接收器可以支持一个或多
 个[数据源](/docs/concepts/signals/)。
 
-The `receivers:` section is how receivers are configured. Many receivers come
-with default settings so simply specifying the name of the receiver is enough to
-configure it (for example, `zipkin:`). If configuration is required or a user
-wants to change the default configuration then such configuration must be
-defined in this section. Configuration parameters specified for which the
-receiver provides a default configuration are overridden.
-
-`receivers:`部分是如何配置接收器的。许多接收器都带有默认设置，因此只需指定接收器
-的名称就足以配置它(例如，`zipkin:`)。如果需要配置或者用户希望更改默认配置，则必
-须在本节中定义这种配置。将覆盖接收器为其提供默认配置的指定配置参数。
+`receivers:`部分介绍如何配置接收器的。许多接收器都带有默认设置，因此只需指定接收
+器的名称就足以配置它(例如，`zipkin:`)。如果需要配置或者用户希望更改默认配置，则
+必须在本节中定义这种配置。将覆盖接收器为其提供默认配置的指定配置参数。
 
 > 配置接收器不会启用它。接收器通过[service](#service)节中的管道启用。
 
 必须配置一个或多个接收器。缺省情况下，没有配置接收器。下面提供了一个接收器的基本
 示例。
 
-> 有关接收器的详细配置，请参
-> 阅[receiver README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
+> 有关接收器的详细配置，请参阅[receiver] README.md.
+
+[receiver]: ./receiver.md
 
 ```yaml
 receivers:
@@ -247,30 +241,27 @@ receivers:
   zipkin:
 ```
 
+<a name="processors"></a>
+
 ## Processors - 处理器
 
-<img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"></img>
+![](./img/logos/32x32/Processors.svg){width="35"}
 
-Processors are run on data between being received and being exported. Processors
-are optional though
-[some are recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
+处理器在接收和导出之间的数据上运行。处理器是可选
+的[有些是推荐的](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
 
-The `processors:` section is how processors are configured. Processors may come
-with default settings, but many require configuration. Any configuration for a
-processor must be done in this section. Configuration parameters specified for
-which the processor provides a default configuration are overridden.
+`processors:`部分是如何配置处理器的。处理器可能带有默认设置，但许多处理器需要配
+置。处理器的任何配置都必须在本节中完成。处理器为其提供默认配置的配置参数将被覆盖
+。
 
-> Configuring a processor does not enable it. Processors are enabled via
-> pipelines within the [service](#service) section.
+> 配置处理器不能启用它。处理器是通过[service](#service)节中的管道启用的。
 
-A basic example of the default processors is provided below. The full list of
-processors can be found by combining the list found
-[here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)
-and
-[here](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor).
+下面提供了默认处理器的一个基本示例。完整的处理器列表可以通过组
+合[这里](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)和[这里](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)找
+到。
 
-> For detailed processor configuration, please see the
-> [processor README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
+> 有关详细的处理器配置，请参
+> 阅[processor README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
 
 ```yaml
 processors:
@@ -330,30 +321,27 @@ processors:
       separator: '::'
 ```
 
+<a name="exporters"></a>
+
 ## Exporters - 导出器
 
-<img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
+![](./img/logos/32x32/Exporters.svg){width="35"}
 
-An exporter, which can be push or pull based, is how you send data to one or
-more backends/destinations. Exporters may support one or more
-[data sources](/docs/concepts/signals/).
+导出器可以是基于推或拉的，它是将数据发送到一个或多个后端/目的地的方式。导出器可
+以支持一个或多个[数据源](../concepts/signals/index.md)。
 
-The `exporters:` section is how exporters are configured. Exporters may come
-with default settings, but many require configuration to specify at least the
-destination and security settings. Any configuration for an exporter must be
-done in this section. Configuration parameters specified for which the exporter
-provides a default configuration are overridden.
+`exporters:`部分是如何配置导出器的。导出程序可能带有默认设置，但许多导出程序需要
+配置以至少指定目标和安全设置。导出器的任何配置都必须在本节中完成。将覆盖导出器为
+其提供默认配置的指定配置参数。
 
-> Configuring an exporter does not enable it. Exporters are enabled via
-> pipelines within the [service](#service) section.
+> 配置导出器不会启用它。导出器是通过[service](#service)部分中的管道启用的。
 
-One or more exporters must be configured. By default, no exporters are
-configured. A basic example of exporters is provided below. Certain exporter
-configurations require x.509 certificates to be created in order to be secure,
-as described in [setting up certificates](#setting-up-certificates).
+必须配置一个或多个导出器。缺省情况下，没有配置导出器。下面提供了一个导出器的基本
+示例。为了保证安全，某些导出器配置需要创建 x.509 证书，
+如[设置证书](#setting-up-certificates)中所述。
 
-> For detailed exporter configuration, see the
-> [exporter README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
+> 有关导出器的详细配置，请参
+> 阅[导出器 README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
 
 ```yaml
 exporters:
@@ -409,25 +397,24 @@ exporters:
     endpoint: http://localhost:9411/api/v2/spans
 ```
 
+<a name="connectors"></a>
+
 ## Connectors - 连接器
 
-A connector is both an exporter and receiver. As the name suggests a Connector
-connects two pipelines: It consumes data as an exporter at the end of one
-pipeline and emits data as a receiver at the start of another pipeline. It may
-consume and emit data of the same data type, or of different data types. A
-connector may generate and emit data to summarize the consumed data, or it may
-simply replicate or route data.
+连接器既是输出器又是接收器。顾名思义，连接器连接两个管道:它在一个管道的末端作为
+输出者使用数据，在另一个管道的开始作为接收者发出数据。它可以使用和发出相同数据类
+型或不同数据类型的数据。连接器可以生成和发出数据来总结所使用的数据，也可以简单地
+复制或路由数据。
 
-The `connectors:` section is how connectors are configured.
+`connectors:`部分是如何配置连接器的。
 
-> Configuring a connectors does not enable it. Connectors are enabled via
-> pipelines within the [service](#service) section.
+> 配置连接器不会启用它。连接器是通过[service](#service)节中的管道启用的。
 
-One or more connectors may be configured. By default, no connectors are
-configured. A basic example of connectors is provided below.
+可以配置一个或多个连接器。默认情况下，没有配置连接器。下面提供了一个连接器的基本
+示例。
 
-> For detailed connector configuration, please see the
-> [connector README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
+> 有关连接器的详细配置，请参
+> 阅[connector README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
 
 ```yaml
 connectors:
@@ -462,27 +449,23 @@ connectors:
       max_items: 10
 ```
 
+<a name="extensions"></a>
+
 ## Extensions - 扩展
 
-Extensions are available primarily for tasks that do not involve processing
-telemetry data. Examples of extensions include health monitoring, service
-discovery, and data forwarding. Extensions are optional.
+扩展主要用于不涉及处理遥测数据的任务。扩展的示例包括运行状况监视、服务发现和数据
+转发。扩展是可选的。
 
-The `extensions:` section is how extensions are configured. Many extensions come
-with default settings so simply specifying the name of the extension is enough
-to configure it (for example, `health_check:`). If configuration is required or
-a user wants to change the default configuration then such configuration must be
-defined in this section. Configuration parameters specified for which the
-extension provides a default configuration are overridden.
+`extensions:`部分是如何配置扩展的。许多扩展都带有默认设置，因此只需指定扩展的名
+称就足以配置它(例如，`health_check:`)。如果需要配置或者用户希望更改默认配置，则
+必须在本节中定义这种配置。扩展为其提供默认配置的指定配置参数将被覆盖。
 
-> Configuring an extension does not enable it. Extensions are enabled within the
-> [service](#service) section.
+> 配置扩展并不启用它。扩展在[service](#service)部分中启用。
 
-By default, no extensions are configured. A basic example of extensions is
-provided below.
+默认情况下，没有配置任何扩展。下面提供了一个基本的扩展示例。
 
-> For detailed extension configuration, please see the
-> [extension README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
+> 有关详细的扩展配置，请参
+> 阅[extension README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
 
 ```yaml
 extensions:
@@ -493,43 +476,42 @@ extensions:
     size_mib: 512
 ```
 
+<a name="service"></a>
+
 ## Service - 服务
 
-The service section is used to configure what components are enabled in the
-Collector based on the configuration found in the receivers, processors,
-exporters, and extensions sections. If a component is configured, but not
-defined within the service section then it is not enabled. The service section
-consists of three sub-sections:
+service 部分用于根据接收器、处理器、导出器和扩展部分中的配置配置在 Collector 中
+启用哪些组件。如果一个组件被配置了，但没有在服务部分中定义，那么它是不启用的。服
+务部分由三个部分组成:
 
 - extensions
 - pipelines
 - telemetry
 
-Extensions consist of a list of all extensions to enable. For example:
+扩展包含要启用的所有扩展的列表。例如:
 
 ```yaml
 service:
   extensions: [health_check, pprof, zpages]
 ```
 
-Pipelines can be of the following types:
+管道可以是以下类型:
 
-- traces: collects and processes trace data.
-- metrics: collects and processes metric data.
-- logs: collects and processes log data.
+- traces: 收集和处理跟踪数据。
+- metrics: 收集和处理度量数据。
+- logs: 收集和处理日志数据。
 
-A pipeline consists of a set of receivers, processors and exporters. Each
-receiver/processor/exporter must be defined in the configuration outside of the
-service section to be included in a pipeline.
+管道由一组接收器、处理器和输出器组成。每个接收器/处理器/输出器必须在服务部分之外
+的配置中定义，以便包含在管道中。
 
-_Note:_ Each receiver/processor/exporter can be used in more than one pipeline.
-For processor(s) referenced in multiple pipelines, each pipeline will get a
-separate instance of that processor(s). This is in contrast to
-receiver(s)/exporter(s) referenced in multiple pipelines, where only one
-instance of a receiver/exporter is used for all pipelines. Also note that the
-order of processors dictates the order in which data is processed.
+!!! note
 
-The following is an example pipeline configuration:
+    每个接收器/处理器/输出器可以在多个管道中使用。
+    对于在多个管道中引用的处理器，每个管道将获得该处理器的一个单独实例。
+    这与在多个管道中引用的接收器/导出器形成对比，在多个管道中，只有一个接收器/导出器实例用于所有管道。
+    还要注意，处理器的顺序决定了处理数据的顺序。
+
+管道配置示例如下:
 
 ```yaml
 service:
@@ -543,21 +525,17 @@ service:
       exporters: [opencensus, zipkin]
 ```
 
-Telemetry is where the telemetry for the collector itself can be configured. It
-has two subsections: `logs` and `metrics`.
+遥测是可以配置收集器本身的遥测的地方。它有两个子部分:“日志”和“指标”。
 
-The `logs` subsection allows configuration of the logs generated by the
-collector. By default the collector will write its logs to stderr with a log
-level of `INFO`. You can also add static key-value pairs to all logs using the
-`initial_fields` section.
-[View the full list of `logs` options here.](https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L41-L97)
+`logs`小节允许对收集器生成的日志进行配置。默认情况下，收集器将其日志以`INFO`的日
+志级别写入 stderr。您还可以使用`initial_fields` 部分向所有日志添加静态键值对。
+[在这里查看`logs`选项的完整列表](https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L41-L97)
 
-The `metrics` subsection allows configuration of the metrics generated by the
-collector. By default the collector will generate basic metrics about itself and
-expose them for scraping at `localhost:8888/metrics`
-[View the full list of `metrics` options here.](https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L99-L111)
+`metrics`小节允许配置收集器生成的指标。默认情况下，收集器将生成关于自身的基本指
+标，并将其暴露
+在`localhost:8888/metrics`.[查看完整的“指标”选项列表](https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L99-L111)
 
-The following is an example telemetry configuration:
+遥测配置举例如下:
 
 ```yaml
 service:

@@ -10,7 +10,7 @@ OpenTelemetry JS 为一些常见的开源后端提供了导出器。
 
 下面您将找到一些关于如何设置后端和匹配的导出器的介绍。
 
-## OTLP endpoint
+## OTLP 端点
 
 要将跟踪数据发送到 OTLP 端点(如[collector](/docs/collector)或 Jaeger)，您需要使
 用导出包，例如`@opentelemetry/exporter-trace-otlp-proto`:
@@ -20,10 +20,8 @@ npm install --save @opentelemetry/exporter-trace-otlp-proto \
   @opentelemetry/exporter-metrics-otlp-proto
 ```
 
-Next, configure the exporter to point at an OTLP endpoint. For example you can
-update `instrumentation.ts|js` from the
-[Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
-following:
+接下来，将导出器配置为指向 OTLP 端点。例如，你可以
+从[入门](./getting-started/nodejs.md)中更新`instrumentation.ts|js`，如下所示:
 
 === "Typescript"
 
@@ -98,8 +96,7 @@ following:
     sdk.start();
     ```
 
-To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
-container:
+要快速试用`OTLPTraceExporter`，你可以在 docker 容器中运行 Jaeger:
 
 ```shell
 docker run -d --name jaeger \
@@ -118,53 +115,46 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:latest
 ```
 
-### Usage with the WebTracer
+### 与 WebTracer 一起使用
 
-When you use the OTLP exporter in a browser-based application, you need to note
-that:
+当您在基于浏览器的应用程序中使用 OTLP 导出器时，您需要注意:
 
-1. Using gRPC & http/proto for exporting is not supported
-2. [Content Security Policies][] (CSPs) of your website might block your exports
-3. [Cross-Origin Resource Sharing][] (CORS) headers might not allow your exports
-   to be sent
-4. You might need to expose your collector to the public internet
+1. 不支持使用 gRPC 和 http/proto 进行导出
+2. 您网站的[内容安全策略][](csp)可能会阻止您的导出
+3. [跨域资源共享][](CORS)报头可能不允许发送导出文件
+4. 您可能需要将您的收集器公开到公共互联网上
 
-Below you will find instructions to use the right exporter, to configure your
-CSPs and CORS headers and what precautions you have to take when exposing your
-collector.
+下面将介绍如何使用正确的导出器，如何配置 csp 和 CORS 标头，以及在暴露收集器时必
+须采取的预防措施。
 
-#### Use OTLP exporter with HTTP/JSON
+#### 使用 HTTP/JSON 的 OTLP 导出器
 
-[OpenTelemetry Collector Exporter with gRPC][] and [OpenTelemetry Collector
-Exporter with protobuf][] do only work with Node.js, therefore you are limited
-to use the [OpenTelemetry Collector Exporter with HTTP][].
+[OpenTelemetry Collector exporters with gRPC][]和[OpenTelemetry Collector
+exporters with protobuf][]只能与 Node.js 一起工作，因此你只能使用[OpenTelemetry
+Collector exporters with HTTP][]。
 
-Make sure that the receiving end of your exporter (collector or observability
-backend) does support `http/json`, and that you are exporting your data to the
-right endpoint, i.e., make sure that your port is set to `4318`.
+确保导出器的接收端(收集器或可观察性后端)支持`http/json`，并且将数据导出到正确的
+端点，即确保端口设置为“4318”。
 
-#### Configure CSPs
+#### 配置 CSPs
 
-If your website is making use of Content Security Policies (CSPs), make sure
-that the domain of your OTLP endpoint is included. If your collector endpoint is
-`https://collector.example.com:4318/v1/traces`, add the following directive:
+如果您的网站正在使用内容安全策略(csp)，请确保包含 OTLP 端点的域。如果你的收集器
+端点是`https://collector.example.com:4318/v1/traces`,添加以下指令:
 
 ```text
 connect-src collector.example.com:4318/v1/traces
 ```
 
-If your CSP is not including the OTLP endpoint, you will see an error message,
-stating that the request to your endpoint is violating the CSP directive.
+如果您的 CSP 不包括 OTLP 端点，您将看到一条错误消息，指出对您的端点的请求违反了
+CSP 指令。
 
-#### Configure CORS headers
+#### 配置 CORS 标头
 
-If your website and collector are hosted at a different origin, your browser
-might block the requests going out to your collector. You need to configure
-special headers for Cross-Origin Resource Sharing (CORS).
+如果您的网站和收集器托管在不同的来源，您的浏览器可能会阻止发送到收集器的请求。跨
+域资源共享(Cross-Origin Resource Sharing, CORS)需要配置特殊的头信息。
 
-The OpenTelemetry collector provides [a feature][] for http-based receivers to
-add the required headers to allow the receiver to accept traces from a web
-browser:
+OpenTelemetry 收集器为基于 http 的接收器提供了[一个特性][]来添加所需的标头，以允
+许接收器接受来自 web 浏览器的跟踪:
 
 ```yaml
 receivers:

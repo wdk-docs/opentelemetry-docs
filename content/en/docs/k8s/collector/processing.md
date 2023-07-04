@@ -8,7 +8,7 @@
 
 这项工作的原型是在开放电子-收集器-贡献，设计文件在这里进行更广泛的讨论。
 
-## Summary
+## 摘要
 
 The OpenTelemetry (OTel) collector is a tool to set up pipelines to receive
 telemetry from an application and export it to an observability backend. Part of
@@ -23,7 +23,7 @@ querying model for processors within the collector core, and likely also for use
 in SDKs, to simplify implementation and promote the consistent user experience
 and best practices.
 
-## Goals and non-goals
+## 目标和非目标
 
 Goals:
 
@@ -37,9 +37,9 @@ Non-Goals:
 - Technical design or implementation of configuration experience. Currently
   focused on user experience.
 
-## Use cases for processing
+## 处理用例
 
-### Telemetry mutation
+### 遥测突变
 
 Processors can be used to mutate the telemetry in the collector pipeline.
 OpenTelemetry SDKs collect detailed telemetry from applications, and it is
@@ -78,7 +78,7 @@ expectations.
 The processors implementing this use case are `metricsgenerationprocessor`,
 `spanmetricsprocessor`.
 
-### Grouping
+### 分组
 
 Some processors are stateful, grouping telemetry over a window of time based on
 either a trace ID or an attribute value, or just general batching.
@@ -90,7 +90,7 @@ either a trace ID or an attribute value, or just general batching.
 The processors implementing this use case are `batchprocessor`,
 `groupbyattrprocessor`, `groupbytraceprocessor`.
 
-### Metric temporality
+### 度量世事
 
 Two processors convert between the two types of temporality, cumulative and
 delta. The conversion is generally expected to happen as close to the source
@@ -101,7 +101,7 @@ will be limited.
 
 The processors implementing this use case are `cumulativetodeltaprocessor`.
 
-### Telemetry enrichment
+### 遥测浓缩
 
 OpenTelemetry SDKs focus on collecting application specific data. They also may
 include resource detectors to populate environment specific data but the
@@ -113,7 +113,7 @@ data.
 The processors implementing this use case are `k8sattributesprocessor`,
 `resourcedetectionprocessor`.
 
-## OpenTelemetry Transformation Language
+## OpenTelemetry 转换语言
 
 When looking at the use cases, there are certain common features for telemetry
 mutation and metric generation.
@@ -194,7 +194,7 @@ types of functions do not change the telemetry in any way. Instead, they
 manipulate the transformation language input into a form that will make working
 with the telemetry easier or more efficient.
 
-### Examples
+### 示例
 
 These examples contain a SQL-like declarative language. Applied statements
 interact with only one signal, but statements can be declared across multiple
@@ -348,7 +348,7 @@ only apply filtering once for multiple operations with a shared filter.
 Functions with unknown side effects may cause issues with optimization we will
 need to explore.
 
-## Declarative configuration
+## 声明式配置
 
 The telemetry transformation language presents an SQL-like experience for
 defining telemetry transformations - it is made up of the three primary
@@ -374,7 +374,7 @@ An implementation of the transformation language would likely parse expressions
 into this sort of structure so given an SQL-like implementation, it would likely
 be little overhead to support a YAML approach in addition.
 
-## Function syntax
+## 函数的语法
 
 Functions should be named and formatted according to the following standards.
 
@@ -392,7 +392,7 @@ Functions should be named and formatted according to the following standards.
   parameter.
 - Functions that take a list MUST set the list as the last parameter.
 
-## Implementing a processor function
+## 实现处理器功能
 
 The `replace_match` function may look like this.
 
@@ -429,7 +429,7 @@ on the field within the telemetry. The processor does not need to be aware of
 telemetry filtering, the `where ...` clause, as that will be handled by the
 framework before passing to the function.
 
-## Embedded processors
+## 嵌入式处理器
 
 The above describes a transformation language for configuring processing logic
 in the OpenTelemetry collector. There will be a single processor that exposes
@@ -439,7 +439,7 @@ is to ensure that where appropriate, processing can be embedded into other
 components, for example metric processing is often most appropriate to execute
 within a receiver based on receiver-specific requirements.
 
-## Limitations
+## 限制
 
 There are some known issues and limitations that we hope to address while
 iterating on this idea.

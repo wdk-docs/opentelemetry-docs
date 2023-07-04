@@ -59,3 +59,8 @@ EOF
 要了解更多配置选项，以及使用 OpenTelemetry 工具库设置工作负载的自动检测注入，请
 继续阅
 读[这里](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).
+
+## 参考
+
+- 阿里云
+  [如何在 Kubernetes 集群中自动安装 OpenTelemetry 探针](https://help.aliyun.com/document_detail/378116.html)

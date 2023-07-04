@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2473,7 +2473,7 @@
   
     <li class="md-nav__item">
       <a href="../../../instrumentation/js/libraries/" class="md-nav__link">
-        使用工具库
+        插装库
       </a>
     </li>
   
@@ -3593,7 +3593,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/distributions/" class="md-nav__link">
-        分布
+        发行版
       </a>
     </li>
   
@@ -3677,7 +3677,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/trace-receiver/" class="md-nav__link">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
     </li>
   
@@ -3963,7 +3963,7 @@
   
     <li class="md-nav__item">
       <a href="../vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4089,7 +4089,7 @@
   
     <li class="md-nav__item">
       <a href="../release/" class="md-nav__link">
-        收集器释放程序
+        收集器发布
       </a>
     </li>
   
@@ -4150,36 +4150,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration-and-interface" class="md-nav__link">
-    Configuration and Interface
+  <a href="#_2" class="md-nav__link">
+    配置与接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#collector-state-and-extensions" class="md-nav__link">
-    Collector State and Extensions
+  <a href="#_3" class="md-nav__link">
+    采集器状态和扩展
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
+  <a href="#_4" class="md-nav__link">
+    配置
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#extension-interface" class="md-nav__link">
-    Extension Interface
+  <a href="#_5" class="md-nav__link">
+    扩展接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
+  <a href="#_6" class="md-nav__link">
+    笔记
   </a>
   
 </li>
@@ -9720,36 +9720,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration-and-interface" class="md-nav__link">
-    Configuration and Interface
+  <a href="#_2" class="md-nav__link">
+    配置与接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#collector-state-and-extensions" class="md-nav__link">
-    Collector State and Extensions
+  <a href="#_3" class="md-nav__link">
+    采集器状态和扩展
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    Configuration
+  <a href="#_4" class="md-nav__link">
+    配置
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#extension-interface" class="md-nav__link">
-    Extension Interface
+  <a href="#_5" class="md-nav__link">
+    扩展接口
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
+  <a href="#_6" class="md-nav__link">
+    笔记
   </a>
   
 </li>
@@ -9773,10 +9773,9 @@
 
 
 <h1 id="_1">收集器:扩展<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>Besides the pipeline elements (receivers, processors, and exporters) the
-Collector uses various service extensions (e.g.: healthcheck, z-pages, etc).
-This document describes the “extensions” design and how they are implemented.</p>
-<h2 id="configuration-and-interface">Configuration and Interface<a class="headerlink" href="#configuration-and-interface" title="Permanent link">&para;</a></h2>
+<p>除了管道元素(接收器、处理器和导出器)之外，Collector 还使用各种服务扩展(例如
+:healthcheck、z-pages 等)。本文档描述了“扩展”的设计和实现方式。</p>
+<h2 id="_2">配置与接口<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>The configuration follows the same pattern used for pipelines: a base
 configuration type and the creation of factories to instantiate the extension
 objects.</p>
@@ -9795,11 +9794,11 @@ extensions.</p>
 changes from the extensions to their host. These more complex cases are not
 supported at this moment, but this design doesn’t prevent such extensions in the
 future<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<h2 id="collector-state-and-extensions">Collector State and Extensions<a class="headerlink" href="#collector-state-and-extensions" title="Permanent link">&para;</a></h2>
+<h2 id="_3">采集器状态和扩展<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>The diagram below shows the basic state transitions of the OpenTelemetry
 Collector and how it will interact with the service extensions.</p>
 <p><img alt="ServiceLifeCycle" src="../images/design-service-lifecycle.png" /></p>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h2 id="_4">配置<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>The config package will be extended to load the service extensions when the
 configuration is loaded. The settings for service extensions will live in the
 same configuration file as the pipeline elements. Below is an example of how
@@ -9869,7 +9868,7 @@ key names in the form of <code>type[/name]</code> as defined in this
 <a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="nx">CreateExtension</span><span class="p">(</span><span class="nx">logger</span><span class="w"> </span><span class="o">*</span><span class="nx">zap</span><span class="p">.</span><span class="nx">Logger</span><span class="p">,</span><span class="w"> </span><span class="nx">cfg</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">Extension</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">component</span><span class="p">.</span><span class="nx">Extension</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="extension-interface">Extension Interface<a class="headerlink" href="#extension-interface" title="Permanent link">&para;</a></h2>
+<h2 id="_5">扩展接口<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>The interface defined below is the minimum required for extensions in use on the
 service:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
@@ -9950,7 +9949,7 @@ service:</p>
 <a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="w">    </span><span class="nx">ReportFatalError</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
 <a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<h2 id="_6">笔记<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <div class="footnote">
 <hr />
 <ol>

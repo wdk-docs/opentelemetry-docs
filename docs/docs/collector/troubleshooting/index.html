@@ -69,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sending-test-data" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2473,7 +2473,7 @@
   
     <li class="md-nav__item">
       <a href="../../instrumentation/js/libraries/" class="md-nav__link">
-        使用工具库
+        插装库
       </a>
     </li>
   
@@ -3595,7 +3595,7 @@
   
     <li class="md-nav__item">
       <a href="../distributions/" class="md-nav__link">
-        分布
+        发行版
       </a>
     </li>
   
@@ -3638,23 +3638,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sending-test-data" class="md-nav__link">
-    Sending test data
+  <a href="#_1" class="md-nav__link">
+    发送测试数据
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#checklist-for-debugging-complex-pipelines" class="md-nav__link">
-    Checklist for debugging complex pipelines
+  <a href="#_2" class="md-nav__link">
+    调试复杂管道的检查表
   </a>
   
-    <nav class="md-nav" aria-label="Checklist for debugging complex pipelines">
+    <nav class="md-nav" aria-label="调试复杂管道的检查表">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#more" class="md-nav__link">
-    More
+  <a href="#_3" class="md-nav__link">
+    更多的
   </a>
   
 </li>
@@ -3736,7 +3736,7 @@
   
     <li class="md-nav__item">
       <a href="../trace-receiver/" class="md-nav__link">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
     </li>
   
@@ -4018,7 +4018,7 @@
   
     <li class="md-nav__item">
       <a href="../../k8s/collector/vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4144,7 +4144,7 @@
   
     <li class="md-nav__item">
       <a href="../../k8s/collector/release/" class="md-nav__link">
-        收集器释放程序
+        收集器发布
       </a>
     </li>
   
@@ -9704,23 +9704,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sending-test-data" class="md-nav__link">
-    Sending test data
+  <a href="#_1" class="md-nav__link">
+    发送测试数据
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#checklist-for-debugging-complex-pipelines" class="md-nav__link">
-    Checklist for debugging complex pipelines
+  <a href="#_2" class="md-nav__link">
+    调试复杂管道的检查表
   </a>
   
-    <nav class="md-nav" aria-label="Checklist for debugging complex pipelines">
+    <nav class="md-nav" aria-label="调试复杂管道的检查表">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#more" class="md-nav__link">
-    More
+  <a href="#_3" class="md-nav__link">
+    更多的
   </a>
   
 </li>
@@ -9750,33 +9750,27 @@
 
   <h1>故障排除</h1>
 
-<p>This page describes some options when troubleshooting the health or performance
-of the OpenTelemetry Collector. The Collector provides a variety of metrics,
-logs, and extensions for debugging issues.</p>
-<h2 id="sending-test-data">Sending test data<a class="headerlink" href="#sending-test-data" title="Permanent link">&para;</a></h2>
-<p>For certain types of issues, particularly verifying configuration and debugging
-network issues, it can be helpful to send a small amount of data to a collector
-configured to output to local logs. For details, see
-<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#local-exporters">Local exporters</a>.</p>
-<h2 id="checklist-for-debugging-complex-pipelines">Checklist for debugging complex pipelines<a class="headerlink" href="#checklist-for-debugging-complex-pipelines" title="Permanent link">&para;</a></h2>
-<p>It can be difficult to isolate problems when telemetry flows through multiple
-collectors and networks. For each "hop" of telemetry data through a collector or
-other component in your telemetry pipeline, it’s important to verify the
-following:</p>
+<p>本页描述对 OpenTelemetry Collector 的运行状况或性能进行故障排除时的一些选项。
+Collector 为调试问题提供了各种度量、日志和扩展。</p>
+<h2 id="_1">发送测试数据<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>对于某些类型的问题，特别是验证配置和调试网络问题，将少量数据发送到配置为输出到本
+地日志的收集器可能会有所帮助。详情请参
+阅<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#local-exporters">本地出口商</a>.</p>
+<h2 id="_2">调试复杂管道的检查表<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>当遥测数据流经多个收集器和网络时，很难隔离问题。对于通过采集器或遥测管道中的其他
+组件的遥测数据的每个"hop"，重要的是要验证以下内容:</p>
 <ul>
-<li>Are there error messages in the logs of the collector?</li>
-<li>How is the telemetry being ingested into this component?</li>
-<li>How is the telemetry being modified (i.e. sampling, redacting) by this
-  component?</li>
-<li>How is the telemetry being exported from this component?</li>
-<li>What format is the telemetry in?</li>
-<li>How is the next hop configured?</li>
-<li>Are there any network policies that prevent data from getting in or out?</li>
+<li>采集器日志中是否有错误信息?</li>
+<li>遥测技术是如何被吸收到这个组件中的?</li>
+<li>该组件如何修改遥测(即采样，编辑)?</li>
+<li>如何从该组件导出遥测数据?</li>
+<li>遥测采用什么格式?</li>
+<li>下一跳是如何配置的?</li>
+<li>是否有阻止数据进出的网络策略?</li>
 </ul>
-<h3 id="more">More<a class="headerlink" href="#more" title="Permanent link">&para;</a></h3>
-<p>For detailed recommendations, including common problems, see
-<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md">Troubleshooting</a>
-from the Collector repo.</p>
+<h3 id="_3">更多的<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>有关详细建议(包括常见问题)，请参阅 Collector repo 中
+的<a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md">故障排除</a>。</p>
 
 
 

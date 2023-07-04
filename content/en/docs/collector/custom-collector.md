@@ -3,49 +3,40 @@ title: 构建自定义收集器
 weight: 29
 ---
 
-If you are planning to build and debug custom collector receivers, processors,
-extensions, or exporters, you are going to need your own Collector instance.
-That will allow you to launch and debug your OpenTelemetry Collector components
-directly within your favorite Golang IDE.
+如果您计划构建和调试自定义收集器接收器、处理器、扩展或导出程序，您将需要自己的收
+集器实例。这将允许您在最喜欢的 Golang IDE 中直接启动和调试 OpenTelemetry
+Collector 组件。
 
-The other interesting aspect of approaching the component development this way
-is that you can use all the debugging features from your IDE (stack traces are
-great teachers!) to understand how the Collector itself interacts with your
-component code.
+以这种方式进行组件开发的另一个有趣的方面是，您可以使用 IDE 中的所有调试特性(堆栈
+跟踪是很好的老师!)来理解 Collector 本身如何与组件代码交互。
 
-The OpenTelemetry Community developed a tool called [OpenTelemetry Collector
-builder][ocb] (or `ocb` for short) to assist people in assembling their own
-distribution, making it easy to build a distribution that includes their custom
-components along with components that are publicly available.
+OpenTelemetry 社区开发了一个名为[OpenTelemetry Collector builder][ocb](或简称为
+“ocb”)的工具来帮助人们组装他们自己的发行版，使构建一个包含他们自定义组件和公开可
+用组件的发行版变得容易。
 
-As part of the process the `builder` will generate the Collector's source code,
-which you can use to help build and debug your own custom components, so let's
-get started.
+作为该过程的一部分，“构建器”将生成收集器的源代码，您可以使用它来帮助构建和调试您
+自己的自定义组件，所以让我们开始吧。
 
-## Step 1 - Install the builder
+## 步骤 1 - 安装构建器
 
-The `ocb` binary is available as a downloadable asset from [OpenTelemetry
-Collector releases][releases]. You will find the list of assets at the bottom of
-the page. Assets are named based on OS and chipset, so download the one that
-fits your configuration.
+`ocb`二进制文件可以从[OpenTelemetry Collector releases][releases]下载。您将在页
+面底部找到资产列表。资产是根据操作系统和芯片组命名的，所以请下载适合您配置的资产
+。
 
-The binary has a pretty long name, so you can simply rename it to `ocb`; and if
-you are running Linux or macOS, you will also need to provide execution
-permissions for the binary.
+二进制文件有一个很长的名字，所以你可以简单地把它重命名为' ocb ';如果你运行的是
+Linux 或 macOS，你还需要提供二进制文件的执行权限。
 
-Open your terminal and type the following commands to accomplish both
-operations:
+打开你的终端，输入以下命令来完成这两个操作:
 
 ```cmd
 mv ocb_{{% param collectorVersion %}}_darwin_amd64 ocb
 chmod 777 ocb
 ```
 
-To make sure the `ocb` is ready to be used, go to your terminal and type
-`./ocb help`, and once you hit enter you should have the output of the `help`
-command showing up in your console.
+为了确保' ocb '已经准备好使用，进入你的终端并输入' ./ocb help '，一旦你按下
+enter 键，你应该会在控制台中看到' help '命令的输出。
 
-## Step 2 - Create a builder manifest file
+## 步骤 2 -创建构建器清单文件
 
 The builder's `manifest` file is a `yaml` where you pass information about the
 code generation and compile process combined with the components that you would
@@ -127,7 +118,7 @@ receivers:
       go.opentelemetry.io/collector/receiver/otlpreceiver v{{% param collectorVersion %}}
 ```
 
-## Step 3 - Generating the Code and Building your Collector's distribution.
+## 步骤 3 -生成代码并构建收集器的分发。
 
 All you need now is to let the `ocb` do it's job, so go to your terminal and
 type the following command:

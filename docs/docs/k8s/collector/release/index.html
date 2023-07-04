@@ -25,7 +25,7 @@
     
     
       
-        <title>收集器释放程序 - OPENTELEMETRY 文档</title>
+        <title>收集器发布 - OPENTELEMETRY 文档</title>
       
     
     
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              收集器释放程序
+              收集器发布
             
           </span>
         </div>
@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2473,7 +2473,7 @@
   
     <li class="md-nav__item">
       <a href="../../../instrumentation/js/libraries/" class="md-nav__link">
-        使用工具库
+        插装库
       </a>
     </li>
   
@@ -3593,7 +3593,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/distributions/" class="md-nav__link">
-        分布
+        发行版
       </a>
     </li>
   
@@ -3677,7 +3677,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/trace-receiver/" class="md-nav__link">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
     </li>
   
@@ -3963,7 +3963,7 @@
   
     <li class="md-nav__item">
       <a href="../vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4098,12 +4098,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          收集器释放程序
+          收集器发布
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        收集器释放程序
+        收集器发布
       </a>
       
         
@@ -4129,51 +4129,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#releasing-opentelemetry-collector" class="md-nav__link">
-    Releasing opentelemetry-collector
+  <a href="#opentelemetry-collector" class="md-nav__link">
+    发布 opentelemetry-collector
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#releasing-opentelemetry-collector-contrib" class="md-nav__link">
-    Releasing opentelemetry-collector-contrib
+  <a href="#opentelemetry-collector-contrib" class="md-nav__link">
+    发布 opentelemetry-collector-contrib
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#producing-the-artifacts" class="md-nav__link">
-    Producing the artifacts
+  <a href="#_3" class="md-nav__link">
+    生成工件
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    Troubleshooting
+  <a href="#_4" class="md-nav__link">
+    故障排除
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bugfix-releases" class="md-nav__link">
-    Bugfix releases
+  <a href="#_5" class="md-nav__link">
+    错误修复版本
   </a>
   
-    <nav class="md-nav" aria-label="Bugfix releases">
+    <nav class="md-nav" aria-label="错误修复版本">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bugfix-release-criteria" class="md-nav__link">
-    Bugfix release criteria
+  <a href="#bug" class="md-nav__link">
+    bug 修复发布标准
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#bugfix-release-procedure" class="md-nav__link">
-    Bugfix release procedure
+  <a href="#bug_1" class="md-nav__link">
+    bug 修复发布过程
   </a>
   
 </li>
@@ -4184,8 +4184,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#release-schedule" class="md-nav__link">
-    Release schedule
+  <a href="#_6" class="md-nav__link">
+    发布时间表
   </a>
   
 </li>
@@ -9761,51 +9761,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#releasing-opentelemetry-collector" class="md-nav__link">
-    Releasing opentelemetry-collector
+  <a href="#opentelemetry-collector" class="md-nav__link">
+    发布 opentelemetry-collector
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#releasing-opentelemetry-collector-contrib" class="md-nav__link">
-    Releasing opentelemetry-collector-contrib
+  <a href="#opentelemetry-collector-contrib" class="md-nav__link">
+    发布 opentelemetry-collector-contrib
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#producing-the-artifacts" class="md-nav__link">
-    Producing the artifacts
+  <a href="#_3" class="md-nav__link">
+    生成工件
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    Troubleshooting
+  <a href="#_4" class="md-nav__link">
+    故障排除
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bugfix-releases" class="md-nav__link">
-    Bugfix releases
+  <a href="#_5" class="md-nav__link">
+    错误修复版本
   </a>
   
-    <nav class="md-nav" aria-label="Bugfix releases">
+    <nav class="md-nav" aria-label="错误修复版本">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#bugfix-release-criteria" class="md-nav__link">
-    Bugfix release criteria
+  <a href="#bug" class="md-nav__link">
+    bug 修复发布标准
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#bugfix-release-procedure" class="md-nav__link">
-    Bugfix release procedure
+  <a href="#bug_1" class="md-nav__link">
+    bug 修复发布过程
   </a>
   
 </li>
@@ -9816,8 +9816,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#release-schedule" class="md-nav__link">
-    Release schedule
+  <a href="#_6" class="md-nav__link">
+    发布时间表
   </a>
   
 </li>
@@ -9840,32 +9840,33 @@
   
 
 
-<h1 id="_1">收集器释放程序<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">收集器发布<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>收集器的构建和测试目前是完全自动化的。然而，为了发布，仍然需要手动执行某些操作。</p>
 <p>我们以相同的版本发布 core 和 contrib 收集器，其中 contrib 版本使用 core 版本作为
 依赖。我们把这个过程分为四个部分。发布工程师必须发布:</p>
 <ol>
-<li>The <a href="#releasing-opentelemetry-collector">Core</a> collector, including the
-   collector builder CLI tool.</li>
-<li>The <a href="#releasing-opentelemetry-collector-contrib">Contrib</a> collector.</li>
-<li>The <a href="#producing-the-artifacts">artifacts</a></li>
+<li><a href="#releasing-opentelemetry-collector">Core</a>收集器，包括收集器构建器 CLI 工具。</li>
+<li><a href="#releasing-opentelemetry-collector-contrib">Contrib</a>收集器。</li>
+<li><a href="#producing-the-artifacts">artifacts</a></li>
 </ol>
-<p><strong>Important Note:</strong> You’ll need to be able to sign git commits/tags in order to
-be able to release a collector version. Follow
-<a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">this guide</a>
-to setup it up.</p>
-<p><strong>Important Note:</strong> You’ll need to be an approver for both the repos in order to
-be able to make the release. This is required as you’ll need to push tags and
-commits directly to the following repositories:</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>你需要能够签署 git 提交/标签，以便能够发布收集器版本。
+  按照<a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">本指南</a>进行设置。</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>为了能够发布，您需要成为两个存储库的审批人。
+  这是必需的，因为您需要将标签直接推送并提交到以下存储库:</p>
+</div>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector">open-telemetry/opentelemetry-collector</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib">open-telemetry/opentelemetry-collector-contrib</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-releases">open-telemetry/opentelemetry-collector-releases</a></li>
 </ul>
 <h2 id="_2">发布管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>A release manager is the person responsible for a specific release. While the
-manager might request help from other folks, they are ultimately responsible for
-the success of a release.</p>
+<p>发布管理员是负责特定发布的人。虽然管理员可能会向其他人请求帮助，但他们最终要对发
+布的成功负责。</p>
 <p>In order to have more people comfortable with the release process, and in order
 to decrease the burden on a small number of volunteers, all core approvers are
 release managers from time to time, listed under the
@@ -9875,7 +9876,7 @@ removing themselves from the top of the table.</p>
 <p>It is possible that a core approver isn't a contrib approver. In that case, the
 release manager should coordinate with a contrib approver for the steps
 requiring such role, like the publishing of tags.</p>
-<h2 id="releasing-opentelemetry-collector">Releasing opentelemetry-collector<a class="headerlink" href="#releasing-opentelemetry-collector" title="Permanent link">&para;</a></h2>
+<h2 id="opentelemetry-collector">发布 opentelemetry-collector<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Determine the version number that will be assigned to the release. During the
@@ -9942,7 +9943,7 @@ requiring such role, like the publishing of tags.</p>
    forward until this PR is merged.</p>
 </li>
 </ol>
-<h2 id="releasing-opentelemetry-collector-contrib">Releasing opentelemetry-collector-contrib<a class="headerlink" href="#releasing-opentelemetry-collector-contrib" title="Permanent link">&para;</a></h2>
+<h2 id="opentelemetry-collector-contrib">发布 opentelemetry-collector-contrib<a class="headerlink" href="#opentelemetry-collector-contrib" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Manually run the action
@@ -9976,12 +9977,11 @@ requiring such role, like the publishing of tags.</p>
    description.</p>
 </li>
 </ol>
-<h2 id="producing-the-artifacts">Producing the artifacts<a class="headerlink" href="#producing-the-artifacts" title="Permanent link">&para;</a></h2>
-<p>The last step of the release process creates artifacts for the new version of
-the collector and publishes images to Dockerhub. The steps in this portion of
-the release are done in the
-<a href="https://github.com/open-telemetry/opentelemetry-collector-releases">opentelemetry-collector-releases</a>
-repo.</p>
+<h2 id="_3">生成工件<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>发布过程的最后一步是为新版本的收集器创建工件，并将映像发布到 Dockerhub。该版本的
+这一部分的步骤
+在<a href="https://github.com/open-telemetry/opentelemetry-collector-releases">opentelemetry-collector-releases</a>
+repo 中完成。</p>
 <ol>
 <li>
 <p>Update the <code>./distribution/**/manifest.yaml</code> files to include the new release
@@ -10016,7 +10016,7 @@ repo.</p>
       <a href="https://github.com/open-telemetry/opentelemetry-collector-releases/actions/runs/1346637081">example</a>.</p>
 </li>
 </ol>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h2 id="_4">故障排除<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ol>
 <li><code>unknown revision internal/coreinternal/v0.55.0</code> -- This is typically an
    indication that there's a dependency on a new module. You can fix it by
@@ -10053,8 +10053,8 @@ repo.</p>
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span>git<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">REMOTE</span><span class="si">}</span><span class="w"> </span><span class="nv">$$</span><span class="o">{</span>tag<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">done</span><span class="p">;</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="bugfix-releases">Bugfix releases<a class="headerlink" href="#bugfix-releases" title="Permanent link">&para;</a></h2>
-<h3 id="bugfix-release-criteria">Bugfix release criteria<a class="headerlink" href="#bugfix-release-criteria" title="Permanent link">&para;</a></h3>
+<h2 id="_5">错误修复版本<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="bug">bug 修复发布标准<a class="headerlink" href="#bug" title="Permanent link">&para;</a></h3>
 <p>Both <code>opentelemetry-collector</code> and <code>opentelemetry-collector-contrib</code> have very
 short 2 week release cycles. Because of this, we put a high bar when considering
 making a patch release, to avoid wasting engineering time unnecessarily.</p>
@@ -10085,7 +10085,7 @@ within five business days.</p>
 <p>The OpenTelemetry Collector maintainers will ultimately have the responsibility
 to assess if a given bug or security issue fulfills all the necessary criteria
 and may grant exceptions in a case-by-case basis.</p>
-<h3 id="bugfix-release-procedure">Bugfix release procedure<a class="headerlink" href="#bugfix-release-procedure" title="Permanent link">&para;</a></h3>
+<h3 id="bug_1">bug 修复发布过程<a class="headerlink" href="#bug_1" title="Permanent link">&para;</a></h3>
 <p>The following documents the procedure to release a bugfix</p>
 <ol>
 <li>Create a pull request against the <code>release/&lt;release-series&gt;</code> (e.g.
@@ -10109,7 +10109,7 @@ and may grant exceptions in a case-by-case basis.</p>
    branch via GitHub.</li>
 <li>Once the patch is release, disable the <strong>Merge pull request</strong> setting.</li>
 </ol>
-<h2 id="release-schedule">Release schedule<a class="headerlink" href="#release-schedule" title="Permanent link">&para;</a></h2>
+<h2 id="_6">发布时间表<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>

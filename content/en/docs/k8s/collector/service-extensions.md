@@ -1,10 +1,9 @@
 # 收集器:扩展
 
-Besides the pipeline elements (receivers, processors, and exporters) the
-Collector uses various service extensions (e.g.: healthcheck, z-pages, etc).
-This document describes the “extensions” design and how they are implemented.
+除了管道元素(接收器、处理器和导出器)之外，Collector 还使用各种服务扩展(例如
+:healthcheck、z-pages 等)。本文档描述了“扩展”的设计和实现方式。
 
-## Configuration and Interface
+## 配置与接口
 
 The configuration follows the same pattern used for pipelines: a base
 configuration type and the creation of factories to instantiate the extension
@@ -28,14 +27,14 @@ changes from the extensions to their host. These more complex cases are not
 supported at this moment, but this design doesn’t prevent such extensions in the
 future[^1].
 
-## Collector State and Extensions
+## 采集器状态和扩展
 
 The diagram below shows the basic state transitions of the OpenTelemetry
 Collector and how it will interact with the service extensions.
 
 ![ServiceLifeCycle](images/design-service-lifecycle.png)
 
-## Configuration
+## 配置
 
 The config package will be extended to load the service extensions when the
 configuration is loaded. The settings for service extensions will live in the
@@ -87,7 +86,7 @@ type Factory interface {
 }
 ```
 
-## Extension Interface
+## 扩展接口
 
 The interface defined below is the minimum required for extensions in use on the
 service:
@@ -134,7 +133,7 @@ type Host interface {
 }
 ```
 
-## Notes
+## 笔记
 
 [^1]:
     This can be done by adding specific interfaces to extension types that

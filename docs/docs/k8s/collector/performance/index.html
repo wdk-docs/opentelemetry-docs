@@ -1235,7 +1235,7 @@
   
     <li class="md-nav__item">
       <a href="../../../concepts/distributions/" class="md-nav__link">
-        分发
+        发行版
       </a>
     </li>
   
@@ -2473,7 +2473,7 @@
   
     <li class="md-nav__item">
       <a href="../../../instrumentation/js/libraries/" class="md-nav__link">
-        使用工具库
+        插装库
       </a>
     </li>
   
@@ -3593,7 +3593,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/distributions/" class="md-nav__link">
-        分布
+        发行版
       </a>
     </li>
   
@@ -3677,7 +3677,7 @@
   
     <li class="md-nav__item">
       <a href="../../../collector/trace-receiver/" class="md-nav__link">
-        建立跟踪接收器
+        构建跟踪接收器
       </a>
     </li>
   
@@ -3963,7 +3963,7 @@
   
     <li class="md-nav__item">
       <a href="../vision/" class="md-nav__link">
-        采集器的长期愿景
+        长期愿景
       </a>
     </li>
   
@@ -4038,22 +4038,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
-    Testing
+  <a href="#_2" class="md-nav__link">
+    测试
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#results-without-tail-based-sampling" class="md-nav__link">
-    Results without tail-based sampling
+  <a href="#_3" class="md-nav__link">
+    无尾抽样的结果
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#results-with-tail-based-sampling" class="md-nav__link">
-    Results with tail-based sampling
+  <a href="#_4" class="md-nav__link">
+    基于尾部抽样的结果
   </a>
   
 </li>
@@ -4144,7 +4144,7 @@
   
     <li class="md-nav__item">
       <a href="../release/" class="md-nav__link">
-        收集器释放程序
+        收集器发布
       </a>
     </li>
   
@@ -9706,22 +9706,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
-    Testing
+  <a href="#_2" class="md-nav__link">
+    测试
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#results-without-tail-based-sampling" class="md-nav__link">
-    Results without tail-based sampling
+  <a href="#_3" class="md-nav__link">
+    无尾抽样的结果
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#results-with-tail-based-sampling" class="md-nav__link">
-    Results with tail-based sampling
+  <a href="#_4" class="md-nav__link">
+    基于尾部抽样的结果
   </a>
   
 </li>
@@ -9761,7 +9761,7 @@ depends on a variety of factors including:</p>
 <li>CPU / Memory allocation</li>
 <li>Operating System: Linux</li>
 </ul>
-<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<h2 id="_2">测试<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>Testing was completed on Linux using the
 <a href="https://github.com/Omnition/synthetic-load-generator">Synthetic Load Generator utility</a>
 running for a minimum of one hour (i.e. sustained rate). You can reproduce these
@@ -9774,7 +9774,7 @@ below.</p>
 <li>MaxQueueSize [default: 100]</li>
 <li>SubmissionRate(spans/sec): 100,000</li>
 </ul>
-<h2 id="results-without-tail-based-sampling">Results without tail-based sampling<a class="headerlink" href="#results-without-tail-based-sampling" title="Permanent link">&para;</a></h2>
+<h2 id="_3">无尾抽样的结果<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -9838,10 +9838,11 @@ either:</p>
 <li>Scale-out by putting one or more collectors behind a load balancer or k8s
   service</li>
 </ul>
-<h2 id="results-with-tail-based-sampling">Results with tail-based sampling<a class="headerlink" href="#results-with-tail-based-sampling" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Note: Additional memory is required for tail-based sampling</p>
-</blockquote>
+<h2 id="_4">基于尾部抽样的结果<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>基于尾部的采样需要额外的内存</p>
+</div>
 <table>
 <thead>
 <tr>
