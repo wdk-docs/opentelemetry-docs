@@ -1,42 +1,33 @@
 ---
-title: Contribution guidelines
-description: How to contribute to OpenTelemetry
+title: 贡献的指导方针
+description: 如何为OpenTelemetry做出贡献
 toc_hide: true
 ---
 
-OpenTelemetry is an open source project, and we gladly accept new contributions
-and contributors. Please see the CONTRIBUTING.md file in each SIG repository for
-information on getting started.
+OpenTelemetry是一个开源项目，我们很高兴接受新的贡献和贡献者。
+请参阅每个SIG存储库中的CONTRIBUTING.md文件以获得有关入门的信息。
 
-## Contributing to the OpenTelemetry Documentation
+## 对OpenTelemetry文档做出贡献
 
-Individual SIGs may maintain documentation above and beyond what is offered
-here, but we strive for accurate general guidance on using the project from our
-main website.
+单独的 SIGs 可能会维护文档，在这里提供的之外，但是我们努力从我们的主要网站上使用项目的准确的一般指导。
 
-The per-language API, SDK, and "Getting Started" documentation is hosted in each
-language's GitHub repository. For more information,
-[see the Mirrored Documentation section](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md#mirrored-documentation)
-of the website repository's CONTRIBUTING.md file.
+每种语言的API、SDK和“入门”文档都托管在每种语言的GitHub存储库中。
+有关更多信息，请参阅网站存储库的CONTRIBUTING.md文件的[镜像文档部分](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md#mirrored-documentation)。
 
-### Contributor License Agreement (CLA)
+### 贡献者许可协议(CLA)
 
-Contributors to this and other OpenTelemetry projects require acceptance of our
-CLA, managed by [EasyCLA](https://lfcla.com/).
+本项目和其他OpenTelemetry项目的贡献者需要接受我们的CLA，由[EasyCLA](https://lfcla.com/)管理。
 
-### Code reviews
+### 代码评审
 
-All submissions, including submissions by project members, require review. We
-use GitHub pull requests for this purpose. Consult
-[GitHub Help](https://help.github.com/articles/about-pull-requests/) for more
-information on using pull requests.
+所有提交的文件，包括项目成员提交的文件，都需要审查。
+为此，我们使用GitHub pull request。
+咨询[GitHub帮助](https://help.github.com/articles/about-pull-requests/)有关使用拉请求的更多信息。
 
-### Getting started
+### 开始
 
-See [README.md](https://github.com/open-telemetry/opentelemetry.io#readme) for
-current information.
+请参阅[README.md](https://github.com/open-telemetry/opentelemetry.io#readme)获取当前信息。
 
-## Code of conduct
+## 行为准则
 
-OpenTelemetry follows the
-[CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
+openteletry遵循[CNCF行为准则](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).

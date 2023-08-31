@@ -4,11 +4,10 @@ linkTitle: Shipping
 aliases: [/docs/demo/services/shippingservice]
 ---
 
-This service is responsible for providing shipping information including pricing
-and tracking information, when requested from Checkout Service.
+当结帐服务请求时，此服务负责提供运输信息，包括定价和跟踪信息。
 
-Shipping service is built primarily with Tonic, Reqwest, and OpenTelemetry
-Libraries/Components. Other sub-dependencies are included in `Cargo.toml`.
+Shipping service 主要是用 Tonic、Reqwest 和 OpenTelemetry 库/组件构建的。其他子
+依赖项包含在`Cargo.toml`中。
 
 Depending on your framework and runtime, you may consider consulting
 [rust docs](/docs/instrumentation/rust/) to supplement. You'll find examples of

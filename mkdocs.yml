@@ -14,7 +14,7 @@ edit_uri: edit/master/content
 
 theme:
   name: material
-  logo: assets/logo/logo.svg
+  logo: ./assets/img/logos/opentelemetry-horizontal-color.svg
   favicon: assets/favicons/favicon.ico
   language: zh
   # custom_dir: overrides
@@ -152,8 +152,7 @@ nav:
           - ./docs/migration/opentracing.md
       - 致谢:
           - ./docs/acknowledgements/index.md
-      - contribution-guidelines:
-          - docs/contribution-guidelines.md
+      - ./docs/contribution-guidelines.md
   - 概念:
       - ./docs/concepts/index.md
       - ./docs/concepts/observability-primer.md

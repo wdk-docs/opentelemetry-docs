@@ -1,24 +1,20 @@
 ---
-title: Frontend
+title: 前端
 ---
 
-The frontend is responsible to provide a UI for users, as well as an API
-leveraged by the UI or other clients. The application is based on
-[Next.JS](https://nextjs.org/) to provide a React web-based UI and API routes.
+前端负责为用户提供 UI，以及 UI 或其他客户端所利用的 API。该应用基
+于[Next.JS](https://nextjs.org/)提供基于 React 的 UI 和 API 路由。
 
-[Frontend source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/)
+[前端源码](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/)
 
-## Server Instrumentation
+## 服务器插装
 
-It is recommended to use a Node required module when starting your NodeJS
-application to initialize the SDK and auto-instrumentation. When initializing
-the OpenTelemetry Node.js SDK, you optionally specify which auto-instrumentation
-libraries to leverage, or make use of the `getNodeAutoInstrumentations()`
-function which includes most popular frameworks. The
-`utils/telemetry/Instrumentation.js` file contains all code required to
-initialize the SDK and auto-instrumentation based on standard
-[OpenTelemetry environment variables](/docs/specs/otel/configuration/sdk-environment-variables/)
-for OTLP export, resource attributes, and service name.
+建议在启动 NodeJS 应用程序时使用 Node required 模块来初始化 SDK 和自动检测。在初
+始化 OpenTelemetry Node.js SDK 时，您可以选择指定要利用哪些自动检测库，或者使
+用`getNodeAutoInstrumentations()`函数，其中包括大多数流行的框架。
+`utils/telemetry/Instrumentation.js`文件包含了初始化 SDK 和基于标
+准[OpenTelemetry 环境变量](/docs/specs/otel/configuration/sdk-environment-variables/)用
+于 OTLP 导出、资源属性和服务名称的自动检测所需的所有代码。
 
 ```javascript
 const opentelemetry = require('@opentelemetry/sdk-node');
@@ -79,9 +75,8 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-Node required modules are loaded using the `--require` command line argument.
-This can be done in the `scripts.start` section of `package.json` and starting
-the application using `npm start`.
+节点所需模块使用`--require`命令行参数加载。这可以
+在`package.json`的`scripts.start`部分中完成，并使用`npm start`启动应用程序。
 
 ```json
   "scripts": {
@@ -89,9 +84,9 @@ the application using `npm start`.
   },
 ```
 
-## Traces
+## 追踪
 
-### Span Exceptions and status
+### Span 异常和状态
 
 You can use the span object's `recordException` function to create a span event
 with the full stack trace of a handled error. When recording an exception also
@@ -104,7 +99,7 @@ span.recordException(error as Exception);
 span.setStatus({ code: SpanStatusCode.ERROR });
 ```
 
-### Create new spans
+### 创建新 spans
 
 New spans can be created and started using
 `Tracer.startSpan("spanName", options)`. Several options can be used to specify
@@ -133,7 +128,7 @@ span = tracer.startSpan(`HTTP ${method}`, {
 });
 ```
 
-## Browser Instrumentation
+## 浏览器插装
 
 The web-based UI that the frontend provides is also instrumented for web
 browsers. OpenTelemetry instrumentation is included as part of the Next.js App
@@ -213,23 +208,21 @@ const FrontendTracer = async () => {
 export default FrontendTracer;
 ```
 
-## Metrics
+## 度量
 
 TBD
 
-## Logs
+## 日志
 
 TBD
 
 ## Baggage
 
-OpenTelemetry Baggage is leveraged in the frontend to check if the request is
-synthetic (from the load generator). Synthetic requests will force the creation
-of a new trace. The root span from the new trace will contain many of the same
-attributes as an HTTP request instrumented span.
+前端利用 OpenTelemetry 包袱来检查请求是否合成(来自负载生成器)。合成请求将强制创
+建新的跟踪。来自新跟踪的根 span 将包含许多与 HTTP 请求检测的 span 相同的属性。
 
-To determine if a Baggage item is set, you can leverage the `propagation` API to
-parse the Baggage header, and leverage the `baggage` API to get or set entries.
+要确定是否设置了一个包袱项，您可以利用`propagation`API 来解析包袱标头，并利
+用`baggage`API 来获取或设置条目。
 
 ```typescript
     const baggage = propagation.getBaggage(context.active());

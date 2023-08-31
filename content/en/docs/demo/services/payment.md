@@ -1,16 +1,14 @@
 ---
-title: Payment Service
+title: 支付服务
 linkTitle: Payment
 aliases: [/docs/demo/services/paymentservice]
 ---
 
-This service is responsible to process credit card payments for orders. It will
-return an error if the credit card is invalid or the payment can not be
-processed.
+此服务负责处理订单的信用卡支付。如果信用卡无效或无法处理付款，它将返回一个错误。
 
-[Payment service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/paymentservice/)
+[支付服务源码](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/paymentservice/)
 
-## Initializing OpenTelemetry
+## 初始化 OpenTelemetry
 
 It is recommended to `require` Node.js app using an initializer file that
 initializes the SDK and auto-instrumentation. When initializing the
@@ -89,9 +87,9 @@ You can then use `opentelemetry.js` to start your app. This can be done in the
 ENTRYPOINT [ "node", "./opentelemetry.js" ]
 ```
 
-## Traces
+## 追踪
 
-### Add attributes to auto-instrumented spans
+### 向自动检测的 spans 添加属性
 
 Within the execution of auto-instrumented code you can get current span from
 context.
@@ -110,7 +108,7 @@ span.setAttributes({
 });
 ```
 
-### Span Exceptions and status
+### Span 异常和状态
 
 You can use the span object's `recordException` function to create a span event
 with the full stack trace of a handled error. When recording an exception also
@@ -122,9 +120,9 @@ span.recordException(err);
 span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
 ```
 
-## Metrics
+## 度量
 
-### Creating Meters and Instruments
+### 创建仪表和仪器
 
 Meters can be created using the `@opentelemetry/api-metrics` package. You can
 create meters as seen below, and then use the created meter to create
@@ -140,7 +138,7 @@ const transactionsCounter = meter.createCounter('app.payment.transactions');
 Meters and Instruments are supposed to stick around. This means you should get a
 Meter or an Instrument once , and then re-use it as needed, if possible.
 
-## Logs
+## 日志
 
 TBD
 

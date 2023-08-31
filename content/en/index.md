@@ -10,9 +10,7 @@ developer_note:
 spelling: cSpell:ignore shortcode
 ---
 
-[@opentelemetry](https://fosstodon.org/@opentelemetry")
-
-![OpenTelemetry](./assets/img/logos/opentelemetry-horizontal-color.svg)
+[@opentelemetry](https://fosstodon.org/@opentelemetry)
 
 - [了解更多](./docs/what-is-opentelemetry.md)
 - [试试这个演示](./docs/demo/index.md)

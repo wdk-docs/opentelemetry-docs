@@ -6,9 +6,10 @@ cascade:
 weight: 2
 ---
 
-欢迎来到[OpenTelemetry Demo](/ecosystem/demo/)文档，它涵盖了如何安装和运行演示，以及一些可以用来查看OpenTelemetry的场景。
+欢迎来到[OpenTelemetry Demo](/ecosystem/demo/)文档，它涵盖了如何安装和运行演示，
+以及一些可以用来查看 OpenTelemetry 的场景。
 
-## 运行Demo
+## 运行 Demo
 
 想要部署演示并查看实际情况吗?从这里开始。
 
@@ -19,62 +20,60 @@ weight: 2
 
 想要了解特定语言的检测是如何工作的?从这里开始。
 
-| Language      | Automatic Instrumentation                          | Instrumentation Libraries                                                                                                                | Manual Instrumentation                                                                       |
-| ------------- | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| .NET          |                                                    | [Cart Service](services/cart/)                                                                                                           | [Cart Service](services/cart/)                                                               |
-| C++           |                                                    |                                                                                                                                          | [Currency Service](services/currency/)                                                       |
-| Erlang/Elixir |                                                    | [Feature Flag Service](services/feature-flag/)                                                                                           | [Feature Flag Service](services/feature-flag/)                                               |
-| Go            |                                                    | [Accounting Service](services/accounting/), [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) |
-| Java          | [Ad Service](services/ad/)                         |                                                                                                                                          | [Ad Service](services/ad/)                                                                   |
-| JavaScript    |                                                    | [Frontend](services/frontend/)                                                                                                           | [Frontend](services/frontend/), [Payment Service](services/payment/)                         |
-| Kotlin        |                                                    | [Fraud Detection Service](services/fraud-detection/)                                                                                     |                                                                                              |
-| PHP           |                                                    | [Quote Service](services/quote/)                                                                                                         | [Quote Service](services/quote/)                                                             |
-| Python        | [Recommendation Service](services/recommendation/) |                                                                                                                                          | [Recommendation Service](services/recommendation/)                                           |
-| Ruby          |                                                    | [Email Service](services/email/)                                                                                                         | [Email Service](services/email/)                                                             |
-| Rust          |                                                    | [Shipping Service](services/shipping/)                                                                                                   | [Shipping Service](services/shipping/)                                                       |
+| 语言          | 自动插装                             | 插装库                                                                                                      | 手动插装                                                                  |
+| ------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| .NET          |                                      | [Cart Service](services/cart/)                                                                              | [Cart Service](services/cart/)                                            |
+| C++           |                                      |                                                                                                             | [货币服务](services/currency/)                                            |
+| Erlang/Elixir |                                      | [特征标志服务](services/feature-flag/)                                                                      | [特征标志服务](services/feature-flag/)                                    |
+| Go            |                                      | [会计服务](services/accounting/), [结账服务](services/checkout/), [产品目录服务](services/product-catalog/) | [结账服务](services/checkout/), [产品目录服务](services/product-catalog/) |
+| Java          | [Ad 服务](services/ad/)              |                                                                                                             | [Ad 服务](services/ad/)                                                   |
+| JavaScript    |                                      | [前端](services/frontend/)                                                                                  | [前端](services/frontend/), [支付服务](services/payment/)                 |
+| Kotlin        |                                      | [欺诈侦测服务](services/fraud-detection/)                                                                   |                                                                           |
+| PHP           |                                      | [报价服务](services/quote/)                                                                                 | [报价服务](services/quote/)                                               |
+| Python        | [推荐服务](services/recommendation/) |                                                                                                             | [推荐服务](services/recommendation/)                                      |
+| Ruby          |                                      | [电子邮件服务](services/email/)                                                                             | [电子邮件服务](services/email/)                                           |
+| Rust          |                                      | [航运服务](services/shipping/)                                                                              | [航运服务](services/shipping/)                                            |
 
 ## 服务文档
 
-Specific information about how OpenTelemetry is deployed in each service can be
-found here:
+关于 OpenTelemetry 如何在每个服务中部署的具体信息可以在这里找到:
 
-- [Ad Service](services/ad/)
-- [Cart Service](services/cart/)
-- [Checkout Service](services/checkout/)
-- [Email Service](services/email/)
-- [Feature Flag Service](services/feature-flag/)
-- [Frontend](services/frontend/)
-- [Load Generator](services/load-generator/)
-- [Payment Service](services/payment/)
-- [Product Catalog Service](services/product-catalog/)
-- [Quote Service](services/quote/)
-- [Recommendation Service](services/recommendation/)
-- [Shipping Service](services/shipping/)
+- [Ad 服务](services/ad/)
+- [Cart 服务](services/cart/)
+- [结账服务](services/checkout/)
+- [Email 服务](services/email/)
+- [特征标志服务](services/feature-flag/)
+- [前端](services/frontend/)
+- [负载生成器](services/load-generator/)
+- [支付服务](services/payment/)
+- [产品目录服务](services/product-catalog/)
+- [报价服务](services/quote/)
+- [推荐服务](services/recommendation/)
+- [航运服务](services/shipping/)
 
 ## 场景
 
-How can you solve problems with OpenTelemetry? These scenarios walk you through
-some pre-configured problems and show you how to interpret OpenTelemetry data to
-solve them.
+如何用 OpenTelemetry 解决问题?这些场景引导您完成一些预配置的问题，并向您展示如何
+解释 OpenTelemetry 数据以解决这些问题。
 
-We'll be adding more scenarios over time.
+随着时间的推移，我们将添加更多的场景。
 
-- Generate a [Product Catalog error](feature-flags) for `GetProduct` requests
-  with product id: `OLJCESPC7Z` using the Feature Flag service
-- Discover a memory leak and diagnose it using metrics and traces.
-  [Read more](scenarios/recommendation-cache/)
+- 使用 Feature Flag 服务为产品 id: `OLJCESPC7Z`的 `GetProduct` 请求生成一
+  个[产品目录错误](feature-flags)
+- 发现内存泄漏并使用指标和跟踪对其进行诊断。(了解更多
+  )(scenarios/recommendation-cache/)
 
 ## 参考
 
-Project reference documentation, like requirements and feature matrices.
+项目参考文档，如需求和特性矩阵。
 
-- [Architecture](architecture/)
-- [Development](development/)
-- [Feature Flags Reference](feature-flags/)
-- [Metric Feature Matrix](metric-features/)
-- [Requirements](./requirements/)
-- [Screenshots](screenshots/)
-- [Service Roles Table](service-table/)
-- [Span Attributes Reference](manual-span-attributes/)
-- [Tests](tests/)
-- [Trace Feature Matrix](trace-features/)
+- [体系结构](architecture/)
+- [开发](development/)
+- [特性标志参考](feature-flags/)
+- [度量特征矩阵](metric-features/)
+- [需求](./requirements/)
+- [截图](screenshots/)
+- [服务角色表](service-table/)
+- [Span 属性参考](manual-span-attributes/)
+- [测试](tests/)
+- [追踪特征矩阵](trace-features/)
